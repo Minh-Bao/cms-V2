@@ -1,0 +1,30 @@
+</div>
+</div>
+<div class="dark" id="bloc-{{$bloc->id}}">
+<div class="container mhc-bloc">
+    <div class="row">
+        <div class="col align-self-center mt100">
+            <div class="efix-sec-title text-center">
+                
+                <h2 class="bloc" name="{{$bloc->id}}" value="title">
+                    {!! $bloc->title !!}
+                </h2>
+                <div class="mb50">
+                    &#10043;
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt50">
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-8 text-center">
+		    <div class="bloc" name="{{$bloc->id}}" value="content" style="margin-left:15px;">
+    	       {!! $bloc->content !!}
+    	    </div>
+        </div>
+    </div>
+</div>
+</div>
+<div>
+<div>

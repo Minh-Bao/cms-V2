@@ -1,0 +1,5 @@
+* [Home](/)
+* [Getting Started](getting-started.md)
+* [Managing Access Tokens](managing-access-tokens.md)
+* [Migrating to v2](v2-migration-guide.md)
+* [Changelog](changelog.md)

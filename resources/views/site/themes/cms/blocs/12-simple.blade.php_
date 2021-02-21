@@ -1,0 +1,37 @@
+<section class="mhc-design pt50">
+    <div class="container animatedParent animateOnce">
+        @if($bloc->title)
+        <div class="row">
+            <div class="mhc-sec-title">
+                <div class="col-md-10 col-md-offset-1">
+                    <h2 class="text-underline animate-subtitile bloc" name="{{$bloc->id}}" value="title" style="font-weight: 200;
+    text-transform: none;    
+letter-spacing: 0.2em;">{!! $bloc->title !!}</h2>
+                    <div class="mhc-heading-under-line">
+                        <div class="mhc-heading-inside-line"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @endif
+        @if($bloc->content)
+        <div class="row">
+        @if($bloc->image)
+            <div class="col-md-3 col-md-offset-2 bloc" name="{{$bloc->id}}" value="image">
+                    <img src="{{url('')}}/{{ $bloc->image }}" title="{{$bloc->title}}" alt="{{$bloc->title}}" class="img-responsive">
+            </div>
+            <div class="col-md-5 bloc" name="{{$bloc->id}}" value="content">
+                {!! $bloc->content !!}
+            </div>
+        @else
+            <div class="col-md-10 col-md-offset-1 bloc" name="{{$bloc->id}}" value="content">
+                {!! $bloc->content !!}
+            </div>
+        @endif
+        </div>
+        @endif
+    </div>
+    </section>
+<?php
+    $section_count = 0;
+?>

@@ -1,0 +1,8 @@
+
+
+<div class="col-lg-8 col-md-offset-2 text-center mt50">
+	<img src="{{$bloc->image}}" class="img-fluid bloc" name="{{$bloc->id}}" value="image">
+</div>
+<div class="shadow bloc bloc-flottant col-lg-6 col-sm-12" name="{{$bloc->id}}" alue="content" style="">
+ 	{!!	$bloc->content !!}
+</div>

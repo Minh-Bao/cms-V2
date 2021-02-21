@@ -1,0 +1,593 @@
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+#name, #firstname, #city {
+  text-transform: capitalize;
+}
+
+ #map {
+    width: 100%;
+    margin-top:-10px;
+    height: 300px;
+}
+.controls {
+    margin-top: 10px;
+    border: 1px solid transparent;
+    border-radius: 2px 0 0 2px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    height: 32px;
+    outline: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+#searchInput {
+    background-color: #fff;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    margin-left: 12px;
+    padding: 0 11px 0 13px;
+    width: 100%;
+    margin-top:10px;
+}
+#searchInput:focus {
+    border-color: #4d90fe;
+}
+
+
+
+ .shadow {
+  	-moz-box-shadow:    5px 5px 5px 0px #ccc;
+  	-webkit-box-shadow: 5px 5px 5px 0px #ccc;
+  	box-shadow:         5px 5px 5px 0px #ccc;
+}
+.reflief {
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+
+.dropdown-menu {
+    z-index:4000;
+}
+
+.breath {
+    margin-bottom:10px;
+}
+
+.breathtop {
+    margin-top:5px;
+}
+
+.fieldOuter input {
+  transition: all 1s;
+  font-size: 17px;
+  color: #666
+}
+
+.fieldOuter label {
+  position: absolute;
+  top: 0;
+  line-height:12px;
+  transition: all 0.5s;
+  overflow: hidden;
+  color: #c1c1c1;
+  white-space: nowrap;
+  z-index: 1;
+  opacity: 0;
+}
+.fieldOuter input:focus + label {
+  opacity: 1;
+  top: -12px;  
+}
+
+
+
+.labelvisible label {
+  position: absolute;
+  top: 20%;
+  left: 30px;
+  font-size:14px;
+  font-family:'Source Sans Pro','Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:400;
+  color:#bbb;
+}
+
+.currencyinput {
+  border-color: #98969a;
+    border-style: solid;
+    border-width: 0.5px;
+    display: inline-block;   
+}
+  
+
+.currencyinput input {   
+    border-style: solid solid solid none;
+    border-width: 0 0 0 thin;
+}
+
+input, select {
+  font-family: 'Roboto';
+}
+label {
+  display: block;
+}
+form > div {
+  margin: 0 0 1rem 0;
+}
+
+/*! politespace - v0.1.20 - 2016-09-26
+Politely add spaces to input values to increase readability (credit card numbers, phone numbers, etc).
+ * https://github.com/filamentgroup/politespace
+ * Copyright (c) 2016 Filament Group (@filamentgroup)
+ * MIT License */
+
+.politespace-proxy {
+    position: relative;
+    overflow: hidden; /* clearfix for floating siblings */
+    display: inline-block;
+}
+.politespace-proxy-val {
+    display: none;
+}
+.politespace-proxy.active.notempty > .politespace-proxy-val {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 1;
+}
+/* Safari 9 has a weird top/bottom margin on form elements inside of politespace proxies */
+/* This caused issues with proxy positioning.
+.politespace-proxy > input {
+    margin-top: 0;
+    margin-bottom: 0;
+}*/
+.politespace-proxy.active.notempty input {
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+.politespace-proxy.active.notempty input[type=number] {
+    -moz-appearance: textfield;
+}
+.politespace-proxy.active.notempty input[type=number]::-webkit-inner-spin-button,
+.politespace-proxy.active.notempty input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.qtyminus, .qtyplus {
+    background-color: #ccc;
+    color:#fff;
+    font-weight: bold;
+    width:40px;
+}
+.number {
+  margin-bottom: 0px !important;
+  text-align:center;
+  width:60px;
+  float-left;
+}
+
+.form-control2 {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+       -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+.form-control2:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+          box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, .6);
+}
+.form-control2::-moz-placeholder {
+  color: #999;
+  opacity: 1;
+}
+.form-control2:-ms-input-placeholder {
+  color: #999;
+}
+.form-control2::-webkit-input-placeholder {
+  color: #999;
+}
+
+.score {
+  position:absolute;
+  font-weight: bold;
+  padding:5px;
+
+}
+#offer-search-result h1 {
+  display: none;
+}
+
+.is100 {
+  background-color: rgba(76, 175, 80, 0.6);
+  color:#fff;  
+} 
+
+.is95, .is90{
+  background-color: rgba(139, 195, 74, 0.6);
+  color:#fff;
+}
+.is85, .is80, .is75{
+  background-color: rgba(33, 150, 243, 0.6);
+  color:#fff;
+}
+.is70, .is65, .is60{
+  background-color: rgba(255, 152, 0, 0.6);
+  color:#fff;
+}
+.is55, .is50, .is45{
+  background-color: rgba(255, 87, 34, 0.6);
+  color:#fff;
+}
+
+.box img {
+    border-radius: 5px 0;
+}
+.box .card {
+  background: #fff;
+  min-height: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin-top: 0px;
+  margin-bottom:30px!important;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px; }
+
+.box-title-tab {
+  color:#3c8dbc;
+}
+.box-header-tab:before {
+  content: " ";
+  display: table;
+}
+.box-header-tab:after {
+  clear: both;
+}
+.box-header-tab {
+  color: #444;
+  display: block;
+  padding: 5px;
+  position: relative;
+  border-bottom: 1px solid #cccccc;
+  border-left: 3px solid #3c8dbc;
+}
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.product {
+  color:#5897fb;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.MHC-customer {
+  text-align:left;
+  text-transform: lowercase;
+  text-transform: capitalize;
+  color:#000;
+  font-weight: 600;
+  font-size: 16px;
+}
+.price,.nc {
+  color:#000;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.isGrey {
+  color:#c1c1c1;
+
+}
+.isRed {
+  color:#f44336;
+}
+.isGreen {
+  color:#4caf50;
+}
+
+.isNobutton {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+/* User civility color */
+.isAdvancement1 {
+  color:#4CAF50;
+}
+.isAdvancement2 {
+  color:#2196F3;
+}
+.isAdvancement3 {
+  color:#2196F3;
+}
+.isAdvancement4 {
+  color:#2196F3;
+}
+.isAdvancement5 {
+  color:#FF5722;
+}
+.isAdvancement6 {
+  color:#F44336;
+}
+
+.right {
+  direction:rtl;
+}
+
+
+
+/* Formatage des prix */
+.enMoney::after {
+    content:" €";
+}
+.negMoney {
+    color:red;
+}
+div.negMoney::before {
+    content:'(';
+}
+div.negMoney::after {
+    content:' €)';
+}
+
+/* Preloader */
+.no-js #loader { display: none;  }
+.js #loader { display: block; position: absolute; left: 100px; top: 0; }
+.se-pre-con {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url(/images/interface/loader-64x/Preloader_7.gif) center no-repeat #fff;
+}
+.blur {
+  filter: blur(2px);
+  opacity: 0.5;
+  filter: alpha(opacity=50); /* For IE8 and earlier */}
+
+.pub {
+  background-image: linear-gradient(to bottom, rgba(255,255,255,255), rgba(236,236,236,1))!important;
+}
+
+
+
+
+
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: #2f2f2f;
+    color:#999;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav > div > ul {
+  list-style-type: none;
+}
+.sidenav > ul > li {
+  padding-bottom:25px;
+}
+
+.sidenav h2 {
+  color:#ffffff;
+}
+
+.sidenav a {
+  color:#ffffff;
+}
+
+.sidenav a i {
+  color:#2f2f2f;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#wallModal {
+  z-index: 99999993;
+
+}
+
+.wall-side-left {
+  height: 100%;
+  width: 0;
+  z-index: 99999992;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+.wall-side-left .main {
+  margin:25px;
+}
+
+.wall-side-left .closebtn {
+    position: absolute;
+    top: 0;
+    color:#000;
+    left: 25px;
+    font-size: 36px;
+}
+
+
+.wall-side-right .closebtn {
+    position: absolute;
+    top: 0;
+    color:#000;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.wall-side-right {
+  height: 100%;
+  width: 0;
+  z-index: 99999992;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: #f2f2f2;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.wall-side-right .main {
+  margin:25px;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.ui-autocomplete {
+  max-height: 100px;
+  z-index:1100!important;
+  overflow-y: auto;
+/* prevent horizontal scrollbar */
+  overflow-x: hidden;
+}
+/* IE 6 doesn't support max-height
+* we use height instead, but this forces the menu to always be this tall
+*/
+* html .ui-autocomplete {
+  height: 100px;
+}
+
+.ui-autocomplete-loading { background: url(/images/ajax-input-loader.gif) no-repeat scroll 7px 7px;
+background-position:right;}
+
+.box-crush {
+  position: absolute;
+  color:#fff;
+  padding: 2px 0px 0px 2px;
+  margin:5px;
+  background-color:#E91E63;
+  border-radius:50%;
+  width: 29px;
+  height: 29px;
+}
+.box-info {
+  position: absolute;
+  background-color:rgba(0,0,0,0.5);
+  color:#fff;
+  font-size: 10px;
+  padding:5px;
+  margin-top:95px;
+  max-width:160px;
+  width: 100%;
+  height: 25px;
+}
+
+
