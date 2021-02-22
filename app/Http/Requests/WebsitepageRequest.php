@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use App\Models\Site\Websitepage;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -22,16 +23,26 @@ class WebsitepageRequest extends FormRequest
      *
      * @return array
      */
-    public function rules(Expertise $expertise)
+    public function rules()
     {
+        if($this->method() == "PUT"){
+            return [
+                'name'              => 'required|min:2|max:200',
+                'title'             => 'required|min:2|max:200',
+                'alt_img'           => 'required|min:2|max:200',
+                'title_img'         => 'required|min:2|max:200',            
+                'meta_title'        => 'required|min:2|max:75',
+                'meta_desc'         => 'required|min:2|max:200'
+            ];
+            }
         return [
             'name'              => 'required|min:2|max:200',
-            'slug'              => 'required|unique:sitepages|min:2|max:150',
+            'slug'              => 'required|min:2|max:200|unique:sitepages',
             'title'             => 'required|min:2|max:200',
             'alt_img'           => 'required|min:2|max:200',
             'title_img'         => 'required|min:2|max:200',            
             'meta_title'        => 'required|min:2|max:75',
-            'meta_desc'         => 'required|min:2|max:200',
+            'meta_desc'         => 'required|min:2|max:200'
         ];
     }
 
