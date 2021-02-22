@@ -190,7 +190,7 @@ class WebsitepageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @param int $id
      * 
-     * @return void
+     * @return view
      */
     public function setDate(Request $request, $id){
         $page = Websitepage::findOrFail($id);
