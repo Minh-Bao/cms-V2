@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\WebsitepageRepository;
+use App\Repositories\WebsitepageRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,8 +26,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->app->bind(
-            'App\Repositories\WebsitepageRepositoryInterface',
-            'App\Repositories\WebsitepageRepository'
+            WebsitepageRepositoryInterface::class,
+            WebsitepageRepository::class,
         );
+        $this->app->bind(
+            'App\Repositories\SliderRepositoryInterface',
+            'App\Repositories\SliderRepository',
+        );
+        $this->app->bind(
+            'App\Repositories\WebsiteblocRepositoryInterface',
+            'App\Repositories\WebsiteblocRepository',
+        );
+
     }
 }
