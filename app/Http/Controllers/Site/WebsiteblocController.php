@@ -10,8 +10,8 @@ use Input;
 use Session;
 use App\Slim;
 use Response;
-use App\Site\Websitebloc;
-use App\Site\Websitepage;
+use App\Models\Site\Websitebloc;
+use App\Models\Site\Websitepage;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -24,9 +24,7 @@ class WebsiteblocController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }    
-
-
+    }  
 
     /**
      * Display a listing of the resource.
