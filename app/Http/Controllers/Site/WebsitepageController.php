@@ -2,25 +2,32 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Session;
+use App\Slim;
+use App\Models\Site\Slider;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
+use App\Models\Site\Websitebloc;
+use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
-use App\Slim;
-use App\Models\Site\Websitepage;
-use App\Models\Site\Websitebloc;
-use App\Models\Site\Slider;
-use Session;
+use Illuminate\Support\Facades\File;
+use App\Http\Requests\WebsitepageRequest;
+use App\Repositories\SliderRepositoryInterface;
+use App\Repositories\WebsiteblocRepositoryInterface;
+use App\Repositories\WebsitepageRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 
 class WebsitepageController extends Controller
 {
 
-    public function __construct()
+    public function __construct(WebsitepageRepositoryInterface $page, SliderRepositoryInterface $slider, WebsiteblocRepositoryInterface $bloc)
     {
         $this->middleware('auth:');
+        $this->page = $page;
+        $this->slider = $slider;
+        $this->bloc = $bloc;
     }  
 
     /**
@@ -30,7 +37,7 @@ class WebsitepageController extends Controller
      */
     public function index()
     {
-        $websitepages = Websitepage::where('lng','fr')->orderBy('created_at', 'DESC')->get();
+        $websitepages = $this->page->AllOrderedBy('created_at', 'DESC')->where('lng','fr');
 
         return view('admin.site.websitepage.index',compact('websitepages'));
     }
@@ -43,142 +50,32 @@ class WebsitepageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-
     {
-        $db_sliders = Slider::all();
-        $sliders = array();
 
-        foreach ($db_sliders as $slider) {
-            $sliders[$slider->id] = strip_tags($slider->title);
-        }
+       $sliders = $this->slider->getAllInArray();
 
-        $lng = App::getLocale();
-        $websitepages = Websitepage::where('lng',$lng)->get();
-        $db_websitepages_fr = Websitepage::where('lng','fr')->orderBy('title')->get();
-
-        foreach($db_websitepages_fr as $websitepage_fr) {
-            $websitepages_fr[ $websitepage_fr->id] = $websitepage_fr->title.' ('. $websitepage_fr->slug .')';         
-        }
-
-        return view('admin.site.websitepage.create',compact('sliders','lng','websitepages_fr'));
-
+        return view('admin.site.websitepage.create',compact('sliders'));      
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \WebsitepageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WebsitepageRequest $request)
     {
+        $page = $this->page->store($request);
 
-        $rules = [
+        self::saveImg('image', $page);
+        self::saveImg('thumbnail', $page);
 
-            'name'             => 'required|min:2|max:200',
-            'slug'             => 'required|unique:sitepages|min:2|max:150',
-            'title'            => 'required|min:2|max:200',
-            'alt_img'          => 'required|min:2|max:200',
-            'title_img'        => 'required|min:2|max:200',            
-            'meta_title'        => 'required|min:2|max:75',
-            'meta_desc'         => 'required|min:2|max:200',
-        ];
+        self::setStatus($request, $page);
 
-        $customMessages = ['unique' => 'Ce slug existe déjà.'];
-
-        $this->validate($request,$rules,$customMessages);
-
-        $page = new Websitepage();
-
-        $page->lng              = "fr";
-        $page->name             = $request->name;
-        $page->title            = $request->title;
-        $page->slug             = $request->slug;
-        $page->alt_img          = $request->alt_img;
-        $page->title_img        = $request->title_img;
-        $page->meta_title       = $request->meta_title;
-        $page->meta_desc        = $request->meta_desc;
-        $page->paginate         = $request->paginate;
-        $page->last_review        = $request->last_review;
-
-        $page->author           = auth()->user()->name;
-
-        $page->content          = $request->content;
-        $page->slider_id        = $request->slider_id;
-        $page->translate_id     = $request->translate_id;
-
-        $year   = date('Y');
-        $month  = date('m');
-
-        self::saveImg('image', $page, $year, $month);
-
-        $thumbnail = Slim::getImages('thumbnail');
-        
-        if ($thumbnail != []) {
-            $old_thumb   = $page->thumbnail;
-            $thumbnail  = array_shift($thumbnail);
-            $name_thumb   = $page->slug."-thumbnail-".date('YmdHis').".jpg";
-            $data_thumb   = $thumbnail['output']['data'];            
-
-            if (isset($thumbnail['output']['data'])) {
-                $output = Slim::saveFile($data_thumb, $name_thumb , 'images/articles/'. $year .'/'. $month .'/' , false);
-
-                if(File::exists($old_thumb) && isset($page->thumbnail)) {
-                    unlink($old_thumb);
-                }
-
-                $page->thumbnail = 'images/articles/'.date('Y').'/'.date('m').'/'.$name_thumb;
-            }
-        } 
-
-        //set the status of the page
-        if($request->action == 'Brouillon'){
-            $page->status = 0;
-        }elseif($request->action == 'Enregistrer'){
-            $page->status = 1;            
-        }elseif($request->action == 'Programmer'){
-            $page->status = 2;
-            $page->schedul = now()->addHour(1);
-            $page->save();
-            Session::flash('success', 'Veuillez programmer une date'); 
-
-            return redirect()->route('websitepage.index');
-        }
-
-        $page->save();
+        Session::flash('success', 'Contenu enregistré avec succès'); 
 
         return back()->withInput(); 
     }
-
-    /**
-     * Get image from input and save in database and public folder
-     *
-     * @param string $input
-     * @param Illuminate\Support\Collection  $page
-     * @param date $year
-     * @param date $month
-     */
-    public static function saveImg($input, $page, $year, $month) {
-        $images = Slim::getImages($input);
-
-        if ($images != []) {
-            $old    = $page->image;
-            $image  = array_shift($images);
-            $name   = $page->slug."-".date('YmdHis').".jpg";
-            $data   = $image['output']['data'];            
-
-            if (isset($data)) {
-                $output = Slim::saveFile($data, $name , 'images/articles/'. $year .'/'. $month .'/' , false);
-
-                if(File::exists($old) && isset($page->image)) {
-                    unlink($old);
-                }
-
-                $page->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
-            }
-        } 
-    }
-
 
 
     /**
@@ -202,34 +99,13 @@ class WebsitepageController extends Controller
      */
     public function edit($id)
     {
-        try{
-            $websitepage  = Websitepage::findOrFail($id);
-        }
-        catch(ModelNotFoundException $err){
-            Session::flash('error', 'Fiche introuvable.');
-
-            return redirect()->route('websitepage.index');
-        }
-
-        $db_sliders = Slider::all();
-        $sliders = array();
-
-        foreach ($db_sliders as $slider) {
-            $sliders[$slider->id] = strip_tags($slider->title);
-        }
-
-        $blocs = Websitebloc::where('sitepages_id',$id)->orderBy('sort')->get();
-        $lng = App::getLocale();
-        $websitepages = Websitepage::where('lng','fr')->get();
-        $db_websitepages_fr = Websitepage::where('lng','fr')->orderBy('title')->get();
-
-        foreach($db_websitepages_fr as $websitepage_fr) {
-            $websitepages_fr[ $websitepage_fr->id] = $websitepage_fr->title.' ('. $websitepage_fr->slug .')';            
-
-        }
+        $websitepage = $this->page->findOrError($id);
+        $sliders = $this->slider->getAllInArray();
+        $blocs = $this->bloc->getWhereAndOrder('sitepages_id', $id, 'sort', null);
+        $websitepages = $this->page->getWhere('lng', 'fr');
+        $websitepages_fr = $this->page->arrayWhereLang('fr');
 
         return view('admin.site.websitepage.edit',compact('websitepage','sliders','blocs','websitepages','websitepages_fr'));
-
     }
 
 
@@ -240,88 +116,16 @@ class WebsitepageController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(WebsitepageRequest $request, $id)
     {
+
+        $page =$this->page->findOrError($id);       
+        $this->page->update($request, $id); 
         
-        $rules = [
-            'name'             => 'required|min:2|max:200',
-            'title'            => 'required|min:2|max:200',
-            'alt_img'          => 'required|min:2|max:200',
-            'title_img'        => 'required|min:2|max:200',            
-            'meta_title'        => 'required|min:2|max:75',
-            'meta_desc'         => 'required|min:2|max:200',
-        ];
+        self::saveImg('image', $page);
+        self::saveImg('thumbnail', $page);
 
-        $page = Websitepage::findOrFail($id);
-
-        $page->name             = $request->name;
-        $page->lng              = "fr";
-        $page->title            = $request->title;
-        $page->slug             = $request->slug;
-        $page->alt_img          = $request->alt_img;
-        $page->title_img        = $request->title_img;
-        $page->meta_title       = $request->meta_title;
-        $page->meta_desc        = $request->meta_desc;
-        $page->paginate         = $request->paginate;
-        $page->last_review        = $request->last_review;
-
-        $page->content          = $request->content;
-        $page->slider_id        = $request->slider_id;
-        $page->translate_id     = $request->translate_id;
-
-
-        if ($page->slug==$request->slug) {
-            // Meme slug
-        } else {
-            $rules = ['slug' => 'required|unique:sitepages|min:2|max:150'];
-            $customMessages = ['unique' => 'Ce slug existe déjà.'];
-
-            $this->validate($request, $rules, $customMessages);
-        }
-
-        $page->slider_id = $request->slider_id;
-        $page->translate_id = $request->translate_id;
-
-        $year   = date('Y');
-        $month  = date('m');
-
-        self::saveImg('image', $page, $year, $month);
-
-        $thumbnail = Slim::getImages('thumbnail');
-        
-        if ($thumbnail != []) {
-            $old_thumb   = $page->thumbnail;
-            $thumbnail  = array_shift($thumbnail);
-            $name_thumb   = $page->slug."-thumbnail-".date('YmdHis').".jpg";
-            $data_thumb   = $thumbnail['output']['data'];            
-
-            if (isset($thumbnail['output']['data'])) {
-                $output = Slim::saveFile($data_thumb, $name_thumb , 'images/articles/'. $year .'/'. $month .'/' , false);
-
-                if(File::exists($old_thumb) && isset($page->thumbnail)) {
-                    unlink($old_thumb);
-                }
-
-                $page->thumbnail = 'images/articles/'.date('Y').'/'.date('m').'/'.$name_thumb;
-            }
-        } 
-
-        //set the status of the page
-        if($request->action == 'Brouillon'){
-            $page->status = 0;
-        }elseif($request->action == 'Enregistrer'){
-            $page->status = 1;            
-        }elseif($request->action == 'Programmer'){
-            $page->status = 2;
-            $page->schedul = now()->addHour(1);
-            $page->save();
-            Session::flash('success', 'Veuillez programmer une date'); 
-
-            return redirect()->route('websitepage.index');
-        }
-
-
-        $page->save();
+        self::setStatus($request, $page);
         
         Session::flash('success', 'Contenu modifié avec succès'); 
 
@@ -338,8 +142,8 @@ class WebsitepageController extends Controller
      */
     public function destroy($id)
     {
-        $page = Websitepage::findOrfail($id);
-        $bloc = Websitebloc::select('*')->whereSitepages_id($id);
+        $page = $this->page->findOrError($id);
+        $bloc = $this->bloc->getByPage_id($id);
 
         if(File::exists($page->image) && File::exists($page->thumbnail)) {
             unlink($page->image);
@@ -381,7 +185,7 @@ class WebsitepageController extends Controller
     }
 
     /**
-     * Set the scheduled date for the specified page
+     * Set a scheduled date for the specified page
      *
      * @param  \Illuminate\Http\Request  $request
      * @param int $id
@@ -398,5 +202,69 @@ class WebsitepageController extends Controller
 
         return back();
     }
+
+    /**
+     * set the status of the page according to condition
+     *
+     * @param \request $request
+     * @param \collection $page
+     * @return void
+     */
+    public static function setStatus($request, $page){
+        if($request->action == 'Brouillon'){
+            $page->status = 0;
+        }elseif($request->action == 'Enregistrer'){
+            $page->status = 1;            
+        }elseif($request->action == 'Programmer'){
+            $page->status = 2;
+            $page->schedul = now()->addHour(1);
+            $page->save();
+            Session::flash('success', 'Veuillez programmer une date'); 
+
+            return redirect()->route('websitepage.index');
+        }
+
+        $page->save();
+    }
+
+    /**
+     * Get image or thumbnail from input and save in database and public folder
+     *
+     * @param string $input
+     * @param Illuminate\Support\Collection  $page
+     * @param date $year
+     * @param date $month
+     */
+    public static function saveImg($input, $page) {
+
+        $images = Slim::getImages($input);
+
+        if ($images != []) {
+            if($input == 'image'){
+                $old    = $page->image;
+                $name   = $page->slug."-".date('YmdHis').".jpg";
+            }else{
+                $old    = $page->thumbnail;
+                $name   = $page->slug."-thumbnail-".date('YmdHis').".jpg";
+            }
+            $image  = array_shift($images);
+            $data   = $image['output']['data'];            
+
+            if (isset($data)) {
+                Slim::saveFile($data, $name , 'images/articles/'. date('Y') .'/'. date('m') .'/' , false);
+
+                if(File::exists($old) && isset($page->image)) {
+                    unlink($old);
+                }
+
+                if($input == 'image'){
+                    $page->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
+                }else{
+                    $page->thumbnail = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
+                }
+            }
+        } 
+    }
+
 }
 
