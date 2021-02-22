@@ -183,7 +183,7 @@
 									<b>Remplacement rapide avec une photo récentes</b><br />
 				   			<br />
 							@php
-								$recentes = App\Site\Websitebloc::select('*')->whereNotNull('image')->distinct('image')->orderBy('updated_at')->paginate(8);
+								$recentes = App\Models\Site\Websitebloc::select('*')->whereNotNull('image')->distinct('image')->orderBy('updated_at')->paginate(8);
 							@endphp
 
 							@foreach($recentes as $recente)
