@@ -86,7 +86,7 @@
                                         <a href="{{ route('websitepage.edit',$websitepage->id)}}" class=""><i class="material-icons index_icon">mode_edit</i></a>
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('websitepage.delete',$websitepage->id)}}" class=""><i class="material-icons index_icon">delete_forever</i></a>
+                                        <a href="{{ route('websitepage.delete', $websitepage->id)}}" class=""><i class="material-icons index_icon">delete_forever</i></a>
                                     </td>
                                 </tr>
                             @endforeach
