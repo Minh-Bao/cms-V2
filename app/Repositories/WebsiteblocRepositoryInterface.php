@@ -20,4 +20,29 @@ interface WebsiteblocRepositoryInterface
      * @return collection or redirect to route
      */
     public function getByPage_id($id);
+
+    /**
+     * store a newly created bloc in db
+     *
+     * @param \Request $request
+     * @return collection
+     */
+    public function store($request);
+
+    /**
+     * Update specified resource in db
+     *
+     * @param Request $request
+     * @param int $id
+     * @return collection or redirect to route
+     */
+    public function update($request, $id);
+
+    /**
+     * Find the specified record by its id or throw an error message and return to index
+     *
+     * @param int $id
+     * @return collection or redirect to route
+     */
+    public function findOrError($id);
 }
