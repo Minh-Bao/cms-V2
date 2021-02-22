@@ -43,22 +43,12 @@ class WebsiteblocController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        $sitepages_id = $_REQUEST["sitepages_id"];
+        $sitepages_id = $request->sitepages_id;
         $websitepage = Websitepage::findOrFail($sitepages_id);
-        //Check all the template in the bloc folder and put them in an array
-        $fileList = glob('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/*.blade.php');
-        $blocs=[]; 
 
-        //iterate the array $filelist that glob returned
-        foreach($fileList as $key=>$filename){
-            //Simply print them out onto the screen without extension '.blade.php'
-            $filename = str_replace('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/', "", $filename);
-            $filename = str_replace('.blade.php', "", $filename);
-            //Create an array with the file and the same key name
-            $blocs[$filename]=$filename;
-        }
+        $blocs = self::templateArray();
 
         return view('admin.site.websitebloc.create',compact('websitepage','blocs'));
     }
@@ -98,7 +88,7 @@ class WebsiteblocController extends Controller
 
         Session::flash('success', 'Contenu modifié avec succès');  
 
-        return redirect()->route('websitepage.edit', ['id' => $bloc->sitepages_id]);
+        return redirect()->route('websitepage.edit', ['websitepage' => $bloc->sitepages_id]);
     }
 
     /**
@@ -178,12 +168,12 @@ class WebsiteblocController extends Controller
             exit;
         }
 
-        $directory  = base_path('resources\views\site\themes\cms\blocs');
+        // $directory  = base_path('resources\views\site\themes\cms\blocs');
         $fileList   = glob('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/*.blade.php');
         $blocs=[];        
         // $groups=[];
 
-        //Loop through the array that glob returned.
+        //iterate the array $filelist that glob returned
         foreach($fileList as $key=>$filename){
             
 
@@ -240,7 +230,7 @@ class WebsiteblocController extends Controller
 
         Session::flash('success', 'Contenu modifié avec succès');  
 
-        return redirect()->route('websitebloc.edit', ['id' => $id]);
+        return redirect()->route('websitebloc.edit', ['websitepage' => $id]);
     }
 
 
@@ -328,7 +318,7 @@ class WebsiteblocController extends Controller
 
         Session::flash('success', 'Contenu supprimé avec succès');  
 
-        return redirect()->route('websitepage.edit', ['id' => $websitebloc->sitepages_id]);
+        return redirect()->route('websitepage.edit', ['websitepage' => $websitebloc->sitepages_id]);
     }
 
     public function sort(Request $request)
