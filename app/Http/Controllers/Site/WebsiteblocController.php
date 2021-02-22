@@ -10,19 +10,24 @@ use Input;
 use Session;
 use App\Slim;
 use Response;
+use Illuminate\Http\Request;
 use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
+use App\Http\Requests\WebsiteblocRequest;
+use App\Repositories\WebsiteblocRepositoryInterface;
+use App\Repositories\WebsitepageRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class WebsiteblocController extends Controller
 {
 
-    public function __construct()
+    public function __construct(WebsitepageRepositoryInterface $page, WebsiteblocRepositoryInterface $bloc)
     {
+        $this->bloc = $bloc;
+        $this->page = $page;
         $this->middleware('auth');
     }  
 
@@ -39,15 +44,13 @@ class WebsiteblocController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     * Create an array with minimized bloc files name for the select
-     *
+     * 
+     *@param \request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
     {
-        $sitepages_id = $request->sitepages_id;
-        $websitepage = Websitepage::findOrFail($sitepages_id);
-
+        $websitepage = $this->page->findOrError($request->sitepages_id);
         $blocs = self::templateArray();
 
         return view('admin.site.websitebloc.create',compact('websitepage','blocs'));
@@ -56,71 +59,25 @@ class WebsiteblocController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \WebsiteblocRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(WebsiteblocRequest $request)
     {
-        $page = Websitepage::find($request->sitepages_id);
-        $bloc = Websitebloc::select('*')->where('sitepages_id',$request->sitepages_id)->orderBy('sort','desc')->first();
-
-        if (!is_null($bloc)) {
-            $sort = $bloc->sort + 1;
-
-        } else {
-            $sort = 1;
-        }
-
-        $bloc = new Websitebloc();
-        
-        $bloc->sitepages_id     = $request->sitepages_id;
-        $bloc->title            = $request->title;
-        $bloc->alt_img          = $request->alt_img;
-        $bloc->title_img        = $request->title_img;
-        $bloc->sort             = $sort;
-        $bloc->content          = $request->content;
-        $bloc->format           = $request->format;
-       
-        Self::saveImg("image", $page, $bloc);
-
+        //Create a new bloc and add the sort number according to the precedent
+        $bloc= $this->bloc->store($request);
+        $sort = $this->nextBlocNumber($request->sitepages_id);
+        $bloc->sort = $sort;
         $bloc->save();
         
+        //Create a new image and save to storage
+        $page = $this->page->findOrError($request->sitepages_id);
+        Self::saveImg("image", $page, $bloc);
 
         Session::flash('success', 'Contenu modifié avec succès');  
 
         return redirect()->route('websitepage.edit', ['websitepage' => $bloc->sitepages_id]);
     }
-
-    /**
-     * Get image from input and save in database and public folder
-     *
-     * @param string $input
-     * @param Illuminate\Support\Collection  $page
-     * @param Illuminate\Support\Collection  $bloc
-     */
-    public static function saveImg($input, $page, $bloc) {
-        $images = Slim::getImages($input);
-        
-        if ($images != []) {
-            $old    = $bloc->image;
-            $year   = date('Y');
-            $month  = date('m');
-            $image  = array_shift($images);
-            $name   = $page->slug."-bloc-".date('YmdHis').".jpg";
-            $data   = $image['output']['data'];
-
-            if (isset($data)) {
-                $output = Slim::saveFile($data, $name , 'images/articles/'. $year .'/'. $month .'/' , false);
-
-                if(File::exists($old) && isset($bloc->image)) {
-                    unlink($old);
-                }
-
-                $bloc->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
-            }            
-        } 
-    }
-
 
 
     /**
@@ -144,56 +101,13 @@ class WebsiteblocController extends Controller
      */
     public function edit($id)
     {
-        try{
-            $websitebloc  = Websitebloc::findOrFail($id);
-        }
-        catch(ModelNotFoundException $err){
-            Session::flash('error', 'Bloc introuvable.');  
+        $websitebloc = $this->bloc->findOrError($id); 
+        
+        $websiteblocs = $this->bloc->getWhereAndOrder('sitepages_id' ,$websitebloc->sitepages_id, 'sort', null); 
 
-            return redirect()->route('websitepage.index');
+        $websitepage = $this->page->findOrError($websitebloc->sitepages_id);
 
-            exit;
-        }
-
-        $websiteblocs = Websitebloc::where('sitepages_id',$websitebloc->sitepages_id)->orderBy('sort')->get();
-
-        try{
-            $websitepage  = Websitepage::findOrFail($websitebloc->sitepages_id);
-        }
-        catch(ModelNotFoundException $err){
-            Session::flash('error', 'Page du bloc introuvable.');  
-
-            return redirect()->route('websitepage.index');
-
-            exit;
-        }
-
-        // $directory  = base_path('resources\views\site\themes\cms\blocs');
-        $fileList   = glob('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/*.blade.php');
-        $blocs=[];        
-        // $groups=[];
-
-        //iterate the array $filelist that glob returned
-        foreach($fileList as $key=>$filename){
-            
-
-           //Simply print them out onto the screen.
-            $filename = str_replace('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/', "", $filename);
-            $filename = str_replace('.blade.php', "", $filename);
-            
-            $blocs[$filename]=$filename;
-
-            //for futur implementation
-            /* $namebloc = preg_match_all( '/bloc/', $filename, $out, PREG_PATTERN_ORDER);
-            $namegroup = preg_match_all( '/group/', $filename, $out, PREG_PATTERN_ORDER);
-
-            if($namebloc){
-                $blocs[$filename]=$filename;
-            }elseif($namegroup){
-                $groups[$filename]=$filename;
-            } */
-            
-        }
+        $blocs = self::templateArray();
 
         return view('admin.site.websitebloc.edit',compact('websitebloc','websitepage','websiteblocs','blocs'));
     }
@@ -202,35 +116,22 @@ class WebsiteblocController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Request\WebsiteblocRequest  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return view
      */
-    public function update(Request $request, $id)
+    public function update(WebsiteblocRequest $request, $id)
     {
-        
-        $bloc = Websitebloc::find($id);
-        $page = Websitepage::find($bloc->sitepages_id);
+        $bloc= $this->bloc->update($request, $id);
+        $page = $this->page->findOrError($bloc->sitepages_id); 
 
-        $bloc->title            = $request->title;
-        $bloc->alt_img          = $request->alt_img;
-        $bloc->title_img        = $request->title_img;
-        $bloc->format           = $request->format;
-        $bloc->content          = $request->content;
-        $bloc->content_two      = $request->content_two;
+        self::saveImg("image", $page, $bloc);        
 
-        Self::saveImg("image", $page, $bloc);        
-
-        if($request->del_image==1) {
-            unlink($bloc->image);
-            $bloc->image = NULL;
-        }
-
-        $bloc->save();
+        self::deleteImgIfCheck($request, $bloc);
 
         Session::flash('success', 'Contenu modifié avec succès');  
 
-        return redirect()->route('websitebloc.edit', ['websitepage' => $id]);
+        return redirect()->route('websitebloc.edit', ['websitebloc' => $id]);
     }
 
 
@@ -242,16 +143,7 @@ class WebsiteblocController extends Controller
      */
     public function clone($id)
     {
-        try{
-            $websitebloc  = Websitebloc::findOrFail($id);
-        }
-        catch(ModelNotFoundException $err){
-            Session::flash('error', 'Bloc introuvable.');  
-
-            return redirect()->route('websitepage.index');
-
-            exit;
-        }
+        $websitebloc = $this->bloc->findOrError($id);
 
         $newWebsitebloc = $websitebloc->replicate();
         $newWebsitebloc->save();
@@ -308,11 +200,9 @@ class WebsiteblocController extends Controller
 
     public function delete($id)
     {
-        $websitebloc = Websitebloc::where('id', $id)->first();
+        $websitebloc = $this->bloc->findorError($id);;
 
-        if(File::exists($websitebloc->image)) {
-            unlink($websitebloc->image);
-        }
+        self::removeImg($websitebloc);
 
         $websitebloc->delete();        
 
@@ -342,7 +232,23 @@ class WebsiteblocController extends Controller
     }
 
     /**
-     * Check all the template in the bloc folder and put them in an array
+     * Return the next place number of a specified bloc
+     *
+     * @param int $id
+     * @return int
+     */
+    public function nextBlocNumber($id){
+        $bloc = $this->bloc->getWhereAndOrder('sitepages_id', $id, 'sort', 'desc')->first();        
+        if (!is_null($bloc)) {
+            return $bloc->sort + 1;
+        } else {
+            return 1;
+        }
+    }
+
+    /**
+     * Check all the template in the bloc folder then
+     * Create an array with minimized bloc files name for the select
      *
      * @return Array
      */
@@ -360,6 +266,66 @@ class WebsiteblocController extends Controller
         }
 
         return $blocs;
+    }
+
+    /**
+     * Get image from input and save in database and public folder
+     *
+     * @param string $input
+     * @param Illuminate\Support\Collection  $page
+     * @param Illuminate\Support\Collection  $bloc
+     */
+    public static function saveImg($input, $page, $bloc) {
+        
+        $images = Slim::getImages($input);
+        
+        if ($images != []) {
+            $old    = $bloc->image;
+            $year   = date('Y');
+            $month  = date('m');
+            $image  = array_shift($images);
+            $name   = $page->slug."-bloc-".date('YmdHis').".jpg";
+            $data   = $image['output']['data'];
+
+            if (isset($data)) {
+                $output = Slim::saveFile($data, $name , 'images/articles/'. $year .'/'. $month .'/' , false);
+
+                if(File::exists($old) && isset($bloc->image)) {
+                    unlink($old);
+                }
+
+                $bloc->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
+            }            
+        }
+        $bloc->save();
+    }
+
+    /**
+     * remove image from storage and put field image to null when the checkbox is checked
+     *
+     * @param request $request
+     * @param collection $bloc
+     * @return void
+     */
+    public static function deleteImgIfCheck($request, $bloc){
+        if($request->del_image==1) {
+            unlink($bloc->image);
+            $bloc->image = NULL;
+        }
+        $bloc->save();
+    }
+
+    /**
+     * remove image of a specified object from storage
+     *
+     * @param collection $object
+     * @return void
+     */
+    public static function removeImg($object){
+        if(File::exists($object->image)) {
+            unlink($object->image);
+        }
+
     }
 }
 
