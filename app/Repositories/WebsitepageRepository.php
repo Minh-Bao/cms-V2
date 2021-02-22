@@ -69,7 +69,7 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      */
     public function store($request){
                 
-        $page = new Websitepage();
+        $page                   = new Websitepage();
         $page->lng              = "fr";
         $page->name             = $request->name;
         $page->title            = $request->title;
