@@ -53,33 +53,30 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if($exception instanceof  QueryException){
-            return response()->view('errors/404', ['invalid_url'=>true], 404);
-        }
-
         if($exception instanceof NotFoundHttpException){
             return response()->view('errors/404', ['invalid_url'=>true], 404);
         }
 
         if ($exception instanceof TokenMismatchException && Auth::guest()) {
-            return response()->view('errors/404', ['invalid_url'=>true], 404);
+            return response()->view('errors/404', ['invalid_url'=>true], 500);
         }
 
         if ($exception instanceof TokenMismatchException && getenv('APP_ENV') != 'local') {
-            return response()->view('errors/404', ['invalid_url'=>true], 404);
+            return redirect()->back()->withInput();
         }
 
         if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException && getenv('APP_ENV') != 'local') {
-            return response()->view('errors/404', ['invalid_url'=>true], 404);
-        }
-
-        if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') != 'local') {
             error_log('Error :' . $exception->getMessage());
-            return view('errors.404');
+            abort(404);
         }
 
+        if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') == 'local') {
+            error_log('Error :' . $exception->getMessage());
+            abort(500);
+        }
         if ($exception instanceof ClientException) {
-            return response()->view('errors/404', ['invalid_url'=>true], 404);
+            error_log('Error :' . $exception->getMessage());
+            abort(500);
         }
         return parent::render($request, $exception);
 
