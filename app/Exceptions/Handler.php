@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Throwable  $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Throwable $exception)
@@ -70,7 +70,7 @@ class Handler extends ExceptionHandler
             abort(404);
         }
 
-        if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') == 'local') {
+        if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') != 'local') {
             error_log('Error :' . $exception->getMessage());
             abort(500);
         }
