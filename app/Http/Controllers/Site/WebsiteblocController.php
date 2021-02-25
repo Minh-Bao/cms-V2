@@ -232,7 +232,7 @@ class WebsiteblocController extends Controller
     }
 
     /**
-     * Return the next place number of a specified bloc
+     * Return the next range number of a specified bloc
      *
      * @param int $id
      * @return int
