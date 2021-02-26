@@ -2,8 +2,14 @@
 
 namespace App\Providers;
 
+use App\Repositories\SliderRepository;
 use Illuminate\Support\ServiceProvider;
+use App\Repositories\SliderImageRepository;
+use App\Repositories\WebsiteblocRepository;
 use App\Repositories\WebsitepageRepository;
+use App\Repositories\SliderRepositoryInterface;
+use App\Repositories\SliderImageRepositoryInterface;
+use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,13 +36,18 @@ class AppServiceProvider extends ServiceProvider
             WebsitepageRepository::class,
         );
         $this->app->bind(
-            'App\Repositories\SliderRepositoryInterface',
-            'App\Repositories\SliderRepository',
+            SliderRepositoryInterface::class,
+            SliderRepository::class,
         );
         $this->app->bind(
-            'App\Repositories\WebsiteblocRepositoryInterface',
-            'App\Repositories\WebsiteblocRepository',
+            WebsiteblocRepositoryInterface::class,
+            WebsiteblocRepository::class,
         );
+        $this->app->bind(
+            SliderImageRepositoryInterface::class,
+            SliderImageRepository::class,
+        );
+
 
     }
 }
