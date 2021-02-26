@@ -113,7 +113,6 @@
 
                         @endif
                     @endif
-                    
 
                     @include('site.themes.'.env('SITE_THEME').'.blocs.'.$bloc->format)
                 @endforeach
