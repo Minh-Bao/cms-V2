@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers\Site;
 
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Redirect;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
-use App\Models\Site\Slider;
-use App\Modelsls\Site\Sliderimage;
-use Session;
 use DB;
+use Session;
+use App\Models\Site\Slider;
+use Illuminate\Http\Request;
+use App\Modelsls\Site\Sliderimage;
+use Illuminate\Support\Facades\URL;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\SliderRequest;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
+use App\Repositories\SliderRepositoryInterface;
+use App\Repositories\SliderImageRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class SliderController extends Controller
 
@@ -22,9 +25,11 @@ class SliderController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(SliderRepositoryInterface $slider, SliderImageRepositoryInterface $sliderImage)
     {
             $this->middleware('auth:');
+            $this->slider = $slider;
+            $this->sliderImage = $sliderImage;
     }
 
 
@@ -36,63 +41,53 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::all();
+        $sliders = $this->slider->all();
 
         return view('admin.site.slider.index',compact('sliders'));
     }
 
 
-
+    /**
+     * Show the form for edit the slider
+     *
+     * @param int $id
+     * @return view
+     */
     public function edit($id)
     {
-        try{
-            $slider  = Slider::findOrFail($id);
-        }
+        $slider = $this->slider->findOrError($id);
 
-        catch(ModelNotFoundException $err){
-            Session::flash('error', 'Slider introuvable.');  
-            return redirect()->route('slider.index');
-
-            exit;
-        }
-
-        $pictures = DB::table('siteslidersimages')->where('sitesliders_id',$id)->orderBy('sort')->get();
+        $pictures = $this->sliderImage->getWhereAndOrder('sitesliders_id',$id, 'sort', null);
 
         return view('admin.site.slider.edit',compact('slider','pictures'));
     }
 
+    /**
+     * show the form to create a new slider
+     *
+     * @return view
+     */
     public function create()
     {
-
         return view('admin.site.slider.create');
 
     }
 
 
-
-
-
- public function store(Request $request)
-
+    /**
+     * Store a newly created slider in db
+     *
+     * @param SliderRequest $request
+     * @return view
+     */
+    public function store(SliderRequest $request)
     {
-        $this->validate($request, [
-         'title'          => 'required|min:2|max:255',
-         'width'        => 'required|integer|min:2|max:1980',
-         'height'        => 'required|integer|min:2|max:1980'
-        ]);
-
         if ($request->ratio=="1:1" && ($request->width<>$request->height)) {
             Session::flash('error', 'Les dimensions ne correspondent pas pour un format carré');  
             return Redirect::to(URL::previous());
         }
 
-        $slider = new Slider;
-        $slider->title = $request->title;
-        $slider->ratio = $request->ratio;
-        $slider->type = $request->type;
-        $slider->width = $request->width;
-        $slider->height = $request->height;
-        $slider->save();
+        $this->slider->store($request);
 
         Session::flash('success', 'Slider ajouté'); 
 
@@ -108,11 +103,13 @@ class SliderController extends Controller
      */
     public function destroy($id)
     {
-        $slide = Slider::findOrfail($id);
-        $images = Sliderimage::select('*')->whereSitesliders_id($id);
+        $slide = $this->slider->findOrError($id);
+        $images = $this->sliderImage->getWhere('sitesliders_id', $id);
 
         $slide->delete();
-        $images->delete();
+        foreach($images as $item){
+            $item->delete();
+        }
 
         Session::flash('success', 'Votre slider a bien été supprimé'); 
 
