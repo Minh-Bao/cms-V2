@@ -51,7 +51,6 @@ class WebsitepageController extends Controller
      */
     public function create()
     {
-
        $sliders = $this->slider->getAllInArray();
 
         return view('admin.site.websitepage.create',compact('sliders'));      
@@ -135,7 +134,9 @@ class WebsitepageController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified page resource from storage., 
+     * remove image if exist in storage 
+     * and remove corresponding bloc and images blocsa
      *
      * @param  int  $id
      * @return view
@@ -166,7 +167,7 @@ class WebsitepageController extends Controller
     }
 
     /**
-     * check if the schudeled date passed or is now
+     * check if the schudeled date has passed or is now
      * And change status for specified page
      * 
      * @return void
