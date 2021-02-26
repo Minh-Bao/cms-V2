@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Site\Slider;
-use App\Models\Site\Sliderimage;
-use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
