@@ -134,6 +134,25 @@ class WebsiteblocController extends Controller
         return redirect()->route('websitebloc.edit', ['websitebloc' => $id]);
     }
 
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $websiteblocs = $this->bloc->findorError($id);;
+
+        self::removeImg($websiteblocs);
+
+        $websiteblocs->delete();        
+
+        Session::flash('success', 'Contenu supprimé avec succès');  
+
+        return redirect()->route('websitepage.edit', ['websitepage' => $websiteblocs->sitepages_id]);
+    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -161,7 +180,6 @@ class WebsiteblocController extends Controller
         $blocs      = Websitebloc::where('sitepages_id',$page_fr->id)->get();
 
         foreach($blocs as $bloc) {
-
             // On clone le bloc
             $newbloc = new Websitebloc();
 
@@ -185,38 +203,18 @@ class WebsiteblocController extends Controller
         return redirect()->route('websitepage.edit', ['id' => $id]);
     }
 
-
-
     /**
-     * Remove the specified resource from storage.
+     * ajax method to sort the bloc in the edit view
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return json array
      */
-    public function destroy($id)
-    {
-        //
-    }
-
-    public function delete($id)
-    {
-        $websitebloc = $this->bloc->findorError($id);;
-
-        self::removeImg($websitebloc);
-
-        $websitebloc->delete();        
-
-        Session::flash('success', 'Contenu supprimé avec succès');  
-
-        return redirect()->route('websitepage.edit', ['websitepage' => $websitebloc->sitepages_id]);
-    }
-
     public function sort(Request $request)
     {
         if(Input::has('item')) {
             $i = 0;
 
-            foreach(Input::get('item') as $id) {
+            foreach(Input::get('item') as $id) { 
                 $i ++;
                 $bloc = Websitebloc::find($id);
                 $bloc->sort = $i;
