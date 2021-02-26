@@ -4,7 +4,15 @@ use App\Models\Site\Slider;
 
 class sliderRepository implements SliderRepositoryInterface
 {
+    /**
+     * retrieve an object of all sliders in db
+     *
+     * @return collection
+     */
+    public function all(){
 
+        return Slider::all();
+    }
     /**
      * Create an Array of slider with key= slider id and value = slider title
      * 
@@ -23,33 +31,34 @@ class sliderRepository implements SliderRepositoryInterface
 	}
 
     /**
-     * retrieve all pages and order by specified field in the specified direction
-     * 
-     * @param string $field
-     * @param string $direction
-     * @return void
+     * retrieve specified ressource by its id
+     * @param int  $id
+     * @return object
      */
-    public function AllOrderedBy($field, $direction){
-
-        if(isset($direction)){
-            return Websitepage::select('*')->orderBy($field, $direction)->get();
-        }else{
-            return Websitepage::select('*')->orderBy($field)->get();
-        }       
-	}
-
-    /**
-     * retrieve all pages ordered by created_at
-     * 
-     * @param int $id
-     * @return void
-     */
-    public function getAllOrdered(){
+    public function findBy($id){
         
-        return Websitepage::all();
+        return Slider::find($id);
 	}
 
     /**
+     * find the specified slider or show error message and return to previous page
+     *
+     * @param int $id
+     * @return object or view
+     */
+    public function findOrError($id){
+        try{
+            $slider  = Slider::findOrFail($id);
+            return $slider;
+
+        } catch(ModelNotFoundException $err){
+
+            Session::flash('error', 'Slider introuvable.');  
+            return back();
+        }
+    }
+
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -57,7 +66,7 @@ class sliderRepository implements SliderRepositoryInterface
      */
     public function store($request){
                 
-        SiteWebsitepage::create($request->all());
+        return Slider::create($request->except('_token', '_method'));
     }
 
 
