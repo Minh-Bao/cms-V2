@@ -136,7 +136,7 @@
                             </div>
                             <div class="row form-group">
                                 <div class="col-md-6">
-                                    <a href="{{route('websitebloc.delete',$websitebloc->id)}}" class="btn btn-lg btn-danger ">Supprimer</a>
+                                    <a href="{{route('websiteblocs.destroy', $websitebloc->id)}}" class="btn btn-lg btn-danger ">Supprimer</a>
                                 </div>
 
                                 <div class="col-md-6 text-right">
