@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Site\WebsitepageController;
 use App\Models\Site\Slider;
 use App\Models\Site\Sliderimage;
 use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use App\Repositories\SliderRepositoryInterface;
+use App\Http\Controllers\Site\WebsitepageController;
+use App\Repositories\SliderImageRepositoryInterface;
+use App\Repositories\WebsiteblocRepositoryInterface;
+use App\Repositories\WebsitepageRepositoryInterface;
 
 
 class SiteController extends Controller
@@ -20,8 +24,12 @@ class SiteController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(WebsitepageRepositoryInterface $page, SliderRepositoryInterface $slider, SliderImageRepositoryInterface $sliderImage, WebsiteblocRepositoryInterface $bloc)
     {
+        $this->bloc = $bloc;
+        $this->sliderImage = $sliderImage;
+        $this->slider = $slider;
+        $this->page = $page;
         $this->exclude_pages = ["contact", "mentions", "homepage", "article-index", "categorie"];
     }
 
@@ -40,17 +48,17 @@ class SiteController extends Controller
         $arrayView = array('sitepage','slider','sitesliderimages','siteblocs'/* ,'menus' */);
 
         /*check if the page exist assign to variable if not throw error*/
-        $sitepage = Websitepage::where('slug','homepage')->whereStatus(1)->first();
+        $sitepage = $this->page->getWhere('slug','homepage')->where('status', 1)->first();
         /*Check if there is slider and image assign to variable*/
-        $slider = Slider::select('*')->whereId($sitepage->slider_id)->first();
-        $sitesliderimages = Sliderimage::select('*')->whereSitesliders_id($sitepage->slider_id)->orderBy('sort')->get();
+        $slider = $this->slider->findBy($sitepage->slider_id);
+        $sitesliderimages = $this->sliderImage->getWhereAndOrder('sitesliders_id',$sitepage->slider_id,'sort', null);
         /*Check if there is a bloc and assign to variable*/
-        $siteblocs = Websitebloc::select('*')->where('sitepages_id',$sitepage->id)->orderBy('sort')->get();
+        $siteblocs = $this->bloc->getWhereAndOrder('sitepages_id', $sitepage->id,'sort', null);
         
         
         /*BestPage and thumbnail module for group-home*/
-        $bestpage = self::bestpage($this->exclude_pages);       
-        $page = self::thumbnail($this->exclude_pages);
+        $bestpage = $this->bestpage($this->exclude_pages);       
+        $page = $this->thumbnail($this->exclude_pages);
                 
         array_push($arrayView, 'page', 'bestpage');  
         
@@ -78,13 +86,13 @@ class SiteController extends Controller
         /*check if the page exist assign to variable if not throw error*/
             /*Also check if the page is a preview or classic page */
         if($type == "page"){
-            $sitepage = Websitepage::where('slug', $slug)->whereStatus(1)->firstOrFail();
+            $sitepage = $this->page->getWhere('slug',$slug)->where('status', 1)->firstOrFail();
         }elseif($type == "preview"){
-            $sitepage = Websitepage::where('slug', $slug)->firstOrFail();
+            $sitepage = $this->page->getWhere('slug',$slug)->firstOrFail();
         }         
         /*Check if there is slider and image assign to variable*/
-        $slider = Slider::select('*')->whereId($sitepage->slider_id)->first();
-        $sitesliderimages = Sliderimage::select('*')->whereSitesliders_id($sitepage->slider_id)->orderBy('sort')->get();
+        $slider = $this->slider->findBy($sitepage->slider_id);
+        $sitesliderimages = $this->sliderImage->getWhereAndOrder('sitesliders_id',$sitepage->slider_id,'sort', null);
 
         /*increment view page number except exclude pages*/
         if($sitepage->status == 1){
@@ -104,35 +112,35 @@ class SiteController extends Controller
 
         /*Check if the checkbox for last_review is on then  assign returned object to a variable*/
         if($sitepage->last_review == "on"){
-            $page = self::thumbnail($this->exclude_pages);
+            $page = $this->thumbnail($this->exclude_pages);
         }
 
         ////////////////////////BLOCS///////////////////////
         /* Check each bloc format then call appropriate method and assign returned object to a variable*/
-        $siteblocs = Websitebloc::select('*')->where('sitepages_id',$sitepage->id)->orderBy('sort')->get();
+        $siteblocs = $this->bloc->getWhereAndOrder('sitepages_id', $sitepage->id,'sort', null);
 
         foreach($siteblocs as $item){
 
             // GROUP-HOME//
             if($item->format == "group-home"){
-                $bestpage = self::bestpage($this->exclude_pages);
-                $page =self::thumbnail($this->exclude_pages);
+                $bestpage = $this->bestpage($this->exclude_pages);
+                $page =$this->thumbnail($this->exclude_pages);
             }
 
             // BLOC-THUMBNAIL/SMALL GROUP-INDEX-ARTICLE//
             if($item->format == "bloc-thumbnail" ||$item->format == "bloc-thumbnail-small" || $item->format =="group-index-article"){                
-                $page = self::thumbnail($this->exclude_pages);
+                $page = $this->thumbnail($this->exclude_pages);
             }  
 
             // BLOC-POPULAR//
             if($item->format == "bloc-popular"){
-                $bestpage = self::bestpage($this->exclude_pages);
+                $bestpage = $this->bestpage($this->exclude_pages);
             }
 
             //GROUP-ARTICLE-FULL //
             if($item->format == "group-article-full"){
-                $page = self::thumbnail($this->exclude_pages);
-                $tab =  self::paginate( $sitepage ,$this->exclude_pages);
+                $page = $this->thumbnail($this->exclude_pages);
+                $tab =  $this->paginate( $sitepage ,$this->exclude_pages);
                 $next = $tab[0];
                 $prev = $tab[1];
             }
@@ -166,13 +174,9 @@ class SiteController extends Controller
      * @return paginate
      * @return collection
      */
-    public static function thumbnail( $exclude_pages){
-        $page = Websitepage::select('*')
-            ->whereStatus(1)
-            ->whereNotIn('slug', $exclude_pages)
-            ->orderBy('created_at', 'DESC')
-            ->paginate(9);
-        return $page;
+    public function thumbnail( $exclude_pages){
+          
+        return $this->page->getWhereNotInAndOrder('slug',$exclude_pages, 'created_at', 'DESC')->paginate(9);
     }
 
     /**
@@ -184,19 +188,14 @@ class SiteController extends Controller
      * @param Array $exclude_pages
      * @return collection
      */
-    public static function bestpage($exclude_pages){
-         $bestpage = Websitepage::select('*')
-            ->whereStatus(1)
-            ->whereNotIn("slug", $exclude_pages)
-            ->orderBy('count', 'DESC')->limit(4)->get();  
+    public function bestpage($exclude_pages){
+         $bestpage =  $this->page->getWhereNotInAndOrder('slug',$exclude_pages, 'count', 'DESC')->limit(4)->get();
+
         //clean mini thumbnail directory
-        $folderPath = public_path('images/miniThumb/');
-        File::cleanDirectory($folderPath); 
+        File::cleanDirectory(public_path('images/miniThumb/')); 
         //Save 4 new mini thumbnail in directory
-        foreach($bestpage as $item){
-            // open file a image resource then crop and save   
-            Image::make(public_path($item->thumbnail))->crop(100, 100, 100, 100)->save("images/miniThumb/".$item->title_img.".jpg");
-        }
+        self::resizeAndSaveImg($bestpage);
+        
         return $bestpage;
     }
 
@@ -207,6 +206,7 @@ class SiteController extends Controller
      * @return Array
      */
     public static function paginate($sitepage,$exclude_pages){
+        //retrieve all active pages
         $pages = Websitepage::select('*')->whereStatus(1)->whereNotIn("slug", $exclude_pages)->orderBy('created_at', 'DESC')->get();
         
         for($i=0; $i<$pages->count(); $i++){
@@ -227,6 +227,20 @@ class SiteController extends Controller
         array_push($paginate, $next, $prev);
 
         return $paginate;
+    }
+
+    /**
+     * Crop and save all images of a collection in thumbnail directory
+     *
+     * @param collection $collection
+     * @return void
+     */
+    public static function resizeAndSaveImg($collection){
+        
+        foreach($collection as $item){
+            // open file a image resource then crop and save   
+            Image::make(public_path($item->thumbnail))->crop(100, 100, 100, 100)->save("images/miniThumb/".$item->title_img.".jpg");
+        }
     }
 }
 

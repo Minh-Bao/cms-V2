@@ -53,13 +53,46 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      * retrieve a collection by a specific field and its value
      * 
      * @param string $field specified field of table
-     * param string $value value of the field
+     * @param mixed $value value of the field
      * @return collection
      */
     public function getWhere($field, $value){
         
-        return Websitepage::where($field, $value)->orderBy('title')->get();
+        return Websitepage::where($field, $value);
     }
+
+    /**
+     * retrieve a collection with where clause by a specific field and its value
+     * and orderby clause
+     * @param string $field specified field of table
+     * @param mixed $value value of the field
+     * @param string $order
+     * @param string $direction
+     * @return collection
+     */
+    public function getWhereAndOrder($field, $value, $order, $direction){
+        if($direction == null){
+            return Websitepage::where($field, $value)->orderBy($order)->get();
+        }else{
+            return Websitepage::where($field, $value)->orderBy($order, $direction)->get();
+        }
+    }
+
+    /**
+     * retrieve all published pages (status=1) with whereNotIn clause 
+     * 
+     * @param string $field
+     * @param array $exclude an array of exclude id pages.
+     * @param string $order
+     * @param string $direction
+     * @return collection
+     */
+    public function getWhereNotInAndOrder($field,$exclude, $order, $direction){
+        
+            return Websitepage::whereStatus(1)->whereNotIn($field, $exclude)->orderBy($order, $direction);
+      
+    }
+
 
     /**
      * Store a newly created resource in storage.
