@@ -1,6 +1,8 @@
 <?php namespace App\Repositories;
 
 use App\Models\Site\Slider;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class sliderRepository implements SliderRepositoryInterface
 {

@@ -1,6 +1,8 @@
 <?php namespace App\Repositories;
 
 use App\Models\Site\Websitebloc;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class WebsiteblocRepository implements WebsiteblocRepositoryInterface
 {

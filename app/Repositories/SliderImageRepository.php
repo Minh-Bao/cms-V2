@@ -1,6 +1,8 @@
 <?php namespace App\Repositories;
 
 use App\Models\Site\SliderImage;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class sliderImageRepository implements SliderImageRepositoryInterface
 {

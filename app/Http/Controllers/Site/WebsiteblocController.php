@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\File;
 use App\Http\Requests\WebsiteblocRequest;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 class WebsiteblocController extends Controller
@@ -102,11 +101,8 @@ class WebsiteblocController extends Controller
     public function edit($id)
     {
         $websitebloc = $this->bloc->findOrError($id); 
-        
         $websiteblocs = $this->bloc->getWhereAndOrder('sitepages_id' ,$websitebloc->sitepages_id, 'sort', null); 
-
         $websitepage = $this->page->findOrError($websitebloc->sitepages_id);
-
         $blocs = self::templateArray();
 
         return view('admin.site.websitebloc.edit',compact('websitebloc','websitepage','websiteblocs','blocs'));
@@ -126,7 +122,6 @@ class WebsiteblocController extends Controller
         $page = $this->page->findOrError($bloc->sitepages_id); 
 
         self::saveImg("image", $page, $bloc);        
-
         self::deleteImgIfCheck($request, $bloc);
 
         Session::flash('success', 'Contenu modifié avec succès');  
@@ -143,7 +138,6 @@ class WebsiteblocController extends Controller
     public function destroy($id)
     {
         $websiteblocs = $this->bloc->findorError($id);;
-
         self::removeImg($websiteblocs);
 
         $websiteblocs->delete();        
@@ -163,7 +157,6 @@ class WebsiteblocController extends Controller
     public function clone($id)
     {
         $websitebloc = $this->bloc->findOrError($id);
-
         $newWebsitebloc = $websitebloc->replicate();
         $newWebsitebloc->save();
 
