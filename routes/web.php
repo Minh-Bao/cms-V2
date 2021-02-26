@@ -41,7 +41,7 @@ Route::prefix('admin')->group(function() {
 	Route::resource('/websitebloc','App\Http\Controllers\Site\WebsiteblocController'); // Blocs
 	Route::get('/websitebloc/{id}/clone','App\Http\Controllers\Site\WebsiteblocController@clone')->name('websitebloc.clone'); // Clone d'un bloc
 	Route::post('/ajax/websitebloc/sort.json','App\Http\Controllers\Site\WebsiteblocController@sort')->name('bloc.sort'); // Tri des slides
-	Route::get('/websitebloc/{id}/delete','App\Http\Controllers\Site\WebsiteblocController@delete')->name('websitebloc.delete'); // Supprime un bloc
+	Route::get('/websitebloc/{id}/delete','App\Http\Controllers\Site\WebsiteblocController@destroy')->name('websiteblocs.destroy'); // Supprime un bloc
 	Route::put('/Websitepage/{id}', 'App\Http\Controllers\Site\WebsitepageController@setDate')->name('websitepage.setDate'); // programme la publicarion
 
 	// Sliders
