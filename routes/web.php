@@ -1,6 +1,14 @@
 <?php
 
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\Site\SliderController;
+use App\Http\Controllers\Site\SitebuilderController;
+use App\Http\Controllers\Site\SliderimageController;
+use App\Http\Controllers\Site\WebsiteblocController;
+use App\Http\Controllers\Site\WebsitepageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,16 +21,16 @@ use App\Http\Controllers\SitemapController;
 */
 
 //sitemap//
-Route::get('/sitemap.xml', 'App\Http\Controllers\SitemapController@index');
-Route::get('/sitemap.xml/articles', 'App\Http\Controllers\SitemapController@articles');
+Route::get('/sitemap.xml', [SitemapController::class,'index']);
+Route::get('/sitemap.xml/articles', [SitemapController::class,'articles']);
 
 //Contact
-Route::post('/contact/send', 'App\Http\Controllers\ContactController@send')->name('contact');
+Route::post('/contact/send', [ContactController::class,'send'])->name('contact');
 
-Route::get('/', 'App\Http\Controllers\SiteController@index')->name('site.homepage');
-Route::get('/home', 'App\Http\Controllers\AdminController@index')->name('home');
+Route::get('/', [ SiteController::class,'index'])->name('site.homepage');
+Route::get('/home', [AdminController::class,'index'])->name('home');
 
-Route::post('/send', 'App\Http\Controllers\SiteController@form')->name('site.send.form');
+Route::post('/send', [SiteController::class, 'form'])->name('site.send.form');
 
 //Login/reset password
 Auth::routes(['verify' => true]);
@@ -33,34 +41,34 @@ Route::get('password/reset/{token?}', '\App\Http\Controllers\Auth\ForgotPassword
 
 Route::prefix('admin')->group(function() {	
 
-	Route::get('/', '\App\Http\Controllers\AdminController@index')->name('admin.index'); // Accueil
+	Route::get('/', [AdminController::class,'index'])->name('admin.index'); // Accueil
 
 	// Pages
-	Route::resource('/websitepage','App\Http\Controllers\Site\WebsitepageController'); // Pages
-	Route::get('/websitepage/{id}/delete','App\Http\Controllers\Site\WebsitepageController@destroy')->name('websitepage.delete'); // Supprime une page
-	Route::resource('/websitebloc','App\Http\Controllers\Site\WebsiteblocController'); // Blocs
-	Route::get('/websitebloc/{id}/clone','App\Http\Controllers\Site\WebsiteblocController@clone')->name('websitebloc.clone'); // Clone d'un bloc
-	Route::post('/ajax/websitebloc/sort.json','App\Http\Controllers\Site\WebsiteblocController@sort')->name('bloc.sort'); // Tri des slides
-	Route::get('/websitebloc/{id}/delete','App\Http\Controllers\Site\WebsiteblocController@destroy')->name('websiteblocs.destroy'); // Supprime un bloc
-	Route::put('/Websitepage/{id}', 'App\Http\Controllers\Site\WebsitepageController@setDate')->name('websitepage.setDate'); // programme la publicarion
+	Route::resource('/websitepage',WebsitepageController::class); // Pages
+	Route::get('/websitepage/{id}/delete',[WebsitepageController::class, 'destroy'])->name('websitepage.delete'); // Supprime une page
+	Route::resource('/websitebloc',WebsiteblocController::class); // Blocs
+	Route::get('/websitebloc/{id}/clone',[WebsiteblocController::class, 'clone'])->name('websitebloc.clone'); // Clone d'un bloc
+	Route::post('/ajax/websitebloc/sort.json',[WebsiteblocController::class,'sort'])->name('bloc.sort'); // Tri des bloc
+	Route::get('/websitebloc/{id}/delete',[WebsiteblocController::class,'destroy'])->name('websiteblocs.destroy'); // Supprime un bloc
+	Route::put('/Websitepage/{id}', [WebsitepageController::class, 'setDate'])->name('websitepage.setDate'); // programme la publicarion
 
 	// Sliders
-	Route::resource('/slider','App\Http\Controllers\Site\SliderController'); //Sliders
-	Route::get('/slider/{id}/delete','App\Http\Controllers\Site\SliderController@destroy')->name('slider.delete'); // Supprime un slider
-	Route::resource('/sliderimage','App\Http\Controllers\Site\SliderimageController'); //Images des sliders
-	Route::post('/ajax/sliderimage/sort.json','App\Http\Controllers\Site\SliderimageController@sort')->name('sliderimage.sort'); // Tri des slides
-	Route::get('/sliderimage/{id}/delete','App\Http\Controllers\Site\SliderimageController@delete')->name('sliderimage.delete'); // Supprime un slide
+	Route::resource('/slider',SliderController::class); //Sliders
+	Route::get('/slider/{id}/delete',[SliderController::class,'destroy'])->name('slider.delete'); // Supprime un slider
+	Route::resource('/sliderimage',SliderimageController::class); //Images des sliders
+	Route::post('/ajax/sliderimage/sort.json',[SliderimageController::class,'sort'])->name('sliderimage.sort'); // Tri des slides
+	Route::get('/sliderimage/{id}/delete',[SliderimageController::class, 'delete'])->name('sliderimage.delete'); // Supprime un slide
 	Route::get('/modal/picture', 'ModalController@picture')->name('modal.picture');
 
-	Route::post('/config/{id}/update','App\Http\Controllers\Site\SitebuilderController@update')->name('sitebuilder.config.update'); 
-	Route::get('/config/{id}/change','App\Http\Controllers\Site\SitebuilderController@change')->name('sitebuilder.image.change'); 
-	Route::get('/sitebuilder','App\Http\Controllers\Site\SitebuilderController@element')->name('sitebuilder'); // Sitebuilder
+	Route::post('/config/{id}/update',[SitebuilderController::class,'update'])->name('sitebuilder.config.update'); 
+	Route::get('/config/{id}/change',[SitebuilderController::class,'change'])->name('sitebuilder.image.change'); 
+	Route::get('/sitebuilder',[SitebuilderController::class,'element'])->name('sitebuilder'); // Sitebuilder
 
 
 });
 
 //Show page on site
-Route::get('/{type}/{slug}', 'App\Http\Controllers\SiteController@page')->name('site.page');
+Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page');
 
 
 
