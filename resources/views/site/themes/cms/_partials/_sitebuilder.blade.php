@@ -1,8 +1,10 @@
 <nav class="topbar navbar navbar-inverse" style="background-color: rgb(224, 224, 217); margin-bottom:1%;">
     <div class="container-fluid">
         <div class="navbar-header">
-            {{-- <a class="navbar-brand" href="{{env('SITE_DEVELOPPER_URL')}}" target="_blank">{{env('SITE_DEVELOPPER')}} SiteBuilder</a> --}}
-            <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%"><span style="color:grey;"> : Sitebuilder</span>
+            <a class="navbar-brand" href="{{env('SITE_DEVELOPPER_URL')}}" target="_blank">
+                <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%">
+                <span style="color:grey;"> : Sitebuilder</span>
+            </a>
         </div>
 
         <ul class="nav navbar-nav dropup">
@@ -37,7 +39,7 @@
 
     <div class="modal" id="sitebuilder" tabindex="-1" role="dialog">
         <div class="row" id="ici">
-            <center>Chagrement en cours</center>
+            <center>Chargement en cours</center>
         </div>
     </div>
 
