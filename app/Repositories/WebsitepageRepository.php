@@ -142,6 +142,17 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
     }
 
     /**
+     * Get the fist element of the specified field equal to the value
+     *
+     * @param int $id
+     * @return object
+     */
+    public function getFirst(int $id) :object{
+
+        return Websitepage::whereId($id)->first();
+    }
+
+    /**
      * Find the specified record by its id or throw an error message and return to index
      *
      * @param int $id
@@ -158,5 +169,16 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
         } 
         
         return $websitepage;
+    }
+
+    /**
+     * retrieve the specified resource by its id or throw an error
+     *
+     * @param integer $id
+     * @return object
+     */
+    public function findOrfails(int $id) :object{
+
+        return Websitepage::findOrFail($id);
     }
 }

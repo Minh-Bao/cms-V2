@@ -46,6 +46,17 @@ class sliderImageRepository implements SliderImageRepositoryInterface
 	}
 
     /**
+     * Get the fist element of the specified field equal to the value
+     *
+     * @param int $id
+     * @return object
+     */
+    public function getFirst(int $id) :object{
+
+        return SliderImage::whereId($id)->first();
+    }
+
+    /**
      * retrieve specified ressource by its id
      * @param int  $id
      * @return object

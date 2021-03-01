@@ -39,10 +39,35 @@ interface WebsiteblocRepositoryInterface
     public function update($request, $id);
 
     /**
+     * Retrieve a bloc with where clause 
+     *
+     * @param string $field
+     * @param  $value
+     * @return object
+     */
+    public function getWhere(string $field, $value):object;
+
+    /**
+     * Get the fist element of the specified field equal to the value
+     *
+     * @param int $id
+     * @return object
+     */
+    public function getFirst(int $id) :object;
+
+    /**
      * Find the specified record by its id or throw an error message and return to index
      *
      * @param int $id
      * @return collection or redirect to route
      */
     public function findOrError($id);
+
+    /**
+     * retrieve the specified resource by its id or throw an error
+     *
+     * @param integer $id
+     * @return object
+     */
+    public function findOrfails(int $id) :object;
 }
