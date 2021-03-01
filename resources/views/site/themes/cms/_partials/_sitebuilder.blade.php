@@ -1,7 +1,7 @@
 <nav class="topbar navbar navbar-inverse" style="background-color: rgb(224, 224, 217); margin-bottom:1%;">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{env('SITE_DEVELOPPER_URL')}}" target="_blank">
+            <a class="navbar-brand" href="{{config('myconfig.site_developper_url')}}" target="_blank">
                 <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%">
                 <span style="color:grey;"> : Sitebuilder</span>
             </a>

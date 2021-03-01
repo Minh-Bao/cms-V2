@@ -3,9 +3,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="{{ $sitepage->meta_desc }}">
-    <meta name="author" content="{{env('SITE_OWNER') . '-'. $sitepage->author}} ">
+    <meta name="author" content="{{config('myconfig.site_owner') . '-'. $sitepage->author}} ">
 
-    <title>{{env('APP_NAME')}} : {{ $sitepage->meta_title }}</title>
+    <title>{{config('myconfig.name_app')}} : {{ $sitepage->meta_title }}</title>
 
     <!-- Favicon-->
     <link rel="icon" href="{{url('')}}/images/favicon.png" type="image/x-icon">

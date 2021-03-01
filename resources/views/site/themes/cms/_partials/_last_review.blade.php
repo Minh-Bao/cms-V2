@@ -8,7 +8,7 @@
             <div class="col-md-4">
                 <article class="home_thumbnail bg-white rounded shadow">
                     <div class="mw-100 overflow-hidden rounded-top">
-                        <a href="{{route('site.page' , ['type' => 'page', 'slug' => $item->slug]) }}" title="{{env('SITE_OWNER')}}_article_{{ $item->slug }}">
+                        <a href="{{route('site.page' , ['type' => 'page', 'slug' => $item->slug]) }}" title="{{config('myconfig.site_owner')}}_article_{{ $item->slug }}">
                             <img src="{{ url('/').'/'.$item->thumbnail }}" alt="thumbnail_{{ $item->slug }}" class="w-100"/>
                         </a>
                     </div>

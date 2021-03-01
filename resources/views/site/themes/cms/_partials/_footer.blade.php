@@ -11,22 +11,22 @@
                 <img src="http://localhost:8000/images/logo-white.png" alt="" width="50%" class="mt-5"><br>
             </div>
             <div class="m-2 ml-2">
-                <a href="https://www.facebook.com/Naturel-Coquin-117150962289464"  title="facebook_{{env('SITE_OWNER')}}" >
+                <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank"  title="facebook_{{config('myconfig.site_owner')}}" >
                     <img src="{{url('/')}}/images/socialMedia_icon/facebook_blanc.png" alt="icon_facebook" width="10%">
                 </a>
-                <a href="https://www.youtube.com/channel/UC6VRWOkZCLJ9E-DSBblapjQ" target="_blank" title="youtube_{{env('SITE_OWNER')}}" >
+                <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank" title="youtube_{{config('myconfig.site_owner')}}" >
                     <img src="{{url('/')}}/images/socialMedia_icon/youtube_blanc.png" alt="icon_youtube" width="10%" >
                 </a>
-                <a href="https://www.pinterest.fr/NaturelCoquin/" target="_blank" title="pinterest_{{env('SITE_OWNER')}}">
+                <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank" title="pinterest_{{config('myconfig.site_owner')}}">
                     <img src="{{url('/')}}/images/socialMedia_icon/pinterest_blanc.png" alt="icon_pinterest" width="10%" >
                 </a>
-                <a href="https://www.instagram.com/naturelcoquin" target="_blank" title="instagram_{{env('SITE_OWNER')}}">
+                <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank" title="instagram_{{config('myconfig.site_owner')}}">
                     <img src="{{url('/')}}/images/socialMedia_icon/instagram_blanc.png" alt="icon_instagram" width="10%" >
                 </a>
             </div>
         </div>
         <div class="col-md-3" style="margin-top:10%">
-            <a href="{{env('SITE_DEVELOPPER_URL')}}">© {{env('SITE_DEVELOPPER')}} {{date('Y')}} -</a>  
+            <a href="{{config('myconfig.site_developper_url')}}">© {{config('myconfig.site_developper')}} {{date('Y')}} -</a>  
             <a href="javascript:void(0);" data-toggle="modal" data-target="#mentions">Mentions légales</a>
         </div>
 

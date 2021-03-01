@@ -2,7 +2,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" aria-label="Fifth navbar example">
             <div class="container-fluid">
                 <div class="logo">
-                    <a class="site-logo  site-logo--image mb-5" href="{{route('site.homepage')}}" title="{{env('APP_NAME')}}" rel="home">
+                    <a class="site-logo  site-logo--image mb-5" href="{{route('site.homepage')}}" title="{{config('myconfig.name_app')}}" rel="home">
                         <img class="pb-5" src="{{url('/')}}/images/logo-black.png" rel="" alt="logo-naturelcoquin" width="7%"/>
                         {{-- <img class="site-logo-img--dark" src="images/logo-black.png" rel="logo" alt="" /> --}}
                     </a>                  

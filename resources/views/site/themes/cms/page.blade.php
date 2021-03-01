@@ -1,4 +1,4 @@
-@extends('site.themes.'.env('SITE_THEME').'.main')
+@extends('site.themes.'.config('myconfig.site_theme').'.main')
 
 @section('stylesheets')
 
@@ -114,16 +114,16 @@
                         @endif
                     @endif
 
-                    @include('site.themes.'.env('SITE_THEME').'.blocs.'.$bloc->format)
+                    @include('site.themes.'.config('myconfig.site_theme').'.blocs.'.$bloc->format)
                 @endforeach
             @endif
         </div>
     </div>
     @if ($sitepage->paginate == "on")
-        @include('site.themes.'.env('SITE_THEME').'._partials._paginate')
+        @include('site.themes.'.config('myconfig.site_theme').'._partials._paginate')
     @endif
     @if ($sitepage->last_review == "on")
-        @include('site.themes.'.env('SITE_THEME').'._partials._last_review')
+        @include('site.themes.'.config('myconfig.site_theme').'._partials._last_review')
     @endif
 @endsection
 

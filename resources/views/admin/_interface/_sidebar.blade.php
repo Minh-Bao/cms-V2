@@ -51,7 +51,7 @@
         <div class="legal">
             <div class="copyright"> 
                 &copy; {{date("Y")}} 
-                <a href="{{env('SITE_DEVELOPPER_URL')}}">Agence{{env('SITE_DEVELOPPER')}}</a>.
+                <a href="{{config('myconfig.site_developper_url')}}">Agence{{config('myconfig.site_developper')}}</a>.
             </div>
         </div>
       <!-- #Footer -->

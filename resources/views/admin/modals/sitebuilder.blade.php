@@ -14,7 +14,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content" id="">
                 <div class="modal-header">
-					{{ env('APP_NAME')}} Site Builder v1.2
+					{{ config('myconfig.name_app')}} Site Builder v1.2
 				</div>
 				
                 <div class="modal-body">
