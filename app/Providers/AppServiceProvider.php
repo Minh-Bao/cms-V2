@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use App\Repositories\SliderRepository;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\SliderImageRepository;
@@ -48,6 +49,7 @@ class AppServiceProvider extends ServiceProvider
             SliderImageRepository::class,
         );
 
+        Paginator::useBootstrap();
 
     }
 }
