@@ -244,13 +244,13 @@ class WebsiteblocController extends Controller
      * @return Array
      */
     public static function templateArray(){
-        $fileList = glob('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/*.blade.php');
+        $fileList = glob('../resources/views/site/themes/'.config('myconfig.site_theme').'/blocs/*.blade.php');
         $blocs=[]; 
 
         //iterate the array $filelist that glob returned
         foreach($fileList as $key=>$filename){
             //Simply print them out onto the screen without extension '.blade.php'
-            $filename = str_replace('../resources/views/site/themes/'.env('SITE_THEME').'/blocs/', "", $filename);
+            $filename = str_replace('../resources/views/site/themes/'.config('myconfig.site_theme').'/blocs/', "", $filename);
             $filename = str_replace('.blade.php', "", $filename);
             //Create an array with the file and the same key name
             $blocs[$filename]=$filename;
