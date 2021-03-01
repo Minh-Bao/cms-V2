@@ -29,7 +29,7 @@ Route::post('/contact/send', [ContactController::class,'send'])->name('contact')
 
 Route::get('/', [ SiteController::class,'index'])->name('site.homepage');
 Route::get('/home', [AdminController::class,'index'])->name('home');
-
+Route::get('/feed', 'App\Http\Controllers\FeedController@xml')->name('feed');
 Route::post('/send', [SiteController::class, 'form'])->name('site.send.form');
 
 //Login/reset password
