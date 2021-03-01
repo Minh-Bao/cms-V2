@@ -44,7 +44,7 @@ class SitebuilderController extends Controller
      */
     public function element(Request $request)
     {
-        $blocs = File::allFiles(base_path('/resources/views/site/themes/'.env('SITE_THEME').'/blocs/')); 
+        $blocs = File::allFiles(base_path('/resources/views/site/themes/'.config('myconfig.site_theme').'/blocs/')); 
 
         $part = $request->get("part");  
         $variable = $request->get("elem");
