@@ -97,10 +97,10 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
 
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created resource in storage and return an object
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  \App\Http\Request  $request
+     * @return object
      */
     public function store($request){
                 
@@ -134,7 +134,10 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      */
     public function update($request, $id){
 
-        return Websitepage::whereId($id)->update($request->except('_token', '_method', 'action', 'image', 'thumbnail'));
+        return Websitepage::whereId($id)
+        ->update($request->except(
+            '_token', '_method', 'action', 'image', 'thumbnail'
+        ));
 
     }
 
