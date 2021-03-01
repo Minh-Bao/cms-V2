@@ -44,7 +44,7 @@ class WebsiteblocController extends Controller
     /**
      * Show the form for creating a new resource.
      * 
-     *@param \request $request
+     * @param \request $request
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -272,14 +272,12 @@ class WebsiteblocController extends Controller
         
         if ($images != []) {
             $old    = $bloc->image;
-            $year   = date('Y');
-            $month  = date('m');
             $image  = array_shift($images);
             $name   = $page->slug."-bloc-".date('YmdHis').".jpg";
             $data   = $image['output']['data'];
 
             if (isset($data)) {
-                $output = Slim::saveFile($data, $name , 'images/articles/'. $year .'/'. $month .'/' , false);
+                $output = Slim::saveFile($data, $name , 'images/articles/'. date('Y') .'/'. date('m') .'/' , false);
 
                 if(File::exists($old) && isset($bloc->image)) {
                     unlink($old);

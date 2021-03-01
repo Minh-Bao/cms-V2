@@ -169,10 +169,9 @@ class SiteController extends Controller
      *
      * @param Array $exclude_pages
      * @return paginate
-     * @return collection
      */
     public function thumbnail( $exclude_pages){
-          
+        
         return $this->page->getWhereNotInAndOrder('slug',$exclude_pages, 'created_at', 'DESC')->paginate(9);
     }
 
