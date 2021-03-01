@@ -96,7 +96,7 @@ class SliderController extends Controller
 
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified slide and his images from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

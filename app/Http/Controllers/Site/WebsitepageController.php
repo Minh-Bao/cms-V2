@@ -118,8 +118,8 @@ class WebsitepageController extends Controller
     public function update(WebsitepageRequest $request, $id)
     {
 
-        $page =$this->page->findOrError($id);       
         $this->page->update($request, $id); 
+        $page =$this->page->findOrError($id);       
         
         self::saveImg('image', $page);
         self::saveImg('thumbnail', $page);
