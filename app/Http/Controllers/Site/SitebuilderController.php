@@ -8,6 +8,8 @@ namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\App;
 use App\Models\Site\Websitepage;
@@ -16,6 +18,7 @@ use App\Slim;
 use App\Models\Site\Slider;
 use App\Models\Site\Sliderimage;
 use Image;
+use Auth;
 use DB;
 use Session;
 
@@ -46,11 +49,11 @@ class SitebuilderController extends Controller
         $variable = $request->get("elem");
         $object = $request->get("object");   
 
-/*         if ($part=="config") {                        
+        if ($part=="config") {                        
             $config = Siteconfig::select('*')->whereVariable($variable)->first();
             $object="";
         }
- */        
+        
         if ($part=="bloc") { 
             $config = Websitebloc::select('*')->where('id',$variable)->first();
             $config->content = $config->$object;
@@ -93,7 +96,7 @@ class SitebuilderController extends Controller
 
     public function update(Request $request,$id)
     {
-/*       if ($request->part=="config") {
+      if ($request->part=="config") {
         $lng = App::getLocale();
         $configlng = "content_".$lng;
         $config = Siteconfig::find($id);
@@ -138,7 +141,7 @@ class SitebuilderController extends Controller
         }
         $config->save();
     }
- */
+
     if ($request->part=="bloc") {
         $bloc = Websitebloc::find($id);
         $page = Websitepage::find($bloc->sitepages_id);
@@ -293,7 +296,7 @@ class SitebuilderController extends Controller
         $page->save();       
     }
 
-/*     if ($request->part=="partenaire") {
+    if ($request->part=="partenaire") {
         $siteconfig = Siteconfig::select('*')->orderBy('id')->get();
         $bloc = Partenaire::find($id);
 
@@ -328,7 +331,5 @@ class SitebuilderController extends Controller
 
         return back()->withInput();       
     }
- */
-
 }
 
