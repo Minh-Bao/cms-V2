@@ -125,7 +125,7 @@ class WebsiteblocRepository implements WebsiteblocRepositoryInterface
      * @param integer $id
      * @return object
      */
-    public function findOrfails(int $id) :object{
+    public function finrOrFails(int $id) :object{
 
         return Websitebloc::findOrFail($id);
     }
