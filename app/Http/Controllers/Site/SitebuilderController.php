@@ -11,13 +11,14 @@ use Auth;
 use Image;
 use Session;
 use App\Slim;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\SliderImageRepositoryInterface;
+use Illuminate\Support\Facades\File;
 use App\Repositories\SliderRepositoryInterface;
+use App\Repositories\SliderImageRepositoryInterface;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
-use Illuminate\Support\Facades\File;
 
 class SitebuilderController extends Controller
 {
@@ -101,7 +102,7 @@ class SitebuilderController extends Controller
      * @param int $id
      * @return void
      */
-    public function update(Request $request, int $id) :mixed
+    public function update(Request $request, int $id)
     {
         switch($request->part){
             case 'bloc':
@@ -141,41 +142,33 @@ class SitebuilderController extends Controller
         $bloc = $this->bloc->finrOrFails($id);
         $page = $this->page->finrOrFails($bloc->sitepages_id);
        
-        if ($request->object=="image") {
+        if ($request->object == "image") {
             $duplicate = $request->duplicate;
             $old = $bloc->image;
-            $images = Slim::getImages('slim');        
-
-            if ($images === false) {
+            
+            if ($bloc->title) {
+                $name = Str::slug($bloc->title,'-')."-".date('YmdHis').".jpg";
                 
             } else {
-                $image = array_shift($images);
+                $name = $page->slug."-".date('YmdHis').".jpg";                
+            }
+            
+            $data = self::data();   
 
-                if ($bloc->title) {
+            if ($data) {
+                Slim::saveFile($data, $name , 'images/articles/'.date('Y').'/'.date('m').'/' , false);
+            }
 
-                    $name = str_slug($bloc->title,'-')."-".date('YmdHis').".jpg";
+            $bloc->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
 
-                } else {
-                    $name = $page->slug."-".date('YmdHis').".jpg";                
-                }
+            if ($duplicate=="yes") {
+                echo $old;
+                $batchs = $this->bloc->getWhere('image',$old);
 
-                $data = $image['output']['data'];
-
-                if (isset($image['output']['data'])) {
-                    $output = Slim::saveFile($data, $name , 'images/articles/'.date('Y').'/'.date('m').'/' , false);
-                }
-
-                $bloc->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
-
-                if ($duplicate=="yes") {
-                    echo $old;
-                    $batchs = $this->bloc->getWhere('image',$old);
-
-                    foreach($batchs as $batch) {
-                        $change = Siteblocs::find($batch->id);
-                        $change->image = $bloc->image;
-                        $change->save();
-                    }
+                foreach($batchs as $batch) {
+                    $change = Siteblocs::find($batch->id);
+                    $change->image = $bloc->image;
+                    $change->save();
                 }
             }
 
@@ -195,29 +188,23 @@ class SitebuilderController extends Controller
      * @return boolean
      */
     public function updatePage(Request $request ,int $id):bool{
-        $page = $this->page->findOrFails($id);
+        $page = $this->page->finrOrFails($id);
 
         if ($request->object=="image") {  
             //$siteconfig = Siteconfig::select('*')->orderBy('id')->get();
             $old = public_path($page->image);
-            $images = Slim::getImages('slim');
+            $name = $page->slug."-".date('YmdHis').".jpg";
+            $data = self::data();
 
-            if ($images === false) {
+            if ($data) {
+                $output = Slim::saveFile($data, $name , 'images/articles/'.date('Y') .'/'. date('m') .'/' , false);
 
-            } else {
-                $image = array_shift($images);
-                $name = $page->slug."-".date('YmdHis').".jpg";
-                $data = $image['output']['data'];
-
-                if (isset($image['output']['data'])) {
-                    $output = Slim::saveFile($data, $name , 'images/articles/'.date('Y') .'/'. date('m') .'/' , false);
-
-                    if(File::exists($old) && isset($page->image)) {
-                        unlink($old);
-                    }
+                if(File::exists($old) && isset($page->image)) {
+                    unlink($old);
                 }
-                $page->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
             }
+            $page->image = 'images/articles/'.date('Y').'/'.date('m').'/'.$name;
+       
 
         } else {
             $object = $request->object;
@@ -246,22 +233,20 @@ class SitebuilderController extends Controller
             if ($images === false) {
 
             } else {
-                $year = date('Y');
-                $month = date('m');
+                $date = date('Y').'/'.date('m') ;
                 $image = array_shift($images);
                 $name = $image['output']['name'];
                 $data = $image['output']['data'];
 
                 if (isset($image['output']['data'])) {
-                    $output = Slim::saveFile($data, $name , 'images/articles/'. $year .'/'. $month .'/' , false);
-                    $location = 'images/articles/'.$year.'/'.$month.'/'.$name;
-                    $location_thumb = 'images/articles/'.$year.'/'.$month.'/thumb_'.$name;
+                    $output = Slim::saveFile($data, $name , 'images/articles/'. $date .'/' , false);
+                    $location = 'images/articles/'.$date.'/'.$name;
+                    $location_thumb = 'images/articles/'.$date.'/thumb_'.$name;
                     Image::make($location)->resize($siteconfig[23]->content_fr, $siteconfig[24]->content_fr)->encode('jpg')->save($location_thumb);
 
                     if(File::exists($old)) {
                         unlink($old);
                     }
-
                     if(File::exists($old_thumb)) {
                         unlink($old_thumb);
                     }
@@ -291,19 +276,13 @@ class SitebuilderController extends Controller
         $sliderimage->content = $request->content;
         $sliderimage->link = $request->link;
 
-        $images = Slim::getImages('slim');
-        if ($images === false) {
+        $name = date('Ymdhis').".jpg";
+        $data = self::data(); 
 
-        } else {
-            $image = array_shift($images);
-            $name = date('Ymdhis').".jpg";
-            $data = $image['output']['data'];
-
-            if (isset($image['output']['data'])) {
-                    $output = Slim::saveFile($data, $name , 'images/sliders/'. $sliderimage->sitesliders_id .'/' , false);
-                    $sliderimage->file = 'images/sliders/'. $sliderimage->sitesliders_id .'/'.$name;
-                }
-            }
+        if ($data) {
+            Slim::saveFile($data, $name , 'images/sliders/'. $sliderimage->sitesliders_id .'/' , false);
+            $sliderimage->file = 'images/sliders/'. $sliderimage->sitesliders_id .'/'.$name;
+        }
 
         return $sliderimage->save();       
     }
@@ -395,6 +374,14 @@ class SitebuilderController extends Controller
             $config->$configlng = $request->content;
         }
         return $config->save();
+    }
+
+    public static function data(){
+
+        $images = Slim::getImages('slim');
+        $image = array_shift($images);
+
+        return $image['output']['data'];
     }
 }
 
