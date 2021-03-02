@@ -1,9 +1,0 @@
-src/*.css
-src/*.map
-src/*.js
-src/*.html
-.idea
-.DS_Store
-npm-debug.log
-node_modules/
-coverage/
