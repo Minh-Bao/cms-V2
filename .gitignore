@@ -1,6 +1,7 @@
 /node_modules
 /public/images
 /public/storage
+/public/plugins
 /storage
 /vendor
 .env
