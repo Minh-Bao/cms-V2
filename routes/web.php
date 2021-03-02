@@ -77,3 +77,7 @@ Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page');
 
 
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

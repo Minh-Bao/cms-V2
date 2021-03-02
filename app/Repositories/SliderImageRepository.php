@@ -4,7 +4,7 @@ use App\Models\Site\SliderImage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
-class sliderImageRepository implements SliderImageRepositoryInterface
+class SliderImageRepository implements SliderImageRepositoryInterface
 {
     /**
      * retrieve an object of all sliders in db
