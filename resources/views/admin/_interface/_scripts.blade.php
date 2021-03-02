@@ -66,6 +66,9 @@
 
 {{ Html::script('js/main.js') }}
 
+@livewireScripts
+
+
 
 
 

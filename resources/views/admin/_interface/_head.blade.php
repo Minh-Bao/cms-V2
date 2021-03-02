@@ -40,6 +40,9 @@
     {{ Html::style('css/admin/user-card.css')}}
     
     <link rel="shortcut icon" href="#">
+
+    @livewireStyles
+
     
     <!-- Toaster -->
     {{ Html::script('plugins/jquery.toaster/jquery.toaster.js')}}

@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-    <html lang="{{ app()->getLocale() }}">
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-
-    @include('admin._interface._head')
-
-
+        @include('admin._interface._head')
 
     </head>
 
@@ -25,12 +22,13 @@
             </div>
         </section>
 
-        <!-- Main Scripts -->
+        <!--LivewireModal -->
+        @stack('modals')
 
+        <!-- Main Scripts -->
         @include('admin._interface._scripts')
 
         <!-- Additionnal Scripts -->
-
         @yield('scripts')
 
     </body>
