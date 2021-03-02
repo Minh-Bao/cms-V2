@@ -34,7 +34,7 @@ Route::post('/send', [SiteController::class, 'form'])->name('site.send.form');
 
 //Login/reset password
 Auth::routes(['verify' => true]);
-Route::get('/admin/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+//Route::get('/admin/logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('password/reset/{token?}', '\App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm');
 
 
@@ -58,7 +58,7 @@ Route::prefix('admin')->group(function() {
 	Route::resource('/sliderimage',SliderimageController::class); //Images des sliders
 	Route::post('/ajax/sliderimage/sort.json',[SliderimageController::class,'sort'])->name('sliderimage.sort'); // Tri des slides
 	Route::get('/sliderimage/{id}/delete',[SliderimageController::class, 'delete'])->name('sliderimage.delete'); // Supprime un slide
-	Route::get('/modal/picture', 'ModalController@picture')->name('modal.picture');
+	// Route::get('/modal/picture', 'ModalController@picture')->name('modal.picture');
 
 	Route::post('/config/{id}/update',[SitebuilderController::class,'update'])->name('sitebuilder.config.update'); 
 	Route::get('/config/{id}/change',[SitebuilderController::class,'change'])->name('sitebuilder.image.change'); 
@@ -72,12 +72,7 @@ Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page');
 
 
 
-
-
-
-
-
-
+///Jetstream test....
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
