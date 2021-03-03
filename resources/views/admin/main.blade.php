@@ -15,7 +15,7 @@
         @include('admin._interface._timeout')
         @include('admin._interface._sidebar')
 
-        <!-- Main content -->
+        <!-- Main content --> 
         <section class="content">
             <div class="row">
                 <div class="col-md-12">
