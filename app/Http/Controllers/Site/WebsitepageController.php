@@ -174,7 +174,7 @@ class WebsitepageController extends Controller
      */
     public function checkDate(){
         $page = Websitepage::whereStatus(2)->get();
-        if($page){
+        if(isset($page)){
             foreach($page as $item){
                 if(now() >= $item->schedul){
                     $item->status = 1;
