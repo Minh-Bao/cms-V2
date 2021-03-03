@@ -4,9 +4,11 @@ namespace App\Exceptions;
 
 use Throwable;
 use PDOException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 use GuzzleHttp\Exception\ClientException;
 use Illuminate\Session\TokenMismatchException;
+use Illuminate\Validation\ValidationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
@@ -58,16 +60,16 @@ class Handler extends ExceptionHandler
         }
 
         if ($exception instanceof TokenMismatchException && Auth::guest()) {
-            return response()->view('errors/404', ['invalid_url'=>true], 500);
+            return response()->view('errors/403', ['invalid_url'=>true], 403);
         }
 
         if ($exception instanceof TokenMismatchException && getenv('APP_ENV') != 'local') {
             return redirect()->back()->withInput();
         }
 
-        if($exception instanceof \Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException && getenv('APP_ENV') != 'local') {
+        if($exception instanceof MethodNotAllowedHttpException && getenv('APP_ENV') != 'local') {
             error_log('Error :' . $exception->getMessage());
-            abort(404);
+            abort(503);
         }
 
         if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') != 'local') {
