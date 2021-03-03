@@ -1,5 +1,6 @@
 <?php namespace App\Repositories;
 
+use Illuminate\Support\Str;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -108,7 +109,7 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
         $page->lng              = "fr";
         $page->name             = $request->name;
         $page->title            = $request->title;
-        $page->slug             = $request->slug;
+        $page->slug             = Str::slug($request->slug);
         $page->alt_img          = $request->alt_img;
         $page->title_img        = $request->title_img;
         $page->meta_title       = $request->meta_title;
@@ -134,6 +135,8 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      */
     public function update($request, $id){
 
+        $request->slug = Str::slug($request->slug);
+        
         return Websitepage::whereId($id)
         ->update($request->except(
             '_token', '_method', 'action', 'image', 'thumbnail'
