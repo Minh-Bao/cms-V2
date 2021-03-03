@@ -36,10 +36,11 @@
                 </li>
 
                 <li id="user_add" class="{{{ (Request::is('admin/site/slider') ? 'active' : '') }}} {{{ (Request::is('admin/site/slider/*') ? 'active' : '') }}} {{{ (Request::is('admin/site/sliderimage/*') ? 'active' : '') }}}">
-                    <a href="{{ route('logout') }}">
+                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="material-icons">logout</i>
-                      <span>Déconnexion</span>
+                        <span>Déconnexion</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
                 </li>
 
             </ul>
