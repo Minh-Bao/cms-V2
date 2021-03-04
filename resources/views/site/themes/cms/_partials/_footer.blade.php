@@ -5,8 +5,8 @@
   <!-- FOOTER -->
 
 <footer class="footer-container" style="height: 300px;">
-    <div class="row">
-        <div class="col-md-3 ml-5 mb-5">
+    <div class="flex flex-wrap ">
+        <div class="md:w-1/4 pr-4 pl-4 ml-5 mb-5">
             <div>
                 <img src="http://localhost:8000/images/logo-white.png" alt="" width="50%" class="mt-5"><br>
             </div>
@@ -25,20 +25,20 @@
                 </a>
             </div>
         </div>
-        <div class="col-md-3" style="margin-top:10%">
+        <div class="md:w-1/4 pr-4 pl-4" style="margin-top:10%">
             <a href="{{config('myconfig.site_developper_url')}}">© {{config('myconfig.site_developper')}} {{date('Y')}} -</a>  
             <a href="javascript:void(0);" data-toggle="modal" data-target="#mentions">Mentions légales</a>
         </div>
 
-        <div class="copyright-text text-left col-md-3" style="margin-top:3%; margin-left:5%;">
+        <div class="copyright-text text-left md:w-1/4 pr-4 pl-4" style="margin-top:3%; margin-left:5%;">
             <h3 class="uppertext " style="font-size: 2.7rem !important;font-weight: bolder !important;border-bottom: 3px solid #ce4963;">
                 Newsletter
             </h3>
             <p>Saisissez votre adresse pour vous abonner a notre newsletter...</p>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="adresse mail" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <div class="relative flex items-stretch w-full mb-3">
+                <input type="text" class="block appearance-none w-full py-1 px-2 mb-1 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded" placeholder="adresse mail" aria-label="Recipient's username" aria-describedby="button-addon2">
                 <div class="input-group-append">
-                    <button class="btn btn-outline-secondary" type="button" id="button-addon2" style="height:85%; top:15%;background-color: #ce4963;color:white;">Envoyer</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline text-gray-600 border-gray-600 hover:bg-gray-600 hover:text-white bg-white hover:bg-gray-700" type="button" id="button-addon2" style="height:85%; top:15%;background-color: #ce4963;color:white;">Envoyer</button>
                 </div>
             </div>         
             </div>
@@ -47,7 +47,7 @@
 
   <!-- Modal -->
 
-<div id="mentions" class="modal fade" role="dialog">
+<div id="mentions" class="modal opacity-0" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->

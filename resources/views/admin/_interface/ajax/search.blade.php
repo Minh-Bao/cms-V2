@@ -4,16 +4,16 @@ overflow-y: auto;overflow-x: hidden;margin-top:-20px;
 ">
 
 @if($users->count()>0)
-<div class="row">
-	<div class="col-md-12">
+<div class="flex flex-wrap ">
+	<div class="md:w-full pr-4 pl-4">
 <hr />
-		<h3>Contacts <span class="badge bg-cyan">{{ $users->count() }}</span></h3>
+		<h3>Contacts <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-cyan">{{ $users->count() }}</span></h3>
 	</div>
 </div>
 
 @foreach($users as $user)
-<div class="row form-group">
-	<div class="col-md-12">
+<div class="flex flex-wrap  mb-4">
+	<div class="md:w-full pr-4 pl-4">
 		<b><a href="{{route('user.edit',$user->id)}}">
           @if($user->civility=="c")
             {{ $user->company }} ( {{ $user->firstname }} {{ $user->name }} ) 
@@ -33,19 +33,19 @@ overflow-y: auto;overflow-x: hidden;margin-top:-20px;
 @endif
 
 @if($products->count()>0)
-<div class="row">
-	<div class="col-md-12">
+<div class="flex flex-wrap ">
+	<div class="md:w-full pr-4 pl-4">
 <hr />
-		<h3>Offres <span class="badge bg-cyan">{{ $products->count() }}</span></h3>
+		<h3>Offres <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-cyan">{{ $products->count() }}</span></h3>
 	</div>
 </div>
 
 @foreach($products as $product)
-<div class="row form-group">
-	<div class="col-md-2">
+<div class="flex flex-wrap  mb-4">
+	<div class="md:w-1/5 pr-4 pl-4">
 		<img src="{{url('')}}/images/{{env('FOLDER_PICTURES')}}/{{ $product->id }}/small/{{ $product->thumb }}" class="img-responsive zoom" style="height:100px;">
 	</div>
-	<div class="col-md-10">
+	<div class="md:w-4/5 pr-4 pl-4">
 		<h4><a href="{{route('offre.edit',$product->id)}}">{{ $product->product_designation }} {{$product->zip_code}} {{$product->city}}<br/>
 		{{$product->total_hai}}€</a></h4>
 	</div>

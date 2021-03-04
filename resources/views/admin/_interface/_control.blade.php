@@ -4,7 +4,7 @@
 
     <!-- Create the tabs -->
 
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+    <ul class="flex flex-wrap list-none pl-0 mb-0 border border-t-0 border-r-0 border-l-0 border-b-1 border-gray-200  control-sidebar-tabs">
         <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
         <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
     </ul>
@@ -120,7 +120,7 @@
         <div class="tab-pane" id="control-sidebar-settings-tab">
             <form method="post">
                 <h3 class="control-sidebar-heading">General Settings</h3>
-                <div class="form-group">
+                <div class="mb-4">
                     <label class="control-sidebar-subheading">
                         Report panel usage
                         <input type="checkbox" class="pull-right" checked>
@@ -131,7 +131,7 @@
                 </div>
 
                 <!-- /.form-group -->
-                <div class="form-group">
+                <div class="mb-4">
                     <label class="control-sidebar-subheading">
                         Allow mail redirect
                         <input type="checkbox" class="pull-right" checked>
@@ -142,7 +142,7 @@
                 </div>
 
                 <!-- /.form-group -->
-                <div class="form-group">
+                <div class="mb-4">
                     <label class="control-sidebar-subheading">
                         Expose author name in posts
                         <input type="checkbox" class="pull-right" checked>
@@ -154,7 +154,7 @@
 
               <!-- /.form-group -->
               <h3 class="control-sidebar-heading">Chat Settings</h3>
-              <div class="form-group">
+              <div class="mb-4">
                   <label class="control-sidebar-subheading">
                       Show me as online
                       <input type="checkbox" class="pull-right" checked>
@@ -162,7 +162,7 @@
               </div>
 
               <!-- /.form-group -->
-              <div class="form-group">
+              <div class="mb-4">
                   <label class="control-sidebar-subheading">
                       Turn off notifications
                       <input type="checkbox" class="pull-right">
@@ -170,7 +170,7 @@
               </div>
 
               <!-- /.form-group -->
-              <div class="form-group">
+              <div class="mb-4">
                   <label class="control-sidebar-subheading">
                       Delete chat history
                       <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>

@@ -39,36 +39,36 @@
     {!! Form::open(['route' => 'websitebloc.store', 'data-parsley-validate' => '', 'files' => true]) !!}
     {{ Form::hidden('sitepages_id', $websitepage->id, ['class' => 'form-control', 'placeholder' => 'Example : Homepage', 'required' => '', 'minlength' => '2', 'maxlength' => '150']) }}
 
-    <div class="container-fluid">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
         <div  id="breadcontainer">
-            <ol class="breadcrumb">
+            <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
                 <li><i class="material-icons">dashboard</i> <a href="{{ url('') }}/admin"> Accueil</a></li>
                 <li class=""><i class="material-icons">description</i> <a href="{{ route('websitepage.index') }}">Pages</a></li>
                 <li class="active"><i class="material-icons">dns</i> Création d'un bloc</li>
             </ol>
         </div>
 
-        <div class="row clearfix">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header card-header-{{ Auth::user()->theme }}">
-                        <div class="row clearfix">
-                            <div class="col-md-8 col-xs-12">
-                                <h4 class="card-title">
+        <div class="flex flex-wrap  clearfix">
+            <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-full pr-4 pl-4 lg:w-full pr-4 pl-4 xl:w-full pr-4 pl-4">
+                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
+                    <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{ Auth::user()->theme }}">
+                        <div class="flex flex-wrap  clearfix">
+                            <div class="md:w-2/3 pr-4 pl-4 sm:w-full pr-4 pl-4">
+                                <h4 class="mb-3">
                                     Création d'un bloc sur la page : "{{ $websitepage->title }}"
                                 </h4>
                             </div>
-                            <div class="col-md-4 col-xs-12 text-right">
+                            <div class="md:w-1/3 pr-4 pl-4 sm:w-full pr-4 pl-4 text-right">
                                 {{ Form::submit('Enregistrer', ['class' => 'btn btn-lg btn-primary', 'id' => 'body', 'style' => 'margin-top:10px;']) }}
                             </div>
                         </div>
                     </div>
 
                     <div class="body">
-                        <div class="row form-group">
-                            <div class="col-md-8">
-                                <div class="row form-group">
-                                    <div class="col-md-12">
+                        <div class="flex flex-wrap  mb-4">
+                            <div class="md:w-2/3 pr-4 pl-4">
+                                <div class="flex flex-wrap  mb-4">
+                                    <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
                                             {{ Form::label('title', 'Titre bloc en H2 :') }}
                                             {{ Form::text('title', null, ['class' => 'form-control', 'placeholder' => 'Example : Bienvenu sur notre site', 'minlength' => '2', 'maxlength' => '150']) }}
@@ -76,14 +76,14 @@
                                     </div>
                                 </div>
 
-                                <div class="row form-group" >
-                                    <div class="col-md-6">
+                                <div class="flex flex-wrap  mb-4" >
+                                    <div class="md:w-1/2 pr-4 pl-4">
                                         <div class="form-line">
                                             {{ Form::label('alt_img',"Description image ALT : ")}}
                                             {{ Form::text('alt_img',null,array('class'=>'form-control','minlength'=>'2' ,'maxlength'=>'150' ))}}
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="md:w-1/2 pr-4 pl-4">
                                         <div class="form-line">
                                             {{ Form::label('title_img',"Titre image SEO : ")}}
                                             {{ Form::text('title_img',null,array('class'=>'form-control' , 'minlength'=>'2' ,'maxlength'=>'150' ))}}
@@ -91,8 +91,8 @@
                                     </div>
                                 </div>    
 
-                                <div class="row form-group">
-                                    <div class="col-md-12">
+                                <div class="flex flex-wrap  mb-4">
+                                    <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
                                             <label>Bloc</label>
                                             {{ Form::select('format', $blocs, null, ['class' => 'form-control minimal focused']) }}
@@ -100,21 +100,21 @@
                                     </div>
                                 </div>
 
-                                <div class="row form-groupX">
-                                    <div class="col-md-12">
+                                <div class="flex flex-wrap  form-groupX">
+                                    <div class="md:w-full pr-4 pl-4">
                                         {{ Form::label('content', 'Contenu', ['class' => 'form-label focused']) }}
                                         {{ Form::textarea('content', null, ['class' => 'trumbowyg']) }}
                                     </div>
-                                    {{-- <div class="col-md-12">
+                                    {{-- <div class="md:w-full pr-4 pl-4">
                                         {{ Form::label('content_hidden', 'Contenu', ['class' => 'form-label focused']) }}
                                         {{ Form::textarea('content_hidden', null, ['class' => 'trumbowyg']) }}
                                     </div> --}}
                                 </div>
                             </div>
 
-                            <div class="col-md-4">
-                                <div class="row">
-                                    <div class="col-md-12">
+                            <div class="md:w-1/3 pr-4 pl-4">
+                                <div class="flex flex-wrap ">
+                                    <div class="md:w-full pr-4 pl-4">
                                         {{ Form::label('image', 'Image :') }}
                                         <div class="slim" 
                                             data-size="1440,1080" 
@@ -130,8 +130,8 @@
                             </div>
                         </div>
 
-                        <div class="row form-group">
-                            <div class="col-md-12 text-right">
+                        <div class="flex flex-wrap  mb-4">
+                            <div class="md:w-full pr-4 pl-4 text-right">
                                 {{ Form::submit('Enregistrer', ['class' => 'btn btn-lg btn-primary', 'id' => 'body', 'style' => 'margin-top:10px;']) }}
                             </div>
                         </div>

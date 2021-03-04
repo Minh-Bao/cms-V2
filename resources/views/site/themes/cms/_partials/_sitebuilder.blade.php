@@ -1,24 +1,24 @@
-<nav class="topbar navbar navbar-inverse" style="background-color: rgb(224, 224, 217); margin-bottom:1%;">
-    <div class="container-fluid">
+<nav class="topbar relative flex flex-wrap items-center content-between py-3 px-4 navbar-inverse" style="background-color: rgb(224, 224, 217); margin-bottom:1%;">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
         <div class="navbar-header">
-            <a class="navbar-brand" href="{{config('myconfig.site_developper_url')}}" target="_blank">
+            <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" href="{{config('myconfig.site_developper_url')}}" target="_blank">
                 <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%">
                 <span style="color:grey;"> : Sitebuilder</span>
             </a>
         </div>
 
-        <ul class="nav navbar-nav dropup">
+        <ul class="flex flex-wrap list-none pl-0 mb-0 flex flex-wrap list-reset pl-0 mb-0 relative">
             @if (isset($sitepage))
                 <li><a href="{{route('websitepage.edit',$sitepage->id)}}">Modifier cette page *</a></li>
                 <li><a href="{{route('websitebloc.create')}}?sitepages_id={{$sitepage->id}}">Ajouter un bloc **</a></li>
                 <li style="display:none;"><a href="{{route('websitepage.index')}}">Ajouter une page</a></li>
             @endif
-            <li class="dropdown" style="display:none;">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <li class="relative" style="display:none;">
+                <a class=" inline-block w-0 h-0 ml-1 align border-b-0 border-t-1 border-r-1 border-l-1" data-toggle="dropdown" href="#">
                     Ajouter du contenu sur cette page
                     <span class="caret"></span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded">
                     <li><a href="#">Page 1-1</a></li>
                     <li><a href="#">Page 1-2</a></li>
                     <li><a href="#">Page 1-3</a></li>
@@ -38,7 +38,7 @@
 
 
     <div class="modal" id="sitebuilder" tabindex="-1" role="dialog">
-        <div class="row" id="ici">
+        <div class="flex flex-wrap " id="ici">
             <center>Chargement en cours</center>
         </div>
     </div>

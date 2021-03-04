@@ -21,7 +21,7 @@
     @foreach($sitesliderimages as $key=>$sitesliderimage)
     <div class="carousel-item @if($key++==0) active @endif" >
       <img src="{{$sitesliderimage->picture}}" style="width:100%;height:100%;">
-      <div class="container">
+      <div class="container mx-auto sm:px-4">
         <div class="carousel-caption text-left">
           <h1>{{$sitesliderimage->title}}</h1>
         </div>
@@ -52,7 +52,7 @@ $groupe = 0;
 
 
 <div class="containerx">
-  <div class="row">
+  <div class="flex flex-wrap ">
     @if($siteblocs->count()>0)
     <!-- Blocs -->
     @foreach($siteblocs as $bloc)
@@ -73,7 +73,7 @@ $groupe = 0;
   $precedent = $bloc->format; ?>
 </div>
 
-<div class="row" @if($groupe % 2==0) style="background-color:#f2f2f2;padding:15px;" @else style="background-color:#fff;padding:20px;" @endif>
+<div class="flex flex-wrap " @if($groupe % 2==0) style="background-color:#f2f2f2;padding:15px;" @else style="background-color:#fff;padding:20px;" @endif>
   @if($bloc->format=="12-carrousel" && $section_count==1)
   <div class="owl-carousel owl-theme mhc-blog-sec">
     @endif

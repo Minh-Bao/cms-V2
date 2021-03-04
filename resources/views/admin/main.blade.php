@@ -16,8 +16,8 @@
 
         <!-- Main content --> 
         <section class="content">
-            <div class="row">
-                <div class="col-md-12">
+            <div class="flex flex-wrap ">
+                <div class="md:w-full pr-4 pl-4">
                     @include('admin._interface._message')
                     @yield('content')
                 </div>

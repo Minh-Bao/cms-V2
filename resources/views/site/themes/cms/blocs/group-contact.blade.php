@@ -1,6 +1,6 @@
 
-<div class="row">
-    <div class="col-md-6" style="margin-left: 3em">
+<div class="flex flex-wrap ">
+    <div class="md:w-1/2 pr-4 pl-4" style="margin-left: 3em">
         <div class=" text-left mt50 bloc" name="{{$bloc->id}}" value="content" >
             {!! $bloc->content !!}
         </div>
@@ -9,7 +9,7 @@
         </div>
     </div>
     
-    <div class="col-md-5 text-center mt50">
+    <div class="md:w-2/5 pr-4 pl-4 text-center mt50">
         <div>
             {!! Form::open(['route' => 'contact']) !!}
             <p>

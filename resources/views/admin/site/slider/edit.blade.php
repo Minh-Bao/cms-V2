@@ -64,9 +64,9 @@ ul.sortable li.placeholder {
 
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
         <div id="breadcontainer">
-            <ol class="breadcrumb">
+            <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
                 <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
                 <li><i class="material-icons">public</i> Site</li>
                 <li><i class="material-icons">photo_library</i> <a href="{{route('slider.index')}}">Sliders</a></li>
@@ -74,27 +74,27 @@ ul.sortable li.placeholder {
             </ol>
         </div>
 
-        <div class="row clearfix">
-            <div class="col-md-12 col-lg-9">
-                <div class="card">
+        <div class="flex flex-wrap  clearfix">
+            <div class="md:w-full pr-4 pl-4 lg:w-3/4 pr-4 pl-4">
+                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                     <div class="header">
                         <h2>Sliders</h2>
                     </div>
                     <div class="body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="row form-group">
-                                    <div class="col-md-12" id="sortable">
+                        <div class="flex flex-wrap ">
+                            <div class="md:w-full pr-4 pl-4">
+                                <div class="flex flex-wrap  mb-4">
+                                    <div class="md:w-full pr-4 pl-4" id="sortable">
                                         <ul class="sortable">
                                             @foreach($pictures as $picture)
                                                 <li id="item-{{$picture->id}}">
-                                                    <div class="card droppable" id="{{$picture->id}}" name="noname">
+                                                    <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
                                                         <div class="body">
                                                             <img src="{{url('')}}/{{$picture->picture}}" class="img-responsive"style="margin-bottom:10px;width:100%;height:auto;">
-                                                            <a href="{{ route('sliderimage.edit',$picture->id) }}" class="btn btn-default waves-effect modal-picture" id="{{$picture->id}}">
+                                                            <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
                                                                 <i class="material-icons">mode_edit</i>
                                                             </a>
-                                                            <a href="{{ route('sliderimage.delete',$picture->id) }}" class="btn btn-default waves-effect waves-deep-orange">
+                                                            <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange">
                                                                 <i class="material-icons">delete</i>
                                                             </a>
                                                         </div>
@@ -103,7 +103,7 @@ ul.sortable li.placeholder {
                                             @endforeach
                                         </ul>
                                     </div>
-                                    <button class="btn btn-primary save pull-right ">Enregistrer l'ordre</button>
+                                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 save pull-right ">Enregistrer l'ordre</button>
                                 </div>
                             </div>
 
@@ -114,10 +114,10 @@ ul.sortable li.placeholder {
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-12">
-                <div class="row form-group">
-                    <div class="col-md-12">
-                        <div class="card">
+            <div class="lg:w-1/4 pr-4 pl-4 md:w-full pr-4 pl-4">
+                <div class="flex flex-wrap  mb-4">
+                    <div class="md:w-full pr-4 pl-4">
+                        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                             <div class="body">
                                     {!! Form::open(['route' => 'sliderimage.store' , 'class'=>'avatar', 'enctype'=>'multipart/form-data' ,'data-parsley-validate' =>'','files'=>true ]) !!}
                                     <input type="hidden" name="sitesliders_id" value="{{$slider->id}}">
@@ -133,23 +133,23 @@ ul.sortable li.placeholder {
                                         data-ratio="{{$slider->ratio}}">
                                         <input type="file" name="slide[]" required />
                                 </div>
-                                <div class="row form-group form-float" style="margin-top:25px;">
-                                    <div class="col-md-12">
+                                <div class="flex flex-wrap  mb-4 form-float" style="margin-top:25px;">
+                                    <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
                                             {{ Form::label('title', 'Titre *', array('class' => 'form-label')) }}
                                             {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'150' ))}}
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row form-group form-float">
-                                    <div class="col-md-12">
+                                <div class="flex flex-wrap  mb-4 form-float">
+                                    <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
                                             {{ Form::label('content',"Texte :")}}
                                             {{ Form::textarea('content', null, array('class'=>'form-control' ))}}
                                         </div>
                                     </div>
                                 </div>
-                                <button class="btn btn-primary btn-block" type="submit">Enregistrer</button>
+                                <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 block w-full" type="submit">Enregistrer</button>
                                 {!! Form::close() !!}
                             </div>
                         </div>

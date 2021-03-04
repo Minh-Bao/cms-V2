@@ -5,11 +5,11 @@
     
 @endif
 
-{{-- <div class="container bloc ">
+{{-- <div class="container mx-auto sm:px-4 bloc ">
     {!! $bloc->content !!}
 </div>   --}}  
 
-<div id="instafeed" class="row p-5 mt50 "></div>
+<div id="instafeed" class="flex flex-wrap  p-12 mt50 "></div>
 <div id="insta_error_msg" style="display:none;">Instagram : une erreur est survenue lors du chargement des images.... Veuillez reessayer plus tard.</div>
     
 

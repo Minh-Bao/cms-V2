@@ -18,9 +18,9 @@
 
 @section('content')
 
-  <div class="container-fluid">
+  <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
     <div id="breadcontainer">
-      <ol class="breadcrumb">
+      <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
         <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
         <li><i class="material-icons">public</i> <a href=""> Site</a></li>
         <li class="active"><i class="material-icons">slideshow</i>  <a href="{{ route('slider.index') }}">Sliders</a></li>
@@ -28,22 +28,22 @@
 
     </div>
 
-    <div class="row clearfix">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            <div class="card">
+    <div class="flex flex-wrap  clearfix">
+        <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-full pr-4 pl-4 lg:w-full pr-4 pl-4">
+            <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                 <div class="header">
-                    <div class="row clearfix">
-                        <div class="col-xs-12 col-sm-6">
-                          <h3>Sliders  <span class="badge bg-cyan">{{$sliders->count()}}</span></h3>
+                    <div class="flex flex-wrap  clearfix">
+                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                          <h3>Sliders  <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-cyan">{{$sliders->count()}}</span></h3>
                         </div>
-                        <div class="col-xs-12 col-sm-6 align-right">
-                          <a href="{{route('slider.create')}}" class="btn btn-primary" id="btn-slider-create"><i class="material-icons">add</i> Ajouter</a>
+                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                          <a href="{{route('slider.create')}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600" id="btn-slider-create"><i class="material-icons">add</i> Ajouter</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="body">
-                  <table class="table" id="sliders-tab">
+                  <table class="w-full max-w-full mb-4 bg-transparent" id="sliders-tab">
                     <thead>
                       <th>
                         Titre du slider : 

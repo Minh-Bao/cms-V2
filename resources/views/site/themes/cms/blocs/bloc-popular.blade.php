@@ -3,9 +3,9 @@
 <h2 class="title_home">Populaire cette semaine : </h2>
 
 
-<div class="row p-5 " >
+<div class="flex flex-wrap  p-12 " >
     @foreach ($bestpage as $item)
-    <div class="col-md-3 d-flex align-items-center">
+    <div class="md:w-1/4 pr-4 pl-4 flex items-center">
         <div class="popular_pastille">
             <div class="round_pastille">{{$item->count}}</div>
             <a href="{{route('site.page' , ['type' => 'page', 'slug' => $item->slug]) }}" title="best_article_{{ $item->slug }}">

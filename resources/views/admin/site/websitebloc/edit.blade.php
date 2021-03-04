@@ -15,9 +15,9 @@
 
 @section('content')
 
-    <div class="container-fluid">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
         <div id="breadcontainer">
-            <ol class="breadcrumb">
+            <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
                 <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
                 <li class=""><i class="material-icons">description</i>  <a href="{{ route('websitepage.index') }}">Pages</a></li>
                 <li class=""><i class="material-icons">dns</i>  <a href="">blocs</a></li>
@@ -25,27 +25,27 @@
             </ol>
         </div>
 
-        <div class="row clearfix">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header card-header-{{Auth::user()->theme}}">
-                        <div class="row clearfix">
-                            <div class="col-xs-12 col-sm-6">
-                                <h4 class="card-title">
+        <div class="flex flex-wrap  clearfix">
+            <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-full pr-4 pl-4 lg:w-full pr-4 pl-4 xl:w-full pr-4 pl-4">
+                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
+                    <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{Auth::user()->theme}}">
+                        <div class="flex flex-wrap  clearfix">
+                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                                <h4 class="mb-3">
                                     Modification d'un bloc de la page 
-                                    <a href="{{route('websitepage.edit',$websitepage->id)}}" class="btn btn-default">{{$websitepage->name}}</a>
+                                    <a href="{{route('websitepage.edit',$websitepage->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">{{$websitepage->name}}</a>
                                 </h4>
                             </div>
 
-                            <div class="col-xs-12 col-sm-6 align-right" style="margin-top:5px;">
+                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right" style="margin-top:5px;">
                                 @if ($websitepage->status == 0)
-                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'preview'])}}" class="btn btn-default">Prévisualiser</a>
+                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'preview'])}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">Prévisualiser</a>
                                 @endif
                                 @if ($websitepage->status == 1)
-                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'page'])}}" class="btn btn-default">Prévisualiser</a>
+                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'page'])}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">Prévisualiser</a>
                                 @endif
                                 @if ($websitepage->status == 2)
-                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'preview'])}}" class="btn btn-default">Prévisualiser</a>
+                                    <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'preview'])}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">Prévisualiser</a>
                                 @endif
                             </div>
                         </div>
@@ -53,10 +53,10 @@
 
                     <div class="body">
                         {!! Form::model($websitebloc,['route'=> ['websitebloc.update',$websitebloc->id], 'method'=>'PUT' , 'files' => 'true'] ) !!}
-                            <div class="row form-group">
-                                <div class="col-md-8">
-                                    <div class="row form-group">
-                                        <div class="col-md-12">
+                            <div class="flex flex-wrap  mb-4">
+                                <div class="md:w-2/3 pr-4 pl-4">
+                                    <div class="flex flex-wrap  mb-4">
+                                        <div class="md:w-full pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('title',"Titre bloc en H2 :")}}
                                                 {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => 'Example : Bienvenu sur notre site', 'minlength'=>'2' ,'maxlength'=>'150' ))}}
@@ -64,14 +64,14 @@
                                         </div>
                                     </div>
 
-                                    <div class="row form-group" >
-                                        <div class="col-md-6">
+                                    <div class="flex flex-wrap  mb-4" >
+                                        <div class="md:w-1/2 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('alt_img',"Description image ALT : ")}}
                                                 {{ Form::text('alt_img',null,array('class'=>'form-control' , 'placeholder' => '', 'minlength'=>'2' ,'maxlength'=>'150' ))}}
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
+                                        <div class="md:w-1/2 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('title_img',"Titre image SEO : ")}}
                                                 {{ Form::text('title_img',null,array('class'=>'form-control' , 'placeholder' => '','minlength'=>'2' ,'maxlength'=>'150' ))}}
@@ -79,8 +79,8 @@
                                         </div>
                                     </div>    
 
-                                    <div class="row form-group">
-                                        <div class="col-md-12">
+                                    <div class="flex flex-wrap  mb-4">
+                                        <div class="md:w-full pr-4 pl-4">
                                             <div class="form-line">
                                                 <label>Bloc</label>
                                                 {{ Form::select('format', $blocs , null, [ 'id'=>'selectBloc','class' => 'form-control minimal focused']) }}
@@ -92,22 +92,22 @@
                                         </div>
                                     </div>
 
-                                    <div class="row form-groupX">
-                                        <div class="col-md-12">
+                                    <div class="flex flex-wrap  form-groupX">
+                                        <div class="md:w-full pr-4 pl-4">
                                             {{ Form::label('content', 'Contenu', array('class' => 'form-label focused')) }}
                                             {{ Form::textarea('content', null, ['class' => 'trumbowyg' ]) }}
                                         </div>
 
-                                        <div class="col-md-12 content_two">
+                                        <div class="md:w-full pr-4 pl-4 content_two">
                                             {{ Form::label('content_two', 'Contenu', array('class' => 'form-label focused')) }}
                                             {{ Form::textarea('content_two', null, ['class' => 'trumbowyg' ]) }}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-md-4">
-                                    <div class="row">
-                                        <div class="col-md-12">
+                                <div class="md:w-1/3 pr-4 pl-4">
+                                    <div class="flex flex-wrap ">
+                                        <div class="md:w-full pr-4 pl-4">
                                             {{ Form::label('image',"Image :")}}                                
                                             <div class="slim"
                                                 data-size="1440,1080"
@@ -134,12 +134,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row form-group">
-                                <div class="col-md-6">
-                                    <a href="{{route('websiteblocs.destroy', $websitebloc->id)}}" class="btn btn-lg btn-danger ">Supprimer</a>
+                            <div class="flex flex-wrap  mb-4">
+                                <div class="md:w-1/2 pr-4 pl-4">
+                                    <a href="{{route('websiteblocs.destroy', $websitebloc->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline py-3 px-4 leading-tight text-xl bg-red-600 text-white hover:bg-red-700 ">Supprimer</a>
                                 </div>
 
-                                <div class="col-md-6 text-right">
+                                <div class="md:w-1/2 pr-4 pl-4 text-right">
                                     {{ Form::submit('Modifier', array('class'=>'btn btn-lg btn-primary' , 'id'=>'body' , 'style'=>'margin-top:10px;')) }}
                                 </div>
                             </div>
@@ -148,42 +148,42 @@
                 </div>
             </div>
         </div>
-        <div class="card">
+        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
             <div class="header">
-                <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-6">
+                <div class="flex flex-wrap  clearfix">
+                    <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
                         <h2>Contenu (blocs)</h2>
                     </div>
 
-                    <div class="col-xs-12 col-sm-6 align-right"></div>
+                    <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right"></div>
                 </div>
             </div>
 
             <div class="body">
-                <div class="row form-group">
-                    <div class="col-md-12" id="sortable">
+                <div class="flex flex-wrap  mb-4">
+                    <div class="md:w-full pr-4 pl-4" id="sortable">
                         <ul class="sortable">
                             @foreach($websiteblocs as $bloc)
                                 <li id="item-{{$bloc->id}}">
-                                    <div class="card droppable" id="{{$bloc->id}}" name="noname" style="margin:10px;padding:10px;cursor:move;">
-                                        <div class="row">
-                                            <div class="col-md-1">
+                                    <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$bloc->id}}" name="noname" style="margin:10px;padding:10px;cursor:move;">
+                                        <div class="flex flex-wrap ">
+                                            <div class="md:w-1/6 pr-4 pl-4">
                                                 {{$bloc->sort}}
                                             </div>
-                                            <div class="col-md-2">
+                                            <div class="md:w-1/5 pr-4 pl-4">
                                                 {{ $bloc->title }}
                                             </div>
-                                            <div class="col-md-4">
+                                            <div class="md:w-1/3 pr-4 pl-4">
                                                 {{ substr(strip_tags($bloc->content),0,100) }} 
                                                 @if (strlen($bloc->content)>100)
                                                     ...
                                                 @endif
                                             </div>
-                                            <div class="col-md-1">
-                                                <a href="{{route('websitebloc.edit',$bloc->id)}}" class="btn btn-default">Modifier</a>
+                                            <div class="md:w-1/6 pr-4 pl-4">
+                                                <a href="{{route('websitebloc.edit',$bloc->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">Modifier</a>
                                             </div>
-                                            <div class="col-md-1">
-                                                <a href="{{route('websitebloc.clone',$bloc->id)}}" class="btn btn-warning confirmation">Cloner</a>
+                                            <div class="md:w-1/6 pr-4 pl-4">
+                                                <a href="{{route('websitebloc.clone',$bloc->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-orange-400 text-black hover:bg-orange-500 confirmation">Cloner</a>
                                             </div>
                                         </div>
                                     </div>
@@ -192,9 +192,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="row text-right">
-                    <div class="col-md-12">
-                        <a href="{{route('websitebloc.create')}}?sitepages_id={{$websitepage->id}}" class="btn btn-primary btn-lg">Ajouter</a>
+                <div class="flex flex-wrap  text-right">
+                    <div class="md:w-full pr-4 pl-4">
+                        <a href="{{route('websitebloc.create')}}?sitepages_id={{$websitepage->id}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline bg-blue-600 text-white hover:bg-blue-600 py-3 px-4 leading-tight text-xl">Ajouter</a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,10 @@
-                    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button">
+                    <a href="javascript:void(0);" class=" inline-block w-0 h-0 ml-1 align border-b-0 border-t-1 border-r-1 border-l-1" data-toggle="dropdown" role="button">
                         <i class="material-icons">notifications</i>
                         @if($MyMessages->count()>0)
                         <span class="label-count">{{$MyMessages->count()}}</span>
                         @endif
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class=" absolute left-0 z-50 float-left hidden list-reset	 py-2 mt-1 text-base bg-white border border-gray-300 rounded">
                         <li class="header">MESSAGES</li>
                         <li class="body">
                             <ul class="menu">

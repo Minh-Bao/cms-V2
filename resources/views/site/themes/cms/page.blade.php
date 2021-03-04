@@ -39,27 +39,27 @@
         </div>
     @else
         @if ($sitepage->image)
-            <div class="row">
-                <div class="col-md-12 page" name="{{$sitepage->id}}" value="image" style=" background-position: center;background-repeat: no-repeat;background-size: cover;">
-                    <img src="{{url('/')}}/{{ $sitepage->image }}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="img-fluid" style="width:100%;">
+            <div class="flex flex-wrap ">
+                <div class="md:w-full pr-4 pl-4 page" name="{{$sitepage->id}}" value="image" style=" background-position: center;background-repeat: no-repeat;background-size: cover;">
+                    <img src="{{url('/')}}/{{ $sitepage->image }}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="max-w-full h-auto" style="width:100%;">
                 </div>
             </div>
         @endif
     @endif
 
     @if ($sitepage->title != NULL && $sitepage->content == NULL)
-        <div class="title_blog margin-auto col-md-8 ml-5 mt-5" style="width:63%;" >
+        <div class="title_blog margin-auto md:w-2/3 pr-4 pl-4 ml-5 mt-5" style="width:63%;" >
             <h1 class=" margin-auto">{{ $sitepage->title }}</h1>
         </div>        
     @endif
 
     @if ($sitepage->content)
-    <div class="container-fluid mt50 rounded" style="margin-left: 2.37em; text-align: justify-content" >
-        <div class="row">
+    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4 mt50 rounded" style="margin-left: 2.37em; text-align: justify-content" >
+        <div class="flex flex-wrap ">
                 <div class="margin-auto" >
                     <h1  style="margin-left: 0.3em">{{ $sitepage->title }}</h1>
                 </div>
-                <div class="col-md-11 page text-justify font-italic"  name="{{$sitepage->id}}" value="content">                    
+                <div class="md:w-5/6 pr-4 pl-4 page text-justify italic"  name="{{$sitepage->id}}" value="content">                    
                     {!! $sitepage->content !!}
                 </div>
             </div>
@@ -73,7 +73,7 @@
     ?>
 
     <div>
-        <div class="row">
+        <div class="flex flex-wrap ">
             @if ($siteblocs->count() > 0)
                 <!-- Blocs -->
                 @foreach ($siteblocs as $bloc)
@@ -100,11 +100,11 @@
                         @if ($groupe % 2 == 0)
 
                             <div class="">
-                                {{-- <div class="row" style="background-color:#f2f2f2;padding:15px;"> test pour mise en page mosaic Home...--}}
-                                <div class="container-fluid" style="background-color:#f2f2f2;padding:15px;">
+                                {{-- <div class="flex flex-wrap " style="background-color:#f2f2f2;padding:15px;"> test pour mise en page mosaic Home...--}}
+                                <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4" style="background-color:#f2f2f2;padding:15px;">
                         @else
-                            <div class="container">
-                                <div class="row" style="background-color:#fff;padding:15px;">
+                            <div class="container mx-auto sm:px-4">
+                                <div class="flex flex-wrap " style="background-color:#fff;padding:15px;">
                         @endif
 
                         @if ($bloc->format == '12-carrousel' && $section_count == 1)

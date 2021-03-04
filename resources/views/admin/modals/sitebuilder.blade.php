@@ -158,8 +158,8 @@
 
 						@if($object=="image")
 							L'image sera adaptée au format 1440x1080 pixels
-							<div class="row">
-								<div class="col-md-6">
+							<div class="flex flex-wrap ">
+								<div class="md:w-1/2 pr-4 pl-4">
 								<div class="slim"
 								data-size="1440,1080"
 								data-force-size="1440,1080"
@@ -175,7 +175,7 @@
 								<input type="file" name="slim[]" required />
 								</div>
 							</div>
-							<div class="col-md-6">
+							<div class="md:w-1/2 pr-4 pl-4">
 								<input type="checkbox" value="yes" name="duplicate"> Changer cette photo partout (langues/blocs).
 				   			<br />
 				   			<br />
@@ -200,8 +200,8 @@
                 	@if($part=="page")
 						@if($object=="image")
 							L'image sera adaptée au format 1440x450 pixels
-							<div class="row">
-								<div class="col-md-12">
+							<div class="flex flex-wrap ">
+								<div class="md:w-full pr-4 pl-4">
 								<div class="slim"
 								data-size="1440,450"
 								data-force-size="1440,450"
@@ -242,8 +242,8 @@
 							$slider = App\Site\Slider::find($sliderimage->sitesliders_id);
 						@endphp
 
-						<div class="row form-group">
-							<div class="col-md-3">
+						<div class="flex flex-wrap  mb-4">
+							<div class="md:w-1/4 pr-4 pl-4">
 								<label>Titre</label>
 								{{ Form::text('title', $sliderimage->title, array('class'=>'form-control' ))}}
 								<div class="slim"
@@ -263,7 +263,7 @@
 								</div>
 							</div>
 
-							<div class="col-md-9">
+							<div class="md:w-3/4 pr-4 pl-4">
 								<label>Contenu</label>
 								{{ Form::textarea('content', $sliderimage->content, array('id'=>'ckeditor' ))}}
 								
@@ -325,7 +325,7 @@
 
                 <div class="modal-footer">
 					{{ Form::submit('Modifier', array('class'=>'btn btn-primary' )) }}
-                    <button type="button" class="btn btn-default text-left" data-dismiss="modal" onclick="Custombox.modal.close();">Fermer</button>
+                    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default text-left" data-dismiss="modal" onclick="Custombox.modal.close();">Fermer</button>
                 </div>
             </div>
         </div>

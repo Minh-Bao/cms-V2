@@ -5,14 +5,14 @@
 					<span class="btn__arrow btn__arrow--bottom"></span>
 				</a>
 			</div>
-			<div class="container">
+			<div class="container mx-auto sm:px-4">
 				<div class="footer-container">
 					<div class="copyright-text">
 						© GreenWeb 2021 
 						<a href="" target="_blank"></a> 
 					</div>
 					<nav class="navigation  navigation--footer">
-						<ul id="menu-footer-menu" class="nav--footer  nav">
+						<ul id="menu-footer-menu" class="nav--footer  flex flex-wrap list-none pl-0 mb-0">
 							<li id="menu-item-716" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-716">
 								<a href="javascript:void(0);" data-toggle="modal" data-target="#mentions">Mentions légales</a>
 							</li>
