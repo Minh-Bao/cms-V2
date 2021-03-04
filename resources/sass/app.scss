@@ -1,0 +1,765 @@
+// Variables
+@import "variables";
+
+//Tailwind
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// Bootstrap
+// @import "~bootstrap/scss/bootstrap";
+
+
+/* GLOBAL STYLES
+
+-------------------------------------------------- */
+
+/* Padding below the footer and lighter body text */
+
+body {
+    font-family: Avenir;
+    color: #5a5a5a;
+    overflow-x: hidden;
+}
+
+a {
+    color: #2f2f2f;
+}
+
+a:hover {
+    color: #000;
+}
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+
+/* Carousel base class */
+.carousel {
+    margin-bottom: 4rem;
+}
+
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    padding-top: 48vh;
+    z-index: 10;
+    position: absolute;
+    width: 100%;
+}
+
+.carousel-caption p {
+    font-size: 50px !important;
+    letter-spacing: 0.1em;
+    text-shadow: 2px 2px 4px #000000;
+}
+
+/* Declare heights because of positioning of img element */
+.carousel-item {
+    height: 100vh;
+    min-height: 350px;
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.carousel-item > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    height: 32rem;
+}
+
+.carousel-control-prev {
+    z-index: 11;
+}
+
+.carousel-control-next {
+    z-index: 11;
+}
+
+#myCarousel {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+@media screen and (min-width: 900px) {
+    .bloc-flottant {
+        background: rgba(255, 255, 255, 0.9);
+        position: absolute;
+        width: 50%;
+        padding: 50px;
+        right: 10vh;
+        max-height: 500px;
+        overflow-x: auto;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .bloc-flottant {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+}
+
+/* MARKETING CONTENT
+
+-------------------------------------------------- */
+
+/* Center align the text within the three columns below the carousel */
+
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.marketing h2 {
+    font-weight: 400;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+}
+
+/* Featurettes
+
+------------------------- */
+
+.featurette-divider {
+    margin: 5rem 0; /* Space out the Bootstrap <hr> more */
+}
+
+/* Thin out the marketing headings */
+
+.featurette-heading {
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.05rem;
+}
+
+/* RESPONSIVE CSS
+
+-------------------------------------------------- */
+
+@media (min-width: 40em) {
+    /* Bump up size of carousel content */
+    .carousel-caption p {
+        margin-bottom: 1.25rem;
+        font-size: 1.25rem;
+        line-height: 1.4;
+    }
+
+    .featurette-heading {
+        font-size: 50px;
+    }
+}
+
+@media (min-width: 62em) {
+    .featurette-heading {
+        margin-top: 7rem;
+    }
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.site-header {
+    padding-top: 0px;
+    background-color: transparent;
+}
+
+@media screen and (min-width: 900px) {
+    .site-header {
+        padding-top: 0px;
+    }
+    .nav-item > a {
+        padding-left: 24px;
+    }
+    div.page {
+        padding-left: 12px;
+    }
+}
+
+.navbar {
+    height: 70px;
+}
+
+.navbar-nav {
+    padding-left: 50%;
+}
+
+.site-logo img {
+    position: absolute;
+    top: 18px;
+}
+
+/* RESPONSIVE CSS
+
+-------------------------------------------------- */
+.efix-bloc-box .efix-bloc-img img {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.efix-bloc-box:hover .efix-bloc-img img {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari */
+    transform: scale(1.1); /* Standard syntax */
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.efix-bloc-box .efix-bloc-img .efix-bloc-overlay {
+    position: absolute;
+    text-align: center;
+    top: 20%;
+    left: 10%;
+    width: 80%;
+    height: 60%;
+    background: rgba(255, 255, 255, 0.8);
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.efix-bloc-box .efix-bloc-img .efix-bloc-overlay:hover {
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.efix-bloc-box .efix-bloc-img .efix-bloc-overlay:hover img {
+    opacity: 0;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.efix-bloc-box:hover .efix-bloc-title {
+    display: none;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.efix-bloc-box:hover .efix-bloc-content {
+    display: block;
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+}
+
+.efix-bloc-box .efix-bloc-img .efix-bloc-overlay .efix-bloc-title {
+    color: #000;
+    font-size: 20px;
+}
+
+.efix-bloc-content {
+    color: #fff;
+    display: none;
+}
+
+.efix-sec-title {
+    justify-content: center;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 400;
+}
+
+.efix-sec-title h2 {
+    font-size: 40px !important;
+}
+
+.efix-sec-title span {
+    font-weight: 400;
+    font-size: 40px !important;
+}
+
+@media screen and (max-width: 900px) {
+    .efix-sec-title {
+        font-size: 37px;
+    }
+}
+
+.mt50 {
+    margin-top: 25px;
+}
+
+.mt100 {
+    margin-top: 50px;
+}
+
+.mb50 {
+    margin-bottom: 25px;
+}
+
+.navbar-nav li {
+    margin-right: 20px;
+}
+
+.nav-link {
+    text-transform: uppercase;
+}
+
+.dark {
+    background-color: #121212;
+    color: #fff;
+}
+
+.dark .efix-sec-title {
+    color: #fff;
+}
+
+.footer-container {
+    padding-top: 25px;
+    text-align: center;
+    background-color: #262526;
+    color: #fff;
+}
+
+.footer-container a {
+    color: #fff;
+}
+
+input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    height: 40px !important;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.72429;
+    color: #262526;
+    margin-left: 10px !important;
+    background: #eeeeee;
+    outline: none !important;
+    border: 0;
+}
+
+textarea {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-size: 0.875rem;
+    line-height: 1.72429;
+    color: #262526;
+    background: #eeeeee;
+    outline: none !important;
+    border-radius: 0;
+    border: 0;
+}
+
+.btn,
+.comments_add-comment,
+.form-submit #comment-submit,
+.efix-form-control.efix-submit,
+.otreservations-submit,
+.widget_tag_cloud a,
+.read-more-button {
+    padding: 12px 30px;
+    font-size: 12px;
+    line-height: 1;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    // background-color: #262526;
+    transition: all 0.15s;
+    border-radius: 3px;
+}
+
+.btn:hover,
+.comments_add-comment:hover,
+.form-submit #comment-submit:hover,
+.efix-form-control.efix-submit:hover,
+.otreservations-submit:hover,
+.widget_tag_cloud a:hover,
+.read-more-button:hover {
+    background-color: #6991aa;
+}
+
+.btn.a,
+.a.comments_add-comment,
+.form-submit .a#comment-submit,
+.a.efix-form-control.efix-submit,
+.a.otreservations-submit,
+.widget_tag_cloud a.a,
+.a.read-more-button {
+    border-bottom: none;
+}
+
+.btn--primary,
+.comments_add-comment,
+.form-submit #comment-submit {
+    background-color: #6991aa;
+    color: white;
+}
+
+/*---///---///---///---///---///---///---///---///---///---
+
+    10. BLOG CSS START
+
+---///---///---///---///---///---///---///---///---///---*/
+
+.mhc-blog-sec {
+    padding: 20px 0 70px;
+}
+
+.mhc-blog-sec .mhc-sec-title {
+    text-transform: none;
+}
+
+.mhc-blog-link {
+    font-size: 20px;
+    padding-top: 60px;
+    text-align: center;
+    color: #999;
+}
+
+.mhc-blog-link a {
+    color: #1e3c47;
+}
+
+.mhc-blog-link a:hover {
+    color: #000;
+}
+
+.mhc-blog-column {
+    position: relative;
+}
+
+.mhc-blog-sec .mhc-blog-box {
+    background: #f2f2f2;
+    border-top: 0px solid #1e3c47;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-box:hover {
+    border-color: #999999;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img {
+    position: relative;
+    overflow: hidden;
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img img {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-box:hover .mhc-blog-img img {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari */
+    transform: scale(1.1); /* Standard syntax */
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -ms-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img .mhc-blog-date {
+    position: absolute;
+    color: #fff;
+    bottom: 0;
+    left: 0;
+    text-align: center;
+    font-size: 30px;
+    width: 100%;
+    bottom: 40%;
+    padding: 10px 20px;
+    background: rgba(30, 60, 71, 0.9);
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img .mhc-blog-date ul li {
+    float: left;
+    margin-right: 20px;
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img .mhc-blog-date ul li i {
+    margin-right: 5px;
+    color: #999999;
+}
+
+.mhc-blog-sec .mhc-blog-box .mhc-blog-img .mhc-blog-date ul li a {
+    color: #ffffff;
+}
+
+.mhc-blog-sec .mhc-blog-content {
+    padding: 0px 20px 20px 20px;
+}
+
+.mhc-blog-sec .mhc-blog-content h4 a {
+    color: #111111;
+    text-transform: uppercase;
+}
+
+.mhc-blog-sec .mhc-blog-content h4 a:hover {
+    color: #1e3c47;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.mhc-blog-sec .mhc-blog-content p {
+    margin-bottom: 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-content a {
+    font-size: 16px;
+    color: #999999;
+    text-transform: capitalize;
+}
+
+.mhc-blog-sec .mhc-blog-content a i {
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-sec .mhc-blog-content a:hover i {
+    margin-left: 10px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Blog details css start */
+/* .mhc-blog-details-sec {    
+
+} */
+
+.mhc-blog-details-sec .mhc-blog-big-img {
+    margin-bottom: 30px;
+}
+
+/* .mhc-blog-img img {
+
+} */
+
+.mhc-blog-details-sec .mhc-blog-box {
+    background: transparent;
+}
+
+.mhc-blog-details-sec .mhc-blog-box h4 a {
+    color: #111111;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-details-sec .mhc-blog-box h4 a:hover {
+    color: #999999;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
+.mhc-blog-details-sec .mhc-blog-box p {
+    margin-bottom: 30px;
+}
+
+.mhc-blog-details-sec .at-comment-row {
+    margin-top: 30px;
+}
+
+.CoverImage {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 auto;
+    max-height: 300px;
+    max-width: 1000px;
+}
+//******************************************HOME*****************************************************\\
+/*  Mosaic Thumbnail (derniers articles) */
+
+.home_thumbnail img {
+    transition: transform 0.3s ease-out;
+    &:hover {
+        transform: scale(1.075);
+    }
+}
+
+.title_home {
+    @apply ml-5 uppercase text-black font-bold;
+   
+}
+
+//modif CSS/////////////////////////////////////////////////////////////
+h1{
+    @apply uppercase text-black font-bold;
+    font-size: 2.7rem !important;
+    font-weight: bolder !important;
+    border-bottom: 3px solid $pink_nc;
+
+}
+
+h2 {
+    @apply uppercase text-black font-bold;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+  
+
+
+//////////////////////////////////////////////
+
+
+.btn_calltoAction {
+    @apply p-3 mb-5;
+    border-radius: 1rem !important;
+    width: 13%;
+    text-decoration: none !important;
+    display:inline-block;
+    height: 125%;
+    font-size: 1.3em;
+    background-color: $pink_nc;
+    border-radius: 6px;
+    color: white;
+}
+
+.btn_calltoAction:hover {
+    background-color: pink;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Pastille for popular article */
+.round_pastille {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background: #ce4963;
+    margin-bottom: 20%;
+    position: absolute;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    z-index: 4;
+}
+.circle_img {
+    filter: drop-shadow(6px 8px 9px #5e1d2a);
+    border-radius: 50%;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.popular_pastille {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    text-shadow: 1px 1px 2px rgb(92, 18, 30);
+}
+
+.popular_pastille:hover {
+    transform: rotateY(360deg);
+}
+
+/* Image Instagram */
+.img_insta {
+    width: 400px;
+    margin: 3%;
+}
+
+/* Main color NC */
+.pink_nc{
+  color: $pink_nc;
+}
+
+/*thumbnail instagram article full page*/
+.img_insta_social{
+    width: 180px;
+    margin: 0.5%;
+}
+/*categorie btn article full page*/
+.categ{
+    border-radius: 20px;
+    margin:1%;
+    width: 30%;
+    max-height: 40px;
+}
+
+.contact_form{
+    background-color: #e3cdda;
+    color: grey;
+}
+
