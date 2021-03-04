@@ -5,8 +5,6 @@
 
     @include('admin._interface._head')
 
-
-
     </head>
 
 
