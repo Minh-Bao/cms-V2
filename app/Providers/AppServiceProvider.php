@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        /*Bind repository and interface*/
         $this->app->bind(
             WebsitepageRepositoryInterface::class,
             WebsitepageRepository::class,
@@ -50,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
             SliderImageRepository::class,
         );
 
-        //Register fortify security bundle
+        /*Register fortify security bundle*/
         Fortify::loginView(function () {
             return view('auth.login');
         });
