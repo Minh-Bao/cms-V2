@@ -142,7 +142,7 @@
 
 <script type="text/javascript">
     var feed = new Instafeed({
-        accessToken: 'IGQVJXNkVIMkdDcHNLaE5wSk92WUFtTTlXaEFvd0lrUFROVWRuXy10MGJsRktzelRJSVBHRVdpQ1dxcDd0czFqMnZA1dTE5MmxMcVFYeWVYRHc4X0lSQTI0YnJzc1VEUm5sVGcwSnJNMzBIVE1zYmQzOAZDZD',
+        accessToken: '{{ config('myconfig.insta_access_token') }}',
         limit: 6,
         after: function(){
                 var container = document.getElementById('instafeed');
