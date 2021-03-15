@@ -146,16 +146,12 @@ class WebsitepageController extends Controller
         $page = $this->page->findOrError($id);
         $bloc = $this->bloc->getByPage_id($id);
 
-        if(File::exists($page->image) && File::exists($page->thumbnail)) {
-            unlink($page->image);
-            unlink($page->thumbnail);
-        }
+        self::deleteImg($page->image);
+        self::deleteImg($page->thumbnail);
 
         $blocs = $bloc->get();
         foreach($blocs as $item){
-            if(File::exists($item->image)) {
-                unlink($item->image);
-            }  
+            self::deleteImg($item->image);
         }              
 
         $page->delete();
@@ -164,6 +160,18 @@ class WebsitepageController extends Controller
         Session::flash('success', 'Votre page a bien été supprimée'); 
 
         return back();
+    }
+
+    /**
+     * Unlink image if exist
+     *
+     * @param object $object
+     * @return void
+     */
+    public static function deleteImg(object $object) :void{
+        if(File::exists($object)) {
+            unlink($object);
+        }
     }
 
     /**
