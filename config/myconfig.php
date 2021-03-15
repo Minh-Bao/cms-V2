@@ -5,6 +5,7 @@ return [
    
 
     'site_owner' => env('SITE_OWNER', 'null'),
+    'site_owner_url' => env('SITE_OWNER_URL', 'null'),
     'site_developper' =>env('SITE_DEVELOPPER', 'null'),
     'site_developper_url' => env('SITE_DEVELOPPER_URL', 'null'),
     'name_app' =>env('APP_NAME', 'null'),
