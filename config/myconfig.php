@@ -3,7 +3,7 @@
 return [
 
    
-
+    'insta_access_token' => env('INSTA_TOKEN', 'null'),
     'site_owner' => env('SITE_OWNER', 'null'),
     'site_owner_url' => env('SITE_OWNER_URL', 'null'),
     'site_developper' =>env('SITE_DEVELOPPER', 'null'),
