@@ -4,18 +4,14 @@ namespace App\Http\Controllers\Site;
 
 use Session;
 use App\Slim;
-use App\Models\Site\Slider;
 use Illuminate\Http\Request;
-use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
-use Illuminate\Support\Facades\App;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\WebsitepageRequest;
 use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 
 
@@ -117,7 +113,6 @@ class WebsitepageController extends Controller
      */
     public function update(WebsitepageRequest $request, $id)
     {
-
         $this->page->update($request, $id); 
         $page =$this->page->findOrError($id);       
         
