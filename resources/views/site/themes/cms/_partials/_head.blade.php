@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.theme.default.min.css">
 
+    
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106144058-4"> </script>
     <script>
