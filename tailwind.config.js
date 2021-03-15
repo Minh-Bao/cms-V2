@@ -12,6 +12,7 @@ module.exports = {
     ],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        
         extend: {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
@@ -19,6 +20,10 @@ module.exports = {
             },
             colors: {
                 mainText: ['#5a5a5a;'],
+                pinkNC: ['#ce4963;'],
+                pink: {
+                    450: '#ce4963'
+                  },
             },
         },
     },
