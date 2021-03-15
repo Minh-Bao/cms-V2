@@ -1,7 +1,7 @@
 <!-- Bloc derniers articles -->
 
 <div class="container mx-auto">
-    <h2 class="mx-auto">Derniers Articles : </h2>
+    <h2 class="">Derniers Articles : </h2>
 </div>
 
 
@@ -35,23 +35,23 @@
     <p class="h1 mt-5 text-center">Il n'y a pas encore d'article à ce jour... <a
             href="{{ route('admin.index') }}">soyez le premier</a></p>
 @endif
-<div class="md:w-full pr-4 pl-4 text-center">
-    <a href="{{ url('/') . '/page/article-index' }}" class="btn_calltoAction" role="button" aria-disabled="true"
-        width="15%" height="125%">Voir plus</a>
+<div class="md:w-full  text-center">
+    <a href="{{ url('/page/article-index')}}" class="btn_calltoAction">
+          Voir plus  
+    </a>
 </div>
 
 
 
-
 <!-- Bloc des pages les plus cliquées -->
-<div class="container mx-auto mt-12">
+<div class="container mx-auto mt-12 text-center md:text-left">
     <h2>Populaire cette semaine : </h2>
 </div>
 
 
 <div class="flex flex-wrap  p-12 ">
     @foreach ($bestpage as $item)
-        <div class="w-1/4 pr-4 pl-4 flex items-center">
+        <div class="w-1/2 md:w-1/4 lg:w-1/4 pr-4 pl-4 md:flex lg:flex items-center">
             <div class="popular_pastille">
                 <div class="round_pastille">{{ $item->count }}</div>
                 <a href="{{ route('site.page', ['type' => 'page', 'slug' => $item->slug]) }}"
@@ -79,7 +79,9 @@
 </div>
 
 
-<script type="text/javascript" src="{{ url('/') . '/plugins/instafeed.js-master/dist/instafeed.min.js' }}"></script>
+<script type="text/javascript" src="{{ url('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ url('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script> --}}
+
 
 <script type="text/javascript">
     var feed = new Instafeed({
