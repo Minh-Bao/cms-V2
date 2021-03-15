@@ -123,13 +123,12 @@ body {
 }
 
 
-//modif CSS/////////////////////////////////////////////////////////////
+// Hn TAG /////////////////////////////////////////////////////////////
 h1{
     @apply uppercase text-black font-bold;
     font-size: 2.7rem !important;
     font-weight: bolder !important;
     border-bottom: 3px solid $pink_nc;
-
 }
 
 h2 {
@@ -157,22 +156,9 @@ h3{
 
 
 .btn_calltoAction {
-    @apply p-3 mb-5;
-    border-radius: 1rem !important;
-    width: 13%;
-    text-decoration: none !important;
-    display:inline-block;
-    height: 125%;
-    font-size: 1.3em;
-    background-color: $pink_nc;
-    border-radius: 6px;
-    color: white;
+    @apply inline-flex items-center px-11 py-3 border border-transparent text-base font-medium rounded-full shadow-sm text-white bg-pink-450 hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500;
 }
 
-.btn_calltoAction:hover {
-    background-color: pink;
-    color: rgba(0, 0, 0, 0.7);
-}
 
 /* Pastille for popular article */
 .round_pastille {
@@ -190,6 +176,7 @@ h3{
 .circle_img {
     filter: drop-shadow(6px 8px 9px #5e1d2a);
     border-radius: 50%;
+    max-width: unset;
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
