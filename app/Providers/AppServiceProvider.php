@@ -50,8 +50,6 @@ class AppServiceProvider extends ServiceProvider
             SliderImageRepository::class,
         );
 
-        Paginator::useBootstrap();
-
         //Register fortify security bundle
         Fortify::loginView(function () {
             return view('auth.login');
