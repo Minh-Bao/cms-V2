@@ -1,8 +1,4 @@
-
-
-
-
-  <!-- FOOTER -->
+<!-- FOOTER -->
 
 <footer class="footer-container" style="height: 300px;">
     <div class="flex flex-wrap ">
@@ -12,16 +8,16 @@
             </div>
             <div class="m-2 ml-2">
                 <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank"  title="facebook_{{config('myconfig.site_owner')}}" >
-                    <img src="{{url('/')}}/images/socialMedia_icon/facebook_blanc.png" alt="icon_facebook" width="10%">
+                    <img src="{{url('/images/socialMedia_icon/facebook_blanc.png')}}" alt="icon_facebook" width="10%">
                 </a>
                 <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank" title="youtube_{{config('myconfig.site_owner')}}" >
-                    <img src="{{url('/')}}/images/socialMedia_icon/youtube_blanc.png" alt="icon_youtube" width="10%" >
+                    <img src="{{url('/images/socialMedia_icon/youtube_blanc.png')}}" alt="icon_youtube" width="10%" >
                 </a>
                 <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank" title="pinterest_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/pinterest_blanc.png" alt="icon_pinterest" width="10%" >
+                    <img src="{{url('/images/socialMedia_icon/pinterest_blanc.png')}}" alt="icon_pinterest" width="10%" >
                 </a>
                 <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank" title="instagram_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/instagram_blanc.png" alt="icon_instagram" width="10%" >
+                    <img src="{{url('/images/socialMedia_icon/instagram_blanc.png')}}" alt="icon_instagram" width="10%" >
                 </a>
             </div>
         </div>
