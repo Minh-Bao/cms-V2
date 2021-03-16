@@ -123,7 +123,6 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
         $page->save();
 
         return $page;
-
     }
 
      /**
