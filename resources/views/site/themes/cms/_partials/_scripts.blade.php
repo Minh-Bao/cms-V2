@@ -1,19 +1,16 @@
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> --}}
-{{-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script> --}}
-{{-- <script src="{{url('/css/owlcarousel/owl.carousel.js')}}"></script> --}}
 
-
-<!--Custom script-->
-<script src="{{url('/js/app.js')}}"></script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script> --}}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="{{url('/css/owlcarousel/owl.carousel.js')}}"></script>
 <!-- Livewire -->
 @livewireScripts
 
-<!-- AlpineJS -->
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.1/dist/alpine.min.js" defer></script>
+<!--Custom script-->
+<script src="{{url('/js/app.js')}}" defer></script>
 
 
-{{-- <script>
+<script>
 $(document).ready(function() {
     $('#form-contact').submit(function() {
         $.post(
@@ -40,11 +37,11 @@ $(document).ready(function() {
         return false;
     });
 });
-</script> --}}
+</script>
 
 
 
-{{-- <script>
+<script>
 $(".site-logo-img--light").show();
 
 $(function() { 
@@ -68,9 +65,9 @@ $(function() {
     }
   });
 });
-</script> --}}
+</script>
 
-{{-- <script>
+<script>
   var owl = $('.owl-carousel');
   owl.owlCarousel({
     margin: 10,
@@ -89,5 +86,5 @@ $(function() {
       }
     }
   });
-</script> --}}
+</script>
 
