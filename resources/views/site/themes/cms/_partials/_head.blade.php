@@ -14,8 +14,7 @@
     <!-- Bootstrap core CSS -->
     {{-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> --}}
 
-
-    <!-- Styles -->
+    <!-- Custom Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     {{-- <link href="{{url('')}}/site/css/style.css" rel="stylesheet"> --}}
     
@@ -23,7 +22,8 @@
     <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.theme.default.min.css">
 
-    
+    <!-- Livewire -->
+    @livewireStyles
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106144058-4"> </script>
@@ -31,7 +31,6 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-106144058-4');
     </script>
 
