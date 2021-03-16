@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
@@ -61,7 +62,10 @@ class SiteController extends Controller
         
         /* if($sitepage->model=="onepage") {
             $menus = Websitebloc::select('*')->where('format','like','%title%')->where('sitepages_id',$sitepage->id)->orderBy('sort')->get();
-        } */
+        } else {
+            $menus = Websitepage::select('*')->where('slug','homepage')->get();
+        }   
+        array_push($arrayView , "menus"); */
 
         return view('site.themes.cms.page',compact($arrayView));
     }    
