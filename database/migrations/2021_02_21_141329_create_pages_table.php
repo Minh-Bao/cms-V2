@@ -13,7 +13,7 @@ class CreatePagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('sitepage', function (Blueprint $table) {
+        Schema::create('sitepages', function (Blueprint $table) {
             $table->increments('id');
             $table->string('lng',2);
             $table->string('last_review',6)->nullable();
