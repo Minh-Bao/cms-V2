@@ -1,8 +1,8 @@
-    <header>
+    <header class="bg-white-450" >
         <nav class="flex items-center justify-between flex-wrap p-4 w-full " x-data="{ isOpen: false }"
             @keydown.escape="isOpen = false" :class="{ 'shadow-lg ' : isOpen , 'bg-primary' : !isOpen}">
             <!--Logo etc-->
-            <div class="flex items-center flex-shrink-0 text-white mr-6">
+            <div class="flex items-center flex-shrink-0 text-white ml-6">
                 <a href="{{ url('/') }}">
                     <img class="hidden lg:block w-3/12" src="{{ url('/images/logo-black.png') }}" rel="" alt="logo-naturelcoquin">
                 </a>
