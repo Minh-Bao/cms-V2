@@ -10,7 +10,7 @@
 <script src="{{url('/js/app.js')}}" defer></script>
 
 
-<script>
+{{-- <script>
 $(document).ready(function() {
     $('#form-contact').submit(function() {
         $.post(
@@ -38,7 +38,7 @@ $(document).ready(function() {
     });
 });
 </script>
-
+ --}}
 
 
 <script>
