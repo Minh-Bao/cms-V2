@@ -24,6 +24,9 @@ module.exports = {
                 pink: {
                     450: '#ce4963'
                   },
+                white:{
+                    450: '#f2f2f2'
+                },
             },
         },
     },
@@ -32,6 +35,7 @@ module.exports = {
     },
     plugins: [
         require( '@tailwindcss/aspect-ratio'),
+        require('tailwindcss-textshadow'),
     ],
     important: true,
   }
