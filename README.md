@@ -29,6 +29,5 @@ Use of Tall stack
 
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-#� �c�m�s�-�V�2�
-�
-�
+#� �c�m�s�-�V�2�  ��   (∩｀-´)⊃━☆ﾟ.*･｡ﾟ            � �c�m�s�-�V�2�  ��   ◖ᵔᴥᵔ◗ ♪ ♫ ◖ᵔᴥᵔ◗ ♪ ♫
+
