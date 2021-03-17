@@ -47,8 +47,6 @@
 
 
         </div>
-
-        <div id="contact-result"></div>
     </div>
 </div>
 
