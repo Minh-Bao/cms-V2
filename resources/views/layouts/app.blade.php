@@ -10,18 +10,22 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
+    {{-- <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css"> --}}
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+
+    <!-- Livewire -->
+    @livewireStyles
+
 </head>
 <body>
-    <div id="app">
-        <nav class="relative flex flex-wrap items-center content-between py-3 px-4  text-black navbar-laravel">
+    <div >
+{{--         <nav class="relative flex flex-wrap items-center content-between py-3 px-4  text-black navbar-laravel">
             <div class="container mx-auto sm:px-4">
                 <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
@@ -71,10 +75,14 @@
                 </div>
             </div>
         </nav>
-
-        <main class="py-4">
+ --}}
+        <section >
             @yield('content')
-        </main>
+        </section>
     </div>
+
+<!-- Livewire -->
+@livewireScripts
+
 </body>
 </html>
