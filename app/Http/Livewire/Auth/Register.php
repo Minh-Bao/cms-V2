@@ -17,6 +17,18 @@ class Register extends Component
     public $passwordConfirmation = '';
 
     /**
+     * updated hook 
+     * Everytime a field is updated do something...
+     *
+     * @param [type] $field
+     * @return void
+     */
+    public function updatedEmail(){
+
+       $this->validate(['email' => 'unique:users']);
+    }
+
+    /**
      * validate and submit the register form
      *
      * @return void
