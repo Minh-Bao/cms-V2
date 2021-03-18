@@ -30,7 +30,7 @@
                             </div>
                             @error('name') <div class="mt-1 text-pink-450 text-sm">{{$message}}</div> @enderror 
                         </div>
-
+ 
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
                                 Adresse email

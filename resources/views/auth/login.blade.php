@@ -59,7 +59,7 @@
                                 <label for="remember_me" class="ml-2 block text-sm text-gray-900">
                                     Se souvenir de moi...
                                 </label>
-                            </div>
+                            </div> 
 
                             @if (Route::has('password.request'))
                                 <div class="text-sm">
