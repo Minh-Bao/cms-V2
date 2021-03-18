@@ -11,7 +11,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class RegistrationTest extends TestCase
 {
 
-    use RefreshDatabase;
+    // use RefreshDatabase;
 
 
     public function registration_page_contains_livewire_component(){
@@ -36,6 +36,27 @@ class RegistrationTest extends TestCase
             $this->assertTrue(User::whereEmail('lldipzee@erty.fr')->exists());
             $this->assertEquals(null, Auth::user());
             
+    }
+    
+    /**
+    * @test
+    */
+    public function see_email_hasnt_taken_validation_message_as_user_types(){
+
+        User::create([
+            'name' => 'ertyu',
+            'email' => 'testy@test.fr',
+            'password' => '123456789'
+        ]);
+        
+        Livewire::test('auth.register')
+            ->set('email', 'test@test.fr')
+
+            ->assertHasNoErrors()
+
+            ->set('email', 'testy@test.fr')
+
+            ->assertHasErrors(['email' => 'unique']);
     }
 
     /**
