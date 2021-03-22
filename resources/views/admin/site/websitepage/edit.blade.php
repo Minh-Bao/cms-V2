@@ -26,27 +26,40 @@
 
 @section('content')
 
-    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
-        <div id="breadcontainer">
-            <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
-                <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
-                <li class=""><i class="material-icons">description</i>  <a href="{{ route('websitepage.index') }}">Pages</a></li>
-                <li class="active"><i class="material-icons">mode_edit</i>  Modification d'une page</li>
-            </ol>
-        </div>
+@include('admin._interface.header._breadcrumb', [
+    'bread' => [
+        [
+            'icon' => '<i class="material-icons">dashboard</i>',
+            'url'  => '{{url("/admin")}}',
+            'name' => 'ACCUEIL'
+        ],
+        [
+            'icon' => '<i class="material-icons">description</i>',
+            'url'  => '{{url("/")}}',
+            'name' => 'PAGE'
+        ],
+        [
+            'icon' => '<i class="material-icons">mode_edit</i>',
+            'url'  => '{{url("/")}}',
+            'name' => "MODIFICATION"
+        ]
+    ]
+])
+
+    <div class="container mx-auto sm:px-4 max-w-full">
 
         <div class="flex flex-wrap  clearfix">
-            <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-full pr-4 pl-4 lg:w-full pr-4 pl-4 xl:w-full pr-4 pl-4">
+            <div class="sm:w-full pr-4 pl-4 md:w-full lg:w-full xl:w-full">
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                     <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{Auth::user()->theme}}">
                         <div class="flex flex-wrap  clearfix">
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                            <div class="sm:w-full pr-4 pl-4">
                                 <h4 class="mb-3">
                                     Modification d'une page 
                                 </h4>
                             </div>
 
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                            <div class="sm:w-full pr-4 pl-4 align-right">
                                 @if ($websitepage->status == 0)
                                     <a href="{{route('site.page', ['slug' => $websitepage->slug , 'type' =>'preview'])}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default">Prévisualiser</a>
                                 @endif
@@ -62,11 +75,11 @@
 
                     <div class="body">
                         {!! Form::model($websitepage,['route'=> ['websitepage.update',$websitepage->id], 'method'=>'PUT' , 'files' => 'true'] ) !!}
-                            <div class="flex flex-wrap  mb-4">
-                                <div class="md:w-2/3 pr-4 pl-4">                                    
+                            <div class="grid grid-cols-6  mb-4">
+                                <div class="col-span-4 pr-4 pl-4">                                    
                                     @if($websitepage->lng<>'fr')
-                                    <div class="flex flex-wrap  mb-4">
-                                        <div class="md:w-2/3 pr-4 pl-4">
+                                    <div class="grid grid-cols-6  mb-4">
+                                        <div class="col-span-4 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('translate_id',"Page traduite de * :")}}
                                                 {{ Form::select('translate_id',$websitepages_fr,null,array('class'=>'form-control minimal'))}}
@@ -75,20 +88,20 @@
                                     </div>
                                     @endif
 
-                                    <div class="flex flex-wrap  mb-4">
-                                        <div class="md:w-2/3 pr-4 pl-4">                                      
+                                    <div class="grid grid-cols-7  mb-4">
+                                        <div class="col-span-5 pr-4 pl-4">                                      
                                             <div class="form-line">                                      
                                                 {{ Form::label('name',"Name * :")}}                                      
                                                 {{ Form::text('name',null,array('class'=>'form-control' , 'placeholder' => 'Example : Homepage', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>                                      
                                         </div>                                  
-                                        <div class="md:w-1/3 pr-4 pl-4">                                  
+                                        <div class="col-span-2 pr-4 pl-4">                                  
                                             <div class="form-line">                                  
-                                                {{ Form::label('slug',"Slug url * :")}}                                  
+                                                {{ Form::label('slug',"Slug url * :")}}                               
                                                 {{ Form::text('slug',null,array('class'=>'form-control' , 'placeholder' => 'Example : ma-belle-page', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>                                  
                                         </div>                                  
-                                        <div class="md:w-full pr-4 pl-4">                                        
+                                        <div class="col-span-7 pr-4 pl-4">                                        
                                             <div class="form-line">                                        
                                                 {{ Form::label('title',"Titre de la page (balise H1) :")}}                                        
                                                 {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => 'Example : Bienvenu sur notre site', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
@@ -97,53 +110,53 @@
                                     </div>
 
 
-                                    <div class="flex flex-wrap  mb-4" >
-                                        <div class="md:w-1/2 pr-4 pl-4">
+                                    <div class="grid grid-cols-6  mb-4" >
+                                        <div class="col-span-3 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('meta_title',"Balise metatitle : ")}}
                                                 {{ Form::text('meta_title',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>
                                         </div>
-                                        <div class="md:w-1/2 pr-4 pl-4">
+                                        <div class="col-span-3 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('meta_desc',"Balise metadesc : ")}}
                                                 {{ Form::text('meta_desc',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>
                                         </div>
-                                        <div class="md:w-1/2 pr-4 pl-4">
+                                        <div class="col-span-3 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('alt_img',"Description image ALT associée au titre : ")}}
                                                 {{ Form::text('alt_img',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>
                                         </div>
-                                        <div class="md:w-1/2 pr-4 pl-4">
+                                        <div class="col-span-3 pr-4 pl-4">
                                             <div class="form-line">
                                                 {{ Form::label('title_img',"Titre image SEO associée au titre : ")}}
                                                 {{ Form::text('title_img',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="flex flex-wrap  mb-4" >
-                                        <div class="md:w-full pr-4 pl-4">
+                                    <div class="grid grid-cols-6  mb-4" >
+                                        <div class="md:col-span-6 pr-4 pl-4">
                                             <h3>Bas de page : </h3>                                     
                                         </div>
-                                        <div class="md:w-1/2 pr-4 pl-4" >
+                                        <div class="col-span-3 pr-4 pl-4" >
                                             {{ Form::label('paginate',"Paginate : ")}}
                                             {{ Form::checkbox('paginate' ,NULL)}}
                                         </div>
-                                        <div class="md:w-1/2 pr-4 pl-4" >
+                                        <div class="col-span-3 pr-4 pl-4" >
                                             {{ Form::label('last_review',"Last articles : ")}}
                                             {{ Form::checkbox('last_review' ,NULL)}}
                                         </div>
                                     </div>
                                     
-                                    <div class="md:w-full pr-4 pl-4" style="margin-top:50px;">
+                                    <div class="col-span-6 pr-4 pl-4" style="margin-top:50px;">
                                         {{ Form::label('content', 'Synopsis', array('class' => 'form-label focused')) }}
                                         {{ Form::textarea('content', null, ['class' => 'trumbowyg' ]) }}
                                     </div>
                                 </div>
 
-                                <div class="md:w-1/3 pr-4 pl-4">
+                                <div class="col-span-2 pr-4 pl-4">
                                     <div class="flex flex-wrap ">
                                         <div class="md:w-full pr-4 pl-4">
                                             {{ Form::label('image',"Image associée au titre :")}}
@@ -210,12 +223,12 @@
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                     <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{Auth::user()->theme}}">
                         <div class="flex flex-wrap  clearfix">
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                            <div class="sm:w-full pr-4 pl-4">
                                 <h4 class="mb-3">
                                     Contenu (blocs)
                                 </h4>
                             </div>
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                            <div class="sm:w-full pr-4 pl-4 align-right">
                                 @if($websitepage->lng<>'fr')
                                     <a href="{{route('websitebloc.getByLang',$websitepage->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline btn-default py-3 px-4 leading-tight text-xl">Récuperer les blocs de la version FR</a>
                                 @endif
@@ -261,12 +274,12 @@
             <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                 <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{Auth::user()->theme}}">
                     <div class="flex flex-wrap  clearfix">
-                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                        <div class="sm:w-full pr-4 pl-4">
                             <h4 class="mb-3">
                                 Autres pages
                             </h4>
                         </div>
-                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                        <div class="sm:w-full pr-4 pl-4 align-right">
                             <a href="{{route('websitepage.index')}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded  no-underline btn-default py-3 px-4 leading-tight text-xl">Retour</a>
                         </div>
                     </div>
