@@ -3,6 +3,11 @@
 
 //Tailwind
 @tailwind base;
+
+[x-cloak] {
+    display: none;
+  }
+
 @tailwind components;
 @tailwind utilities;
 
@@ -12,99 +17,102 @@
 
 
 /*Style for list of bloc when edit therm or main page*/
-.elements .col-md-6 {
-    border: dashed red;
-    cursor:pointer;
-  }
+// .elements .col-md-6 {
+//     border: dashed red;
+//     cursor:pointer;
+//   }
   
-  ul.sortable {
-    width: 100%; 
-    float: left; 
-    margin: 20px 0; 
-    list-style: none; 
-    position: relative !important;
-  }
+//   ul.sortable {
+//     width: 100%; 
+//     float: left; 
+//     margin: 20px 0; 
+//     list-style: none; 
+//     position: relative !important;
+//   }
   
-  ul.sortable li {
-    height: 80px; 
-    width:100%; 
-    float: left; 
-    margin: 20px; 
-    border: 2px solid #fff; 
-    cursor: move;
-    padding-bottom:15px;
-  }
+//   ul.sortable li {
+//     height: 80px; 
+//     width:100%; 
+//     float: left; 
+//     margin: 20px; 
+//     border: 2px solid #fff; 
+//     cursor: move;
+//     padding-bottom:15px;
+//   }
   
-  ul.sortable li.placeholder {
-    width: 100%; 
-    height: 120px; 
-    float: left; 
-    background: #eee; 
-    border: 2px dashed #bbb; 
-    display: block; 
-    opacity: 0.6;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-  }
+//   ul.sortable li.placeholder {
+//     width: 100%; 
+//     height: 120px; 
+//     float: left; 
+//     background: #eee; 
+//     border: 2px dashed #bbb; 
+//     display: block; 
+//     opacity: 0.6;
+//     border-radius: 2px;
+//     -moz-border-radius: 2px;
+//     -webkit-border-radius: 2px;
+//   }
   
-  li {
-    list-style-type: none;
-  }
+//   li {
+//     list-style-type: none;
+//   }
 
 /*custom style for adim session*/
-    .top_navbar_admin{
-        background-color: ivory;
-    }
+    // .top_navbar_admin{
+    //     background-color: ivory;
+    // }
 
-    .btn_top_navbar {
-    background-color: #b065a573;
-    border-radius: 9px;
-    color:rgb(75, 67, 74);
-    padding: 1%;
-    }
+    // .btn_top_navbar {
+    // background-color: #b065a573;
+    // border-radius: 9px;
+    // color:rgb(75, 67, 74);
+    // padding: 1%;
+    // }
 
-    .btn_top_navbar:hover {
-        background-color: pink;
-        color: rgba(0, 0, 0, 0.7);
-    }
+    // .btn_top_navbar:hover {
+    //     background-color: pink;
+    //     color: rgba(0, 0, 0, 0.7);
+    // }
 
-    #breadcontainer {
-        margin: 3% 0 0px 0px;
-        background-color: ivory;
-        height: 60px;
-    }
+    // #breadcontainer {
+    //     margin: 3% 0 0px 0px;
+    //     background-color: ivory;
+    //     height: 60px;
+    // }
 
-    #websitepage{
-        border: 1px dashed grey;
-    }
-    thead{
-        background-color:#c8a7e473;
-    }
-    th{
-        border: 1px solid black;
-        text-align: center;
-    }
-    table>tbody>tr:nth-child(even) {
-        background-color: #f5edee;
-    }
-    table>tbody>tr:nth-child(odd) {
-        background-color: #fff5f6;
-    }
-    .index_icon {
-        font-size: 26px !important;
-        color: rgb(204, 130, 238);
-    }
+    // #websitepage{
+    //     border: 1px dashed grey;
+    // }
+    // thead{
+    //     background-color:#c8a7e473;
+    // }
+    // th{
+    //     border: 1px solid black;
+    //     text-align: center;
+    // }
+    // table>tbody>tr:nth-child(even) {
+    //     background-color: #f5edee;
+    // }
+    // table>tbody>tr:nth-child(odd) {
+    //     background-color: #fff5f6;
+    // }
+    // .index_icon {
+    //     font-size: 26px !important;
+    //     color: rgb(204, 130, 238);
+    // }
 
-    //Sidebar style//
-    .list li:hover{
-        background-color:rgba(200,167,228,.45098039215686275);
-    }
+    // //Sidebar style//
+    // .list li:hover{
+    //     background-color:rgba(200,167,228,.45098039215686275);
+    // }
 
-    .material-icons{
+    .material-icons,
+    svg
+    {
         transition: 0.3s ease-out;
     }
-    .material-icons:hover {
+    .material-icons:hover,
+    svg:hover {
         transform: scale(1.35);
     }
 
