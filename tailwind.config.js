@@ -1,6 +1,8 @@
 // tailwind.config.js
 const plugin = require('tailwindcss/plugin')
 
+const colors = require('tailwindcss/colors')
+
 const defaultTheme = require('tailwindcss/defaultTheme')
 
 module.exports = {
@@ -27,6 +29,7 @@ module.exports = {
                 white:{
                     450: '#f2f2f2'
                 },
+                cyan: colors.cyan,
             },
         },
     },
