@@ -38,7 +38,7 @@ li {
 @endsection
 
 @section('content')
-  <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
+  <div class="container mx-auto sm:px-4 max-w-full">
     <div id="breadcontainer">
       <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
         <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
@@ -49,15 +49,15 @@ li {
     </div>
       <div class="flex flex-wrap  clearfix">
     
-      <div class="md:w-full pr-4 pl-4 lg:w-3/4 pr-4 pl-4">
+      <div class="md:w-full pr-4 pl-4 lg:w-3/4">
 
         <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
           <div class="header">
                     <div class="flex flex-wrap  clearfix">
-                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                        <div class="sm:w-full pr-4 pl-4">
                           <h2>Modification d'une slide</h2>
                         </div>
-                        <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                        <div class="sm:w-full pr-4 pl-4 align-right">
                           <a href="{{route('slider.edit',$slider->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600"><i class="material-icons">add</i> Ajouter une slide</a>
                         </div>
                     </div>
@@ -99,7 +99,7 @@ li {
         </div>
       </div>
     </div>
-          <div class="lg:w-1/4 pr-4 pl-4 md:w-full pr-4 pl-4">
+          <div class="lg:w-1/4 pr-4 pl-4 md:w-full">
             <div class="flex flex-wrap  mb-4">
               <div class="md:w-full pr-4 pl-4">
                   <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
@@ -135,7 +135,7 @@ li {
                         </div>
                       </div>
 
-                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 block w-full" type="submit">Modifier</button>
+                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 w-full" type="submit">Modifier</button>
 
                      {!! Form::close() !!}
                     </div>
