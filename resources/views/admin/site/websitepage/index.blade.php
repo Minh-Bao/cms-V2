@@ -17,19 +17,19 @@
 
 
 @include('admin._interface.header._breadcrumb', [
-        'bread' => [
-            [
-                'icon' => '<i class="material-icons">dashboard</i>',
-                'url'  => '{{url("/admin")}}',
-                'name' => ' > Articles'
-            ],
-            [
-                'icon' => '<i class="material-icons">description</i>',
-                'url'  => '{{url("/")}}',
-                'name' => ' > Page'
-            ]
+    'bread' => [
+        [
+            'icon' => '<i class="material-icons">dashboard</i>',
+            'url'  => '{{url("/admin")}}',
+            'name' => 'ARTICLES'
+        ],
+        [
+            'icon' => '<i class="material-icons">description</i>',
+            'url'  => '{{url("/")}}',
+            'name' => 'PAGE'
         ]
-    ])
+    ]
+])
 
 
 <div class="container mx-auto sm:px-4 max-w-full">
@@ -41,11 +41,11 @@
                     <div class="flex flex-wrap  clearfix">
                         <div class="sm:w-full pr-4 pl-4">
                             <h3 class="mb-3">
-                            Nombre de pages :  <div style="margin-left:1%;" class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded rounded-full py-1 px-3 bg-teal-500 text-white hover:bg-teal-600 ">{{$websitepages->count()}}</div>
+                            Nombre de pages :  <div style="margin-left:1%;" class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded-full py-1 px-3 bg-blue-400 text-white hover:bg-blue-600 ">{{$websitepages->count()}}</div>
                             </h3>
                         </div>
                         <a href="{{route('websitepage.create')}}" 
-                            class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
+                            class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
                             Ajouter une page
                         </a>
                     </div>
@@ -55,7 +55,7 @@
                         <table class="min-w-full">
                         <thead>
                             <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                <span class="lg:pl-2">Nom de la page :</span>
+                                Nom de la page :
                             </th>
                             <th
                                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -82,13 +82,13 @@
                                         {{ $websitepage->name }} 
                                     </td>
                                     <td
-                                    class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-center">
+                                        class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-center">
                                         @if($websitepage->status == 0)<i class="material-icons">construction</i>@endif
                                         @if($websitepage->status == 1)<i class="material-icons">save</i>@endif
                                         @if($websitepage->status == 2)<i class="material-icons">schedule</i>@endif
                                     </td>
                                     <td
-                                    class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-center">
+                                        class="hidden md:table-cell  whitespace-nowrap text-sm text-gray-500 text-center">
                                         @php if($websitepage->status == 1){
                                                 $disable = ["disabled" => "disabled"]; 
                                                 $date= $websitepage->created_at;
