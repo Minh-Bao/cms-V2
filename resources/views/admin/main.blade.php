@@ -10,7 +10,7 @@
     <body id="body" class="">
     
         <div class="h-screen flex overflow-hidden bg-white"
-        x-data=" { open: true }">
+        x-data=" { open: false }">
 
             @include('admin._interface._sidebar')
 
@@ -23,7 +23,7 @@
                     <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
                     <button
                         @click="open = !open"
-                        class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-purple-500 lg:hidden">
+                        class="px-4 border-r border-gray-200 text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-pink-500 lg:hidden">
                         <span class="sr-only">Open sidebar</span>
                         <!-- Heroicon name: outline/menu-alt-1 -->
                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
