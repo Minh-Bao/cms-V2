@@ -143,7 +143,7 @@
                             <div>
                                 <button type="button"
                                     @click="open = !open"
-                                    class="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-purple-500"
+                                    class="group w-full bg-gray-100 rounded-md px-3.5 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-pink-300"
                                     id="options-menu" aria-expanded="false" aria-haspopup="true">
                                     <span class="flex w-full justify-between items-center">
                                         <span class="flex min-w-0 items-center justify-between space-x-3">
@@ -151,9 +151,10 @@
                                                 src="https://images.unsplash.com/photo-1502685104226-ee32379fefbe?ixlib=rb-1.2.1&ixqx=BweQ1V4IZi&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80"
                                                 alt="">
                                             <span class="flex-1 min-w-0">
-                                                <span class="text-gray-900 text-sm font-medium truncate">Jessy
-                                                    Schwarz</span>
-                                                <span class="text-gray-500 text-sm truncate">@jessyschwarz</span>
+                                                <span class="text-gray-900 text-sm font-medium truncate">
+                                                    {{Auth::user()->name}} 
+                                                    {{Auth::user()->firstname}}</span>
+                                                <span class="text-gray-500 text-sm truncate">@-{{Auth::user()->name}}</span>
                                             </span>
                                         </span>
                                         <!-- Heroicon name: solid/selector -->
@@ -197,10 +198,15 @@
                                         class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                         role="menuitem">Support</a>
                                 </div>
+                                
                                 <div class="py-1" role="none">
-                                    <a href="#"
-                                        class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                        role="menuitem">Logout</a>
+                                    <a href=""
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                        role="menuitem">
+                                    <!-- Heroicon name: outline/clock -->
+                                    Logout
+                                </a>
                                 </div>
                             </div> 
                         </div>
@@ -219,7 +225,7 @@
                                     </svg>
                                 </div>
                                 <input type="text" name="search" id="search"
-                                    class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-9 sm:text-sm border-gray-300 rounded-md"
+                                    class="focus:ring-pink-500 focus:border-pink-500 block w-full pl-9 sm:text-sm border-gray-300 rounded-md"
                                     placeholder="Search">
                             </div>
                         </div>
@@ -291,7 +297,7 @@
                                     Catalogue
                                 </a>
 
-                                <a href=""
+                                {{-- <a href=""
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                     <!-- Heroicon name: outline/clock -->
@@ -303,7 +309,7 @@
                                         </path>
                                     </svg>
                                     Logout
-                                </a>
+                                </a> --}}
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
 
 
