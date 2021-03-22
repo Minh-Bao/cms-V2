@@ -8,7 +8,7 @@
                 <img class="h-20 w-auto" src="{{asset('images/logo-black.png')}}"
                     alt="logo {{config('myconfig.site_owner')}}">
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
-                    Connexion
+                    Connectez vous...
                 </h2>
                 <p class="mt-2 text-sm text-gray-600 max-w">
                     Ou
@@ -21,6 +21,8 @@
             <div class="mt-8">
                 <div class="mt-6">
                     <form method="POST" action="{{ route('login') }}" class="space-y-6">
+                        @csrf
+
                         <div>
                             <label for="email" class="block text-sm font-medium text-gray-700">
                                 Adresse email
