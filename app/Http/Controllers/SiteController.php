@@ -11,7 +11,7 @@ use App\Http\Controllers\Site\WebsitepageController;
 use App\Repositories\SliderImageRepositoryInterface;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
-
+use Illuminate\Database\Eloquent\Collection;
 
 class SiteController extends Controller
 {
@@ -39,7 +39,7 @@ class SiteController extends Controller
      */
     public function index(WebsitepageController $website)
     {  
-        //Check if scheduled date page is passed or is now, then update status
+        //Check if scheduled date page has passed or is now, then update status
         $website->checkDate();
 
         /*Declare a array of all the variable used in the view */
@@ -188,7 +188,7 @@ class SiteController extends Controller
      * @param Array $exclude_pages
      * @return collection
      */
-    public function bestpage($exclude_pages){
+    public function bestpage(Array $exclude_pages): Collection{
          $bestpage =  $this->page->getWhereNotInAndOrder('slug',$exclude_pages, 'count', 'DESC')->limit(4)->get();
 
         //clean mini thumbnail directory
