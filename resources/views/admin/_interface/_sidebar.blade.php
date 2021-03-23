@@ -177,7 +177,7 @@
                                 x-transition:leave="transition ease-in duration-75"
                                 x-transition:leave-start="transform opacity-100 scale-100"
                                 x-transition:leave-end="transform opacity-0 scale-95"
-                                class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg bg-gray-400 ring-1 ring-black ring-opacity-5 divide-y divide-gray-900 focus:outline-none"
+                                class="z-10 mx-3 origin-top absolute right-0 left-0 mt-1 rounded-md shadow-lg opacity-90 bg-gray-50 ring-1 ring-black ring-opacity-5 divide-y divide-gray-900 focus:outline-none"
                                 role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                                 <div class="py-1" role="none">
                                     <a href="#"
