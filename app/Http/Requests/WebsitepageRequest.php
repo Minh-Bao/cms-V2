@@ -34,7 +34,8 @@ class WebsitepageRequest extends FormRequest
                 'meta_title'        => 'required|min:2|max:75',
                 'meta_desc'         => 'required|min:2|max:200'
             ];
-            }
+        }
+        
         return [
             'name'              => 'required|min:2|max:200',
             'slug'              => 'required|min:2|max:200|unique:sitepages',
