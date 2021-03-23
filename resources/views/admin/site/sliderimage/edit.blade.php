@@ -7,11 +7,11 @@
   {!! Html::style('plugins/kickstart/slim.min.css') !!}
 
 <style>
-/* ------------------------
+/* 
 *
-*     ul#Sortable Gallery
+* ul#Sortable Gallery
 *
-*  -------------------------- */
+**/
 ul.sortable {width: 100%; float: left; margin: 20px 0; list-style: none; position: relative !important;}
 ul.sortable li {height: 180px; width:175px; float: left; margin: 0 7px 7px 0; border: 2px solid #fff; cursor: move;padding-bottom:15px;}
 ul.sortable li img {height: 100%; float: left;}
@@ -19,9 +19,9 @@ ul.sortable li.ui-sortable-helper {border-color: #3498db;}
 
 
 ul.sortable li.placeholder {width: 250px; height: 140px; float: left; background: #eee; border: 2px dashed #bbb; display: block; opacity: 0.6;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
 }
 
 .ribbon {
@@ -29,7 +29,7 @@ ul.sortable li.placeholder {width: 250px; height: 140px; float: left; background
 }
 
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 </style>
@@ -41,7 +41,7 @@ li {
   <div class="container mx-auto sm:px-4 max-w-full">
     <div id="breadcontainer">
       <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
-        <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
+        <li><i class="material-icons material-icons text-gray-900 px-2 rounded-md">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
         <li><i class="material-icons">public</i>  Site</li>
         <li><i class="material-icons">photo_library</i>  <a href="{{route('slider.index')}}">Sliders</a></li>
         <li class="active">Gestion des Slides</li>

@@ -9,7 +9,7 @@
 @section('content')
 
 {!! Form::open(['route' => 'slider.store' ,'data-parsley-validate' =>'','files'=>true  ]) !!}
-    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
+    <div class="container mx-auto sm:px-4 max-w-full">
       <div id="breadcontainer">
           <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
               <li><i class="material-icons">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
@@ -18,14 +18,14 @@
           </ol>
       </div>
         <div class="flex flex-wrap  clearfix">
-            <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-full pr-4 pl-4 lg:w-3/4 pr-4 pl-4">
+            <div class="sm:w-full pr-4 pl-4 md:w-full lg:w-3/4">
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                     <div class="header">
                         <div class="flex flex-wrap  clearfix">
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4">
+                            <div class="sm:w-full pr-4 pl-4">
                                 <h2>Création d'un slider</h2>
                             </div>
-                            <div class="sm:w-full pr-4 pl-4 sm:w-1/2 pr-4 pl-4 align-right">
+                            <div class="sm:w-full pr-4 pl-4 align-right">
                             </div>
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                     {{ Form::submit('Enregistrer', array('class'=>'btn btn-lg btn-primary' , 'id'=>'body' , 'style'=>'margin-top:10px;')) }}
                 </div>
             </div>
-        <div class="sm:w-full pr-4 pl-4 sm:w-full pr-4 pl-4 md:w-1/4 pr-4 pl-4 lg:w-1/4 pr-4 pl-4"></div>
+        <div class="sm:w-full pr-4 md:w-1/4 lg:w-1/4 pl-4"></div>
         </div>
     </div>
 {!! Form::close() !!}
