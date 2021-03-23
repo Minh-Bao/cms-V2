@@ -4,8 +4,8 @@
 
 @section('stylesheets')
 
-  <!-- DataTables -->
-  {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
+    <!-- DataTables -->
+    {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
 
 
 @endsection
@@ -19,35 +19,37 @@
 @include('admin._interface.header._breadcrumb', [
     'bread' => [
         [
-            'icon' => '<i class="material-icons">dashboard</i>',
+            'icon' => 'dashboard',
             'url'  => '{{url("/admin")}}',
-            'name' => 'ARTICLES'
+            'name' => 'Articles'
         ],
         [
-            'icon' => '<i class="material-icons">description</i>',
+            'icon' => 'description',
             'url'  => '{{url("/")}}',
-            'name' => 'PAGE'
+            'name' => 'Page'
         ]
     ]
 ])
 
 
 <div class="container mx-auto sm:px-4 max-w-full">
-    
     <div class="flex flex-wrap  clearfix">
         <div class="sm:w-full pr-4 pl-4 md:w-full lg:w-full">
             <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                 <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 bg-ivory card-header-{{Auth::user()->theme}}">
-                    <div class="flex flex-wrap  clearfix">
-                        <div class="sm:w-full pr-4 pl-4">
+                    <div class="grid grid-cols-6">
+                        <div class="w-full col-span-3">
                             <h3 class="mb-3">
                             Nombre de pages :  <div style="margin-left:1%;" class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded-full py-1 px-3 bg-blue-400 text-white hover:bg-blue-600 ">{{$websitepages->count()}}</div>
                             </h3>
                         </div>
-                        <a href="{{route('websitepage.create')}}" 
-                            class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
-                            Ajouter une page
-                        </a>
+                        <div class="col-span-3 text-right">
+                            <a href="{{route('websitepage.create')}}" 
+                                class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
+                                Ajouter une page
+                            </a>
+
+                        </div>
                     </div>
                 </div>
                 <div class="hidden mt-8 sm:block">
