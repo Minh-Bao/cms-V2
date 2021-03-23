@@ -8,9 +8,8 @@
 
 @section('stylesheets')
 
-  <!-- DataTables -->
-
-  {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
+    <!-- DataTables -->
+    {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
 
 @endsection
 
@@ -21,27 +20,26 @@
 @include('admin._interface.header._breadcrumb', [
         'bread' => [
             [
-                'icon' => '<i class="material-icons">dashboard</i>',
+                'icon' => 'dashboard',
                 'url'  => '{{url("/admin")}}',
-                'name' => ' > Accueil'
+                'name' => 'Accueil'
             ],
             [
-                'icon' => '<i class="material-icons">public</i>',
+                'icon' => 'public',
                 'url'  => '{{url("/")}}',
-                'name' => ' > Site'
+                'name' => 'Site'
             ],
             [
-                'icon' => '<i class="material-icons">slideshow</i>',
+                'icon' => 'slideshow',
                 'url'  => '{{url("/")}}',
-                'name' => ' > Sliders'
+                'name' => 'SLIDERS'
             ]
         ]
     ])
 
 
 
-  <div class="container mx-auto sm:px-4 max-w-full">
-
+<div class="container mx-auto sm:px-4 max-w-full">
     <div class="flex flex-wrap  clearfix">
         <div class="sm:w-full pr-4 pl-4 md:w-full lg:w-full">
             <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
