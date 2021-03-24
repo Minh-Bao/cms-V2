@@ -7,15 +7,21 @@
     <!-- DataTables -->
     {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
 
+    <style>
+        [type="date"]{
+            border-width: 0 !important;
+        }
+    </style>
+
 
 @endsection
 
-<!-- Header -->
-
+<!------------------------------Section content----------------------------------------->
 
 @section('content')
 
 
+<!------------------------------Breadcrumb---------------------------------------------->
 @include('admin._interface.header._breadcrumb', [
     'bread' => [
         [
