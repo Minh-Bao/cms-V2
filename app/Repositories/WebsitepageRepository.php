@@ -82,6 +82,23 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
     }
 
     /**
+     * retrieve a collection with where clause by a specific field and its value
+     * and orderby clause
+     * @param string $field specified field of table
+     * @param mixed $value value of the field
+     * @param string $order
+     * @param string $direction
+     * @return eloquent
+     */
+    public function WhereAndOrder($field, $value, $order, $direction){
+        if($direction == null){
+            return Websitepage::where($field, $value)->orderBy($order);
+        }else{
+            return Websitepage::where($field, $value)->orderBy($order, $direction);
+        }
+    }
+
+    /**
      * retrieve all published pages (status=1) with whereNotIn clause 
      * 
      * @param string $field

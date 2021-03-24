@@ -46,6 +46,17 @@ interface WebsitepageRepositoryInterface
      */
     public function getWhereAndOrder($field, $value, $order, $direction);
 
+    /**
+     * retrieve a collection with where clause by a specific field and its value
+     * and orderby clause
+     * @param string $field specified field of table
+     * @param mixed $value value of the field
+     * @param string $order
+     * @param string $direction
+     * @return eloquent
+     */
+    public function WhereAndOrder($field, $value, $order, $direction);
+
      /**
      * retrieve all published pages (status=1) with whereNotIn clause 
      * 
