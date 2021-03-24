@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.main', ['sidebar' => "articles"])
 
 
 

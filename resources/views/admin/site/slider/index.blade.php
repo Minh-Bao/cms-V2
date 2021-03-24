@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.main', ['sidebar' => "sliders"])
 
 
 
@@ -18,24 +18,24 @@
 @section('content')
 
 @include('admin._interface.header._breadcrumb', [
-        'bread' => [
-            [
-                'icon' => 'dashboard',
-                'url'  => '{{url("/admin")}}',
-                'name' => 'Accueil'
-            ],
-            [
-                'icon' => 'public',
-                'url'  => '{{url("/")}}',
-                'name' => 'Site'
-            ],
-            [
-                'icon' => 'slideshow',
-                'url'  => '{{url("/")}}',
-                'name' => 'SLIDERS'
-            ]
+    'bread' => [
+        [
+            'icon' => 'dashboard',
+            'url'  => '{{url("/admin")}}',
+            'name' => 'Accueil'
+        ],
+        [
+            'icon' => 'public',
+            'url'  => '{{url("/")}}',
+            'name' => 'Site'
+        ],
+        [
+            'icon' => 'slideshow',
+            'url'  => '{{url("/")}}',
+            'name' => 'SLIDERS'
         ]
-    ])
+    ]
+])
 
 
 

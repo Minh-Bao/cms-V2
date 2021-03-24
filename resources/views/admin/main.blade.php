@@ -12,7 +12,7 @@
         <div class="h-screen flex overflow-hidden bg-white"
         x-data=" { open: false }">
 
-            @include('admin._interface._sidebar')
+            @include('admin._interface._sidebar', ['active' => $sidebar])
 
             <!-- Main column -->
             <div class="flex flex-col w-0 flex-1 overflow-hidden">
