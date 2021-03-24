@@ -136,7 +136,7 @@
                     </div>
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="h-0 flex-1 flex flex-col overflow-y-auto"
-                    >
+                    >   
                         <!-- User account dropdown -->
                         <div class="px-3 mt-6 relative inline-block text-left"
                             x-data=" { open: false }">
@@ -234,8 +234,8 @@
                             <div class="space-y-1">
                                 <!-- Current: "bg-gray-200 text-gray-900", Default: "text-gray-700 hover:text-gray-900 hover:bg-gray-50" -->
                                 <a href="{{ route('admin.index') }}"
-                                    class="bg-gray-200 text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md
-                                            {{{ (Request::is('admin/dashboard') ? 'active' : '') }}} {{{ (Request::is('admin/dashboard/*') ? 'active' : '') }}}">
+                                    class=" text-gray-900 group flex items-center hover:bg-purple-100 px-2 py-2 text-sm font-medium rounded-md
+                                    @if($active == "dashboard") bg-gray-200 @endif">
                                     <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
                                     <!-- Heroicon name: outline/home -->
                                     <svg class="text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -247,8 +247,8 @@
                                 </a>
                                 
                                 <a href="{{route('websitepage.index')}}"
-                                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md
-                                            {{{ (Request::is('admin/websitepage') ? 'active' : '') }}} {{{ (Request::is('admin/websitepage/*') ? 'active' : '') }}}">
+                                    class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md
+                                    @if($active == "articles") bg-gray-200  @endif">
                                     <!-- Heroicon name: outline/view-list -->
                                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -260,8 +260,8 @@
                                 </a>
 
                                 <a href="{{route('slider.index')}}"
-                                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md
-                                    {{{ (Request::is('admin/site/slider') ? 'active' : '') }}} {{{ (Request::is('admin/site/slider/*') ? 'active' : '') }}} {{{ (Request::is('admin/site/sliderimage/*') ? 'active' : '') }}}">
+                                    class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md
+                                    @if($active == "sliders") bg-gray-200 @endif">
                                     <!-- Heroicon name: outline/view-list -->
                                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" 
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24" 
@@ -274,7 +274,7 @@
                                 </a>
     
                                 <a href="#"
-                                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                    class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                     <!-- Heroicon name: outline/clock -->
                                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -286,7 +286,7 @@
                                 </a>
                                
                                 <a href="#"
-                                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                    class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                     <!-- Heroicon name: outline/clock -->
                                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
