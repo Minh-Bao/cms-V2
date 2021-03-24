@@ -15,12 +15,12 @@ Use of Tall stack
 ## Stack (Tall)
 - Laravel 8  
 - Tailwind css  
-- AlpinJS  
+- AlpineJS  
 - Livewire  
 - Compile sass and js with Mix ...
 
 ## Todo
-- Rewrite Front and dmin panel with tailwind and alpine...  
+- Rewrite Front and admin panel with tailwind and alpine...  
 - Try to use Livewire to create blocs and separate logic controller for each "bloc module"  
 - Replace carroussel (livewire or tailwind...?)   
 - Replace front wyswig modal edition (livewire or tailwind...?)   
