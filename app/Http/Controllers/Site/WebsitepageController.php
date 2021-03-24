@@ -95,7 +95,7 @@ class WebsitepageController extends Controller
         $websitepage = $this->page->findOrError($id);
         $sliders = $this->slider->getAllInArray();
         $blocs = $this->bloc->getWhereAndOrder('sitepages_id', $id, 'sort', null);
-        $websitepages = $this->page->getWhereAndOrder('lng', 'fr', 'title', null);
+        $websitepages = $this->page->WhereAndOrder('lng', 'fr', 'title', null)->paginate(10);
         $websitepages_fr = $this->page->arrayWhereLang('fr');
 
         return view('admin.site.websitepage.edit',compact('websitepage','sliders','blocs','websitepages','websitepages_fr'));
