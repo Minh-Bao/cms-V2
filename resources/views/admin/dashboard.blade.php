@@ -320,7 +320,7 @@
                                                 <a href="#" class="truncate hover:text-gray-600">
                                                     <span>
                                                         Table of content 
-                                                        <span class="text-gray-500 font-normal">in Engineering</span>
+                                                        <span class="text-gray-500 font-normal">Up to date</span>
                                                     </span>
                                                 </a>
                                             </div>
@@ -575,7 +575,7 @@
                                                 <a href="#" class="truncate hover:text-gray-600">
                                                     <span>
                                                         Work on sound
-                                                        <span class="text-gray-500 font-normal">in Engineering</span>
+                                                        <span class="text-gray-500 font-normal">Finished</span>
                                                     </span>
                                                 </a>
                                             </div>
