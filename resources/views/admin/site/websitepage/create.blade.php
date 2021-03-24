@@ -30,120 +30,146 @@
     'bread' => [
         [
             'icon' => 'dashboard',
-            'url'  => '{{url("/admin")}}',
-            'name' => 'ACCUEIL'
+            'url'  => 'admin',
+            'name' => 'Accueil'
         ],
         [
             'icon' => 'description',
-            'url'  => '{{url("/")}}',
-            'name' => 'PAGES'
+            'url'  => '',
+            'name' => 'Pages'
         ],
         [
             'icon' => 'restore_page',
-            'url'  => '{{url("/")}}',
-            'name' => "CREATION D'UNE PAGE"
+            'url'  => '',
+            'name' => "Création d'un page"
         ]
     ]
 ])
 
     <div class="container mx-auto sm:px-4 max-w-full">
-        <div id="breadcontainer">
-            <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
-                <li><i class="material-icons">dashboard</i> <a href="{{ url('') }}/admin"> Accueil</a></li>
-                <li class=""><i class="material-icons">description</i> <a href="{{ route('websitepage.index') }}">Pages</a></li>
-                <li class="active"><i class="material-icons">restore_page</i> Creéation d'une page</li>
-            </ol>
-        </div>
 
         <div class="flex flex-wrap  clearfix">
-            <div class="sm:w-full pr-4 pl-4 md:w-full lg:w-full xl:w-full">
-                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
-                    <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 card-header-{{ Auth::user()->theme }}">
-                        <div class="flex flex-wrap  clearfix">
-                            <div class="sm:w-full pr-4 pl-4">
-                                <h4 class="mb-3">Modification d'une page</h4>
+            <div class="w-full pr-4 pl-4">
+                <div class="flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
+                    <div
+                        class="py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
+                        <div class="grid grid-cols-6  clearfix">
+                            <div class="w-full col-span-3 ">
+                                <h4 class="underline text-gray-500">
+                                    Création d'une page
+                                </h4>
                             </div>
-                            <div class="sm:w-full pr-4 pl-4 align-right"></div>
                         </div>
                     </div>
-
-                    <div class="body">                        
+    
+                    <div>
                         {!! Form::open(['route' => 'websitepage.store', 'data-parsley-validate' => '', 'files' => true]) !!}
-                        <div class="flex flex-wrap  mb-4">
-                            <div class="md:w-2/3 pr-4 pl-4">
-                                <div class="flex flex-wrap  mb-4">
-                                    <div class="md:w-2/3 pr-4 pl-4">                                      
-                                        <div class="form-line">                                      
-                                            {{ Form::label('name',"Name * :")}}                                      
-                                            {{ Form::text('name',null,array('class'=>'form-control' , 'placeholder' => 'Example : Homepage', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>                                      
-                                    </div>                                  
-                                    <div class="md:w-1/3 pr-4 pl-4">                                  
-                                        <div class="form-line">                                  
-                                            {{ Form::label('slug',"Slug url * :")}}                                  
-                                            {{ Form::text('slug',null,array('class'=>'form-control' , 'placeholder' => 'Example : ma-belle-page', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>                                  
-                                    </div>                                  
-                                    <div class="md:w-full pr-4 pl-4">                                        
-                                        <div class="form-line">                                        
-                                            {{ Form::label('title',"Titre de la page (balise H1) : ")}}                                        
-                                            {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => 'Example : Bienvenu sur notre site', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>                                        
-                                    </div>                                 
-                                </div>
-
-
-                                <div class="flex flex-wrap  mb-4" >
-                                    <div class="md:w-1/2 pr-4 pl-4">
-                                        <div class="form-line">
-                                            {{ Form::label('meta_title',"Balise metatitle : ")}}
-                                            {{ Form::text('meta_title',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
+                    
+                        <div class="grid grid-cols-3  mb-4">
+                            <div class="col-span-2">
+                                <div class=" sm:rounded-md sm:overflow-hidden">
+                                    <div class="bg-white py-6 px-4 space-y-6 sm:p-6">
+                                        <div class="grid grid-cols-6 gap-6">
+                                            <div class="col-span-6 sm:col-span-4">
+                                                <label for="name" class="block text-sm font-medium text-gray-700">
+                                                    Name * :</label>
+                                                <input type="text" name="name" id="name" 
+                                                    placeholder="Ex: Titre de la page"
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-2">
+                                                <label for="slug" class="block text-sm font-medium text-gray-700">
+                                                    Slug url * :</label>
+                                                <input type="text" name="slug" id="slug" 
+                                                    placeholder="Ex: Tpage-de-bateau"
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 ">
+                                                <label for="title" class="block text-sm font-medium text-gray-700">
+                                                    Titre de la page (balise H1) :
+                                                </label>
+                                                <input type="text" name="title" id="title" 
+                                                    placeholder="Ex: Titre de la page en gros..."
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="meta_title"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Balise metatitle :
+                                                </label>
+                                                <input type="text" name="meta_title" id="meta_title"
+                                                    placeholder="Ex: Blog_nc..."
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="meta_desc"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Balise metadesc :
+                                                </label>
+                                                <input type="text" name="meta_desc" id="meta_desc"
+                                                    placeholder="Ex: Ceci est le blog de NC..."
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="alt_img"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Description image ALT associée au titre : </label>
+                                                <input type="text" name="alt_img" id="alt_img"
+                                                    placeholder="Ex: Image de bateau..."
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="title_img" class="block text-sm font-medium text-gray-700">
+                                                    Titre image SEO associée au titre : </label>
+                                                <input type="text" name="title_img" id="title_img"
+                                                    placeholder="Ex: Titre de mon image..."
+                                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="paginate"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Paginate : 
+                                                </label>
+                                                <input type="hidden" name="paginate" value='off'>
+                                                <input type="checkbox" name="paginate" id="paginate"
+                                                    class="mt-1 block  border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                    >
+                                            </div>
+    
+                                            <div class="col-span-6 sm:col-span-3">
+                                                <label for="last_review"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Last articles : 
+                                                </label>
+                                                <input type="hidden" name="last_review" value='off'>
+                                                <input type="checkbox" name="last_review" id="last_review"
+                                                    class="mt-1 block border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                   >
+                                            </div>
+    
+                                            <div class="col-span-6">
+                                                <label for="content"
+                                                    class="block text-sm font-medium text-gray-700">
+                                                    Synopsis :
+                                                </label>
+                                                {{ Form::textarea('content', null, ['class' => 'trumbowyg' ]) }}
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="md:w-1/2 pr-4 pl-4">
-                                        <div class="form-line">
-                                            {{ Form::label('meta_desc',"Balise metadesc : ")}}
-                                            {{ Form::text('meta_desc',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>
-                                    </div>
-                                    <div class="md:w-1/2 pr-4 pl-4">
-                                        <div class="form-line">
-                                            {{ Form::label('alt_img',"Description image ALT associée au titre : ")}}
-                                            {{ Form::text('alt_img',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>
-                                    </div>
-                                    <div class="md:w-1/2 pr-4 pl-4">
-                                        <div class="form-line">
-                                            {{ Form::label('title_img',"Titre image SEO associée au titre : ")}}
-                                            {{ Form::text('title_img',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'200' ))}}
-                                        </div>
-                                    </div>
-                                </div>   
-                                <div class="flex flex-wrap  mb-4" >
-                                    <div class="md:w-full pr-4 pl-4">
-                                        <h3>Bas de page : </h3>                                     
-                                    </div>
-                                    <div class="md:w-1/2 pr-4 pl-4" >
-                                        {{ Form::label('paginate',"Paginate : ")}}
-                                        {{ Form::checkbox('paginate' ,NULL)}}
-                                    </div>
-                                    <div class="md:w-1/2 pr-4 pl-4" >
-                                        {{ Form::label('last_review',"Last articles : ")}}
-                                        {{ Form::checkbox('last_review' ,NULL)}}
-                                    </div>
-                                </div>
-
-
-                                <div class="md:w-full pr-4 pl-4">
-                                    {{ Form::label('content', 'Synopsis', ['class' => 'form-label focused']) }}
-                                    {{ Form::textarea('content', null, ['class' => 'trumbowyg']) }}
                                 </div>
                             </div>
-
-                            <div class="md:w-1/3 pr-4 pl-4">
+    
+                            <div class="col-span-1 ">
                                 <div class="flex flex-wrap ">
                                     <div class="md:w-full pr-4 pl-4">
-                                        {{ Form::label('image', 'Image associée au titre :') }}
+                                        {{ Form::label('image', 'Image associée au titre :', array('class' => 'block text-sm font-medium text-gray-700 mb-2 mt-4')) }}
                                         <div class="slim" 
                                             data-size="1440,450" 
                                             data-force-size="1440,450" 
@@ -158,7 +184,7 @@
                                 </div>
                                 <div class="flex flex-wrap ">
                                     <div class="md:w-full pr-4 pl-4">
-                                        {{ Form::label('thumbnail',"Thumbnail* :",array('required'=>'' ))}}
+                                        {{ Form::label('thumbnail',"Thumbnail* :",array('class'=>'block text-sm font-medium text-gray-700 mb-2 mt-4' ))}}
                                         <div class="slim"
                                             data-size="450,300"
                                             data-force-size="300,200"
@@ -171,32 +197,31 @@
                                         </div>
                                     </div>
                                 </div>
-
+    
                                 <div class="flex flex-wrap ">
                                     <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
-                                            {{ Form::label('slider_id', 'Slider :') }}
-                                            {{ Form::select('slider_id', ['0' => 'Aucun'] + $sliders, null, ['class' => 'form-control minimal']) }}
+                                            {{ Form::label('slider_id',"Slider :", array('class' => 'block text-sm font-medium text-gray-700'))}}
+                                            {{ Form::select('slider_id', array('0'=>'Aucun')+$sliders , null, [ 'class' => 'mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' ]) }}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
+    
                         <div class="flex flex-wrap ">
-                            <div class="md:w-full pr-4 pl-4 text-right">
-                                {{ Form::submit('Programmer', array('class'=>'btn btn-lg btn-primary' ,'name' =>"action", "value" =>"programmer" , 'style'=>'margin-top:10px;')) }}
-                                {{ Form::submit('Brouillon', array('class'=>'btn btn-lg btn-primary' ,'name' =>"action", "value" =>"brouillon" , 'style'=>'margin-top:10px;')) }}
-                                {{ Form::submit('Enregistrer', array('class'=>'btn btn-lg btn-primary' ,'name' =>"action", "value" =>"enregistrer", 'id'=>'body' , 'style'=>'margin-top:10px;')) }}
+                            <div class="w-full pr-4 pl-4 mb-2  text-right">
+                                {{ Form::submit('Programmer', array('class'=>'bg-blue-300 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' ,'name' =>"action", "value" =>"programmer" )) }}
+                                {{ Form::submit('Brouillon', array('class'=>'bg-blue-400 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' ,'name' =>"action", "value" =>"brouillon" )) }}
+                                {{ Form::submit('Enregistrer', array('class'=>'bg-blue-500 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500' ,'name' =>"action", "value" =>"enregistrer", 'id'=>'body' )) }}
                             </div>
                         </div>
-
                         {!! Form::close() !!}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+        </div>
 @endsection
 
 
