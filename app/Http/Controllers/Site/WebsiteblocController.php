@@ -4,9 +4,6 @@
 
 namespace App\Http\Controllers\Site;
 
-
-
-use Input;
 use Session;
 use App\Slim;
 use Response;
@@ -204,10 +201,11 @@ class WebsiteblocController extends Controller
      */
     public function sort(Request $request)
     {
-        if(Input::has('item')) {
+
+        if($request->has('item')) {
             $i = 0;
 
-            foreach(Input::get('item') as $id) { 
+            foreach($request->input('item') as $id) { 
                 $i ++;
                 $bloc = Websitebloc::find($id);
                 $bloc->sort = $i;
@@ -218,7 +216,7 @@ class WebsiteblocController extends Controller
             return Response::json(array('success' => true));
 
         } else {
-            return Response::json(array('success' => false));
+            return Response::json(array('error' => true));
         }
     }
 
