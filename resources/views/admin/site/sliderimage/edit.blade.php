@@ -1,4 +1,4 @@
-@extends('admin.main')
+@extends('admin.main', ['sidebar' => "sliders"])
 
 @section('title',' | Slider > Mise à jour')
 
@@ -38,15 +38,37 @@ li {
 @endsection
 
 @section('content')
+
+@include('admin._interface.header._breadcrumb', [
+    'bread' => [
+        [
+            'icon' => 'dashboard',
+            'url'  => '{{url("/admin")}}',
+            'name' => 'Accueil'
+        ],
+        [
+            'icon' => 'public',
+            'url'  => '{{url("/")}}',
+            'name' => 'Sliders'
+        ],
+        [
+            'icon' => 'photo_library',
+            'url'  => '{{url("/")}}',
+            'name' => 'Gestion des Slides'
+        ]
+    ]
+])
+
+
   <div class="container mx-auto sm:px-4 max-w-full">
     <div id="breadcontainer">
-      <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
+{{--       <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
         <li><i class="material-icons material-icons text-gray-900 px-2 rounded-md">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
         <li><i class="material-icons">public</i>  Site</li>
         <li><i class="material-icons">photo_library</i>  <a href="{{route('slider.index')}}">Sliders</a></li>
         <li class="active">Gestion des Slides</li>
       </ol>
-    </div>
+ --}}    </div>
       <div class="flex flex-wrap  clearfix">
     
       <div class="md:w-full pr-4 pl-4 lg:w-3/4">
