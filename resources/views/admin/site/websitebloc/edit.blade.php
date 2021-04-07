@@ -48,8 +48,8 @@
                     <div class="grid grid-cols-6">
                         <div class="w-full col-span-3">
                             <h4 class="mb-3">
-                                Modification d'un bloc :
-                                <a href="{{route('websitepage.edit',$websitepage->id)}}" class="">
+                                Modification du bloc : <span class="text-blue-400">" {{$websitebloc->format}} " </span> de la page :
+                                <a href="{{route('websitepage.edit',$websitepage->id)}}" class="text-blue-400">
                                     " {{$websitepage->name}} "
                                 </a>
                             </h4>
