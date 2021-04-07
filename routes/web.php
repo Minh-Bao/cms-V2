@@ -6,7 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Site\SliderController;
 use App\Http\Controllers\Site\SitebuilderController;
-use App\Http\Controllers\Site\SliderimageController;
+use App\Http\Controllers\Site\SliderImageController;
 use App\Http\Controllers\Site\WebsiteblocController;
 use App\Http\Controllers\Site\WebsitepageController;
 /*
@@ -50,9 +50,9 @@ Route::prefix('admin')->group(function() {
 	// Sliders
 	Route::resource('/slider',SliderController::class); //Sliders
 	Route::get('/slider/{id}/delete',[SliderController::class,'destroy'])->name('slider.delete'); // Supprime un slider
-	Route::resource('/sliderimage',SliderimageController::class); //Images des sliders
-	Route::post('/ajax/sliderimage/sort.json',[SliderimageController::class,'sort'])->name('sliderimage.sort'); // Tri des slides
-	Route::get('/sliderimage/{id}/delete',[SliderimageController::class, 'delete'])->name('sliderimage.delete'); // Supprime un slide
+	Route::resource('/sliderimage',SliderImageController::class); //Images des sliders
+	Route::post('/ajax/sliderimage/sort.json',[SliderImageController::class,'sort'])->name('sliderimage.sort'); // Tri des slides
+	Route::get('/sliderimage/{id}/delete',[SliderImageController::class, 'delete'])->name('sliderimage.delete'); // Supprime un slide
 	Route::get('/modal/picture', 'ModalController@picture')->name('modal.picture');
 
 	Route::post('/config/{id}/update',[SitebuilderController::class,'update'])->name('sitebuilder.config.update'); 
