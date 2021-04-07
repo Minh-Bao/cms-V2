@@ -265,10 +265,94 @@
                                 <a href="#"
                                     class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
                                     <span class="flex items-center truncate space-x-3">
-                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600"
+                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-yellow-600"
                                             aria-hidden="true"></span>
                                         <span class="font-medium truncate text-sm leading-6">
                                             GraphQL API
+                                            <span class="truncate font-normal text-gray-500">in Engineering</span>
+                                        </span>
+                                    </span>
+                                    <!-- Heroicon name: solid/chevron-right -->
+                                    <svg class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+                                    <span class="flex items-center truncate space-x-3">
+                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-green-600"
+                                            aria-hidden="true"></span>
+                                        <span class="font-medium truncate text-sm leading-6">
+                                            Little project API
+                                            <span class="truncate font-normal text-gray-500">in Engineering</span>
+                                        </span>
+                                    </span>
+                                    <!-- Heroicon name: solid/chevron-right -->
+                                    <svg class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+                                    <span class="flex items-center truncate space-x-3">
+                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-blue-600"
+                                            aria-hidden="true"></span>
+                                        <span class="font-medium truncate text-sm leading-6">
+                                            Sound on sound
+                                            <span class="truncate font-normal text-gray-500">in Engineering</span>
+                                        </span>
+                                    </span>
+                                    <!-- Heroicon name: solid/chevron-right -->
+                                    <svg class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+                                    <span class="flex items-center truncate space-x-3">
+                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-pink-600"
+                                            aria-hidden="true"></span>
+                                        <span class="font-medium truncate text-sm leading-6">
+                                            Murder party
+                                            <span class="truncate font-normal text-gray-500">in Engineering</span>
+                                        </span>
+                                    </span>
+                                    <!-- Heroicon name: solid/chevron-right -->
+                                    <svg class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                    class="group flex items-center justify-between px-4 py-4 hover:bg-gray-50 sm:px-6">
+                                    <span class="flex items-center truncate space-x-3">
+                                        <span class="w-2.5 h-2.5 flex-shrink-0 rounded-full bg-red-600"
+                                            aria-hidden="true"></span>
+                                        <span class="font-medium truncate text-sm leading-6">
+                                            Techno is murder
                                             <span class="truncate font-normal text-gray-500">in Engineering</span>
                                         </span>
                                     </span>
