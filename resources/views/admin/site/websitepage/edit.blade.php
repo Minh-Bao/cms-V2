@@ -268,7 +268,7 @@
                                                         {{$bloc->sort}}
                                                 </span>
                                             </div>
-                                            <div class="md:w-5/12 pr-4 pl-4">
+                                            <div class="md:w-5/12 pr-4 pl-4 border-r-2">
                                                 <span class="text-gray-800">
                                                     Titre : 
                                                 </span>
@@ -461,6 +461,12 @@
             update: function(event, ui) {
                 var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
 
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+
                 $.ajax({ //ajax
                     data: sortable_data,
                     type: 'POST',
@@ -468,14 +474,11 @@
 
                     success:function(result) {
                         //alert (sortable_data);
-                        div_response.text( 'Enregistrement terminé' );
-                        div_response.removeClass( 'btn-primary' );
-                        div_response.addClass( 'btn-success' );
                         toastr.success("Ordre des blocs enregistré");
                     },
 
                     error:function(result) {
-                        console.log('non');
+                        toastr.error("Il s'est produit une erreur...");
                     }        
                 });
             } 
