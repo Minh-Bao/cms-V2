@@ -46,13 +46,16 @@
                 <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 bg-ivory card-header-{{Auth::user()->theme}}">
                     <div class="flex flex-wrap  clearfix">
                         <div 
-                            class="sm:w-full pr-4 pl-4">
+                            class="w-1/2">
                             <h3>Sliders  <span class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded bg-cyan">{{$sliders->count()}}</span></h3>
                         </div>
-                        <a href="{{route('slider.create')}}" 
-                            class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
-                            Ajouter un slide
-                        </a>
+                        <div class="w-1/2 text-right">
+                            <a href="{{route('slider.create')}}" 
+                                class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
+                                Ajouter un slide
+                            </a>
+
+                        </div>
                     </div>
                 </div>
                 <div class="hidden mt-8 sm:block">
