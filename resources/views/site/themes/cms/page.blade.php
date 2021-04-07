@@ -106,9 +106,7 @@
                         @endif
 
                         {{-- @if ($bloc->format == '12-carrousel' && $section_count == 1)
-
                             <div class="owl-carousel owl-theme mhc-blog-sec">
-
                         @endif --}}
                     @endif
                     
