@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Site\Slider;
-use App\Site\Sliderimage;
+use App\Site\SliderImage;
 use App\Site\Websitebloc;
 use Illuminate\Http\Request;
 use App\Models\Site\Websitepage;

@@ -6,7 +6,7 @@ use DB;
 use Session;
 use App\Models\Site\Slider;
 use Illuminate\Http\Request;
-use App\Modelsls\Site\Sliderimage;
+use App\Modelsls\Site\SliderImage;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SliderRequest;

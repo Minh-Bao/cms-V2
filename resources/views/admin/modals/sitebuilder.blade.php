@@ -238,7 +238,7 @@
 
                 	@if($part=="slider")
 						@php
-							$sliderimage = App\Site\Sliderimage::find($variable);
+							$sliderimage = App\Site\SliderImage::find($variable);
 							$slider = App\Site\Slider::find($sliderimage->sitesliders_id);
 						@endphp
 

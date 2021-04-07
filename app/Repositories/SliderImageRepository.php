@@ -93,7 +93,7 @@ class SliderImageRepository implements SliderImageRepositoryInterface
      * @return object
      */
     public function store($request,  $name, $nb_pictures){
-        $picture = new Sliderimage;
+        $picture = new SliderImage;
 
         $picture->sitesliders_id = $request->sitesliders_id;
         $picture->picture = 'images/sliders/' . $request->sitesliders_id . '/' . $name;
