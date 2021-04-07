@@ -67,8 +67,6 @@ class WebsitepageController extends Controller
 
         self::setStatus($request, $page);
 
-        Session::flash('success', 'Contenu enregistré avec succès'); 
-
         return back()->withInput(); 
     }
 
@@ -118,10 +116,13 @@ class WebsitepageController extends Controller
         self::saveImg('thumbnail', $page);
 
         self::setStatus($request, $page);
-        
-        Session::flash('success', 'Contenu modifié avec succès'); 
 
-        return back()->withInput(); 
+        if($request->action =="Programmer"){
+            return redirect()->route('websitepage.index');
+        }else{
+            return back()->withInput();  
+        }
+
     }
 
 
@@ -213,17 +214,24 @@ class WebsitepageController extends Controller
      * @return void
      */
     public static function setStatus($request, $page){
-        if($request->action == 'Brouillon'){
-            $page->status = 0;
-        }elseif($request->action == 'Enregistrer'){
-            $page->status = 1;            
-        }elseif($request->action == 'Programmer'){
-            $page->status = 2;
-            $page->schedul = now()->addHour(1);
-            $page->save();
-            Session::flash('success', 'Veuillez programmer une date'); 
 
-            return redirect()->route('websitepage.index');
+        switch ($request->action) {
+            case 'Brouillon':
+                $page->status = 0;
+                Session::flash('success', 'Brouillon enregistré avec succès'); 
+
+                break;
+            case 'Enregistrer':
+                $page->status = 1; 
+                Session::flash('success', 'Page enregistrée avec succès'); 
+    
+                break;
+            case 'Programmer':
+                $page->status = 2;
+                $page->schedul = now()->addHour(1);
+                $page->save();
+
+                Session::flash('success', 'Veuillez programmer une date'); 
         }
 
         $page->save();
