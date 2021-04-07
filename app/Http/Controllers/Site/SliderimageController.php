@@ -6,18 +6,12 @@ namespace App\Http\Controllers\Site;
 
 
 
-use Auth;
-use Image;
-use Input;
 use Session;
 use App\Slim;
 use Response;
-use Carbon\Carbon;
-use App\Site\Slider;
-use App\Site\Sliderimage;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Models\Site\SliderImage;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
@@ -28,7 +22,7 @@ use App\Repositories\SliderImageRepositoryInterface;
 
 
 
-class SliderimageController extends Controller
+class SliderImageController extends Controller
 
 {
 
@@ -74,11 +68,11 @@ class SliderimageController extends Controller
     /**
      * Update the specified resource in db
      *
-     * @param SliderimageRequest $request
+     * @param SliderImageRequest $request
      * @param int $id
      * @return view
      */
-    public function update(SliderimageRequest $request, $id)
+    public function update(SliderImageRequest $request, $id)
     {
         $picture =$this->sliderImage->findBy($id);
         $oldimage = $picture->file;
@@ -142,12 +136,12 @@ class SliderimageController extends Controller
      */
     public function sort(Request $request)
     {
-        if (Input::has('item')) {
+        if ($request->has('item')) {
             $i = 0;
 
-            foreach (Input::get('item') as $id) {
+            foreach ($request->input('item') as $id) {
                 $i++;
-                $item = Sliderimage::find($id);
+                $item = SliderImage::find($id);
                 $item->sort = $i;
                 $item->save();
             }
