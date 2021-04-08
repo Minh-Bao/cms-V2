@@ -26,12 +26,12 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      * @param string $direction
      * @return void
      */
-    public function AllOrderedBy($field, $direction){
+    public function allOrderedBy($field, $direction){
 
         if(isset($direction)){
-            return Websitepage::select('*')->orderBy($field, $direction)->get();
+            return Websitepage::select('*')->orderBy($field, $direction);
         }else{
-            return Websitepage::select('*')->orderBy($field)->get();
+            return Websitepage::select('*')->orderBy($field);
         }       
 	}
 

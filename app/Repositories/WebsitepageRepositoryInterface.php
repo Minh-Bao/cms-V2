@@ -16,7 +16,7 @@ interface WebsitepageRepositoryInterface
      * @param int $id
      * @return void
      */
-    public function AllOrderedBy($field, $direction);
+    public function allOrderedBy($field, $direction);
   
     /**
      * Create an array of specified language pages ordered by title
