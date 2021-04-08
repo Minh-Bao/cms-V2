@@ -3,6 +3,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="{{config('myconfig.site_developper')}}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
 
     <!-- Favicon-->
     <link rel="icon" href="{{url('')}}/images/favicon.png" type="image/x-icon">
@@ -21,7 +22,7 @@
     {{-- {{ Html::style('plugins/bootstrap/css/bootstrap-xlgrid.css')}} --}}
 
     <!-- Waves Effect Css -->
-	{{-- {{ Html::style('plugins/node-waves/0.7.6/waves.min.css')}} --}}
+	{{ Html::style('plugins/node-waves/0.7.6/waves.min.css')}}
 
     <!-- Animation Css -->
     {{-- {{ Html::style('plugins/animate-css/animate.css')}} --}}
@@ -34,10 +35,10 @@
     <link href="{{ asset('css/admin/admin.css') }}" rel="stylesheet">
 
     <!-- Ribbon -->
-    {{-- {{ Html::style('css/admin/ribbon.css')}} --}}
+    {{ Html::style('css/admin/ribbon.css')}}
 
     <!-- User Card -->
-    {{-- {{ Html::style('css/admin/user-card.css')}} --}}
+    {{ Html::style('css/admin/user-card.css')}}
     
     <link rel="shortcut icon" href="#">
     
@@ -45,6 +46,8 @@
     {{ Html::script('plugins/jquery.toaster/jquery.toaster.js')}}
     {{ Html::style('plugins/jquery.toaster/toastr.css')}}
     {{ Html::script('plugins/jquery.toaster/toastr.min.js')}}
+
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous"></script> --}}
 
 
     <!-- Livewire -->
