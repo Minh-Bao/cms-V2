@@ -34,6 +34,7 @@ class WebsitepageController extends Controller
      */
     public function index(SiteController $site)
     {
+        $websitepage = $this->page->getAll()->count();
         $websitepages = $this->page->allOrderedBy('created_at', 'DESC')->where('lng','fr')->simplePaginate(10);
         $bestpage = $site->bestpage(["contact", "mentions", "homepage", "article-index", "categorie"]);
 
@@ -42,7 +43,7 @@ class WebsitepageController extends Controller
             $item->color = substr(md5(rand()), 0, 6);
         }
 
-        return view('admin.site.websitepage.index',compact('websitepages', 'bestpage'));
+        return view('admin.site.websitepage.index',compact('websitepages','websitepage', 'bestpage'));
     }
 
 
