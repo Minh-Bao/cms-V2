@@ -46,12 +46,16 @@
                     <div class="grid grid-cols-6">
                         <div class="w-full col-span-3">
                             <h3 class="mb-3">
-                            Nombre de pages :  <div style="margin-left:1%;" class="inline-block p-1 text-center font-semibold text-sm align-baseline leading-none rounded-full py-1 px-3 bg-blue-400 text-white hover:bg-blue-600 ">{{$websitepages->count()}}</div>
+                            Nombre de pages :  
+                                <span style="margin-left:1%;" 
+                                    class="inline-block p-2 text-center text-gray-500 text-sm align-baseline leading-none rounded-full bg-blue-100 w-8 h-8 shadow-lg">
+                                    {{$websitepage}}
+                            </span>
                             </h3>
                         </div>
                         <div class="col-span-3 text-right">
                             <a href="{{route('websitepage.create')}}" 
-                                class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
+                                class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-purple-500 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3">
                                 Ajouter une page
                             </a>
 
@@ -174,9 +178,9 @@
                                             @endphp
                                             {!! Form::open(['route'=> ['websitepage.setDate',$websitepage->id], 'method'=>'PUT' ]) !!}
                                             {{Form::date('date', $date, $disable)}}
-                                            <button type="submit" 
-                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-purple-400 hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
-                                                @if($websitepage->status == 1) disabled @else enabled @endif >
+                                            <button type="submit"  
+                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else bg-purple-400 hover:bg-pink-450 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
+                                                @if($websitepage->status == 1) disabled style="pointer-events: none"@else enabled @endif >
                                                 set
                                             </button>
                                             {!! Form::close() !!}
