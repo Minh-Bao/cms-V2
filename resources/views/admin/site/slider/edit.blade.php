@@ -85,32 +85,31 @@ ul.sortable li.placeholder {
 
 
     <div class="container mx-auto  max-w-full">
-        <div class="mx-6 py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
+        <div class="mx-8 py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
         <div 
-            class="header">
+            class="">
                 <h2>Sliders</h2>
             </div>
         </div>
 
-        <div class="flex flex-wrap  clearfix">
-            <div class="md:w-full pr-4 pl-4 lg:w-3/4">
+        <div class="flex flex-wrap  mt-6">
+            <div class="w-6/8 mx-8">
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
-                    
-                    <div class="body">
+                    <div class="">
                         <div class="flex flex-wrap ">
                             <div class="md:w-full pr-4 pl-4">
                                 <div class="flex flex-wrap  mb-4">
-                                    <div class="w-5/6" id="sortable">
+                                    <div class="w-full" id="sortable">
                                         <ul class="sortable">
                                             @foreach($pictures as $picture)
                                                 <li id="item-{{$picture->id}}">
                                                     <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
-                                                        <div >
-                                                            <img src="{{url('')}}/{{$picture->picture}}" class="img-responsive"style="margin-bottom:10px;width:100%;height:auto;">
-                                                            <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
+                                                        <div class="justify-between" >
+                                                            <img src="{{url('')}}/{{$picture->picture}}" class="">
+                                                            <a href="{{ route('sliderimage.edit',$picture->id) }}" class="mr-8 inline-block align-middle text-center text-green-300 select-none font-normal whitespace-no-wrap  py-1 px-3 leading-normal no-underline" id="{{$picture->id}}">
                                                                 <i class="material-icons">mode_edit</i>
                                                             </a>
-                                                            <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange">
+                                                            <a href="{{ route('sliderimage.delete',$picture->id) }}" class="ml-8 inline-block align-middle text-center text-red-500 select-none font-normal whitespace-no-wrap  py-1 px-3 leading-normal no-underline ">
                                                                 <i class="material-icons">delete</i>
                                                             </a>
                                                         </div>
@@ -119,9 +118,12 @@ ul.sortable li.placeholder {
                                             @endforeach
                                         </ul>
                                     </div>
+                                    <div class="saved">
+
+                                    </div>
                                     <button 
-                                        class="save w-1/6 h-12 bg-blue-400 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">                                        
-                                        Enregistrer l'ordre
+                                        class="save bg-purple-500 text-gray-50 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Sauvegarder
                                     </button>
                                 </div>
                             </div>
@@ -133,7 +135,7 @@ ul.sortable li.placeholder {
                     </div>
                 </div>
             </div>
-            <div class="lg:w-1/4 pr-4 pl-4 md:w-full">
+            <div class="lg:w-1/4 w-4/6">
                 <div class="flex flex-wrap  mb-4">
                     <div class="md:w-full pr-4 pl-4">
                         <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
@@ -155,8 +157,8 @@ ul.sortable li.placeholder {
                                 <div class="flex flex-wrap  mb-4 form-float" style="margin-top:25px;">
                                     <div class="md:w-full pr-4 pl-4">
                                         <div class="form-line">
-                                            {{ Form::label('title', 'Titre *', array('class' => 'form-label')) }}
-                                            {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'150' ))}}
+                                            {{ Form::label('title', 'Titre *', array('class' => "block text-sm font-medium text-gray-700")) }}
+                                            {{ Form::text('title',null,array('class'=>'mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'150' ))}}
                                         </div>
                                     </div>
                                 </div>
@@ -164,7 +166,7 @@ ul.sortable li.placeholder {
                                     <div class="md:w-full">
                                         <div class="form-line">
                                             {{ Form::label('content',"Texte :")}}
-                                            {{ Form::textarea('content', null, array('class'=>'form-control' ))}}
+                                            {{ Form::textarea('content', null, array('rows'=>'5', 'class'=>'mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' ))}}
                                         </div>
                                     </div>
                                 </div>
@@ -207,7 +209,7 @@ ul.sortable li.placeholder {
     * Saving and displaying serialized data
     */
     var btn_save = $('button.save'), // select save button
-      div_response = $('.save'); // response div
+      div_response = $('.saved'); // response div
 
     btn_save.on('click', function(e){ // trigger function on save button click
         e.preventDefault(); 
