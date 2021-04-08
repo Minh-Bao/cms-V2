@@ -179,7 +179,7 @@
                                             {!! Form::open(['route'=> ['websitepage.setDate',$websitepage->id], 'method'=>'PUT' ]) !!}
                                             {{Form::date('date', $date, $disable)}}
                                             <button type="submit"  
-                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else bg-purple-400 hover:bg-pink-450 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
+                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else hover:bg-pink-450 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
                                                 @if($websitepage->status == 1) disabled style="pointer-events: none"@else enabled @endif >
                                                 set
                                             </button>

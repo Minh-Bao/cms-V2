@@ -325,7 +325,7 @@
 
                 <div class="modal-footer">
 					{{ Form::submit('Modifier', array('class'=>'btn btn-primary' )) }}
-                    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default text-left" data-dismiss="modal" onclick="Custombox.modal.close();">Fermer</button>
+                    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default" data-dismiss="modal" onclick="Custombox.modal.close();">Fermer</button>
                 </div>
             </div>
         </div>
