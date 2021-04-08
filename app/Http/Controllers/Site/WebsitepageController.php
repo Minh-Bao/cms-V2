@@ -7,6 +7,7 @@ use App\Slim;
 use Illuminate\Http\Request;
 use App\Models\Site\Websitepage;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SiteController;
 use Illuminate\Support\Facades\File;
 use App\Http\Requests\WebsitepageRequest;
 use App\Repositories\SliderRepositoryInterface;
@@ -31,11 +32,17 @@ class WebsitepageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(SiteController $site)
     {
-        $websitepages = $this->page->AllOrderedBy('created_at', 'DESC')->where('lng','fr');
+        $websitepages = $this->page->allOrderedBy('created_at', 'DESC')->where('lng','fr')->simplePaginate(10);
+        $bestpage = $site->bestpage(["contact", "mentions", "homepage", "article-index", "categorie"]);
 
-        return view('admin.site.websitepage.index',compact('websitepages'));
+        //Add random color to each article
+        foreach($bestpage as $item){
+            $item->color = substr(md5(rand()), 0, 6);
+        }
+
+        return view('admin.site.websitepage.index',compact('websitepages', 'bestpage'));
     }
 
 
