@@ -30,19 +30,27 @@
                 <ul class="pt-6 lg:pt-0 list-reset lg:flex justify-end flex-1 items-center">
                     <li class="mr-3">
                         <a class="inline-block py-2 px-4 text-black no-underline  hover:text-gray-400 hover:text-underline"
-                            href="{{ config('myconfig.site_owner_url') }}" @click="isOpen = false">Visitez la boutique
+                            href="{{ config('myconfig.site_owner_url') }}">Visitez la boutique
                         </a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-black no-underline hover:text-gray-400 hover:text-underline py-2 px-4"
-                            href="{{ url('/page/article-index') }}" @click="isOpen = false">Article
+                            href="{{ url('/page/article-index') }}">Article
                         </a>
                     </li>
                     <li class="mr-3">
                         <a class="inline-block text-black no-underline hover:text-gray-400 hover:text-underline py-2 px-4"
-                            href="{{ url('/page/contact') }}" @click="isOpen = false">Contact
+                            href="{{ url('/page/contact') }}">Contact
                         </a>
                     </li>
+
+                    @if (Auth::check())
+                        <li class="mr-3">
+                            <a class="inline-block text-black no-underline hover:text-gray-400 hover:text-underline py-2 px-4"
+                                href="{{ url('/admin') }}">Admin
+                            </a>
+                        </li>
+                    @endif
                 </ul>
             </div>
         </nav>
