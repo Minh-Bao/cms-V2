@@ -11,7 +11,7 @@
 		{{ Form::hidden('part', $part, array('class'=>'form-control' ))}}
 		{{ Form::hidden('object', $object, array('class'=>'form-control' ))}}
 
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg bg-white-450 rounded-sm" role="document" >
             <div class="modal-content" id="">
                 <div class="modal-header">
 					{{ config('myconfig.name_app')}} Site Builder v1.2
@@ -200,7 +200,7 @@
                 	@if($part=="page")
 						@if($object=="image")
 							L'image sera adaptée au format 1440x450 pixels
-							<div class="flex flex-wrap ">
+							<div class="flex flex-wrap " >
 								<div class="md:w-full pr-4 pl-4">
 								<div class="slim"
 								data-size="1440,450"
