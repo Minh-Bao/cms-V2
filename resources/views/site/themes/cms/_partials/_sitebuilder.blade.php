@@ -46,7 +46,10 @@
 <style>
 
 #sitebuilder {
-  -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
+    min-width: 50%;
+    min-height: 50%;
+    
 }
 
 .hide-me .show-me {
@@ -121,9 +124,6 @@ $('.page').click(function(){
      $('#sitebuilder').load('{{route('sitebuilder')}}?part=page&object='+object+'&elem='+element);
      modal.open();
 });
-
-
-
 
  $('.slider').click(function(){
      var element = $(this).attr("name");
