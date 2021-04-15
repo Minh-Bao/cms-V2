@@ -45,10 +45,10 @@
                 <div class="py-3 px-6 mb-0 bg-gray-200 border-b-1 border-gray-300 text-gray-900 bg-ivory card-header-{{Auth::user()->theme}}">
                     <div class="grid grid-cols-6">
                         <div class="w-full col-span-3">
-                            <h3 class="mb-3">
+                            <h3 class="mb-3 text-gray-500">
                             Nombre de pages :  
                                 <span style="margin-left:1%;" 
-                                    class="inline-block p-2 text-center text-gray-500 text-sm align-baseline leading-none rounded-full bg-blue-100 w-8 h-8 shadow-lg">
+                                    class="inline-block p-2 text-center text-gray-50 text-sm align-baseline leading-none rounded-full bg-blue-400 w-8 h-8 shadow-lg">
                                     {{$websitepage}}
                             </span>
                             </h3>
@@ -113,7 +113,7 @@
                                                 </a>
                                             </div>
                                             <div class="py-1" role="none">
-                                                <a href="#"
+                                                <a href="{{ route('websitepage.edit',$item->id)}}"
                                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                                     role="menuitem">Edit</a>
                                                 <a href="#"
@@ -178,7 +178,7 @@
                                             {!! Form::open(['route'=> ['websitepage.setDate',$websitepage->id], 'method'=>'PUT' ]) !!}
                                             {{Form::date('date', $date, $disable)}}
                                             <button type="submit"  
-                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else hover:bg-pink-450 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
+                                                class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else bg-pink-450 hover:bg-purple-400 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
                                                 @if($websitepage->status == 1) disabled style="pointer-events: none"@else enabled @endif >
                                                 set
                                             </button>
