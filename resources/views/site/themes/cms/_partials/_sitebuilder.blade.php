@@ -1,5 +1,5 @@
 <nav class="topbar relative flex flex-wrap items-center content-between py-3 px-4 navbar-inverse" style="background-color: rgb(224, 224, 217); margin-bottom:1%;">
-    <div class="container mx-auto sm:px-4 max-w-full mx-auto sm:px-4">
+    <div class="container mx-auto sm:px-4 max-w-full">
         <div class="navbar-header">
             <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" href="{{config('myconfig.site_developper_url')}}" target="_blank">
                 <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%">
@@ -7,7 +7,7 @@
             </a>
         </div>
 
-        <ul class="flex flex-wrap list-none pl-0 mb-0 flex flex-wrap list-reset pl-0 mb-0 relative">
+        <ul class="flex flex-wrap list-none pl-0 mb-0 list-reset relative">
             @if (isset($sitepage))
                 <li><a href="{{route('websitepage.edit',$sitepage->id)}}">Modifier cette page *</a></li>
                 <li><a href="{{route('websitebloc.create')}}?sitepages_id={{$sitepage->id}}">Ajouter un bloc **</a></li>
@@ -38,7 +38,7 @@
 
 
     <div class="modal" id="sitebuilder" tabindex="-1" role="dialog">
-        <div class="flex flex-wrap " id="ici">
+        <div class="flex flex-wrap invisible" id="ici">
             <center>Chargement en cours</center>
         </div>
     </div>
@@ -97,7 +97,8 @@ $(document).ready(function(){
   var modal = new Custombox.modal({
     content: {
       effect: 'fadein',
-      target: '#sitebuilder'
+      target: '#sitebuilder',
+      close: false
     }
 });
 
@@ -134,6 +135,12 @@ $('.page').click(function(){
      console.log(element);
   });
 });
+
+
+function closes(){
+    Custombox.modal.close();
+    $('#sitebuilder').html('');
+}
 
 </script>
 
