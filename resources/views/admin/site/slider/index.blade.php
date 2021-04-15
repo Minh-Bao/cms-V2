@@ -47,9 +47,9 @@
                     <div class="flex flex-wrap  clearfix">
                         <div 
                             class="w-1/2">
-                            <h3>Nombre de Sliders :  
+                            <h3 class="text-gray-500">Nombre de Sliders :  
                                 <span 
-                                    class="inline-block p-2 text-center text-gray-400 text-sm align-baseline leading-none rounded-full bg-blue-100 w-8 h-8 shadow-lg">
+                                    class="inline-block p-2 text-center text-gray-50 text-sm align-baseline leading-none rounded-full bg-blue-400 w-8 h-8 shadow-lg">
                                     {{$sliders->count()}}
                                 </span>
                             </h3>
