@@ -6,7 +6,7 @@
 <body>
 @include('site.themes.cms._partials._header')
 
-<main role="main" style="background-color: #f2f2f2;">
+<main role="main" class="bg-white-450">
   	    @yield('content')
 </main>
 
