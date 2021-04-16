@@ -1,6 +1,8 @@
 <!-- Bloc  articles -->
 
-<h2 class="title_home">Listes articles en ligne : </h2>
+<div class="w-full ml-12">
+    <h2 class="">Listes articles en ligne : </h2>
+</div>
 
 @if ($page->count() > 0)
     @foreach ($page->chunk(3) as $chunk)
@@ -32,22 +34,3 @@
         {{$page->links()}}
     </div>
 </div>
-{{-- TEST MANUALLY PAGINATION
-<!-- a Tag for previous page -->
-<a href="{{$employees->previousPageUrl()}}">
-    <!-- You can insert logo or text here -->
-</a>
-@for($i=0;$i<=$employees->lastPage();$i++)
-    <!-- a Tag for another page -->
-    <a href="{{$employees->url($i)}}">{{$i}}</a>
-@endfor
-<!-- a Tag for next page -->
-<a href="{{$employees->nextPageUrl()}}">
-    <!-- You can insert logo or text here -->
-</a>
- --}}
-
-
-{{-- <div class="md:w-full pr-4 pl-4 text-center">
-    <a href="#" class="btn_calltoAction" role="button" aria-disabled="true" width="15%" height="125%">Voir plus</a>
-</div> --}}
