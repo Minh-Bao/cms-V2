@@ -4,9 +4,21 @@ var __webpack_exports__ = {};
   !*** ./resources/js/instafeed-main.js ***!
   \****************************************/
 var feed = new Instafeed({
-  accessToken: "{{ config('myconfig.insta_access_token') }}",
+  accessToken: "IGQVJXLXB6Q0dmZAWV2NGhnTG1xbmMtUTdzN1FQNGR3MVhlUnk2WHlGVWVmWXJ0dkQ5MGVaaFprelh0MDMtMzJGdF96R1BZASmtFZAmx3ZAXVITV9wdHBSSGJ5YVNyX1NoUnAzT05YUVo1TVR0dDFaRlFRMQZDZD",
   limit: 12,
-  template: '<a class="col-md-3" target="_blank href="{{link}}"><img class="img-thumbnail shadow  bg-white rounded img_insta" title="{{caption}}" src="{{image}}" /></a>',
+  after: function after() {
+    var container = document.getElementById('instafeed');
+
+    for (var i = 0; i < container.children.length; i++) {
+      var parent = container.children;
+
+      for (var j = 0; j < parent.length; j++) {
+        var child_img = parent[j].children;
+        child_img[0].setAttribute("class", "shadow  bg-white rounded-lg ");
+        parent[j].setAttribute('target', '_blank');
+      }
+    }
+  },
   error: function error() {
     document.getElementById('insta_error_msg').style.display = "block";
   }

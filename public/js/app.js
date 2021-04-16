@@ -2006,6 +2006,11 @@ window.Vue = require('vue'); */
  * Import Alpinejs dependencies
  */
 
+/**
+ * Import Embla css file 
+ * Then parse EmblaCarousel script for the slider
+ */
+
 
 
 window.EmblaCarousel = embla_carousel__WEBPACK_IMPORTED_MODULE_2__.default;
@@ -2061,6 +2066,7 @@ $(document).ready(function () {
 document.addEventListener('custombox:overlay:close', function () {
   $('#sitebuilder').html('');
 });
+/*********************____CUSTOMBOX MODAL PLUGIN FOR WYSIWYG FRONT EDITOR ____******************/
 
 /***/ }),
 
@@ -2081,7 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".embla {\n  position: relative;\n  background-color: #f7f7f7;\n  padding: 20px;\n  max-width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.embla__viewport {\n  overflow: hidden;\n  width: 100%;\n}\n\n.embla__viewport.is-draggable {\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n\n.embla__viewport.is-dragging {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n\n.embla__container {\n  display: flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-touch-callout: none;\n  -khtml-user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  margin-left: -10px;\n}\n\n.embla__slide {\n  position: relative;\n  min-width: 100%;\n  padding-left: 10px;\n}\n\n.embla__slide__inner {\n  position: relative;\n  overflow: hidden;\n  height: 600px;\n}\n\n.embla__slide__img {\n  position: absolute;\n  display: block;\n  top: 50%;\n  left: 50%;\n  width: auto;\n  min-height: 100%;\n  min-width: 100%;\n  max-width: none;\n  transform: translate(-50%, -50%);\n}\n\n.embla__button {\n  outline: 0;\n  cursor: pointer;\n  background-color: transparent;\n  touch-action: manipulation;\n  position: absolute;\n  z-index: 1;\n  top: 50%;\n  transform: translateY(-50%);\n  border: 0;\n  width: 30px;\n  height: 30px;\n  justify-content: center;\n  align-items: center;\n  fill: #1bcacd;\n  padding: 0;\n}\n\n.embla__button:disabled {\n  cursor: default;\n  opacity: 0.3;\n}\n\n.embla__button__svg {\n  width: 100%;\n  height: 100%;\n}\n\n.embla__button--prev {\n  left: 27px;\n}\n\n.embla__button--next {\n  right: 27px;\n}\r\n  ", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".embla {\n  position: relative;\n  background-color: #f7f7f7;\n  padding: 20px;\n  max-width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n.embla__viewport {\n  overflow: hidden;\n  width: 100%;\n}\n\n.embla__viewport.is-draggable {\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n\n.embla__viewport.is-dragging {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n\n.embla__container {\n  display: flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-touch-callout: none;\n  -khtml-user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  margin-left: -10px;\n}\n\n.embla__slide {\n  position: relative;\n  min-width: 100%;\n  padding-left: 10px;\n}\n\n.embla__slide__inner {\n  position: relative;\n  overflow: hidden;\n  height: 844px;\n}\n\n.embla__slide__img {\n  position: absolute;\n  display: block;\n  top: 50%;\n  left: 50%;\n  width: auto;\n  min-height: 100%;\n  min-width: 100%;\n  max-width: none;\n  transform: translate(-50%, -50%);\n}\n\n.embla__button {\n  outline: 0;\n  cursor: pointer;\n  background-color: transparent;\n  touch-action: manipulation;\n  position: absolute;\n  z-index: 1;\n  top: 50%;\n  transform: translateY(-50%);\n  border: 0;\n  width: 30px;\n  height: 30px;\n  justify-content: center;\n  align-items: center;\n  fill: #1bcacd;\n  padding: 0;\n}\n\n.embla__button:disabled {\n  cursor: default;\n  opacity: 0.3;\n}\n\n.embla__button__svg {\n  width: 100%;\n  height: 100%;\n}\n\n.embla__button--prev {\n  left: 27px;\n}\n\n.embla__button--next {\n  right: 27px;\n}\r\n  ", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
