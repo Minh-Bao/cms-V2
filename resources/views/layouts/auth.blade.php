@@ -10,8 +10,8 @@
         <title>Authentification blog Nc</title>
     
         <!-- Favicon-->
-        <link rel="icon" href="{{url('')}}/images/favicon.png" type="image/x-icon">
-    
+        <link rel="icon" href="{{asset('/images/favicon.png')}}" type="image/x-icon">
+        
         <!-- Livewire -->
         @livewireStyles
       </head>

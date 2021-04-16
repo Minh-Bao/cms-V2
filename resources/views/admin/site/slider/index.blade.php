@@ -215,7 +215,7 @@ $('#btn-slider-create').animateCss("bounce");
 
     "bStateSave": true,
 
-    "oLanguage": { "sUrl": "{{ url('') }}/fr.txt" },
+    "oLanguage": { "sUrl": "{{ url('/fr.txt') }}" },
 
     dom: 'Bfrtip'
 

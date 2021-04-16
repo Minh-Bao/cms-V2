@@ -9,7 +9,7 @@
                     <div class="round_pastille">{{ $item->count }}</div>
                     <a href="{{ route('site.page', ['type' => 'page', 'slug' => $item->slug]) }}"
                         title="best_article_{{ $item->slug }}">
-                        <img src="{{ url('/images/miniThumb') . '/' . $item->title_img . '.jpg' }}"
+                        <img src="{{ asset('/images/miniThumb' . '/' . $item->title_img . '.jpg' ) }}"
                             alt="rounded_thumbnail_{{ $item->slug }}" class="circle_img" />
                     </a>
                 </div>

@@ -12,7 +12,7 @@
         </div>
         @if ($bloc->image)
             <div class="text-center  bloc" name="{{$bloc->id}}" value="image" style="margin-bottom:2%;">
-                <img src="{{url('')}}/{{ $bloc->image }}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive w-1/2">
+                <img src="{{ asset($bloc->image)}}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive w-1/2">
             </div>
         @endif
         <div class="bloc" name="{{$bloc->id}}" value="content_two">
@@ -33,16 +33,16 @@
             </div>
             <div class=" flex" >
                 <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank" style="margin:7%; display:block" title="facebook_{{config('myconfig.site_owner')}}" >
-                    <img src="{{url('/')}}/images/socialMedia_icon/facebook_noir.png" alt="" width="150%">
+                    <img src="{{asset('/images/socialMedia_icon/facebook_noir.png')}}" alt="" width="150%">
                 </a>
                 <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank" style="margin:7%; display:block;">
-                    <img src="{{url('/')}}/images/socialMedia_icon/youtube_noir.png" alt="" width="150%" >
+                    <img src="{{asset('/images/socialMedia_icon/youtube_noir.png')}}" alt="" width="150%" >
                 </a>
                 <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="pinterest_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/pinterest_noir.png" alt="" width="150%" >
+                    <img src="{{ asset('/images/socialMedia_icon/pinterest_noir.png')}}" alt="" width="150%" >
                 </a>
                 <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="instagram_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/instagram_noir.png" alt="" width="150%" >
+                    <img src="{{asset('/images/socialMedia_icon/instagram_noir.png')}}" alt="" width="150%" >
                 </a>
             </div>
             <div class="flex">
@@ -59,7 +59,7 @@
     <div id="pagination"  style="width:63%;"
         class=" pl-4 pink_nc mx-12 pr-12 border border-t-2 border-pink-450" >
         <div style="display:flex; justify-content: space-evenly;margin-bottom:5%;padding-top:2%" >
-            <a style="color:rgb(168, 19, 76) !important" href="{{url('/').'/page/'.$prev}}">Article précédent > </a>
+            <a style="color:rgb(168, 19, 76) !important" href="{{url('/' .'/page/'.$prev)}}">Article précédent > </a>
         </div>
     </div>
 @else
@@ -67,15 +67,15 @@
         <div id="pagination" style="width:63%;"
              class=" pl-4 pink_nc mx-12 pr-12 border-t-2 border-pink-450" >
             <div style="display:flex; justify-content: space-evenly;margin-bottom:5%;padding-top:2%" >
-                <a style="color:rgb(168, 19, 76) !important" href="{{url('/').'/page/'.$next}}">< Article suivant </a>
+                <a style="color:rgb(168, 19, 76) !important" href="{{url('/' .'/page/'.$next)}}">< Article suivant </a>
             </div>
         </div>
     @else
         <div id="pagination" style="width:63%;"
             class= "pl-4 pink_nc m-12 pr-12 border-t-2 border-pink-450" >
             <div style="display:flex; justify-content: space-evenly;margin-bottom:5%;padding-top:2%" >
-                <a style="color:rgb(168, 19, 76) !important" href="{{url('/').'/page/'.$next}}">< Article suivant </a>
-                <a style="color:rgb(168, 19, 76) !important" href="{{url('/').'/page/'.$prev}}"> Article précédent ></a>
+                <a style="color:rgb(168, 19, 76) !important" href="{{url('/' .'/page/'.$next)}}">< Article suivant </a>
+                <a style="color:rgb(168, 19, 76) !important" href="{{url('/' .'/page/'.$prev)}}"> Article précédent ></a>
             </div>
         </div>    
     @endif
@@ -96,7 +96,7 @@
                             <div class="max-w-full overflow-hidden rounded-t">
                                 <a href="{{ route('site.page', ['type' => 'page', 'slug' => $item->slug]) }}"
                                     title="{{ config('myconfig.site_owner') }}_article_{{ $item->slug }}">
-                                    <img src="{{ url('/' . $item->thumbnail) }}" alt="thumbnail_{{ $item->slug }}"
+                                    <img src="{{ asset($item->thumbnail) }}" alt="thumbnail_{{ $item->slug }}"
                                         class="w-full" />
                                 </a>
                             </div>
@@ -159,7 +159,7 @@
                     {!! $bloc->content !!}
                 </div>
                     <div class="md:w-1/4 pr-4 pl-4  bloc" name="{{$bloc->id}}" value="image">
-                        <img src="{{url('')}}/{{ $bloc->image }}" title="{{$bloc->title}}" alt="{{$bloc->title}}" class="img-responsive">
+                        <img src="{{asset($bloc->image)}}" title="{{$bloc->title}}" alt="{{$bloc->title}}" class="img-responsive">
                     </div>
 
                 @else

@@ -70,7 +70,7 @@
                         @foreach ($bestpage as $item)
                             <li class="relative col-span-1 flex shadow-sm rounded-md">
                                 <div
-                                    class="flex-shrink-0 flex items-center justify-center w-16  text-white text-sm font-medium rounded-l-md" style="background-image: url('{{url("/")}}/{{$item->thumbnail }}'); background-size: 100% 100%">
+                                    class="flex-shrink-0 flex items-center justify-center w-16  text-white text-sm font-medium rounded-l-md" style="background-image: url('{{asset($item->thumbnail )}}'); background-size: 100% 100%">
                                 </div>
                                 <div
                                     x-data=" { open: false }"
@@ -278,7 +278,7 @@ $(document).ready( function () {
     $('#websitepage').dataTable( {
         "bSort": false,        
         "bStateSave": true,
-        "oLanguage": { "sUrl": "{{ url('') }}/fr.txt" },
+        "oLanguage": { "sUrl": "{{ url('/fr.txt') }}" },
         dom: 'Bfrtip',
         buttons: [  ]
     });

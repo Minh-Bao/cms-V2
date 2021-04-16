@@ -170,7 +170,7 @@
 								style="width:300px;"
 								>
 							@if($config->content)
-								<img src="{{url('')}}/{{$config->content}}" alt="">
+								<img src="{{asset($config->content)}}" alt="">
 							@endif
 								<input type="file" name="slim[]" required />
 								</div>
@@ -188,7 +188,7 @@
 
 							@foreach($recentes as $recente)
 								<a href="{{route('sitebuilder.image.change',$config->id)}}?bloc={{$recente->id}}">
-									<img src="{{url('')}}/{{$recente->image}}" style="height:100px;width:auto;margin-bottom:5px;">
+									<img src="{{asset($recente->image)}}" style="height:100px;width:auto;margin-bottom:5px;">
 								</a>
 							@endforeach
 				</div>
@@ -214,7 +214,7 @@
 								data-button-confirm-label="Confirmer"
 								>
 								@if($config->content)
-									<img src="{{url('')}}/{{$config->content}}" alt="">
+									<img src="{{asset($config->content)}}" alt="">
 								@endif
 									<input type="file" name="slim[]" required />
 								</div>
@@ -259,7 +259,7 @@
 									style="width:200px;"
 									>
 									@if($config->content)
-										<img src="{{url('')}}/{{$config->content}}" alt="">
+										<img src="{{asset($config->content)}}" alt="">
 									@endif
 									<input type="file" name="slim[]" />
 								</div>

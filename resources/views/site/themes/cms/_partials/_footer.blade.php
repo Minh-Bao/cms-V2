@@ -10,19 +10,19 @@
             <div class="m-2 ml-2 flex flex-wrap">
                 <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank"
                     title="facebook_{{ config('myconfig.site_owner') }}">
-                    <img src="{{ url('/images/socialMedia_icon/facebook_blanc.png') }}" alt="icon_facebook" >
+                    <img src="{{ asset('/images/socialMedia_icon/facebook_blanc.png') }}" alt="icon_facebook" >
                 </a>
                 <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank"
                     title="youtube_{{ config('myconfig.site_owner') }}">
-                    <img src="{{ url('/images/socialMedia_icon/youtube_blanc.png') }}" alt="icon_youtube" >
+                    <img src="{{ asset('/images/socialMedia_icon/youtube_blanc.png') }}" alt="icon_youtube" >
                 </a>
                 <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank"
                     title="pinterest_{{ config('myconfig.site_owner') }}">
-                    <img src="{{ url('/images/socialMedia_icon/pinterest_blanc.png') }}" alt="icon_pinterest">
+                    <img src="{{ asset('/images/socialMedia_icon/pinterest_blanc.png') }}" alt="icon_pinterest">
                 </a>
                 <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank"
                     title="instagram_{{ config('myconfig.site_owner') }}">
-                    <img src="{{ url('/images/socialMedia_icon/instagram_blanc.png') }}" alt="icon_instagram">
+                    <img src="{{ asset('/images/socialMedia_icon/instagram_blanc.png') }}" alt="icon_instagram">
                 </a>
             </div>
         </div>

@@ -27,7 +27,7 @@
                     @foreach ($sitesliderimages as $key => $sitesliderimage)
                     <div class="embla__slide">
                         <div class="embla__slide__inner">
-                            <img class="embla__slide__img" src="{{ url('/') }}/{{ $sitesliderimage->picture }}" />
+                            <img class="embla__slide__img" src="{{ asset($sitesliderimage->picture) }}" />
                             <p>{{ $sitesliderimage->title }}</p>
                         </div>
                     </div>
@@ -55,11 +55,11 @@
                 </svg>
             </button>
         </div>
-    @else
-        @if ($sitepage->image)
+    @else 
+        @if ($sitepage->image)  
             <div {{-- class="flex flex-wrap " --}}>
                 <div class="w-full pr-4 pl-4 banner-img page" name="{{$sitepage->id}}" value="image" >
-                    <img src="{{url('/' .$sitepage->image)}}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="w-full h-auto" >
+                    <img src="{{asset($sitepage->image)}}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="w-full h-auto" >
                 </div>
             </div>
         @endif

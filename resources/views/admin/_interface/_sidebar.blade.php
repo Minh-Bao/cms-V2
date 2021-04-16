@@ -36,7 +36,7 @@
                             </button>
                         </div>
                         <div class="flex-shrink-0 flex items-center px-4">
-                            <a  href="{{route('site.homepage')}}"><img class="h-8 w-auto" src="{{url('/')}}/images/logo-black.png" rel="" alt="logo-naturelcoquin" /></a>
+                            <a  href="{{route('site.homepage')}}"><img class="h-8 w-auto" src="{{asset('/images/logo-black.png')}}" rel="" alt="logo-naturelcoquin" /></a>
                         </div>
                         
                         <div class="mt-5 flex-1 h-0 overflow-y-auto">
@@ -130,7 +130,7 @@
                     <div class="flex items-center flex-shrink-0 px-6">
                         <a  href="{{route('site.homepage')}}">
                             <img class="h-18 w-auto" 
-                                src="{{url('/')}}/images/logo-black.png" rel="" 
+                                src="{{asset('/images/logo-black.png')}}" rel="" 
                                 alt="logo {{config('myconfig.site_owner')}}"/>
                         </a>
                     </div>

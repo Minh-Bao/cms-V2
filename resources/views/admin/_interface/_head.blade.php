@@ -6,7 +6,7 @@
     
 
     <!-- Favicon-->
-    <link rel="icon" href="{{url('')}}/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('/images/favicon.png')}}" type="image/x-icon">
 
 	<title>Admin {{config('myconfig.name_app')}} @yield('title')</title>
 

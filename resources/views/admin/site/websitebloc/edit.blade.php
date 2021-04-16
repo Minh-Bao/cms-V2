@@ -118,7 +118,7 @@
                                         data-button-confirm-label="Confirmer">
 
                                         @if($websitebloc->image)
-                                        <img src="{{url('')}}/{{$websitebloc->image}}" alt="">
+                                        <img src="{{ asset($websitebloc->image)}}" alt="">
                                         @endif
 
                                         <input type="file" name="image[]" />

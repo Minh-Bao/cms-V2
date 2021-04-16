@@ -105,7 +105,7 @@ ul.sortable li.placeholder {
                                                 <li id="item-{{$picture->id}}">
                                                     <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
                                                         <div class="justify-between" >
-                                                            <img src="{{url('')}}/{{$picture->picture}}" class="">
+                                                            <img src="{{ asset($picture->picture)}}" class="">
                                                             <a href="{{ route('sliderimage.edit',$picture->id) }}" class="mr-8 inline-block align-middle text-center text-green-300 select-none font-normal whitespace-no-wrap  py-1 px-3 leading-normal no-underline" id="{{$picture->id}}">
                                                                 <i class="material-icons">mode_edit</i>
                                                             </a>

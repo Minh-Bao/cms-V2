@@ -275,7 +275,7 @@
 
         $('#websitepage').dataTable({
             "bStateSave": true,
-            "oLanguage": {"sUrl": "{{ url('') }}/fr.txt"},
+            "oLanguage": {"sUrl": "{{ url('/fr.txt') }}"},
             dom: 'Bfrtip',
             buttons: []
         });

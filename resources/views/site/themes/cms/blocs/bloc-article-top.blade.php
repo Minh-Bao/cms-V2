@@ -12,7 +12,7 @@
         </div>
         @if ($bloc->image)
             <div class="text-center  bloc" name="{{$bloc->id}}" value="image" style="margin-bottom:2%;">
-                <img src="{{url('')}}/{{ $bloc->image }}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive w-1/2">
+                <img src="{{ asset($bloc->image)}}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive w-1/2">
             </div>
         @endif
         <div class="bloc" name="{{$bloc->id}}" value="content_two">
@@ -33,16 +33,16 @@
             </div>
             <div class=" flex" >
                 <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank" style="margin:7%; display:block" title="facebook_{{config('myconfig.site_owner')}}" >
-                    <img src="{{url('/')}}/images/socialMedia_icon/facebook_noir.png" alt="" width="150%">
+                    <img src="{{asset('/images/socialMedia_icon/facebook_noir.png')}}" alt="" width="150%">
                 </a>
                 <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank" style="margin:7%; display:block;">
-                    <img src="{{url('/')}}/images/socialMedia_icon/youtube_noir.png" alt="" width="150%" >
+                    <img src="{{asset('/images/socialMedia_icon/youtube_noir.png')}}" alt="" width="150%" >
                 </a>
                 <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="pinterest_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/pinterest_noir.png" alt="" width="150%" >
+                    <img src="{{ asset('/images/socialMedia_icon/pinterest_noir.png')}}" alt="" width="150%" >
                 </a>
                 <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="instagram_{{config('myconfig.site_owner')}}">
-                    <img src="{{url('/')}}/images/socialMedia_icon/instagram_noir.png" alt="" width="150%" >
+                    <img src="{{ asset('/images/socialMedia_icon/instagram_noir.png')}}" alt="" width="150%" >
                 </a>
             </div>
             <div class="flex">

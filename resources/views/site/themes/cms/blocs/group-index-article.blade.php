@@ -3,16 +3,15 @@
 <div class="w-full ml-12">
     <h2 class="">Listes articles en ligne : </h2>
 </div>
-
 @if ($page->count() > 0)
-    @foreach ($page->chunk(3) as $chunk)
+    @foreach ($page->chunk(3) as $chunk) 
         <div class="flex flex-wrap  p-12" >
             @foreach($chunk as $item)
                 <div class="md:w-1/3 pr-4 pl-4">
                     <article class="home_thumbnail bg-white rounded shadow">
                         <div class="max-w-full overflow-hidden rounded-t">
                             <a href="{{route('site.page' , ['type' => 'page', 'slug' => $item->slug]) }}" title="{{config('myconfig.site_owner')}}_article_{{ $item->slug }}">
-                                <img src="{{ url('/').'/'.$item->thumbnail }}" alt="thumbnail_{{ $item->slug }}" class="w-full"/>
+                                <img src="{{ asset($item->thumbnail) }}" alt="thumbnail_{{ $item->slug }}" class="w-full"/>
                             </a>
                         </div>
                         <h2 class="h5 pl-3 pt-3">

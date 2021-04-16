@@ -2,7 +2,7 @@
     <div class="container mx-auto sm:px-4 max-w-full flex flex-wrap">
         <div class=" w-11/12">
             <a class="inline-block pt-1 pb-1 mr-4 text-lg whitespace-no-wrap" href="{{config('myconfig.site_developper_url')}}" target="_blank">
-                <img src="{{url('/')}}/images/gw-logo.png" alt="logo-greenweb" width="50%">
+                <img src="{{ asset('/images/gw-logo.png')}}" alt="logo-greenweb" width="50%">
                 {{-- <span style="color:grey;"> : Sitebuilder</span> --}}
             </a>
         </div>

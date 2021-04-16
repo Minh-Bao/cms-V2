@@ -182,7 +182,7 @@
                                         data-button-cancel-label="Annuler"
                                         data-button-confirm-label="Confirmer">
                                         @if($websitepage->image)
-                                        <img src="{{url('')}}/{{$websitepage->image}}"
+                                        <img src="{{ asset($websitepage->image)}}"
                                             alt="image_{{$websitepage->image}}">
                                         @endif
                                         <input type="file" name="image[]" />
@@ -201,7 +201,7 @@
                                         data-button-cancel-label="Annuler"
                                         data-button-confirm-label="Confirmer">
                                         @if($websitepage->thumbnail)
-                                        <img src="{{url('')}}/{{$websitepage->thumbnail}}"
+                                        <img src="{{ asset($websitepage->thumbnail)}}"
                                             alt="thumbnail_{{$websitepage->thumbnail}}">
                                         @endif
                                         <input type="file" name="thumbnail[]" />

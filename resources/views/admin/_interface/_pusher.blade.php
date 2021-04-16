@@ -66,7 +66,7 @@
 
       };
 
-      $(".msg_container_base").append('<div class="flex flex-wrap  msg_container base_receive"><div class="md:w-1/5 pr-4 pl-4 sm:w-1/5 pr-4 pl-4 avatar"><img src="'+ data.avatar +'" class=" img-responsive "></div><div class="md:w-4/5 pr-4 pl-4 sm:w-4/5 pr-4 pl-4"><div class="messages msg_receive"><p>'+data.message+'</p><time datetime="2009-11-13T20:00">'+data.name +' • '+ data.time +'</time></div></div></div>');
+      $(".msg_container_base").append('<div class="flex flex-wrap  msg_container base_receive"><div class="md:w-1/5 pr-4 pl-4 sm:w-1/5 avatar"><img src="'+ data.avatar +'" class=" img-responsive "></div><div class="md:w-4/5 pr-4 pl-4 sm:w-4/5"><div class="messages msg_receive"><p>'+data.message+'</p><time datetime="2009-11-13T20:00">'+data.name +' • '+ data.time +'</time></div></div></div>');
 
       $('.msg_container_base').scrollTop(1E10);
 
@@ -92,7 +92,7 @@
 
 //      var message = data.message;
 
-//     $('#MHC'+message).load('{{url('')}}/admin/proprietes/ajax/showline?id='+message);  
+//     $('#MHC'+message).load('{{url('/admin/proprietes/ajax/showline?id='+message')}});  
 
 //    });
 

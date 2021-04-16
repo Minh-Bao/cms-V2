@@ -10,7 +10,7 @@
                 <ul class="main-slider slide blur" >
                     @foreach($sitesliderimages as $compteur=>$sitesliderimage)
                         <li class="slide-item 
-                            @if($compteur==0) active @endif slide-{{$compteur++}}"  style="background: url('{{url('')}}/{{$sitesliderimage->picture}}');background-repeat: no-repeat; background-size: cover;">
+                            @if($compteur==0) active @endif slide-{{$compteur++}}"  style="background: url('{{url($sitesliderimage->picture)}}');background-repeat: no-repeat; background-size: cover;">
                         </li>
                     @endforeach
                 </ul>

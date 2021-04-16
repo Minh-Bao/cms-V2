@@ -8,7 +8,7 @@
     <title>{{config('myconfig.name_app')}} : {{ $sitepage->meta_title }}</title>
 
     <!-- Favicon-->
-    <link rel="icon" href="{{url('')}}/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('/images/favicon.png')}}" type="image/x-icon">
 
 
     <!-- Bootstrap core CSS -->
@@ -19,8 +19,8 @@
     {{-- <link href="{{url('')}}/site/css/style.css" rel="stylesheet"> --}}
     
     <link href="https://fonts.googleapis.com/css?family=Barlow" rel="stylesheet"> 
-    <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="{{url('')}}/css/owlcarousel/assets/owl.theme.default.min.css">
+    {{-- <link rel="stylesheet" href="{{url('/css/owlcarousel/assets/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url('/css/owlcarousel/assets/owl.theme.default.min.css')}}"> --}}
 
     <!-- Livewire -->
     @livewireStyles

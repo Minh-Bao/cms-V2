@@ -63,7 +63,7 @@ li {
   <div class="container mx-auto sm:px-4 max-w-full">
     <div id="breadcontainer">
 {{--       <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
-        <li><i class="material-icons material-icons text-gray-900 px-2 rounded-md">dashboard</i> <a href="{{url('')}}/admin"> Accueil</a></li>
+        <li><i class="material-icons material-icons text-gray-900 px-2 rounded-md">dashboard</i> <a href="{{url('/admin')}}"> Accueil</a></li>
         <li><i class="material-icons">public</i>  Site</li>
         <li><i class="material-icons">photo_library</i>  <a href="{{route('slider.index')}}">Sliders</a></li>
         <li class="active">Gestion des Slides</li>
@@ -97,7 +97,7 @@ li {
                 <li id="item-{{$picture->id}}">
                   <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
                     <div class="body">
-                      <img src="{{url('')}}/{{$picture->picture}}" class="img-responsive" style="margin-bottom:10px;width:100%;height:auto;">
+                      <img src="{{ asset($picture->picture)}}" class="img-responsive" style="margin-bottom:10px;width:100%;height:auto;">
                       <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
                         <i class="material-icons">mode_edit</i></a>
                       <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange"><i class="material-icons">delete</i></a>
@@ -137,7 +137,7 @@ li {
                          data-push="true"
                          data-save-initial-image="true"
                          data-ratio="{{$slider->ratio}}">
-                        <img src="{{url('')}}/{{$slide->picture}}" alt=""/>
+                        <img src="{{ asset($slide->picture)}}" alt=""/>
                         <input type="file" name="slim[]" required />
                        </div>
                        <div class="flex flex-wrap  mb-4 form-float">

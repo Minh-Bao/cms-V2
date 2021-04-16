@@ -4,16 +4,16 @@
     </div>
     <div class="logo flex " style="width:40%;align-self:center;margin-right:6%;">
         <a href="{{ config('myconfig.FB_owner_url') }}" target="_blank" style="margin:7%; display:block" title="facebook_{{config('myconfig.site_owner')}}" >
-            <img src="{{url('/')}}/images/socialMedia_icon/facebook_noir.png" alt="icon_facebook"  width="200%">
+            <img src="{{asset('/images/socialMedia_icon/facebook_noir.png')}}" alt="icon_facebook"  width="200%">
         </a>
         <a href="{{ config('myconfig.utube_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="youtube_{{config('myconfig.site_owner')}}">
-            <img src="{{url('/')}}/images/socialMedia_icon/youtube_noir.png" alt="icon_youtube" width="200%" >
+            <img src="{{asset('/images/socialMedia_icon/youtube_noir.png')}}" alt="icon_youtube" width="200%" >
         </a>
         <a href="{{ config('myconfig.pinterest_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="pinterest_{{config('myconfig.site_owner')}}">
-            <img src="{{url('/')}}/images/socialMedia_icon/pinterest_noir.png" alt="icon_pinterest" width="200%" >
+            <img src="{{ asset('/images/socialMedia_icon/pinterest_noir.png')}}" alt="icon_pinterest" width="200%" >
         </a>
         <a href="{{ config('myconfig.insta_owner_url') }}" target="_blank" style="margin:7%; display:block;" title="instagram_{{config('myconfig.site_owner')}}">
-            <img src="{{url('/')}}/images/socialMedia_icon/instagram_noir.png" alt="icon_instagram" width="200%" >
+            <img src="{{ asset('/images/socialMedia_icon/instagram_noir.png')}}" alt="icon_instagram" width="200%" >
         </a>
     </div>
     <div class="flex" style="align-self:center;justify-content:center">

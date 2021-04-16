@@ -12,7 +12,7 @@
                             <div class="max-w-full overflow-hidden rounded-t">
                                 <a href="{{ route('site.page', ['type' => 'page', 'slug' => $item->slug]) }}"
                                     title="{{ config('myconfig.site_owner') }}_article_{{ $item->slug }}">
-                                    <img src="{{ url('/' . $item->thumbnail) }}" alt="thumbnail_{{ $item->slug }}"
+                                    <img src="{{ asset($item->thumbnail) }}" alt="thumbnail_{{ $item->slug }}"
                                         class="w-full" />
                                 </a>
                             </div>
@@ -54,7 +54,7 @@
                     <div class="round_pastille">{{ $item->count }}</div>
                     <a href="{{ route('site.page', ['type' => 'page', 'slug' => $item->slug]) }}"
                         title="best_article_{{ $item->slug }}">
-                        <img src="{{ url('/images/miniThumb') . '/' . $item->title_img . '.jpg' }}"
+                        <img src="{{ asset('/images/miniThumb') . '/' . $item->title_img . '.jpg' }}"
                             alt="rounded_thumbnail_{{ $item->slug }}" class="circle_img" />
                     </a>
                 </div>

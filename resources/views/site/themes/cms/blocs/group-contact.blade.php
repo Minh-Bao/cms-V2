@@ -5,7 +5,7 @@
             {!! $bloc->content !!}
         </div>
         <div class=" bloc" name="{{$bloc->id}}" value="image">
-            <img src="{{url('')}}/{{ $bloc->image }}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive rounded" width="100%" style="filter: drop-shadow(5px 3px 6px #2c3c3a)">
+            <img src="{{ asset($bloc->image)}}" title="{{$bloc->title_img}}" alt="{{$bloc->alt_img}}" class="img-responsive rounded" width="100%" style="filter: drop-shadow(5px 3px 6px #2c3c3a)">
         </div>
     </div>
     
