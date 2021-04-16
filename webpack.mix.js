@@ -15,6 +15,7 @@ const tailwindcss = require('tailwindcss');
 
 mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/instafeed-main.js', 'public/js')
+    .js('resources/js/instafeed-small.js', 'public/js')
     .sass('resources/sass/admin.scss', 'public/css/admin')
     .options({
         processCssUrls: false,
