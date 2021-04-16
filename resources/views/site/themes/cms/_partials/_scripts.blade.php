@@ -43,31 +43,7 @@ $(document).ready(function() {
  --}}
 
 
-<script>
-$(".site-logo-img--light").show();
 
-$(function() { 
-  $(".site-logo-img--light").show();
-  $(".site-logo-img--dark").hide();
-  $(".site-header").css("background-color", "transparent");
-  $(".site-header a").css("color", "white");
-  $(window).scroll(function() {
-    var scroll = $(window).scrollTop();
-    if (scroll >= 300) {
-      $(".site-logo-img--dark").show();
-      $(".site-header").css("background-color", "white");
-      $(".site-header a").css("color", "black");
-      $(".navbar").addClass("shadow");           
-    } else {
-      $(".site-logo-img--light").show();
-      $(".site-logo-img--dark").hide();
-      $(".navbar").removeClass("shadow");                
-      $(".site-header").css("background-color", "transparent");
-      $(".site-header a").css("color", "white");
-    }
-  });
-});
-</script>
 
 <script>
   var owl = $('.owl-carousel');
