@@ -1,5 +1,6 @@
-
-
+/**
+ * Instafeed script to call instagramm account 12 last images.
+ */
 var feed = new Instafeed({
     accessToken: process.env.MIX_INSTA_TOKEN,
     limit: 12,
@@ -18,4 +19,6 @@ var feed = new Instafeed({
         document.getElementById('insta_error_msg').style.display = "block";
     }
 });
+
+//run the feed
 feed.run();
