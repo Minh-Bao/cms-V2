@@ -2,6 +2,8 @@
 /public/images
 /public/storage
 /public/plugins
+/public/js/instafeed-main.js
+/public/js/instafeed-small.js
 /storage
 /vendor
 .env
