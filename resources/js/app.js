@@ -32,5 +32,74 @@ window.Vue = require('vue'); */
     el: '#app'
 }); */
 
+/**
+ * Import Alpinejs dependencies
+ */
+
 import 'alpinejs'
+
+import EmblaCarousel from "embla-carousel";
+import "../css/embla.css";
+
+window.EmblaCarousel = EmblaCarousel;
+
+
+
+/*********************CUSTOMBOX MODAL PLUGIN FOR WYSIWYG FRONT EDITOR ******************/
+
+/**
+ * When click a class : add html content for modal
+ * Use of custombox modal plugin
+ * Modal Wysiwyg front
+ * 
+ **/
+
+//Parse new custombox modal and set the option
+$(document).ready(function(){
+    var modal = new Custombox.modal({
+      content: {
+        effect: 'fadein',
+        target: '#sitebuilder',
+      }
+  });
+
+
+  /**
+   * Add modal html content when click on a class
+   */
+   $('.bloc').click(function(){
+       var element = $(this).attr("name");
+       var object = $(this).attr("value");
+    //    console.log('{{route('sitebuilder')}}?part=bloc&object='+object+'&elem='+element);
+       $('#sitebuilder').html('');
+       $('#sitebuilder').load('/admin/sitebuilder?part=bloc&object='+object+'&elem='+element);
+       modal.open();
+  });
+  
+  $('.page').click(function(){
+       var element = $(this).attr("name");
+       var object = $(this).attr("value");
+    //    console.log('{{route('sitebuilder')}}?part=page&object='+object+'&elem='+element);
+       $('#sitebuilder').html('');
+       $('#sitebuilder').load('/admin/sitebuilder?part=page&object='+object+'&elem='+element);
+       modal.open();
+  });
+  
+   $('.slider').click(function(){
+       var element = $(this).attr("name");
+       var object = $(this).attr("value");
+       $('#sitebuilder').html('');
+       $('#sitebuilder').append('/admin/sitebuilder?part=slider&object='+object+'&elem='+element);
+       modal.open();
+    //    console.log(element);
+    });
+  });
+  
+  /**
+   * remove html content when close the modal
+   */
+  document.addEventListener('custombox:overlay:close', function() {
+      $('#sitebuilder').html('');
+  });
+  
 
