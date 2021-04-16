@@ -72,9 +72,7 @@
     <h2 class="mb-7 text-center md:text-left">Suivez nous sur Instagram : </h2>
 
     <ul id="instafeed" class="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4"></ul>
-    <div id="insta_error_msg" style="display:none;">Instagram : une erreur est survenue lors du chargement des
-        images.... Veuillez reessayer plus tard.</div>
-
+    <div id="insta_error_msg" style="display:none;">Instagram : une erreur est survenue lors du chargement des images.... Veuillez reessayer plus tard.</div>
 </div>
 
 
