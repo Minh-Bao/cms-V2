@@ -32,15 +32,19 @@ window.Vue = require('vue'); */
     el: '#app'
 }); */
 
+
+
 /**
  * Import Alpinejs dependencies
  */
-
 import 'alpinejs'
 
+/**
+ * Import Embla css file 
+ * Then parse EmblaCarousel script for the slider
+ */
 import EmblaCarousel from "embla-carousel";
 import "../css/embla.css";
-
 window.EmblaCarousel = EmblaCarousel;
 
 
@@ -101,5 +105,7 @@ $(document).ready(function(){
   document.addEventListener('custombox:overlay:close', function() {
       $('#sitebuilder').html('');
   });
+
+  /*********************____CUSTOMBOX MODAL PLUGIN FOR WYSIWYG FRONT EDITOR ____******************/
   
 
