@@ -1,10 +1,20 @@
 
 
 var feed = new Instafeed({
-    accessToken: "{{ config('myconfig.insta_access_token') }}",
+    accessToken: process.env.MIX_INSTA_TOKEN,
     limit: 12,
-    template:'<a class="col-md-3" target="_blank href="{{link}}"><img class="img-thumbnail shadow  bg-white rounded img_insta" title="{{caption}}" src="{{image}}" /></a>',
-    error: function(){
+    after: function() {
+        var container = document.getElementById('instafeed');
+        for (var i = 0; i < container.children.length; i++) {
+            var parent = container.children;
+            for (var j = 0; j < parent.length; j++) {
+                var child_img = parent[j].children;
+                child_img[0].setAttribute("class", "shadow  bg-white rounded-lg ");
+                parent[j].setAttribute('target', '_blank');
+            }
+        }
+    },
+    error: function() {
         document.getElementById('insta_error_msg').style.display = "block";
     }
 });
