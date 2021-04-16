@@ -11,14 +11,14 @@
 		{{ Form::hidden('part', $part, array('class'=>'form-control' ))}}
 		{{ Form::hidden('object', $object, array('class'=>'form-control' ))}}
 
-        <div class="modal-dialog modal-lg bg-white-450 rounded-sm" role="document" >
-            <div class="modal-content" id="">
-                <div class="modal-header">
-					{{ config('myconfig.name_app')}} Site Builder v1.2
+        <div class="modal-dialog modal-lg bg-white-450 rounded-xl " role="document" >
+            <div class="modal-content rounded-xl" id="">
+                <div class="modal-header bg-purple-300 p-2">
+                    <span class="text-gray-900 text-lg">{{ config('myconfig.name_app')}} :  </span> Site Builder v1.2
 				</div>
 				
                 <div class="modal-body">
-                	@if($config->variable=="url_logo")
+{{--                 	@if($config->variable=="url_logo")
 					    <div class="slim"
 					         data-label="Votre logo"
 					         data-size="{{$siteconfig[2]->content_fr}},{{$siteconfig[3]->content_fr}}"
@@ -40,7 +40,7 @@
                     @endif
 
                 	@if($config->variable=="image_news")
-					L'image sera adaptée au format {{$siteconfig[21]->content_fr}}x{{$siteconfig[22]->content_fr}} pixels
+                        L'image sera adaptée au format {{$siteconfig[21]->content_fr}}x{{$siteconfig[22]->content_fr}} pixels
 
 					    <div class="slim"
 					         data-label="Photo jpg"
@@ -119,7 +119,7 @@
 							Url de l'image : {{url('')}}/{{$config->folder}}/{{$config->content}}
 						@endif              	
 					@endif
-					
+--}}
 
 					@if($part=="bloc")
 						@if($object=="title")
@@ -199,10 +199,12 @@
 
                 	@if($part=="page")
 						@if($object=="image")
+                        <div class="p-2">
 							L'image sera adaptée au format 1440x450 pixels
-							<div class="flex flex-wrap " >
+                        </div>
+							<div class="flex flex-wrap  " >
 								<div class="md:w-full pr-4 pl-4">
-								<div class="slim"
+								<div class="slim rounded-sm shadow-md" 
 								data-size="1440,450"
 								data-force-size="1440,450"
 								data-ratio="4:2"
@@ -283,49 +285,11 @@
 							</div>
 						</div>
                     @endif
-
-					@if($part=="partenaire")
-						@if($object=="name" || $object=="baseline")
-		                    {{ Form::text('content', $config->content, array('class'=>'form-control' ))}}
-						@endif
-
-						@if($object=="description")
-							{{ Form::textarea('content', $config->content, array('id'=>'ckeditor' ))}}
-						
-							<!-- Ckeditor -->
-							{!! Html::script('plugins/ckeditor/ckeditor.js') !!}
-
-							<!-- Custom Js -->
-							<script type="text/javascript">
-
-							//CKEditor
-							CKEDITOR.replace('ckeditor');
-							CKEDITOR.config.height = 300;
-							</script>
-						@endif
-
-						@if($object=="image")
-							L'image sera adaptée au format 800x600 pixels
-							<div class="slim"
-								data-label="Photo"
-								data-size="800,600"
-								data-instant-edit="true"
-								data-button-cancel-label="Annuler"
-								data-button-confirm-label="Confirmer"
-								data-ratio="3:2">
-								@if($config->content)
-									<img src="{{url('')}}/{{$config->folder}}/{{$config->content}}" alt="">
-								@endif
-								<input type="file" name="slim[]" required />
-							</div>
-							Url de l'image : {{url('')}}/{{$config->folder}}/{{$config->content}}
-						@endif              	
-                    @endif
                 </div>
 
                 <div class="modal-footer">
-					{{ Form::submit('Modifier', array('class'=>'btn btn-primary' )) }}
-                    <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default close" data-dismiss="modal" onclick="closes();">Fermer</button>
+					{{ Form::submit('Modifier', array('class'=>'m-4 px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-450 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-900 sm:order-1 sm:ml-3' )) }}
+                    <button type="button" class="border border-gray-500 text-center select-none font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default close" data-dismiss="modal" onclick="Custombox.modal.close();">Fermer</button>
                 </div>
             </div>
         </div>
