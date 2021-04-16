@@ -1,8 +1,0 @@
-
-<div class="col-md-3">
-    <div class="bloc efix-bloc-box">
-        <img src="/{{$bloc->image}}" alt="{{$bloc->title}}" title="{{$bloc->title}}" class="img-fluid bloc" name="{{$bloc->id}}" value="image">
-    </div>
-</div>
-
-
