@@ -1,14 +1,14 @@
 /******/ (() => { // webpackBootstrap
 var __webpack_exports__ = {};
-/*!****************************************!*\
-  !*** ./resources/js/instafeed-main.js ***!
-  \****************************************/
+/*!*****************************************!*\
+  !*** ./resources/js/instafeed-small.js ***!
+  \*****************************************/
 /**
  * Instafeed script to call instagramm account 12 last images.
  */
 var feed = new Instafeed({
   accessToken: "IGQVJXLXB6Q0dmZAWV2NGhnTG1xbmMtUTdzN1FQNGR3MVhlUnk2WHlGVWVmWXJ0dkQ5MGVaaFprelh0MDMtMzJGdF96R1BZASmtFZAmx3ZAXVITV9wdHBSSGJ5YVNyX1NoUnAzT05YUVo1TVR0dDFaRlFRMQZDZD",
-  limit: 12,
+  limit: 6,
   after: function after() {
     var container = document.getElementById('instafeed');
 
