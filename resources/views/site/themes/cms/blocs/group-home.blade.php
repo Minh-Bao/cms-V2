@@ -78,29 +78,6 @@
 </div>
 
 
-<script type="text/javascript" src="{{ url('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
-{{-- <script type="text/javascript" src="{{ url('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script> --}}
+<script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/instafeed-main.js') }}"></script>
 
-
-<script type="text/javascript">
-    var feed = new Instafeed({
-        accessToken: '{{ config('myconfig.insta_access_token') }}',
-        limit: 12,
-        after: function() {
-            var container = document.getElementById('instafeed');
-            for (var i = 0; i < container.children.length; i++) {
-                var parent = container.children;
-                for (var j = 0; j < parent.length; j++) {
-                    var child_img = parent[j].children;
-                    child_img[0].setAttribute("class", "shadow  bg-white rounded-lg ");
-                    parent[j].setAttribute('target', '_blank');
-                }
-            }
-        },
-        error: function() {
-            document.getElementById('insta_error_msg').style.display = "block";
-        }
-    });
-    feed.run();
-
-</script>
