@@ -1,8 +1,5 @@
 @extends('site.themes.'.config('myconfig.site_theme').'.main')
 
-@section('stylesheets')
-@endsection
-
 @section('title', ' | ' . $sitepage->name)
 
 @section('content')
@@ -22,7 +19,7 @@
                 prev = embla.canScrollPrev()
                 })
             }"
-            class="embla {{-- slider --}} " name="{{$sitepage->slider_id}}" value="picture">
+            class="embla {{-- slider --}}" name="{{$sitepage->slider_id}}" value="picture">
             <div x-ref="viewport" class="embla__viewport">
                 <div class="embla__container">
                     @foreach ($sitesliderimages as $key => $sitesliderimage)
@@ -60,21 +57,22 @@
             </button>
         </div>
     @else 
+    <!--Main header picture-->
         @if ($sitepage->image)  
-            <div >
-                <div class="w-full pr-4 pl-4 banner-img page" name="{{$sitepage->id}}" value="image" >
-                    <img src="{{asset($sitepage->image)}}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="w-full h-auto" >
-                </div>
+            <div class="w-full pr-4 pl-4 banner-img page" name="{{$sitepage->id}}" value="image" >
+                <img src="{{asset($sitepage->image)}}" alt="{{ $sitepage->alt_img }}" title="{{ $sitepage->title_img}}" class="w-full h-auto" >
             </div>
         @endif
     @endif
 
+    <!--Title H1 WITHOUT synopsis-->
     @if ($sitepage->title != NULL && $sitepage->content == NULL)
         <div class=" margin-auto md:w-2/3 pr-4 pl-4 ml-5 mt-5"  >
             <h1 class=" margin-auto">{{ $sitepage->title }}</h1>
         </div>        
     @endif
 
+    <!--Title H1 AND synopsis-->
     @if ($sitepage->content)
         <div class="container mx-auto  mt-8" >
             <div class="" >
@@ -86,59 +84,34 @@
         </div>
     @endif
 
-    <?php
-    $section_count = 0;
-    $precedent = '';
-    $groupe = 0;
-    ?>
+    {{-- @php
+        $section_count = 0;
+        $precedent = '';
+        $groupe = 0;
+    @endphp --}}
 
-    <div>
-        <div class="{{-- flex flex-wrap --}} ">
+
             @if ($siteblocs->count() > 0)
+
                 <!-- Blocs -->
                 @foreach ($siteblocs as $bloc)
-                   {{--  @if ($bloc->format == '12-title')
-                        <?php $groupe++; ?>
+
+                    {{-- @if ($precedent == $bloc->format)
+                        {{ $section_count++ }}
+                    @else
+                        @php
+                            $section_count = 1;
+                            $precedent = $bloc->format;
+                        @endphp
                     @endif --}}
 
-                    @if ($precedent == $bloc->format)
-                        <?php $section_count++; ?>
-                    @else
-                       {{--  @if ($precedent == '12-carrousel')
-                             <div>
-                                12-carrousel 
-                            </div>
-                        @endif --}}
-                        <?php
-                        $section_count = 1;
-
-                        $precedent = $bloc->format;
-                        ?>
-                            </div>
-                        </div>
-
-                        @if ($groupe % 2 == 0)
-
-                            <div class="">
-                                {{-- <div class="flex flex-wrap " style="background-color:#f2f2f2;padding:15px;"> test pour mise en page mosaic Home...--}}
-                                <div class="container max-w-full mx-auto sm:px-4" style="background-color:#f2f2f2;padding:15px;">
-                        @else
-                            <div class="container mx-auto sm:px-4">
-                                <div class="flex flex-wrap " style="background-color:#fff;padding:15px;">
-                        @endif
-
-                        {{-- @if ($bloc->format == '12-carrousel' && $section_count == 1)
-                            <div class="owl-carousel owl-theme mhc-blog-sec">
-                        @endif --}}
-                    @endif
-                    
                     <!--Include customs bloc -->
+                <div class="container max-w-full mx-auto sm:px-4 bg-white-450" style="padding:15px;">                        
                     @include('site.themes.'.config('myconfig.site_theme').'.blocs.'.$bloc->format)
+                </div>
 
                 @endforeach
             @endif
-        </div>
-    </div>
 
     <!--Checkbox paginate and last review-->
     @if ($sitepage->paginate == "on")
