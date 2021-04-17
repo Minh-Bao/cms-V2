@@ -98,22 +98,6 @@ $.fn.extend({
 
 </script>
 
-
-
-
-
-<script>
-
-
-
-
-
-
-
-</script>
-
-
-
 <script>
 
   window.Laravel = <?php echo json_encode([
