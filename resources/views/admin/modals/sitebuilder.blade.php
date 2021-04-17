@@ -240,49 +240,52 @@
 
                 	@if($part=="slider")
 						@php
-							$sliderimage = App\Site\SliderImage::find($variable);
-							$slider = App\Site\Slider::find($sliderimage->sitesliders_id);
+							$sliderimage = App\Models\Site\SliderImage::find($variable);
+							$slider = App\Models\Site\Slider::find($sliderimage->sitesliders_id);
 						@endphp
 
 						<div class="flex flex-wrap  mb-4">
-							<div class="md:w-1/4 pr-4 pl-4">
-								<label>Titre</label>
-								{{ Form::text('title', $sliderimage->title, array('class'=>'form-control' ))}}
-								<div class="slim"
-									data-size="{{$slider->width}},{{$slider->height}}"
-									data-label="Image jpg"
-									data-force-type = "jpg"
-									data-button-cancel-label="Annuler"
-									data-button-confirm-label="Confirmer"
-									data-instant-edit="true"
-									data-ratio="{{$slider->ratio}}"
-									style="width:200px;"
-									>
-									@if($config->content)
-										<img src="{{asset($config->content)}}" alt="">
-									@endif
-									<input type="file" name="slim[]" />
-								</div>
-							</div>
+                            @foreach ($sliders as $sliderimage)
+                                <div class="md:w-1/4 pr-4 pl-4">
+                                    <div class="slim"
+                                        data-size="{{$slider->width}},{{$slider->height}}"
+                                        data-label="Image jpg"
+                                        data-force-type = "jpg"
+                                        data-button-cancel-label="Annuler"
+                                        data-button-confirm-label="Confirmer"
+                                        data-instant-edit="true"
+                                        data-ratio="{{$slider->ratio}}"
+                                        style="width:200px;"
+                                        >
+                                        @if($config->content)
+                                            <img src="{{asset($sliderimage->picture)}}" alt="">
+                                        @endif
+                                        <input type="file" name="slim[]" />
+                                    </div>
+                                </div>
 
-							<div class="md:w-3/4 pr-4 pl-4">
-								<label>Contenu</label>
-								{{ Form::textarea('content', $sliderimage->content, array('id'=>'ckeditor' ))}}
-								
-								<!-- Ckeditor -->
-								{!! Html::script('plugins/ckeditor/ckeditor.js') !!}
+                                <div class="md:w-3/4 pr-4 pl-4 flex justify-around">
+                                    <span>
+                                        <label>Titre</label>
+                                        {{ Form::text('title', $sliderimage->title, array('class'=>'form-control' ))}}
+                                    </span>
+                                    
+                                    <span>
+                                        <label>Contenu</label>
+                                        {{ Form::text('content', $sliderimage->content)}}
+                                    </span>
+                                    
+                                    <!-- Ckeditor -->
+                                    {!! Html::script('plugins/ckeditor/ckeditor.js') !!}
 
-								<!-- Custom Js -->
-								<script type="text/javascript">
-
-								//CKEditor
-								CKEDITOR.replace('ckeditor');
-								CKEDITOR.config.height = 200;
-								</script>
-
-								<label>Lien</label>
-								{{ Form::text('link', $sliderimage->link, array('class'=>'form-control' ))}}
-							</div>
+                                    {{-- <!-- Custom Js -->
+                                    <script type="text/javascript">
+                                        //CKEditor
+                                        CKEDITOR.replace('ckeditor');
+                                        CKEDITOR.config.height = 200;
+                                    </script> --}}
+                                </div>
+                            @endforeach
 						</div>
                     @endif
                 </div>
