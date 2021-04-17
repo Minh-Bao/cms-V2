@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\URL;
 use App\Repositories\UserRepository;
 use App\Repositories\SliderRepository;
 use Illuminate\Support\ServiceProvider;
@@ -55,7 +56,9 @@ class AppServiceProvider extends ServiceProvider
             UserRepository::class, 
         );
 
-
+        // if($this->app->environment('production')) {
+        //     URL::forceScheme('https');
+        // }
 
 
     }
