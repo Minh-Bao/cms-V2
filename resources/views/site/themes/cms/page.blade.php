@@ -122,8 +122,4 @@
     @endif
 @endsection
 
-@section('scripts')
 
-
-
-@endsection
