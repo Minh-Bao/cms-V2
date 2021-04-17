@@ -93,7 +93,7 @@ $(document).ready(function(){
        var element = $(this).attr("name");
        var object = $(this).attr("value");
        $('#sitebuilder').html('');
-       $('#sitebuilder').append('/admin/sitebuilder?part=slider&object='+object+'&elem='+element);
+       $('#sitebuilder').load('/admin/sitebuilder?part=slider&object='+object+'&elem='+element);
        modal.open();
     //    console.log(element);
     });
