@@ -1,6 +1,5 @@
     <!-- Left Sidebar -->
 
-
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
             <div class="lg:hidden"
                 x-show="open"
@@ -250,7 +249,7 @@
                                     class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md
                                     @if($active == "articles") bg-gray-200  @endif">
                                     <!-- Heroicon name: outline/view-list -->
-                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                    <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -263,7 +262,7 @@
                                     class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md
                                     @if($active == "sliders") bg-gray-200 @endif">
                                     <!-- Heroicon name: outline/view-list -->
-                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" 
+                                    <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" 
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24" 
                                         xmlns="http://www.w3.org/2000/svg">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -276,7 +275,7 @@
                                 <a href="#"
                                     class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                     <!-- Heroicon name: outline/clock -->
-                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                    <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor" aria-hidden="true">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -288,7 +287,7 @@
                                 <a href="#"
                                     class="text-gray-700 hover:text-gray-900 hover:bg-purple-100 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                     <!-- Heroicon name: outline/clock -->
-                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                    <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
                                         stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -355,64 +354,3 @@
    
 
 
-    <!-- #END# Left Sidebar -->
-
-  <!-- ============ Right SIdebar ================ -->
-
-
-
-    {{-- <aside id="leftsidebar" class="sidebar">
-        <!-- User Info -->
-        <div class="user-info">
-            <div class="image"></div>
-            <div class="info-container"></div>
-        </div>
-
-        <!-- #User Info -->
-
-        <!-- Menu -->
-        <div class="menu">
-            <ul class="list">
-                <li id="dashboard" class="{{{ (Request::is('admin/dashboard') ? 'active' : '') }}} {{{ (Request::is('admin/dashboard/*') ? 'active' : '') }}}">
-                    <a href="{{ route('admin.index') }}">
-                        <i class="material-icons">dashboard</i>
-                        <span>Tableau de bord</span>
-                    </a>
-                </li>
-
-                <li id="user_list" class="{{{ (Request::is('admin/websitepage') ? 'active' : '') }}} {{{ (Request::is('admin/websitepage/*') ? 'active' : '') }}}">
-                    <a href="{{route('websitepage.index')}}">
-                        <i class="material-icons">description</i>
-                        <span>Pages</span>
-                    </a>
-                </li>
-
-                <li id="user_add" class="{{{ (Request::is('admin/site/slider') ? 'active' : '') }}} {{{ (Request::is('admin/site/slider/*') ? 'active' : '') }}} {{{ (Request::is('admin/site/sliderimage/*') ? 'active' : '') }}}">
-                    <a href="{{route('slider.index')}}">
-                      <i class="material-icons">panorama</i>
-                      <span>Sliders</span>
-                    </a>
-                </li>
-
-                <li id="user_add" class="{{{ (Request::is('admin/site/slider') ? 'active' : '') }}} {{{ (Request::is('admin/site/slider/*') ? 'active' : '') }}} {{{ (Request::is('admin/site/sliderimage/*') ? 'active' : '') }}}">
-                    <a href="" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                        <i class="material-icons">logout</i>
-                        <span>Déconnexion</span>
-                    </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
-                </li>
-
-            </ul>
-        </div>
-
-      <!-- #Menu -->
-
-      <!-- Footer -->
-        <div class="legal">
-            <div class="copyright"> 
-                &copy; {{date("Y")}} 
-                <a href="{{config('myconfig.site_developper_url')}}">Agence{{config('myconfig.site_developper')}}</a>.
-            </div>
-        </div>
-      <!-- #Footer -->
-    </aside> --}}
