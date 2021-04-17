@@ -32,44 +32,14 @@
 </div>
 
 
+<!--Custombox Stylesheets-->
+    {{ Html::style('plugins/custombox-4.0.3/dist/custombox.min.css') }}
+    {{ Html::style('css/sitebuilder.css') }}
 
-{{ Html::style('plugins/custombox-4.0.3/dist/custombox.min.css') }}
-{{ Html::script('plugins/custombox-4.0.3/dist/custombox.min.js') }}
-{{ Html::script('plugins/custombox-4.0.3/dist/custombox.legacy.min.js') }}
+<!--Custombox scripts-->
+    {{ Html::script('plugins/custombox-4.0.3/dist/custombox.min.js') }}
+    {{ Html::script('plugins/custombox-4.0.3/dist/custombox.legacy.min.js') }}
 
-
-
-<style>
-
-#sitebuilder {
-    -webkit-transition: width 2s; /* For Safari 3.1 to 6.0 */
-    min-width: 50%;
-    
-}
-
-
-.elem, .bloc , .page , .article, .slider , .partenaire{
-    border: 3px dashed rgba(255, 255, 255, .0);
-}
-
-.elem:hover, .bloc:hover , .page:hover , .article:hover, .slider:hover , .partenaire:hover {
-    z-index:1000;
-    cursor:pointer;
-    border-style: dashed;
-    border-color:#999;
-}
-
-.topbar {
-  color:#fff;
-  background-color:#000;
-}
-
-.topbar a {
-  margin-left:20px;
-}
-
-
-</style>
 
 
 
