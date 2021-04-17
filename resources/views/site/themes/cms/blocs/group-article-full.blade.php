@@ -125,53 +125,14 @@
     </a>
 </div>
 
-
-<script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/instafeed-small.js') }}"></script>
-
-
-
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/instafeed-small.js') }}"></script>
+@endsection
 
 
 
-{{-- <section class="">
-    <div class="container mx-auto sm:px-4 max-w-full">
-        @if($bloc->title)
-            <div class="flex flex-wrap ">
-                <div class="">
-                    <div class="">
-                        <h2 class="text-underline  bloc" name="{{$bloc->id}}" value="title" style="font-weight: 200;text-transform: none; letter-spacing: 0.2em;">
-                            {!! $bloc->title !!}
-                        </h2>
 
-                        <div class="mhc-heading-under-line">
-                            <div class="mhc-heading-inside-line"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        @endif
 
-        @if($bloc->content)
-            <div class="flex flex-wrap ">
-                @if($bloc->image)
-                <div class="md:w-full pr-4 pl-4 bloc" name="{{$bloc->id}}" value="content">
-                    {!! $bloc->content !!}
-                </div>
-                    <div class="md:w-1/4 pr-4 pl-4  bloc" name="{{$bloc->id}}" value="image">
-                        <img src="{{asset($bloc->image)}}" title="{{$bloc->title}}" alt="{{$bloc->title}}" class="img-responsive">
-                    </div>
 
-                @else
-                    <div class="md:w-full pr-4 pl-4 col-md-offset-1 bloc" name="{{$bloc->id}}" value="content">
-                        {!! $bloc->content !!}
-                    </div>
-                @endif
-            </div>
-        @endif
-    </div>
-</section>
 
-@php
-    $section_count = 0;
-@endphp --}}

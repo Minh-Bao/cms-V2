@@ -76,6 +76,9 @@
 </div>
 
 
-<script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/instafeed-main.js') }}"></script>
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/instafeed-main.js') }}"></script>
+@endsection
+
 

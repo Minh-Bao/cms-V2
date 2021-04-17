@@ -1,7 +1,5 @@
 <!-- Bloc du Feed instagram -->
 
-
-
 <div class="container mx-auto mt-12">
     @if ($bloc->title)
         <h2 class="mb-7 text-center md:text-left">{{$bloc->title}} </h2>
@@ -14,8 +12,11 @@
 </div>
     
 
-<script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
-<script type="text/javascript" src="{{ asset('/js/instafeed-main.js') }}"></script>
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('/plugins/instafeed.js-master/dist/instafeed.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/instafeed-main.js') }}"></script>
+@endsection
+
 
 
 
