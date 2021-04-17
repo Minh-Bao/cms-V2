@@ -75,7 +75,7 @@ class SliderImageController extends Controller
     public function update(SliderImageRequest $request, $id)
     {
         $picture =$this->sliderImage->findBy($id);
-        $oldimage = $picture->file;
+        $oldimage = $picture->picture;
         $sitesliders_id = $picture->sitesliders_id;
 
         $name = self::saveImg('slim', $sitesliders_id);
