@@ -14,6 +14,7 @@ use App\Slim;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Site\SliderImage;
 use Illuminate\Support\Facades\File;
 use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\SliderImageRepositoryInterface;
@@ -45,6 +46,8 @@ class SitebuilderController extends Controller
      */
     public function element(Request $request)
     {
+        $arrayview = ['part','variable','config','object','blocs'];
+
         $blocs = File::allFiles(base_path('/resources/views/site/themes/'.config('myconfig.site_theme').'/blocs/')); 
 
         $part = $request->get("part");  
@@ -61,8 +64,10 @@ class SitebuilderController extends Controller
                 $config->content = $config->$object;
                 break;
             case 'slider':
-                $config = $this->page->getFirst($variable);
-                $config->content = $config->$object;
+                $sliders = $this->sliderImage->get($variable);
+                $config = $this->slider->findBy($variable);
+                $config->content = true;
+                array_push($arrayview, 'sliders');
                 break;
             case 'config':
                 $config = Siteconfig::select('*')->whereVariable($variable)->first();
@@ -70,7 +75,7 @@ class SitebuilderController extends Controller
                 break;
         }
 
-        return view('admin.modals.sitebuilder',compact('part','variable','config','object','blocs'));
+        return view('admin.modals.sitebuilder',compact($arrayview));
     }
 
 
@@ -268,23 +273,28 @@ class SitebuilderController extends Controller
      *
      * @param Request $request
      * @param integer $id
-     * @return boolean
+     * @return void
      */
-    public function updateSlider(Request $request, int $id):bool{
-        $sliderimage = $this->sliderimage->findBy($id);
-        $sliderimage->title = $request->title;
-        $sliderimage->content = $request->content;
-        $sliderimage->link = $request->link;
+    public function updateSlider(Request $request, int $id) :void{
 
-        $name = date('Ymdhis').".jpg";
-        $data = self::data(); 
+        $sliderimage = $this->sliderImage->get($id);
+        $slider = $this->slider->findBy($id);
 
-        if ($data) {
-            Slim::saveFile($data, $name , 'images/sliders/'. $sliderimage->sitesliders_id .'/' , false);
-            $sliderimage->file = 'images/sliders/'. $sliderimage->sitesliders_id .'/'.$name;
+        for($i = 0; $i< $sliderimage->count(); $i++){
+            $sliderimage->title = $request->title;
+            $sliderimage->content = $request->content;
+
+            $name = date('Ymdhis').".jpg";
+            $data = self::data(); 
+
+            if ($data) {
+                Slim::saveFile($data, $name , 'images/sliders/'. $sliderimage->sitesliders_id .'/' , false);
+                $sliderimage->file = 'images/sliders/'. $sliderimage->sitesliders_id .'/'.$name;
+            }
+            $sliderimage->save();  
         }
-
-        return $sliderimage->save();       
+        
+          
     }
 
     /**
