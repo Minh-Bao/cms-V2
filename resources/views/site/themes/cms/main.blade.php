@@ -10,13 +10,16 @@
         <main role="main" >
             @yield('content')
         </main>
+
         @include('site.themes.cms._partials._footer')
+        
         @include('site.themes.cms._partials._scripts')
+        @yield('scripts')
 
-    @if (Auth::check())
-        @include('site.themes.cms._partials._sitebuilder')
-    @endif
 
+        @if (Auth::check())
+            @include('site.themes.cms._partials._sitebuilder')
+        @endif
 
     </body>
 </html>
