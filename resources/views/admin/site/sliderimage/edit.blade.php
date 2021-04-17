@@ -77,7 +77,7 @@ li {
           <div class="header">
                     <div class="flex flex-wrap  clearfix">
                         <div class="sm:w-full pr-4 pl-4">
-                          <h2>Modification d'une slide</h2>
+                          <h2>Modification des images d'un slide</h2>
                         </div>
                         <div class="sm:w-full pr-4 pl-4 align-right">
                           <a href="{{route('slider.edit',$slider->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600"><i class="material-icons">add</i> Ajouter une slide</a>
