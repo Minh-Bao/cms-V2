@@ -1,16 +1,11 @@
 <!DOCTYPE html>
 
     <html lang="{{ app()->getLocale() }}">
-    <head>
 
     @include('admin._interface._head')
 
-    </head>
-
     <body id="body" class="">
-    
-        <div class="h-screen flex overflow-hidden bg-white"
-        x-data=" { open: false }">
+        <div class="h-screen flex overflow-hidden bg-white" x-data=" { open: false }">
 
             @include('admin._interface._sidebar', ['active' => $sidebar])
 
@@ -18,8 +13,7 @@
             <div class="flex flex-col w-0 flex-1 overflow-hidden">
 
                 <!-- Search header Mobile screen -->
-                <div
-                    class="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
+                <div class="relative z-10 flex-shrink-0 flex h-16 bg-white border-b border-gray-200 lg:hidden">
                     <!-- Sidebar toggle, controls the 'sidebarOpen' sidebar state. -->
                     <button
                         @click="open = !open"
@@ -56,10 +50,11 @@
                 </div>
                 <main class="flex-1 relative z-0 overflow-y-auto focus:outline-none" tabindex="0">
 
-                    <!-- Main content-->
+                    <!-- Message-->
                     @include('admin._interface._message')
-                    @yield('content')
 
+                    <!-- Main content-->
+                    @yield('content')
 
                 </main>
             </div>
@@ -68,7 +63,6 @@
         @include('admin._interface._scripts')
     
         <!-- Additionnal Scripts -->
-    
         @yield('scripts')
     
     </body>
