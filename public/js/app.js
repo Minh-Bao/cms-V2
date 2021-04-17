@@ -2070,10 +2070,10 @@ document.addEventListener('custombox:overlay:close', function () {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/css/embla.css":
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/css/embla.css ***!
-  \*******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[2]!./resources/css/embla.css":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[2]!./resources/css/embla.css ***!
+  \*********************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2087,7 +2087,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/**\r\n * \r\n * Embla bundle for carousel animation (Slider)\r\n *\r\n */\n\n/***  Slider  ***/\n\n.embla {\n  position: relative;\n  padding: 1.5%;\n  max-width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n/**Slider behaviour**/\n\n.embla__viewport {\n  overflow: hidden;\n  width: 100%;\n}\n\n.embla__viewport.is-draggable {\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n\n.embla__viewport.is-dragging {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n\n/**Slider container**/\n\n.embla__container {\n  display: flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-touch-callout: none;\n  -khtml-user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  margin-left: -10px;\n}\n\n.embla__slide {\n  position: relative;\n  min-width: 100%;\n  padding-left: 10px;\n}\n\n.embla__slide__inner {\n  position: relative;\n  overflow: hidden;\n  height: 844px;\n}\n\n/**Slider images**/\n\n.embla__slide__img {\n  position: absolute;\n  display: block;\n  top: 50%;\n  left: 50%;\n  width: auto;\n  width: 100%;\n  max-width: none;\n  transform: translate(-50%, -50%);\n}\n\n/**Slider Button**/\n\n.embla__button {\n  outline: 0;\n  cursor: pointer;\n  background-color: transparent;\n  touch-action: manipulation;\n  position: absolute;\n  z-index: 1;\n  top: 50%;\n  transform: translateY(-50%);\n  border: 0;\n  width: 30px;\n  height: 30px;\n  fill: #b5afaf;\n  padding: 0;\n}\n\n.embla__button:disabled {\n  cursor: default;\n  opacity: 0.3;\n}\n\n.embla__button__svg {\n  width: 100%;\n  height: 100%;\n}\n\n.embla__button--prev {\n  left: 27px;\n}\n\n.embla__button--next {\n  right: 27px;\n}\n\n/**Slider Text**/\n\n.slideText {\n}\n\n/******responsive*****/\n\n@media (max-width:640px) {\n  .embla__slide__inner {\n    height: 300px;\n  }\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/**\r\n * \r\n * Embla bundle for carousel animation (Slider)\r\n *\r\n */\n\n/***  Slider  ***/\n\n.embla {\n  position: relative;\n  padding: 1.5%;\n  max-width: 100%;\n  margin-left: auto;\n  margin-right: auto;\n}\n\n/**Slider behaviour**/\n\n.embla__viewport {\n  overflow: hidden;\n  width: 100%;\n}\n\n.embla__viewport.is-draggable {\n  cursor: move;\n  cursor: -webkit-grab;\n  cursor: grab;\n}\n\n.embla__viewport.is-dragging {\n  cursor: -webkit-grabbing;\n  cursor: grabbing;\n}\n\n/**Slider container**/\n\n.embla__container {\n  display: flex;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none;\n  -webkit-touch-callout: none;\n  -khtml-user-select: none;\n  -webkit-tap-highlight-color: transparent;\n  margin-left: -10px;\n}\n\n.embla__slide {\n  position: relative;\n  min-width: 100%;\n  padding-left: 10px;\n}\n\n.embla__slide__inner {\n  position: relative;\n  overflow: hidden;\n  height: 844px;\n}\n\n/**Slider images**/\n\n.embla__slide__img {\n  position: absolute;\n  display: block;\n  top: 50%;\n  left: 50%;\n  width: auto;\n  width: 100%;\n  max-width: none;\n  transform: translate(-50%, -50%);\n}\n\n/**Slider Button**/\n\n.embla__button {\n  outline: 0;\n  cursor: pointer;\n  background-color: transparent;\n  touch-action: manipulation;\n  position: absolute;\n  z-index: 1;\n  top: 50%;\n  transform: translateY(-50%);\n  border: 0;\n  width: 30px;\n  height: 30px;\n  fill: #b5afaf;\n  padding: 0;\n}\n\n.embla__button:disabled {\n  cursor: default;\n  opacity: 0.3;\n}\n\n.embla__button__svg {\n  width: 100%;\n  height: 100%;\n}\n\n.embla__button--prev {\n  left: 27px;\n}\n\n.embla__button--next {\n  right: 27px;\n}\n\n/******responsive*****/\n\n@media (max-width:640px) {\n  .embla__slide__inner {\n    height: 300px;\n  }\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -3727,6 +3727,45 @@ function EmblaCarousel(sliderRoot, userOptions) {
 
 /***/ }),
 
+/***/ "./resources/sass/chat.scss":
+/*!**********************************!*\
+  !*** ./resources/sass/chat.scss ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/chatv2.scss":
+/*!************************************!*\
+  !*** ./resources/sass/chatv2.scss ***!
+  \************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
+/***/ "./resources/sass/sitebuilder.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/sitebuilder.scss ***!
+  \*****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+// extracted by mini-css-extract-plugin
+
+
+/***/ }),
+
 /***/ "./resources/sass/admin.scss":
 /*!***********************************!*\
   !*** ./resources/sass/admin.scss ***!
@@ -3766,7 +3805,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./embla.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[7].oneOf[1].use[2]!./resources/css/embla.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[1]!../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[2]!./embla.css */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[10].oneOf[1].use[2]!./resources/css/embla.css");
 
             
 
@@ -3775,11 +3814,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_7_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_10_oneOf_1_use_2_embla_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -4173,7 +4212,10 @@ module.exports = function (list, options) {
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0,
 /******/ 			"css/admin/admin": 0,
-/******/ 			"css/app": 0
+/******/ 			"css/app": 0,
+/******/ 			"css/sitebuilder": 0,
+/******/ 			"css/chatv2": 0,
+/******/ 			"css/chat": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -4221,9 +4263,12 @@ module.exports = function (list, options) {
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app"], () => (__webpack_require__("./resources/js/app.js")))
-/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app"], () => (__webpack_require__("./resources/sass/admin.scss")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/admin/admin","css/app"], () => (__webpack_require__("./resources/sass/app.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/js/app.js")))
+/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/sass/chat.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/sass/chatv2.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/sass/sitebuilder.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/sass/admin.scss")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/admin/admin","css/app","css/sitebuilder","css/chatv2","css/chat"], () => (__webpack_require__("./resources/sass/app.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()
