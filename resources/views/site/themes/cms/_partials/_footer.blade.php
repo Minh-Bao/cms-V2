@@ -55,7 +55,6 @@
     </div>
 
     <!-- Modal -->
-
     <div class="w-full bg-transparent"  x-show="showModal"
         :class="{ 'relative z-10 flex items-center justify-center': showModal }">
         <!--Dialog-->
@@ -84,5 +83,4 @@
         </div>
         <!--/Dialog -->
     </div>
-    <!-- /Overlay -->
 </footer>
