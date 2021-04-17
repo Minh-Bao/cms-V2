@@ -46,14 +46,14 @@ class SliderImageRepository implements SliderImageRepositoryInterface
 	}
 
     /**
-     * Get the fist element of the specified field equal to the value
+     * Get the collection of all specified slider_id
      *
      * @param int $id
      * @return object
      */
-    public function getFirst(int $id) :object{
+    public function get(int $id) :object{
 
-        return SliderImage::whereId($id)->first();
+        return SliderImage::whereSitesliders_id($id)->get();
     }
 
     /**

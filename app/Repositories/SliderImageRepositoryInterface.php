@@ -34,7 +34,7 @@ interface SliderImageRepositoryInterface
      * @param int $id
      * @return object
      */
-    public function getFirst(int $id) :object;
+    public function get(int $id) :object;
 
     /**
      * retrieve specified ressource by its id
