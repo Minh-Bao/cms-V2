@@ -1,23 +1,22 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-@include('site.themes.cms._partials._head')
+    @include('site.themes.cms._partials._head')
 
 
-<body>
-@include('site.themes.cms._partials._header')
-
-<main role="main" class="bg-white-450">
-  	    @yield('content')
-</main>
+    <body class="bg-white-450">
+        @include('site.themes.cms._partials._header')
 
 
-@include('site.themes.cms._partials._footer')
-@include('site.themes.cms._partials._scripts')
+        <main role="main" >
+            @yield('content')
+        </main>
+        @include('site.themes.cms._partials._footer')
+        @include('site.themes.cms._partials._scripts')
 
-@if (Auth::check())
-    @include('site.themes.cms._partials._sitebuilder')
-@endif
+    @if (Auth::check())
+        @include('site.themes.cms._partials._sitebuilder')
+    @endif
 
 
-</body>
+    </body>
 </html>
