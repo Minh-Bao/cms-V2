@@ -33,6 +33,5 @@ class FeedController extends Controller
     public function xml(){
 
         $articles = Websitepage::latest();
-        dd($articles);
     }
 }   
