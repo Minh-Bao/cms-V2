@@ -3,6 +3,7 @@
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Site\SliderController;
 use App\Http\Controllers\Site\SitebuilderController;
@@ -53,7 +54,6 @@ Route::prefix('admin')->group(function() {
 	Route::resource('/sliderimage',SliderImageController::class); //Images des sliders
 	Route::post('/ajax/sliderimage/sort.json',[SliderImageController::class,'sort'])->name('sliderimage.sort'); // Tri des slides
 	Route::get('/sliderimage/{id}/delete',[SliderImageController::class, 'delete'])->name('sliderimage.delete'); // Supprime un slide
-	Route::get('/modal/picture', 'ModalController@picture')->name('modal.picture');
 
 	Route::post('/config/{id}/update',[SitebuilderController::class,'update'])->name('sitebuilder.config.update'); 
 	Route::get('/config/{id}/change',[SitebuilderController::class,'change'])->name('sitebuilder.image.change'); 
@@ -64,6 +64,9 @@ Route::prefix('admin')->group(function() {
 
 //Show page on site
 Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page');
+
+//Feed RSS
+Route::get('/feed', [FeedController::class,'xml'])->name('feed');
 
 //Livewire
 

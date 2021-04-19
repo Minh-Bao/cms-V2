@@ -2,36 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Site\Slider;
-use App\Site\SliderImage;
-use App\Site\Websitebloc;
-use Illuminate\Http\Request;
+
 use App\Models\Site\Websitepage;
 
 class FeedController extends Controller
 {
     /**
-     * Create a new controller instance.
+     * retrieve a collection of the 3 last article
+     * and send au xml response to the view
      *
-     * @return void
+     * @return \Illuminate\Http\Response
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
-    {
-        return view('home');
-    }
-
     public function xml(){
 
-        $articles = Websitepage::latest();
+        $exclude_pages = ["contact", "mentions", "homepage", "article-index", "categorie"];
+        $articles = Websitepage::latest()->limit(3)->whereStatus(1)->whereNotIn('slug', $exclude_pages)->get();
+        return response()
+    			->view("feed.rssFeed", compact("articles"))
+    			->header('Content-Type', 'application/xml');
     }
 }   
