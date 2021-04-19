@@ -19,7 +19,7 @@
                         x-transition:leave-end="-translate-x-full">
                         <div class="absolute inset-0 bg-gray-400 opacity-85"></div>
                     </div>
-                    <div class="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-white">
+                    <div class="relative flex-1 flex flex-col w-full pt-5 pb-4 bg-white">
                         <div class="absolute top-0 right-0 -mr-12 pt-2">
                             <button
                             @click="open = !open"
@@ -33,8 +33,8 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="flex-shrink-0 flex items-center px-4">
-                            <a  href="{{route('site.homepage')}}"><img class="h-8 w-auto" src="{{asset('/images/logo-black.png')}}" rel="" alt="logo-naturelcoquin" /></a>
+                        <div class="flex-shrink-0 flex items-center px-4 border-b-4 border-gray-50">
+                            <a class="mx-auto"  href="{{route('site.homepage')}}"><img class="h-16 w-auto " src="{{asset('/images/logo-white.png')}}" rel="" alt="logo-naturelcoquin" /></a>
                         </div>
                         
                         <div class="mt-5 flex-1 h-0 overflow-y-auto">
@@ -42,7 +42,7 @@
                                 <div class="space-y-1">
                                     <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
                                     <a href="{{ route('admin.index') }}"
-                                        class="@if($active == "dashboard") bg-gray-100  @endif text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
+                                        class="@if($active == "dashboard") bg-gray-100  @endif text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
                                         aria-current="page">
                                         <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
                                         <!-- Heroicon name: outline/home -->
@@ -56,7 +56,7 @@
                                     
     
                                     <a href="{{route('websitepage.index')}}"
-                                        class="@if($active == "articles") bg-gray-100  @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        class="@if($active == "articles") bg-gray-100  @endif text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/view-list -->
                                         <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -67,7 +67,7 @@
                                     Articles
                                     </a>
                                     <a href="{{route('slider.index')}}"
-                                        class="@if($active == "sliders") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        class="@if($active == "sliders") bg-gray-100 @endif text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/clock -->
                                             <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" 
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24" 
@@ -79,7 +79,7 @@
                                         Sliders
                                     </a>
                                     <a href="#"
-                                        class="@if($active == "Recent") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        class="@if($active == "Recent") bg-gray-100 @endif text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/clock -->
                                         <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -90,7 +90,7 @@
                                         Recent
                                     </a>
                                     <a href="#"
-                                        class="@if($active == "Catalogue") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        class="@if($active == "Catalogue") bg-gray-100 @endif text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/clock -->
                                         <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
@@ -102,9 +102,9 @@
                                     </a>
                                     <a href=""
                                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                        class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                        class="text-gray-900 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
                                         <!-- Heroicon name: outline/clock -->
-                                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                        <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             fill="none" stroke="currentColor" viewBox="0 0 24 24" 
                                             xmlns="http://www.w3.org/2000/svg">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
@@ -331,12 +331,8 @@
                                     </svg>
                                     Catalogue
                                 </a>
-
-                                
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
-
-
                             </div>
+
                             <div class="mt-8">
                                 <!-- Secondary navigation -->
                                 <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider"
