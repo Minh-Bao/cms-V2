@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hidden mt-8 sm:block">
+                <div class=" mt-8 ">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
                         <table class="min-w-full">
                         <thead>
@@ -72,15 +72,15 @@
                                 Titre du slider : 
                             </th>
                             <th
-                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class=" px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Type :
                             </th>
                             <th
-                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Ratio :
                             </th>
                             <th
-                                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Date :
                             </th>
                             <th
@@ -92,11 +92,11 @@
                             @foreach($sliders as $slider)
                                 <tr>
                                     <td
-                                        class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
+                                        class=" px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
                                         {{ strip_tags($slider->title) }} 
                                     </td>
                                     <td
-                                        class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
+                                        class=" px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
                                         @if($slider->type == 1) Classique @else Pleine page @endif
                                     </td>
                                     <td

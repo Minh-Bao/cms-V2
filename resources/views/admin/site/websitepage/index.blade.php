@@ -129,7 +129,7 @@
                 </div>
 
 
-                <div class="hidden mt-8 sm:block">
+                <div class=" mt-8 sm:block">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
                         <table class="min-w-full">
                             <thead>
@@ -137,7 +137,7 @@
                                     Nom de la page :
                                 </th>
                                 <th
-                                    class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                    class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Statut
                                 </th>
                                 <th
@@ -153,7 +153,7 @@
                                 @foreach($websitepages as $websitepage)
                                     <tr>
                                         <td
-                                            class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
+                                            class=" md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
                                             {{ $websitepage->name }} 
                                         </td>
                                         <td
