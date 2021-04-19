@@ -1,2 +1,23 @@
 User-agent: *
-Disallow:
+
+# Allow Directives
+Allow: /
+
+# Private pages
+Disallow: /admin
+
+# Private repo
+Disallow: /bootstrap/
+Disallow: /js/
+Disallow: /css/
+Disallow: /plugins/
+Disallow: /../app/
+Disallow: /../config/
+Disallow: /../database/
+Disallow: /../node_modules/
+Disallow: /../routes/
+Disallow: /../test/
+Disallow: /../storage/
+Disallow: /../vendor/
+Disallow: /../bootstrap/
+Disallow: /../resources/view/admin/
