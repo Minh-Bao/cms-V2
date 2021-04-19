@@ -214,36 +214,5 @@ li {
         });
     });
   </script>
-{{-- <script type="text/javascript">
-$(document).ready(function(){
-   $('.modal-picture').click(function(){
-     var id = $(this).attr("id");
-     $.ajax({
-       url:"{{route('modal.picture')}}",
-       method:"GET",
-       data: {id : id},
-       success:function(data){
-         $('#largeModal').html(data);
-//         console.log(data);
-         $('#largeModal').modal({
-          backdrop: 'static',
-          keyboard: false
-          })
-       }
-     });
-   });
-
-});
-          $.fn.extend({
-    animateCss: function (animationName) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
-            $(this).removeClass('animated ' + animationName);
-        });
-    }
-});
-
-</script>
- --}}
 
 @endsection

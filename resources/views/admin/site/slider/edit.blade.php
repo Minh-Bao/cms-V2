@@ -14,45 +14,43 @@
 
 
 <style>
-/* ------------------------
-*
-*     ul#Sortable Gallery
-*
-*  -------------------------- */
+    /* ------------------------
+    *
+    *     ul#Sortable Gallery
+    *
+    *  -------------------------- */
+    ul.sortable li {
+        max-width: 175px;
+        float: left;
+        margin: 0 7px 7px 0;
+        border: 2px solid #fff;
+        cursor: move;
+        padding-bottom: 15px;
+    }
 
-ul.sortable li {
-    max-width: 175px;
-    float: left;
-    margin: 0 7px 7px 0;
-    border: 2px solid #fff;
-    cursor: move;
-    padding-bottom: 15px;
-}
+    ul.sortable li img {
+        height: 123px !important;
+    }
 
-ul.sortable li img {
-    height: 123px !important;
-}
+    ul.sortable li.ui-sortable-helper {
+        border-color: #3498db;
+    }
 
-ul.sortable li.ui-sortable-helper {
-    border-color: #3498db;
-}
-
-ul.sortable li.placeholder {
-    width: 250px;
-    height: 140px;
-    float: left;
-    background: #eee;
-    border: 2px dashed #bbb;
-    display: block;
-    opacity: 0.6;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-}
-
-.ribbon {
-    font-size: 11px;
-}
+    ul.sortable li.placeholder {
+        width: 250px;
+        height: 140px;
+        float: left;
+        background: #eee;
+        border: 2px dashed #bbb;
+        display: block;
+        opacity: 0.6;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+    }
+    .ribbon {
+        font-size: 11px;
+    }
 </style>
 
 @endsection
@@ -243,35 +241,5 @@ ul.sortable li.placeholder {
 
 </script>
 
-{{-- <script type="text/javascript">
-  $(document).ready(function(){
-   $('.modal-picture').click(function(){
-     var id = $(this).attr("id");
-     $.ajax({
-       url:"{{route('modal.picture')}}",
-       method:"GET",
-       data: {id : id},
-       success:function(data){
-         $('#largeModal').html(data);
-//         console.log(data);
-         $('#largeModal').modal({
-          backdrop: 'static',
-          keyboard: false
-          })
-       }
-     });
-   });
-});
 
-$.fn.extend({
-    animateCss: function (animationName) {
-        var animationEnd = 'webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend';
-        $(this).addClass('animated ' + animationName).one(animationEnd, function() {
-            $(this).removeClass('animated ' + animationName);
-        });
-    }
-});
-
-</script>
- --}}
 @endsection
