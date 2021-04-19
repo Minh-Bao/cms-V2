@@ -42,41 +42,64 @@
                             <nav class="px-2">
                                 <div class="space-y-1">
                                     <!-- Current: "bg-gray-100 text-gray-900", Default: "text-gray-600 hover:text-gray-900 hover:bg-gray-50" -->
-                                    <a href="#"
-                                        class="bg-gray-100 text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
+                                    <a href="{{ route('admin.index') }}"
+                                        class="@if($active == "dashboard") bg-gray-100  @endif text-gray-900 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md"
                                         aria-current="page">
                                         <!-- Current: "text-gray-500", Default: "text-gray-400 group-hover:text-gray-500" -->
                                         <!-- Heroicon name: outline/home -->
-                                        <svg class="text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg"
-                                            fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                                        <svg class="text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
                                         </svg>
-                                        Home
+                                        Tableau de bord
                                     </a>
+                                    
     
-                                    <a href="#"
-                                        class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                    <a href="{{route('websitepage.index')}}"
+                                        class="@if($active == "articles") bg-gray-100  @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/view-list -->
-                                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                        <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M4 6h16M4 10h16M4 14h16M4 18h16" />
                                         </svg>
-                                        My tasks
+                                    Articles
                                     </a>
-    
-                                    <a href="#"
-                                        class="text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                    <a href="{{route('slider.index')}}"
+                                        class="@if($active == "sliders") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
                                         <!-- Heroicon name: outline/clock -->
-                                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6 "
+                                            <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6" 
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z">
+                                            </path>
+                                        </svg>                                
+                                        Sliders
+                                    </a>
+                                    <a href="#"
+                                        class="@if($active == "Recent") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        <!-- Heroicon name: outline/clock -->
+                                        <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                             stroke="currentColor" aria-hidden="true">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                        </svg>
+                                        </svg>                          
                                         Recent
+                                    </a>
+                                    <a href="#"
+                                        class="@if($active == "Catalogue") bg-gray-100 @endif text-gray-600 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-base leading-5 font-medium rounded-md">
+                                        <!-- Heroicon name: outline/clock -->
+                                        <svg class="text-gray-500 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                                            stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                                        </svg>                            
+                                        Catalogue
                                     </a>
                                 </div>
                                 <div class="mt-8">
