@@ -86,8 +86,7 @@ ul.sortable li.placeholder {
 
     <div class="container mx-auto  max-w-full">
         <div class="mx-8 py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
-        <div 
-            class="">
+            <div  class="">
                 <h2>Sliders</h2>
             </div>
         </div>
@@ -224,7 +223,7 @@ ul.sortable li.placeholder {
         });
 
 
-      $.ajax({ //ajax
+        $.ajax({ //ajax
               data: sortable_data,
               type: 'POST',
               url: '{{ route('sliderimage.sort') }}', // save.php - file with database update
@@ -240,12 +239,11 @@ ul.sortable li.placeholder {
                 toastr.danger('Une erreur est survenue');
               }
           });      
-
     });
 
 </script>
 
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $(document).ready(function(){
    $('.modal-picture').click(function(){
      var id = $(this).attr("id");
@@ -275,5 +273,5 @@ $.fn.extend({
 });
 
 </script>
-
+ --}}
 @endsection
