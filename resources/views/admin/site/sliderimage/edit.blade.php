@@ -6,34 +6,8 @@
   <!-- Slim kickstart -->
   {!! Html::style('plugins/kickstart/slim.min.css') !!}
 
-<style>
-/* 
-*
-* ul#Sortable Gallery
-*
-**/
-ul.sortable {width: 100%; float: left; margin: 20px 0; list-style: none; position: relative !important;}
-ul.sortable li {height: 180px; width:175px; float: left; margin: 0 7px 7px 0; border: 2px solid #fff; cursor: move;padding-bottom:15px;}
-ul.sortable li img {height: 100%; float: left;}
-ul.sortable li.ui-sortable-helper {border-color: #3498db;}
-
-
-ul.sortable li.placeholder {width: 250px; height: 140px; float: left; background: #eee; border: 2px dashed #bbb; display: block; opacity: 0.6;
-    border-radius: 2px;
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-}
-
-.ribbon {
-	font-size:11px;
-}
-
-li {
-    list-style-type: none;
-}
-
-</style>
-
+  <!-- Custom css for the page-->
+  {!! Html::style('css/edit_slider.css') !!}
 
 @endsection
 
@@ -59,14 +33,13 @@ li {
     ]
 ])
 
-
     <div class="container mx-auto sm:px-4 max-w-full">
         <div class="flex flex-wrap  clearfix">
             <div class="md:w-full pr-4 pl-4 lg:w-3/4">
 
                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
                     <div class="flex flex-wrap py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
-                        <div  class=" w-1/2">
+                        <div  class=" w-1/2 text-gray-500">
                             <h2>Modification des images d'un slide</h2>
                         </div>
                         <div class="w-1/2 pr-4 pl-4 text-right">
@@ -85,10 +58,12 @@ li {
                                                 <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
                                                     <div class="body">
                                                         <img src="{{ asset($picture->picture)}}" class="img-responsive" style="margin-bottom:10px;width:100%;height:auto;">
-                                                        <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
-                                                            <i class="material-icons">mode_edit</i></a>
-                                                        <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange"><i class="material-icons">delete</i></a>
-                                                    </div>
+                                                        <a href="{{ route('sliderimage.edit',$picture->id) }}" class="mr-8 inline-block align-middle text-center text-green-300 select-none font-normal whitespace-no-wrap  py-1 px-3 leading-normal no-underline" id="{{$picture->id}}">
+                                                            <i class="material-icons">mode_edit</i>
+                                                        </a>
+                                                        <a href="{{ route('sliderimage.delete',$picture->id) }}" class="ml-8 inline-block align-middle text-center text-red-500 select-none font-normal whitespace-no-wrap  py-1 px-3 leading-normal no-underline ">
+                                                            <i class="material-icons">delete</i>
+                                                        </a>                                                    </div>
                                                 </div>
                                             </li>
                                         @endforeach
@@ -158,61 +133,15 @@ li {
 
 
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-<!-- Slim kickstart -->
-{!! Html::script('plugins/kickstart/slim.kickstart.min.js') !!}
 
-<!-- jquery.ui.touch-punch -->
-{!! Html::script('plugins/jQueryUI/jquery.ui.touch-punch.min.js') !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+    <!-- Slim kickstart -->
+    {!! Html::script('plugins/kickstart/slim.kickstart.min.js') !!}
 
+    <!-- jquery.ui.touch-punch -->
+    {!! Html::script('plugins/jQueryUI/jquery.ui.touch-punch.min.js') !!}
 
-
-<script type="text/javascript">
-    var ul_sortable = $('.sortable'); //setup one variable for sortable holder that will be used in few places
-
-
-    /*
-    * jQuery UI Sortable setup
-    */
-    ul_sortable.sortable({revert: 100, placeholder: 'placeholder'});
-    ul_sortable.disableSelection();
-
-    /*
-    * Saving and displaying serialized data
-    */
-    var btn_save = $('button.save'), // select save button
-
-
-
-    btn_save.on('click', function(e){ // trigger function on save button click
-        e.preventDefault(); 
-
-        var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
-            // alert(sortable_data);
-        div_response.text( 'Sauvegarde en cours...' ); //setup response information
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-
-
-        $.ajax({ //ajax
-            data: sortable_data,
-            type: 'POST',
-            url: '{{ route('sliderimage.sort') }}', // save.php - file with database update
-            success:function(result) {
-                //  alert (sortable_data);
-            div_response.removeClass( 'btn-primary' );
-            div_response.addClass( 'btn-success' );
-            toastr.success("Ordre des photos enregistré");
-            },
-            error:function(result) {
-                toastr.danger('Une erreur est survenue');
-              }
-        });
-    });
-  </script>
+    <!-- custom page js file -->
+    {!! Html::script('js/edit_slider.js') !!}
 
 @endsection
