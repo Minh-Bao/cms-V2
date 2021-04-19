@@ -60,120 +60,100 @@ li {
 ])
 
 
-  <div class="container mx-auto sm:px-4 max-w-full">
-    <div id="breadcontainer">
-{{--       <ol class="flex flex-wrap list-reset pt-3 pb-3 py-4 px-4 mb-4 bg-gray-200 rounded">
-        <li><i class="material-icons material-icons text-gray-900 px-2 rounded-md">dashboard</i> <a href="{{url('/admin')}}"> Accueil</a></li>
-        <li><i class="material-icons">public</i>  Site</li>
-        <li><i class="material-icons">photo_library</i>  <a href="{{route('slider.index')}}">Sliders</a></li>
-        <li class="active">Gestion des Slides</li>
-      </ol>
- --}}    </div>
-      <div class="flex flex-wrap  clearfix">
-    
-      <div class="md:w-full pr-4 pl-4 lg:w-3/4">
+    <div class="container mx-auto sm:px-4 max-w-full">
+        <div class="flex flex-wrap  clearfix">
+            <div class="md:w-full pr-4 pl-4 lg:w-3/4">
 
-        <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
-          <div class="header">
-                    <div class="flex flex-wrap  clearfix">
-                        <div class="sm:w-full pr-4 pl-4">
-                          <h2>Modification des images d'un slide</h2>
+                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
+                    <div class="flex flex-wrap py-3 px-6 mb-0 bg-gradient-to-r from-gray-300 via-gray-200 to-gray-100  {{-- bg-gray-200 --}} border-b-1 border-gray-300 text-gray-900 ">
+                        <div  class=" w-1/2">
+                            <h2>Modification des images d'un slide</h2>
                         </div>
-                        <div class="sm:w-full pr-4 pl-4 align-right">
-                          <a href="{{route('slider.edit',$slider->id)}}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600"><i class="material-icons">add</i> Ajouter une slide</a>
+                        <div class="w-1/2 pr-4 pl-4 text-right">
+                            <a href="{{route('slider.edit',$slider->id)}}" class="bg-purple-500 text-gray-50 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"><i class="material-icons">add</i> Ajouter une slide</a>
                         </div>
-                    </div>
+                    </div>                   
 
-          </div>
-          <div class="body">
-          <div class="flex flex-wrap ">
-          	<div class="md:w-full pr-4 pl-4">
-
-            <div class="flex flex-wrap  mb-4">
-              <div class="md:w-full pr-4 pl-4" id="sortable">
-
-              <ul class="sortable">
-                @foreach($pictures as $picture)
-                <li id="item-{{$picture->id}}">
-                  <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
                     <div class="body">
-                      <img src="{{ asset($picture->picture)}}" class="img-responsive" style="margin-bottom:10px;width:100%;height:auto;">
-                      <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
-                        <i class="material-icons">mode_edit</i></a>
-                      <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange"><i class="material-icons">delete</i></a>
+                        <div class="flex flex-wrap ">
+                            <div class="md:w-full pr-4 pl-4">
+                                <div class="flex flex-wrap  mb-4">
+                                    <div class="md:w-full pr-4 pl-4" id="sortable">
+                                    <ul class="sortable">
+                                        @foreach($pictures as $picture)
+                                            <li id="item-{{$picture->id}}">
+                                                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 droppable" id="{{$picture->id}}" name="noname">
+                                                    <div class="body">
+                                                        <img src="{{ asset($picture->picture)}}" class="img-responsive" style="margin-bottom:10px;width:100%;height:auto;">
+                                                        <a href="{{ route('sliderimage.edit',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect modal-picture" id="{{$picture->id}}">
+                                                            <i class="material-icons">mode_edit</i></a>
+                                                        <a href="{{ route('sliderimage.delete',$picture->id) }}" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline btn-default waves-effect waves-deep-orange"><i class="material-icons">delete</i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                <div class="saved">
 
+                                </div>
+                                <button 
+                                        class="save bg-purple-500 text-gray-50 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                        Enregistrer l'ordre
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                </li>
-                @endforeach
-
-              </ul>
-              </div>
-              <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 save pull-right " >Enregistrer l'ordre</button>
             </div>
-          </div>
-
-
-          <div class="footer">
-              <div id="response"></div>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-          <div class="lg:w-1/4 pr-4 pl-4 md:w-full">
+        <div class="lg:w-1/4 pr-4 pl-4 md:w-full">
             <div class="flex flex-wrap  mb-4">
-              <div class="md:w-full pr-4 pl-4">
-                  <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
-                    <div class="body">
-                      {!! Form::model($slide,['route'=> ['sliderimage.update',$slide->id], 'method'=>'PUT' ] ) !!}
-                       <div class="slim"
-                         data-label="Ajouter"
-                         data-force-type = "jpg"
-                         data-size="{{$slider->width}},{{$slider->height}}"
-                         data-instant-edit="true"
-                         data-button-cancel-label="Annuler"
-                         data-button-confirm-label="Confirmer"
-                         data-push="true"
-                         data-save-initial-image="true"
-                         data-ratio="{{$slider->ratio}}">
-                        <img src="{{ asset($slide->picture)}}" alt=""/>
-                        <input type="file" name="slim[]" required />
-                       </div>
-                       <div class="flex flex-wrap  mb-4 form-float">
-                        <div class="md:w-full pr-4 pl-4">
-                         <div class="form-line" style="margin-top:5%;">
-                            {{ Form::label('title', 'Titre *', array('class' => 'form-label')) }}
-                            {{ Form::text('title',null,array('class'=>'form-control' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'150' ))}}
-                          </div>
+                <div class="md:w-full pr-4 pl-4">
+                    <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300">
+                        <div class="body">
+                            {!! Form::model($slide,['route'=> ['sliderimage.update',$slide->id], 'method'=>'PUT' ] ) !!}
+                                <div class="slim"
+                                    data-label="Ajouter"
+                                    data-force-type = "jpg"
+                                    data-size="{{$slider->width}},{{$slider->height}}"
+                                    data-instant-edit="true"
+                                    data-button-cancel-label="Annuler"
+                                    data-button-confirm-label="Confirmer"
+                                    data-push="true"
+                                    data-save-initial-image="true"
+                                    data-ratio="{{$slider->ratio}}">
+                                    <img src="{{ asset($slide->picture)}}" alt=""/>
+                                    <input type="file" name="slim[]" required />
+                                </div>
+                                <div class="flex flex-wrap  mb-4 form-float">
+                                    <div class="md:w-full pr-4 pl-4">
+                                        <div class="form-line">
+                                            {{ Form::label('title', 'Titre *', array('class' => "block text-sm font-medium text-gray-700")) }}
+                                            {{ Form::text('title',null,array('class'=>'mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' , 'placeholder' => '', 'required'=>'' ,'minlength'=>'2' ,'maxlength'=>'150' ))}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="flex flex-wrap  mb-4 form-float" style="margin-top:25px;">
+                                    <div class="md:w-full pr-4 pl-4">
+                                        <div class="form-line">
+                                            {{ Form::label('content',"Texte :")}}
+                                            {{ Form::textarea('content', null, array('rows'=>'5', 'class'=>'mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm' ))}}
+                                        </div>
+                                    </div>
+                                </div>
+                                <button 
+                                    class="w-full bg-purple-500 text-gray-50 border border-transparent rounded-md shadow-sm py-2 px-4 inline-flex justify-center text-sm font-medium hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">                                        
+                                    Modifier
+                                </button>
+                            {!! Form::close() !!}
                         </div>
-                      </div>
-                      <div class="flex flex-wrap  mb-4 form-float" style="margin-top:25px;">
-                        <div class="md:w-full pr-4 pl-4">
-                         <div class="form-line">
-                                {{ Form::label('content',"Texte :")}}
-                                {{ Form::textarea('content', null, array('class'=>'form-control' ))}}
-                          </div>
-                        </div>
-                      </div>
-
-                    <button class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 w-full" type="submit">Modifier</button>
-
-                     {!! Form::close() !!}
                     </div>
                 </div>
-              </div>
             </div>
         </div>
-
-
-
-      </div>
     </div>
-
- 
-
-    @endsection
+@endsection
 
 
 
@@ -194,47 +174,47 @@ li {
     /*
     * jQuery UI Sortable setup
     */
-    ul_sortable.sortable({
-      revert: 100,
-      placeholder: 'placeholder'
-    });
+    ul_sortable.sortable({revert: 100, placeholder: 'placeholder'});
     ul_sortable.disableSelection();
-
-
 
     /*
     * Saving and displaying serialized data
     */
     var btn_save = $('button.save'), // select save button
-      div_response = $('.save'); // response div
 
 
 
     btn_save.on('click', function(e){ // trigger function on save button click
-      e.preventDefault(); 
+        e.preventDefault(); 
 
-      var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
-// alert(sortable_data);
-      div_response.text( 'Sauvegarde en cours...' ); //setup response information
+        var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
+            // alert(sortable_data);
+        div_response.text( 'Sauvegarde en cours...' ); //setup response information
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
 
-      $.ajax({ //aja
-              data: sortable_data,
-              type: 'POST',
-              url: '{{ route('sliderimage.sort') }}', // save.php - file with database update
-              success:function(result) {
-                        alert (sortable_data);
-
-              div_response.text( 'Enregistrement terminé' );
-              div_response.removeClass( 'btn-primary' );
-              div_response.addClass( 'btn-success' );
-              toastr.success("Ordre des photos enregistré");
-          }
-          });
-       
+        $.ajax({ //ajax
+            data: sortable_data,
+            type: 'POST',
+            url: '{{ route('sliderimage.sort') }}', // save.php - file with database update
+            success:function(result) {
+                //  alert (sortable_data);
+            div_response.removeClass( 'btn-primary' );
+            div_response.addClass( 'btn-success' );
+            toastr.success("Ordre des photos enregistré");
+            },
+            error:function(result) {
+                toastr.danger('Une erreur est survenue');
+              }
+        });
     });
   </script>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
 $(document).ready(function(){
    $('.modal-picture').click(function(){
      var id = $(this).attr("id");
@@ -264,6 +244,6 @@ $(document).ready(function(){
 });
 
 </script>
-
+ --}}
 
 @endsection
