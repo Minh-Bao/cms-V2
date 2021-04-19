@@ -1,5 +1,4 @@
     <!-- Left Sidebar -->
-
             <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
             <div class="lg:hidden"
                 x-show="open"
@@ -101,6 +100,19 @@
                                         </svg>                            
                                         Catalogue
                                     </a>
+                                    <a href=""
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
+                                        <!-- Heroicon name: outline/clock -->
+                                        <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24" 
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
+                                            </path>
+                                        </svg>
+                                        Logout
+                                    </a> 
                                 </div>
                                 <div class="mt-8">
                                     <h3 class="px-3 text-xs font-semibold text-gray-500 uppercase tracking-wider"
@@ -226,6 +238,7 @@
                                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                         role="menuitem">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
                                     <!-- Heroicon name: outline/clock -->
                                     Logout
                                 </a>
@@ -319,19 +332,7 @@
                                     Catalogue
                                 </a>
 
-                                {{-- <a href=""
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
-                                    class="text-gray-700 hover:text-gray-900 hover:bg-gray-50 group flex items-center px-2 py-2 text-sm font-medium rounded-md">
-                                    <!-- Heroicon name: outline/clock -->
-                                    <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6"
-                                        fill="none" stroke="currentColor" viewBox="0 0 24 24" 
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                        </path>
-                                    </svg>
-                                    Logout
-                                </a> --}}
+                                
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST">@csrf</form>
 
 
