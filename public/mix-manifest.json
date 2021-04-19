@@ -2,12 +2,9 @@
     "/js/app.js": "/js/app.js",
     "/js/instafeed-main.js": "/js/instafeed-main.js",
     "/js/instafeed-small.js": "/js/instafeed-small.js",
-    "/js/chat.js": "/js/chat.js",
-    "/js/chatv2.js": "/js/chatv2.js",
+    "/js/edit_slider.js": "/js/edit_slider.js",
     "/css/admin/admin.css": "/css/admin/admin.css",
+    "/css/app.css": "/css/app.css",
     "/css/edit_slider.css": "/css/edit_slider.css",
-    "/css/sitebuilder.css": "/css/sitebuilder.css",
-    "/css/chatv2.css": "/css/chatv2.css",
-    "/css/chat.css": "/css/chat.css",
-    "/css/app.css": "/css/app.css"
+    "/css/sitebuilder.css": "/css/sitebuilder.css"
 }
