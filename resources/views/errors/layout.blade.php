@@ -21,7 +21,8 @@
             h1{
                 z-index: -24;
                 left: 33%;
-                color: #B640B4 !important;
+                color: #ac164e !important;
+                opacity: 0.6;
                 font-family: "SourceSansPro-extraLight"!important;	
                 font-size: 250px!important;	
                 font-weight: 300!important;	
@@ -31,21 +32,21 @@
                 border: none;
             }
             h2{
-                color: #1B0E4F;	
+                color: #ecdae1;	
                 font-family: "SourceSansPro-Bold";	
                 font-size: 40px;	
                 text-align: center;
                 margin: 46px auto 0 auto;
             }
             h2+h2{
-                color: #1B0E4F;	
+                color: #a1858f;	
                 font-family: "SourceSansPro-Bold";	
                 font-size: 30px;	
                 text-align: center;
                 margin: 0 auto 77px auto;
             }
             p{
-                color: #1B0E4F;	
+                color: #161618;	
                 font-family: "SourceSansPro";	
                 font-size: 34px;
                 text-align: center;
@@ -63,7 +64,7 @@
     
 
 
-    <body class="bg-white">
+    <body class="bg-white" style="background-image: url('{{asset('/images/pexel-error.jpg')}}'); background-size: 100% 100%;">
         @include('site.themes.cms._partials._header')
 
 
