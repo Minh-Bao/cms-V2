@@ -23,6 +23,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/chat.scss', 'public/css')
     .sass('resources/sass/chatv2.scss', 'public/css')
     .sass('resources/sass/sitebuilder.scss', 'public/css')
+    .sass('resources/sass/edit_slider.scss', 'public/css')
 
 
     .sass('resources/sass/admin.scss', 'public/css/admin')
