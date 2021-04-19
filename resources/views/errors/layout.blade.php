@@ -1,37 +1,46 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="{{ app()->getLocale() }}">
+    <head>       
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="{{ asset('css/vendor.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="Error page">
+        <meta name="author" content="{{config('myconfig.site_owner')}} ">
+    
+        <title>{{config('myconfig.name_app')}} : Error page</title>
+    
+        <!-- Favicon-->
+        <link rel="icon" href="{{asset('/images/favicon.png')}}" type="image/x-icon">
+    
+        <!-- Custom Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+        <!-- Livewire -->
+        @livewireStyles
+    
         <style>
             h1{
                 z-index: -24;
                 left: 33%;
                 color: #B640B4 !important;
                 font-family: "SourceSansPro-extraLight"!important;	
-                font-size: 338px!important;	
+                font-size: 250px!important;	
                 font-weight: 300!important;	
                 line-height: 56px!important;	
                 text-align: center!important;
-                margin: 192px auto;
+                margin: 7.5%;
+                border: none;
             }
-            @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-            @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-            @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
             h2{
                 color: #1B0E4F;	
                 font-family: "SourceSansPro-Bold";	
-                font-size: 82px;	
+                font-size: 40px;	
                 text-align: center;
                 margin: 46px auto 0 auto;
             }
             h2+h2{
                 color: #1B0E4F;	
                 font-family: "SourceSansPro-Bold";	
-                font-size: 42px;	
+                font-size: 30px;	
                 text-align: center;
                 margin: 0 auto 77px auto;
             }
@@ -51,12 +60,22 @@
         </style>
     </head>
 
-    <body>
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                @yield('content')
-            </div>
+    
+
+
+    <body class="bg-white">
+        @include('site.themes.cms._partials._header')
+
+
+        <div class="main">
+            @yield('content')
         </div>
+
+        @include('site.themes.cms._partials._footer')
+        
+        @include('site.themes.cms._partials._scripts')
+        @yield('scripts')
+
     </body>
- </html>
+</html>
     
