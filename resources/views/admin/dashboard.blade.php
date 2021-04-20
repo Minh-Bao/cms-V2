@@ -33,7 +33,7 @@
                                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                                     <div class="flex-1 px-4 py-2 text-sm truncate">
                                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">
-                                            Article 1
+                                            Catégorie 1
                                         </a>
                                         <p class="text-gray-500">12 Members</p>
                                     </div>
@@ -90,7 +90,7 @@
                                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                                     <div class="flex-1 px-4 py-2 text-sm truncate">
                                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">
-                                            Article 2
+                                            Catégorie 2
                                         </a>
                                         <p class="text-gray-500">12 Members</p>
                                     </div>
@@ -148,7 +148,7 @@
                                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                                     <div class="flex-1 px-4 py-2 text-sm truncate">
                                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">
-                                            Article 3
+                                            Catégorie 3
                                         </a>
                                         <p class="text-gray-500">12 Members</p>
                                     </div>
@@ -205,7 +205,7 @@
                                     class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
                                     <div class="flex-1 px-4 py-2 text-sm truncate">
                                         <a href="#" class="text-gray-900 font-medium hover:text-gray-600">
-                                            Article 4
+                                            Catégorie 4
                                         </a>
                                         <p class="text-gray-500">12 Members</p>
                                     </div>
