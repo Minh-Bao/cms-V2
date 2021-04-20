@@ -68,7 +68,7 @@
             <!--Title-->
             <div class="flex justify-between items-center pb-3">
                 <h2 class="text-2xl font-bold">{!! App\Models\Site\Websitepage::where('id', 2)->first()->title !!}</h2>
-                <div class="cursor-pointer z-50" >
+                <div class="cursor-pointer z-50" @click="showModal = false">
                     <svg class="fill-current text-black" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                         viewBox="0 0 18 18">
                         <path
