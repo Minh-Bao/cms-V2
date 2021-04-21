@@ -14,9 +14,9 @@ class CreateBlocsTable extends Migration
     public function up()
     {
         Schema::create('siteblocs', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('pages_id');
-            $table->integer('sliders_id')->nullable();
+            $table->id();
+            $table->integer('sitepages_id')->nullable();
+            $table->integer('sitesliders_id')->nullable();
             $table->string('title',255)->nullable();
             $table->text('content')->nullable();
             $table->text('content_two')->nullable();
@@ -24,8 +24,8 @@ class CreateBlocsTable extends Migration
             $table->string('title_img',255)->nullable();
             $table->string('alt_img',255)->nullable();
             $table->string('url_image',255)->nullable();
-            $table->string('format',20);
-            $table->integer('sort');
+            $table->string('format',20)->nullable();
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }

@@ -14,12 +14,12 @@ class CreateSlidersTable extends Migration
     public function up()
     {
         Schema::create('sitesliders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('ratio',10);
-            $table->string('title',255);
-            $table->integer('width');
-            $table->integer('height');
-            $table->integer('type');
+            $table->id();
+            $table->string('ratio',10)->nullable();
+            $table->string('title',255)->nullable();
+            $table->integer('width')->nullable();
+            $table->integer('height')->nullable();
+            $table->integer('type')->nullable();
             $table->timestamps();
         });
     }

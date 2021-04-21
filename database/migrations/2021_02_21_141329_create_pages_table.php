@@ -14,22 +14,22 @@ class CreatePagesTable extends Migration
     public function up()
     {
         Schema::create('sitepages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('lng',2);
-            $table->string('last_review',6)->nullable();
-            $table->string('paginate',6)->nullable();
-            $table->integer('status');
+            $table->id();
+            $table->string('lng',2)->nullable();
+            $table->string('last_review',6)->default('off');
+            $table->string('paginate',6)->default('off');
+            $table->integer('status')->default(0);
             $table->string('name',255)->nullable();
             $table->string('title',255)->nullable();
-            $table->string('title_article',255)->nullable();
+            $table->string('title_article',150)->nullable();
             $table->string('slug',255)->unique();
             $table->string('thumbnail',255)->nullable();
             $table->string('image',255)->nullable();
-            $table->string('alt_img',255)->nullable();
+            $table->string('alt_img',150)->nullable();
             $table->string('title_img',255)->nullable();
-            $table->string('meta_title',255)->nullable();
-            $table->string('meta_desc',255)->nullable();
-            $table->string('author',255)->nullable();
+            $table->string('meta_title',75)->nullable();
+            $table->string('meta_desc',200)->nullable();
+            $table->string('author',150)->nullable();
             $table->text('content')->nullable();
             $table->integer('count')->nullable();
             $table->integer('slider_id')->nullable();

@@ -14,14 +14,14 @@ class CreateSliderImagesTable extends Migration
     public function up()
     {
         Schema::create('siteslidersimages', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('sliders_id');
-            $table->integer('sort');
-            $table->string('picture',255);
+            $table->id();
+            $table->integer('sitesliders_id');
+            $table->integer('sort')->nullable();
+            $table->string('picture',255)->nullable();
             $table->string('title',255)->nullable();
             $table->string('url',255)->nullable();
             $table->text('content')->nullable();
-            $table->string('status',5);
+            $table->string('status',5)->nullable();
             $table->timestamps();
         });
     }
