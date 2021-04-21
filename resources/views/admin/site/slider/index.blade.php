@@ -2,14 +2,9 @@
 
 
 
-@section('title',' | Agences')
-
-
+@section('title',' | index sliders')
 
 @section('stylesheets')
-
-    <!-- DataTables -->
-    {!! Html::style('plugins/datatables/media/css/dataTables.material.css') !!}
 
 @endsection
 
@@ -54,15 +49,55 @@
                                 </span>
                             </h3>
                         </div>
+                        
                         <div class="w-1/2 text-right">
                             <a href="{{route('slider.create')}}" 
                                 class=" object-none object-right order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-purple-500 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 sm:ml-3">
                                 Ajouter un slide
                             </a>
-
                         </div>
                     </div>
                 </div>
+
+                <div class="flex flex-wrap mt-4">
+                    @foreach ($slide as $chunk) 
+                    <div class="bg-white w-1/2">
+                        <div class="ml-8">
+                            <div class="flex flex-wrap" >
+                                <div class="w-1/2 ">
+                                    <h2 class="  text-gray-900 text-xl">
+                                        Slides : {{$chunk[2]['title']}}
+                                    </h2>
+                                    <p class="mt-3 max-w-3xl text-lg text-gray-500">
+                                        Deplacer les images pour modifier l'ordre des slides...
+                                    </p>
+                                    <div class="mt-8 sm:flex">
+                                        <div class="mt-3 sm:mt-0 ">
+                                            <button
+                                                class=" save order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-purple-500 hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 ">
+                                                Enregistrer
+                                            </button>
+                                        </div>
+                                    </div> 
+                                </div>
+                                <div class="w-1/2 ">
+                                    <div class="mt-8 grid grid-cols-3 gap-0.5 md:grid-cols-3 lg:mt-0 lg:grid-cols-3 sortable">
+                                        @for ($i =0; $i<count($chunk) ; $i++)
+                                            <div id="item-{{$chunk[$i]['id']}}" class="col-span-1 flex justify-center bg-gray-50 bg-white border-1 border-gray-300 droppable">
+                                                <img class="w-100" src="{{asset($chunk[$i]['picture'])}}"
+                                                    alt="Workcation" id="{{$chunk[$i]['id']}}" name="noname">
+                                            </div>                              
+                                        @endfor
+                                    </div>
+                                    </div>
+                            </div>
+                        </div>
+                    </div>     
+                    @endforeach
+                    </div>
+                
+
+
                 <div class=" mt-8 ">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
                         <table class="min-w-full">
@@ -187,13 +222,17 @@
 
 @section('scripts')
 
-<!-- Datatable -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
 
-{!! Html::script('plugins/datatables/1.10.16/dataTables.min.js') !!}
+<!-- Slim kickstart -->
+{!! Html::script('plugins/kickstart/slim.kickstart.min.js') !!}
 
-{!! Html::script('plugins/datatables/1.10.16/DataTables-1.10.16/js/dataTables.bootstrap.min.js') !!}
+<!-- jquery.ui.touch-punch -->
+{!! Html::script('plugins/jQueryUI/jquery.ui.touch-punch.min.js') !!}
 
-{!! Html::script('plugins/datatables/extensions/FixedColumns/3.2.4/dataTables.fixedColumns.min.js') !!}
+<!-- custom page js file -->
+{!! Html::script('js/edit_slider.js') !!}
+
 
 <script>
 
