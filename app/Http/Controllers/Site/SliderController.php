@@ -41,9 +41,29 @@ class SliderController extends Controller
      */
     public function index()
     {
+        //declare a rray of variable for the view
+        $arrayView = ['sliders'];
+
         $sliders = $this->slider->all();
 
-        return view('admin.site.slider.index',compact('sliders'));
+        if(count($sliders) > 2){
+            $slid1 = $this->sliderImage->getWhereAndOrder('sitesliders_id', 1, 'sort', null)->toArray();
+            $slid2 = $this->sliderImage->getWhereAndOrder('sitesliders_id', 4, 'sort', null)->toArray();
+
+
+            $slide = [$slid1, $slid2];
+
+            // dd($slide);
+
+            array_push($arrayView, 'slide');
+
+        }elseif(count($sliders)==1){
+            $slid1 = $this->sliderImage->get(1);
+            array_push($arrayView, 'slide');
+        }
+
+
+        return view('admin.site.slider.index',compact($arrayView));
     }
 
 
