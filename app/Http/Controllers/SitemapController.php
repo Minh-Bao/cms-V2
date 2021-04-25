@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Site\Models\Slider;
-use App\Site\Models\SliderImage;
-use App\Site\Models\Websitebloc;
-use App\Site\Models\Websitepage;
-use Illuminate\Http\Request;
+use App\Models\Site\Websitepage;
+
+
 
 class SitemapController extends Controller
 {
