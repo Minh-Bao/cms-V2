@@ -40,7 +40,15 @@
     {{ Html::script('plugins/custombox-4.0.3/dist/custombox.min.js') }}
     {{ Html::script('plugins/custombox-4.0.3/dist/custombox.legacy.min.js') }}
 
-
-
+@section('scripts')
+    <script>
+        /**
+     * remove html content when close the modal
+     */
+    document.addEventListener('custombox:overlay:close', function() {
+        $('#sitebuilder').html('');
+    });
+    </script>
+@endsection
 
 

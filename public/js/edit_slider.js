@@ -1,1 +1,52 @@
-(()=>{var e=$(".sortable");e.sortable({revert:100,placeholder:"placeholder"}),e.disableSelection();var r=$("button.save");$(".saved");r.on("click",(function(r){r.preventDefault();var t=e.sortable("serialize");$.ajaxSetup({headers:{"X-CSRF-TOKEN":$('meta[name="csrf-token"]').attr("content")}}),$.ajax({data:t,type:"POST",url:"http://localhost:8000/admin/ajax/sliderimage/sort.json",success:function(e){toastr.success("Ordre des photos enregistré")},error:function(e){toastr.danger("Une erreur est survenue")}})}))})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!*************************************!*\
+  !*** ./resources/js/edit_slider.js ***!
+  \*************************************/
+var ul_sortable = $('.sortable'); //setup one variable for sortable holder that will be used in few places
+
+/*
+* jQuery UI Sortable setup
+*/
+
+ul_sortable.sortable({
+  revert: 100,
+  placeholder: 'placeholder'
+});
+ul_sortable.disableSelection();
+/*
+* Saving and displaying serialized data
+*/
+
+var btn_save = $('button.save'),
+    // select save button
+div_response = $('.saved'); // response div
+
+btn_save.on('click', function (e) {
+  // trigger function on save button click
+  e.preventDefault();
+  var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
+  // alert(sortable_data);
+
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    //ajax
+    data: sortable_data,
+    type: 'POST',
+    url: 'http://localhost:8000/admin/ajax/sliderimage/sort.json',
+    // save.php - file with database update
+    success: function success(result) {
+      // alert (sortable_data);
+      toastr.success("Ordre des photos enregistré");
+    },
+    error: function error(result) {
+      toastr.danger('Une erreur est survenue');
+    }
+  });
+});
+/******/ })()
+;

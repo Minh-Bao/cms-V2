@@ -99,12 +99,7 @@ $(document).ready(function(){
     });
   });
   
-  /**
-   * remove html content when close the modal
-   */
-  document.addEventListener('custombox:overlay:close', function() {
-      $('#sitebuilder').html('');
-  });
+
 
   /*********************____CUSTOMBOX MODAL PLUGIN FOR WYSIWYG FRONT EDITOR ____******************/
   
