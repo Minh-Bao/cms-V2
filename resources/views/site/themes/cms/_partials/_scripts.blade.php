@@ -10,6 +10,14 @@
 <script src="{{url('/js/app.js')}}" defer></script>
 
 
+<!--Tarteaucitron cookie manager for RGPD-->
+    <script type="text/javascript">
+        tarteaucitron.user.gtagUa = 'UA-106144058-4';
+        tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+        (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+    </script>
+
+
 
 
 
