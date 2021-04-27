@@ -57,8 +57,8 @@ class AppServiceProvider extends ServiceProvider
             UserRepository::class, 
         );
 
-        if(App::environment('production')) {
-            URL::forceScheme('https');
-        }
+        // if(App::environment('production')) {
+        //     URL::forceScheme('https');
+        // }
     }
 }
