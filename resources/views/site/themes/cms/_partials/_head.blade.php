@@ -52,7 +52,7 @@
           //"iconSrc": "", /* Optionnal: URL or base64 encoded image */
           "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
 
-    	  "adblocker": false, /* Show a Warning if an adblocker is detected */
+    	  "adblocker": true, /* Show a Warning if an adblocker is detected */
                            
           "DenyAllCta" : true, /* Show the deny all button */
           "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
