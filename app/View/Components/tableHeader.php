@@ -32,7 +32,7 @@ class tableHeader extends Component
     public function render()
     {
         return view('components.table-header', [
-            'visible' => $this->field == $this->name
+            'visible' => $this->field == $this->name, $this->direction
         ]);
     }
 }
