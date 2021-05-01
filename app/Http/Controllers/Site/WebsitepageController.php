@@ -167,12 +167,12 @@ class WebsitepageController extends Controller
     /**
      * Unlink image if exist
      *
-     * @param object $object
+     * @param string $object
      * @return void
      */
-    public static function deleteImg(object $object) :void{
-        if(File::exists($object)) {
-            unlink($object);
+    public static function deleteImg(string $path) :void{
+        if(File::exists($path)) {
+            unlink($path);
         }
     }
 
