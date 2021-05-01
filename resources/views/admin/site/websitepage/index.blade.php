@@ -131,7 +131,8 @@
 
                 <div class=" mt-8 sm:block">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
-                        <table class="min-w-full">
+                        <livewire:pages-table/>
+                        {{-- <table class="min-w-full">
                             <thead>
                                 <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                     Nom de la page :
@@ -251,8 +252,8 @@
                                     </tr>
                                 @endforeach
                             </tbody>
-                        </table>
-                        {{$websitepages->links()}}
+                        </table> --}}
+                        
                     </div>
                 </div>
             </div>
