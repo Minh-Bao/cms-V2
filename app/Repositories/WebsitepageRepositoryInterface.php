@@ -11,10 +11,11 @@ interface WebsitepageRepositoryInterface
     public function getAll();
 
     /**
-     * retrieve all pages 
+     * retrieve all pages and order by specified field in the specified direction
      * 
-     * @param int $id
-     * @return void
+     * @param string $field
+     * @param string $direction
+     * @return mixed
      */
     public function allOrderedBy($field, $direction);
   
