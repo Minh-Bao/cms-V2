@@ -14,12 +14,22 @@ class PagesTable extends Component
     public  $search = "";
     public  $orderField = "created_at";
     public  $orderDirection = 'ASC';
+    public  $editId = 0;
 
     protected $queryString = [
-        'search' => ['except' => '']
+        'search' => ['except' => ''],
+        'orderField' => ['except' => 'name'],
+        'orderDirection' => ['except' => 'ASC']
+
     ];
 
-    public function setOrderField(string $name) {
+    public function startEdit(int $id) 
+    {
+        $this->editId = $id;
+    }
+
+    public function setOrderField(string $name) 
+    {
         if($name == $this->orderField){
             $this->orderDirection = $this->orderDirection =='ASC' ? 'DESC' : 'ASC';
         }else{
