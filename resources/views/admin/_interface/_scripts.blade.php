@@ -47,6 +47,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine-ie11.js" integrity="sha512-FtGbdwKSYg7aiiEdB4G2mqonZTZ7P7F8mhdhUREueS0tcOPU595npejn81eGarP4yzAJtAiE1cIf8WZ6uKBAgw==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.1/alpine-ie11.min.js" integrity="sha512-FeBN5CYKiIw2XHMxsRFNlXgSr7PDHrbH0wxa1AHjwGL/LqSDux/XEOrkQM0VRKwFCeGnCgTNpFQ3whyb8BUyMA==" crossorigin="anonymous"></script>
 
+
+@livewireScripts
+
+
 <script>
 
  var scrollTo = function(identifier, speed) {
@@ -107,6 +111,8 @@ $.fn.extend({
   ]); ?> 
 
 </script>
+
+
 
 
 
