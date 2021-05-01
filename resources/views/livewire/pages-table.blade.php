@@ -7,18 +7,13 @@
 
     <table class="min-w-full">
         <thead>
-            <th wire:click="setOrderField('name')"
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Nom de la page :
-            </th>
-            <th wire:click="setOrderField('status')"
-                class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Statut
-            </th>
-            <th wire:click="setOrderField('created_at')"
-                class="hidden md:table-cell px-6 py-3 border-b border-gray-200 bg-gray-50 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Date de publication
-            </th>
+            <x-table-header :direction="$orderDirection" name="name" :field="$orderField" class="table-cell">Nom de la page :</x-table-header>
+            <x-table-header :direction="$orderDirection" name="status" :field="$orderField" class="">
+                Statut :
+            </x-table-header>
+            <x-table-header :direction="$orderDirection" name="created_at" :field="$orderField" class="hidden md:table-cell">
+                Date de publication :
+            </x-table-header>
             <th
                 class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Action
@@ -32,13 +27,13 @@
                         {{ $websitepage->name }} 
                     </td>
                     <td
-                        class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-center">
+                        class="hidden md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
                         @if($websitepage->status == 0)<i class="material-icons">construction</i>@endif
                         @if($websitepage->status == 1)<i class="material-icons">save</i>@endif
                         @if($websitepage->status == 2)<i class="material-icons">schedule</i>@endif
                     </td>
                     <td
-                        class="hidden md:table-cell  whitespace-nowrap text-sm text-gray-500 text-center">
+                        class="hidden md:table-cell  whitespace-nowrap text-sm text-gray-500 text-left">
                         @php if($websitepage->status == 1){
                                 $disable = ["disabled" => "disabled"]; 
                                 $date= $websitepage->created_at;
@@ -53,13 +48,14 @@
                         {!! Form::open(['route'=> ['websitepage.setDate',$websitepage->id], 'method'=>'PUT' ]) !!}
                         {{Form::date('date', $date, $disable)}}
                         <button type="submit"  
-                            class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else bg-pink-450 hover:bg-purple-400 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
+                            class=" order-0 inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 @if($websitepage->status == 1) bg-gray-400 @else hover:bg-purple-400 @endif  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500 sm:order-1 sm:ml-3" 
                             @if($websitepage->status == 1) disabled style="pointer-events: none"@else enabled @endif >
                             set
                         </button>
                         {!! Form::close() !!}
                     </td>
-                    <td class="pr-6">
+                    <td class="pr-6 ">
+                        
                         <div class="relative flex justify-end items-center"
                         x-data=" { open: false }">
                             <button type="button"
@@ -87,6 +83,16 @@
                                 class="mx-3 origin-top-right absolute right-7 top-0 w-48 mt-1 rounded-md shadow-lg z-10 bg-gray-50 ring-1 ring-black ring-opacity-5 divide-y divide-gray-200 focus:outline-none"
                                 role="menu" aria-orientation="vertical"
                                 aria-labelledby="project-options-menu-0">
+                                <div class="py-1" role="none">
+                                    <span
+                                        wire:click="startEdit({{$websitepage->id}})"
+                                        class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+                                        </svg>
+                                        Edit fast
+                                    </span>
+                                </div>
                                 <div class="py-1" role="none">
                                     <a href="{{ route('websitepage.edit',$websitepage->id)}}"
                                         class="group flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
@@ -124,6 +130,11 @@
                         </div>
                     </td>
                 </tr>
+                @if($editId == $websitepage->id)
+                    <tr>
+                        <livewire:page-form :page="$page" :key="$websitepage->id"/>
+                    </tr>
+                @endif
             @endforeach
         </tbody>
     </table>
