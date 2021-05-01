@@ -24,7 +24,7 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
      * 
      * @param string $field
      * @param string $direction
-     * @return void
+     * @return mixed
      */
     public function allOrderedBy($field, $direction){
 
