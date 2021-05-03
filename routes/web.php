@@ -28,7 +28,7 @@ Route::get('/sitemap.xml/articles', [SitemapController::class,'articles']);
 //Contact
 Route::post('/contact/send', [ContactController::class,'send'])->name('contact');
 
-Route::get('/', [ SiteController::class,'index'])->name('site.homepage');
+Route::get('/', [ SiteController::class,'index'])->name('site.homepage')->middleware('https');
 Route::get('/home', [AdminController::class,'index'])->name('home');
 Route::get('/feed', 'App\Http\Controllers\FeedController@xml')->name('feed');
 Route::post('/send', [SiteController::class, 'form'])->name('site.send.form');
@@ -63,7 +63,7 @@ Route::prefix('admin')->group(function() {
 });
 
 //Show page on site
-Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page');
+Route::get('/{type}/{slug}', [SiteController::class,'page'])->name('site.page')->middleware('https');
 
 //Feed RSS
 Route::get('/feed', [FeedController::class,'xml'])->name('feed');
