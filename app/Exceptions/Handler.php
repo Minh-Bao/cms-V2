@@ -68,19 +68,19 @@ class Handler extends ExceptionHandler
             return redirect()->back()->withInput();
         }
 
-        if($exception instanceof MethodNotAllowedHttpException && getenv('APP_ENV') != 'local') {
-            error_log('Error :' . $exception->getMessage());
-            abort(503);
-        }
+        // if($exception instanceof MethodNotAllowedHttpException && getenv('APP_ENV') != 'local') {
+        //     error_log('Error :' . $exception->getMessage());
+        //     abort(503);
+        // }
 
-        if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') != 'local') {
-            error_log('Error :' . $exception->getMessage());
-            abort(500);
-        }
-        if ($exception instanceof ClientException) {
-            error_log('Error :' . $exception->getMessage());
-            abort(500);
-        }
+        // if(($exception instanceof PDOException || $exception instanceof QueryException) && getenv('APP_ENV') != 'local') {
+        //     error_log('Error :' . $exception->getMessage());
+        //     abort(500);
+        // }
+        // if ($exception instanceof ClientException) {
+        //     error_log('Error :' . $exception->getMessage());
+        //     abort(500);
+        // }
         return parent::render($request, $exception);
 
     }
