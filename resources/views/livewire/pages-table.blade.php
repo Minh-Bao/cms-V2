@@ -1,8 +1,9 @@
 <div>
-
-    <div class="ml-6">
-        <label for="search">Recherchez une page : </label>
-        <input type="text" name="search" placeholder="Entrez votre texte" wire:model.debounce.500ms="search" class="focus:ring-blue-500 focus:border-blue-500 pl-9 sm:text-sm border-gray-300 rounded-md">
+    <div class="mb-6 mt-4 ml-6">
+        <div class="">
+            <label for="search" class="text-gray-600">Recherchez une page : </label>
+            <input type="text" name="search" placeholder="Entrez votre texte" wire:model.debounce.500ms="search" class="focus:ring-blue-500 focus:border-blue-500 pl-9 sm:text-sm border-gray-300 rounded-md">
+        </div>
     </div>
 
     <table class="min-w-full">
@@ -15,7 +16,7 @@
                 Date de publication :
             </x-table-header>
             <th
-                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-right text-xs font-medium text-gray-700 uppercase tracking-wider">
                 Action
             </th>
         </thead>
