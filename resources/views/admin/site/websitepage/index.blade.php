@@ -128,9 +128,10 @@
                     </ul>
                 </div>
 
-
+                    
                 <div class=" mt-8 sm:block">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
+                        <hr>
                         <livewire:pages-table/>
                         {{-- <table class="min-w-full">
                             <thead>
