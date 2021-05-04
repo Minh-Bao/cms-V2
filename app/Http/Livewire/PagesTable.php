@@ -31,6 +31,8 @@ class PagesTable extends Component
     public function deletePages(array $ids){
         Websitepage::destroy($ids);
         $this->selection = [];
+
+        session()->flash('success', 'les utilisateurs selectionné ont bien été supprimés!');
     }
 
     public function setOrderField(string $name) 

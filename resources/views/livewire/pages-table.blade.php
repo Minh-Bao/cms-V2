@@ -1,6 +1,13 @@
-<div x-data="{selection: @entangle('selection').defer}">
+<div x-data="{selection: []}">
     {{-- @dump(count($selection)) --}}
 
+    @if(session()->has('success'))
+        <article>
+            <div class="message is-primary">
+                {{session('success')}}
+            </div>
+        </article>
+    @endif
 
     <div class="mb-6 mt-4 ml-6">
         <div class="">
