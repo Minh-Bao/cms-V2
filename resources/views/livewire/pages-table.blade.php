@@ -1,4 +1,7 @@
-<div>
+<div x-data="{selection: @entangle('selection').defer}">
+    {{-- @dump(count($selection)) --}}
+
+
     <div class="mb-6 mt-4 ml-6">
         <div class="">
             <label for="search" class="text-gray-600">Recherchez une page : </label>
@@ -6,8 +9,13 @@
         </div>
     </div>
 
+    <button 
+        class="  items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-50 bg-pink-500 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 sm:order-1 sm:ml-3" 
+        x-show="selection.length > 0" x-on:click="$wire.deletePages(selection)">Supprimer</button>
+
     <table class="min-w-full">
         <thead>
+            <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs font-medium text-gray-700 uppercase ">Select</th>
             <x-table-header :direction="$orderDirection" name="name" :field="$orderField" class="table-cell">Nom de la page :</x-table-header>
             <x-table-header :direction="$orderDirection" name="status" :field="$orderField" class="">
                 Statut :
@@ -23,6 +31,9 @@
         <tbody class="bg-white divide-y divide-gray-100">
             @foreach($websitepages as $websitepage)
                 <tr>
+                    <td class="md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 ">
+                        <input type="checkbox" x-model="selection" value="{{$websitepage->id}}">
+                    </td>
                     <td
                         class=" md:table-cell px-6 py-3 whitespace-nowrap text-sm text-gray-500 text-left">
                         {{ $websitepage->name }} 
