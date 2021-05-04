@@ -14,7 +14,6 @@ class PagesTable extends Component
     public  $search = "";
     public  $orderField = "created_at";
     public  $orderDirection = 'ASC';
-    // public  $editId = 0;
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -23,11 +22,11 @@ class PagesTable extends Component
 
     ];
 
-    // public function startEdit(int $id) 
-    // {
-    //     $this->editId = $id;
-    // }
-
+    public function updating($name, $value) {
+        if ($name == 'search') {
+            $this->resetPage();
+        }
+    }
 
     public function setOrderField(string $name) 
     {
