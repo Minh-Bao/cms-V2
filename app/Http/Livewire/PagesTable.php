@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Livewire;
 
 use Livewire\Component;
@@ -11,9 +10,10 @@ class PagesTable extends Component
 {
     use WithPagination;
 
-    public  $search = "";
-    public  $orderField = "created_at";
-    public  $orderDirection = 'ASC';
+    public string  $search = "";
+    public string  $orderField = "created_at";
+    public string  $orderDirection = 'ASC';
+    public  array $selection = [];
 
     protected $queryString = [
         'search' => ['except' => ''],
@@ -26,6 +26,11 @@ class PagesTable extends Component
         if ($name == 'search') {
             $this->resetPage();
         }
+    }
+
+    public function deletePages(array $ids){
+        Websitepage::destroy($ids);
+        $this->selection = [];
     }
 
     public function setOrderField(string $name) 
