@@ -26,7 +26,8 @@
                     <label for="email-address" class="block text-sm font-medium text-gray-700">Adresse email :</label>
                     <input id="email-address" name="email" type="email" autocomplete="email" required
                         class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none sm:text-sm focus:border-pink-700 focus:ring-pink-500"
-                        placeholder="Adresse email">
+                        placeholder="Adresse email"
+                        value="{{$request->email}}">
                 </div>
                 @if ($errors->has('email'))
                     <span class="hidden mt-1 text-sm text-red" role="alert">
