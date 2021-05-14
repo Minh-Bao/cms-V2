@@ -11,11 +11,6 @@
             </h2>
         </div>
 
-        @if (session('status'))
-            <div class="relative px-3 py-3 mb-4 border rounded bg-pink-200 border-pink-300 text-pink-800" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
         
         <form class="mt-8 space-y-6" method="POST" action="{{ route('password.update') }}">
             @csrf
