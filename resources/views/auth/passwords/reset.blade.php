@@ -49,9 +49,9 @@
                 @endif
 
                 <div>
-                    <label for="passwordConfirmation" class="block text-sm font-medium text-gray-700">Confirmation du mot de passe :</label>
+                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700">Confirmation du mot de passe :</label>
                     <div class="mt-1">
-                        <input id="passwordConfirmation" name="passwordConfirmation" type="passwordConfirmation" autocomplete="current-password" required 
+                        <input id="password_confirmation" name="password_confirmation" type="password" autocomplete="current-password" required 
                         class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none sm:text-sm focus:border-pink-700 focus:ring-pink-500">
                     </div>
                 </div>
