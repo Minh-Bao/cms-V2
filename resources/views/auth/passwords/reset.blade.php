@@ -60,7 +60,7 @@
             <div>
                 <button type="submit"
                     class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-gray-50 bg-pink-450 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-600">
-                    Envoyer le lien de récupération de mot de passe
+                    Réinitialiser le mot de passe 
                 </button>
             </div>
         </form>
