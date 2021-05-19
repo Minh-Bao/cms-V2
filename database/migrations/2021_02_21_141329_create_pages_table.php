@@ -16,8 +16,8 @@ class CreatePagesTable extends Migration
         Schema::create('sitepages', function (Blueprint $table) {
             $table->id();
             $table->string('lng',2)->nullable();
-            $table->string('last_review',6)->default('off');
-            $table->string('paginate',6)->default('off');
+            $table->string('last_review',6)->default('off')->nullable();
+            $table->string('paginate',6)->default('off')->nullable();
             $table->integer('status')->default(0);
             $table->string('name',255)->nullable();
             $table->string('title',255)->nullable();
