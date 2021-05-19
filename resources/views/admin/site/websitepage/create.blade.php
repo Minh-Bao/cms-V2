@@ -228,86 +228,13 @@
 
 @section('scripts')
 
-    <!-- Parsley -->
-    {!! Html::script('plugins/parsley/js/parsley.min.js') !!}
-
-    <!-- masked inputs -->
-    {!! Html::script('plugins/input-mask/jquery.inputmask.bundle.min.js') !!}
 
     <!-- Slim kickstart -->
     {!! Html::script('plugins/kickstart/slim.kickstart.min.js') !!}
     {!! Html::script('plugins/jQueryUI/jquery.ui.touch-punch.min.js') !!}
 
-    <!-- Datatable -->
-    {!! Html::script('plugins/datatables/1.10.16/dataTables.min.js') !!}
-    {!! Html::script('plugins/datatables/1.10.16/DataTables-1.10.16/js/dataTables.bootstrap.min.js') !!}
-    {!! Html::script('plugins/datatables/extensions/Buttons/js/dataTables.buttons.min.js') !!}
-    {!! Html::script('plugins/datatables/extensions/Buttons/js/buttons.flash.js') !!}
-    {!! Html::script('plugins/datatables/extensions/Buttons/js/jszip.min.js') !!}
-    {!! Html::script('plugins/datatables/extensions/Buttons/js/buttons.html5.min.js') !!}
-    {!! Html::script('plugins/datatables/extensions/Buttons/js/buttons.print.min.js') !!}
-    {!! Html::script('plugins/pdfmake/0.1.1.18/build/pdfmake.min.js') !!}
-    {!! Html::script('plugins/pdfmake/0.1.1.18/build/vfs_fonts.js') !!}
-    {!! Html::script('plugins/datatables/extensions/FixedColumns/3.2.4/dataTables.fixedColumns.min.js') !!}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
-
-    <script type="text/javascript">
-        var ul_sortable = $('.sortable'); //setup one variable for sortable holder that will be used in few places
-        
-        /*
-        * jQuery UI Sortable setup
-        */
-        ul_sortable.sortable({
-            revert: 100,
-            axis: "y",
-            placeholder: 'placeholder'
-        });
-
-        ul_sortable.disableSelection();
-
-        /*
-        * Saving and displaying serialized data
-        */
-
-        var btn_save = $('button.save'), // select save button
-        div_response = $('.save'); // response div
-
-        $('#websitepage').dataTable({
-            "bStateSave": true,
-            "oLanguage": {"sUrl": "{{ url('/fr.txt') }}"},
-            dom: 'Bfrtip',
-            buttons: []
-        });
-
-        $('.sortable').sortable({
-            update: function(event, ui) {
-                var sortable_data = ul_sortable.sortable('serialize'); // serialize data from ul#sortable
-                $.ajax({ //ajax
-                    data: sortable_data,
-
-                    type: 'POST',
-
-                    url: '{{ route('bloc.sort') }}', // save.php - file with database update
-
-                    success: function(result) {
-                    //alert (sortable_data);
-                        div_response.text('Enregistrement terminé');
-                        div_response.removeClass('btn-primary');
-                        div_response.addClass('btn-success');
-                        toastr.success("Ordre des blocs enregistré");
-
-                    },
-
-                    error: function(result) {
-                        console.log('non');
-                    }
-                });
-            }
-        });
-
-    </script>
-
+    {{-- WYSIWYG script --}}
     <script>
         $('.trumbowyg').trumbowyg({
             lang: 'fr',
