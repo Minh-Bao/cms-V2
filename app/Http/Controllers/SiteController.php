@@ -2,19 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\SliderRepositoryInterface;
 use App\Http\Controllers\Site\WebsitepageController;
 use App\Repositories\SliderImageRepositoryInterface;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
 
 class SiteController extends Controller
 {
+    private $bloc;
+    private $sliderImage;
+    private $slider;
+    private $page;
     private $exclude_pages = [];  //An array of all forbidden pages 
 
     /**
@@ -47,27 +52,26 @@ class SiteController extends Controller
 
         /*check if the page exist assign to variable if not throw error*/
         $sitepage = $this->page->getWhere('slug','homepage')->where('status', 1)->first();
-        /*Check if there is slider and image assign to variable*/
-        $slider = $this->slider->findBy($sitepage->slider_id);
-        $sitesliderimages = $this->sliderImage->getWhereAndOrder('sitesliders_id',$sitepage->slider_id,'sort', null);
-        /*Check if there is a bloc and assign to variable*/
-        $siteblocs = $this->bloc->getWhereAndOrder('sitepages_id', $sitepage->id,'sort', null);
-        
-        
-        /*BestPage and thumbnail module for group-home*/
-        $bestpage = $this->bestpage($this->exclude_pages);       
-        $page = $this->thumbnail($this->exclude_pages);
-                
-        array_push($arrayView, 'page', 'bestpage');  
-        
-        /* if($sitepage->model=="onepage") {
-            $menus = Websitebloc::select('*')->where('format','like','%title%')->where('sitepages_id',$sitepage->id)->orderBy('sort')->get();
-        } else {
-            $menus = Websitepage::select('*')->where('slug','homepage')->get();
-        }   
-        array_push($arrayView , "menus"); */
 
-        return view('site.themes.cms.page',compact($arrayView));
+        if($sitepage){
+            /*Check if there is slider and image assign to variable*/
+            $slider = $this->slider->findBy($sitepage->slider_id);
+            $sitesliderimages = $this->sliderImage->getWhereAndOrder('sitesliders_id',$sitepage->slider_id,'sort', null);
+            /*Check if there is a bloc and assign to variable*/
+            $siteblocs = $this->bloc->getWhereAndOrder('sitepages_id', $sitepage->id,'sort', null);
+            
+            
+            /*BestPage and thumbnail module for group-home*/
+            $sliderImages = $this->sliderImage->getWhereAndOrder('sitesliders_id', 2, 'sort', null);
+            $bestpage = $this->bestpage($this->exclude_pages);       
+            $page = $this->thumbnail($this->exclude_pages);
+                    
+            array_push($arrayView, 'page', 'bestpage', 'sliderImages');  
+
+            return view('site.themes.cms.page',compact($arrayView));
+        }else{
+            return view('site.themes.cms.blank_page');
+        }
     }    
 
 
@@ -209,22 +213,31 @@ class SiteController extends Controller
         //retrieve all active pages
         $pages = Websitepage::select('*')->whereStatus(1)->whereNotIn("slug", $exclude_pages)->orderBy('created_at', 'DESC')->get();
         
-        for($i=0; $i<$pages->count(); $i++){
-            if($pages[$i]->slug == $sitepage->slug){
-                if($i+1 == $pages->count()){  
-                    $prev = "noprev";
-                    $next = $pages[$i-1]->slug;
-                }elseif($i == 0){
-                    $prev = $pages[$i+1]->slug;
-                    $next = "nonext";
-                }elseif($i != 0){
-                    $prev = $pages[$i+1]->slug;
-                    $next = $pages[$i-1]->slug;
+        if($pages->count() > 1 ) {
+            for($i=0; $i<= $pages->count(); $i++){
+                if($pages[$i]->slug == $sitepage->slug){   
+                    if($i+1 == $pages->count()){  
+                        $prev = "noprev";
+                        $next = $pages[$i-1]->slug;
+                    }elseif($i == 0){
+                        $prev = $pages[$i+1]->slug;
+                        $next = "nonext";
+                    }elseif($i != 0){
+                        $prev = $pages[$i+1]->slug;
+                        $next = $pages[$i-1]->slug;
+                    }
                 }
             }
+
+            $paginate = [];
+            array_push($paginate, $next, $prev);
+    
+        }else{
+            $oneOnly = "oneOnly";
+            array_push($paginate, $oneOnly);
         }
-        $paginate = [];
-        array_push($paginate, $next, $prev);
+
+        
 
         return $paginate;
     }
