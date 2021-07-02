@@ -18,11 +18,12 @@ php artisan serve
 php artisan migrate
 ```
 - The create an account on register page and start create pages  
+ 
 
 ## Edition rules 
 - All method and variable in camelCase  
 - Comment in english  
-- Use of Repository and Interface  
+- Use of Repository and Interface  :!\ All eloquent call ar in the model or repository and all the logic in controller . Separate responsability  
 - Separate Model class and other class  
 - Create separate file for rules request  
 
