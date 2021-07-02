@@ -5,8 +5,8 @@
     <div class="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div class="mx-auto w-full max-w-sm lg:w-96">
             <div>
-                <img class="h-20 w-auto" src="{{asset('images/logo-black.png')}}"
-                    alt="logo {{config('myconfig.site_owner')}}">
+                <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
+
                 <h2 class="mt-6 text-3xl font-extrabold text-gray-900">
                     Connectez vous...
                 </h2>
@@ -85,9 +85,11 @@
     </div>
     <div class="hidden lg:block relative w-0 flex-1">
         <img class="absolute inset-0 h-full w-full object-cover"
-            src="{{asset('images/bg_login.jpg')}}"
+            src="https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2830&q=80&sat=-100"
             alt="">
     </div>
 </div>
 @endsection
+
+
 

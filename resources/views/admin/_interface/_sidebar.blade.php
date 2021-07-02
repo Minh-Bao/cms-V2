@@ -33,9 +33,9 @@
                                 </svg>
                             </button>
                         </div>
-                        <div class="flex-shrink-0 flex items-center px-4 border-b-4 border-gray-50">
-                            <a class="mx-auto"  href="{{route('site.homepage')}}"><img class="h-16 w-auto " src="{{asset('/images/logo-white.png')}}" rel="" alt="logo-naturelcoquin" /></a>
-                        </div>
+                        <div class="flex-shrink-0 flex items-center px-4">
+                            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
+                          </div>
                         
                         <div class="mt-5 flex-1 h-0 overflow-y-auto">
                             <nav class="px-2">
@@ -159,11 +159,9 @@
                 >
                 <div class="flex flex-col w-64 border-r border-gray-200 pt-5 pb-4 bg-gray-100">
                     <div class="flex items-center flex-shrink-0 px-6">
-                        <a  href="{{route('site.homepage')}}">
-                            <img class="h-18 w-auto" 
-                                src="{{asset('/images/logo-black.png')}}" rel="" 
-                                alt="logo {{config('myconfig.site_owner')}}"/>
-                        </a>
+                        <div class="flex items-center flex-shrink-0 px-6">
+                            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
+                          </div>
                     </div>
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <div class="h-0 flex-1 flex flex-col overflow-y-auto"
