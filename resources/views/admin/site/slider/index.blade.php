@@ -90,15 +90,14 @@
                                                 </div>                              
                                             @endfor
                                         </div>
-                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>     
                         @endforeach                        
                     @endisset
-                </div>              
-
-
+                </div>  
+                                
                 <div class=" mt-8 ">
                     <div class="align-middle inline-block min-w-full border-b border-gray-200">
                         <table class="min-w-full">
