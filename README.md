@@ -9,6 +9,14 @@ Use of Tall stack
 ```bash
 git clone "https://github.com/Minh-Bao/cms-V2.git"
 ```
+- Install the Vendor  
+```bash
+composer install
+```
+- Install module nodes  
+```bash
+npm install
+```
 - Launch in local env  
 ```bash
 php artisan serve
@@ -18,6 +26,11 @@ php artisan serve
 php artisan migrate
 ```
 - The create an account on register page and start create pages  
+
+- When modifiy JS or CSS file then rebuild assets 
+```bash
+npm run developement
+```
  
 
 ## Edition rules 
