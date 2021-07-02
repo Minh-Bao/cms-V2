@@ -5,9 +5,19 @@ Replace Laravel/ui by fortify
 Use of Tall stack  
 
 # Start the project
+- clone the project from this repo  
 ```bash
 git clone "https://github.com/Minh-Bao/cms-V2.git"
 ```
+- Launch in local env  
+```bash
+php artisan serve
+```
+- Migrate database   
+```bash
+php artisan migrate
+```
+- The create an account on register page and start create pages  
 
 ## Edition rules 
 - All method and variable in camelCase  
