@@ -4,6 +4,11 @@ Use of of repository design pattern
 Replace Laravel/ui by fortify  
 Use of Tall stack  
 
+# Start the project
+```bash
+git clone "https://github.com/Minh-Bao/cms-V2.git"
+```
+
 ## Edition rules 
 - All method and variable in camelCase  
 - Comment in english  
