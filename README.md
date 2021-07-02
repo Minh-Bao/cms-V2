@@ -25,7 +25,7 @@ php artisan serve
 ```bash
 php artisan migrate
 ```
-- The create an account on register page and start create pages  
+- Then create an account on register page and start create pages  
 
 - When modifiy JS or CSS file then rebuild assets 
 ```bash
