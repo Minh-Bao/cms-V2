@@ -14,17 +14,12 @@ use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\WebsiteblocRepositoryInterface;
 use App\Repositories\WebsitepageRepositoryInterface;
 
-
-
 class WebsitepageController extends Controller
 {
 
-    public function __construct(WebsitepageRepositoryInterface $page, SliderRepositoryInterface $slider, WebsiteblocRepositoryInterface $bloc)
+    public function __construct(public WebsitepageRepositoryInterface $page,public SliderRepositoryInterface $slider,public WebsiteblocRepositoryInterface $bloc)
     {
         $this->middleware('auth:');
-        $this->page = $page;
-        $this->slider = $slider;
-        $this->bloc = $bloc;
     }  
 
     /**
