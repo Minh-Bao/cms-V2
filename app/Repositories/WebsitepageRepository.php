@@ -3,6 +3,7 @@
 use Illuminate\Support\Str;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class WebsitepageRepository implements WebsitepageRepositoryInterface
@@ -11,12 +12,10 @@ class WebsitepageRepository implements WebsitepageRepositoryInterface
     /**
      * retrieve all pages 
      * 
-     * @param int $id
-     * @return void
+     * @return ?Collection
      */
-    public function getAll(){
-        
-        return Websitepage::all();
+    public function getAll(): Collection{
+        return Websitepage::all() ?? null;
 	}
 
     /**

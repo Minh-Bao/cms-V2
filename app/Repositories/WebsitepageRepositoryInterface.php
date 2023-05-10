@@ -5,7 +5,6 @@ interface WebsitepageRepositoryInterface
     /**
      * retrieve all pages 
      * 
-     * @param int $id
      * @return void
      */
     public function getAll();
