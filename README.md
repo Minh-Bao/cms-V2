@@ -4,10 +4,39 @@ Use of of repository design pattern
 Replace Laravel/ui by fortify  
 Use of Tall stack  
 
+# Start the project
+- clone the project from this repo  
+```bash
+git clone "https://github.com/Minh-Bao/cms-V2.git"
+```
+- Install the Vendor  
+```bash
+composer install
+```
+- Install module nodes  
+```bash
+npm install
+```
+- Launch in local env  
+```bash
+php artisan serve
+```
+- Migrate database   
+```bash
+php artisan migrate
+```
+- Then create an account on register page and start create pages  
+
+- When modifiy JS or CSS file then rebuild assets 
+```bash
+npm run developement
+```
+ 
+
 ## Edition rules 
 - All method and variable in camelCase  
 - Comment in english  
-- Use of Repository and Interface  
+- Use of Repository and Interface  :!\ All eloquent call ar in the model or repository and all the logic in controller . Separate responsability  
 - Separate Model class and other class  
 - Create separate file for rules request  
 
