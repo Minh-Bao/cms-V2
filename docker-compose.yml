@@ -1,9 +1,8 @@
-# For more information: https://laravel.com/docs/sail
 version: '3'
 services:
     laravel.test:
         build:
-            context: ./docker/8.0
+            context: ./vendor/laravel/sail/runtimes/8.0
             dockerfile: Dockerfile
             args:
                 WWWGROUP: '${WWWGROUP}'
@@ -19,15 +18,8 @@ services:
             - sail
         depends_on:
             - mysql
-            # - pgsql
             - redis
-            # - selenium
-    # selenium:
-    #     image: 'selenium/standalone-chrome'
-    #     volumes:
-    #         - '/dev/shm:/dev/shm'
-    #     networks:
-    #         - sail
+            - phpmyadmin
     mysql:
         image: 'mysql:8.0'
         ports:
@@ -43,22 +35,10 @@ services:
         networks:
             - sail
         healthcheck:
-          test: ["CMD", "mysqladmin", "ping"]
-#    pgsql:
-#        image: postgres:13
-#        ports:
-#            - '${FORWARD_DB_PORT:-5432}:5432'
-#        environment:
-#            PGPASSWORD: '${DB_PASSWORD:-secret}'
-#            POSTGRES_DB: '${DB_DATABASE}'
-#            POSTGRES_USER: '${DB_USERNAME}'
-#            POSTGRES_PASSWORD: '${DB_PASSWORD:-secret}'
-#        volumes:
-#            - 'sailpostgresql:/var/lib/postgresql/data'
-#        networks:
-#            - sail
-#        healthcheck:
-#          test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+            test:
+                - CMD
+                - mysqladmin
+                - ping
     redis:
         image: 'redis:alpine'
         ports:
@@ -68,18 +48,32 @@ services:
         networks:
             - sail
         healthcheck:
-          test: ["CMD", "redis-cli", "ping"]
-    # memcached:
-    #     image: 'memcached:alpine'
-    #     ports:
-    #         - '11211:11211'
-    #     networks:
-    #         - sail
+            test:
+                - CMD
+                - redis-cli
+                - ping
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
             - '${FORWARD_MAILHOG_PORT:-1025}:1025'
             - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+        networks:
+            - sail
+    phpmyadmin:
+        image: 'phpmyadmin/phpmyadmin:latest'
+        ports:
+            - '8081:80'
+        environment:
+            PMA_ARBITRARY: 1
+            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_DATABASE: '${DB_DATABASE}'
+            MYSQL_USER: '${DB_USERNAME}'
+            MYSQL_PASSWORD: '${DB_PASSWORD}'
+            MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+        links:
+            - 'mysql:db'
+        depends_on:
+            - mysql
         networks:
             - sail
 networks:
@@ -88,7 +82,7 @@ networks:
 volumes:
     sailmysql:
         driver: local
-#    sailpostgresql:
-#        driver: local
     sailredis:
+        driver: local
+    sail-mysql:
         driver: local
