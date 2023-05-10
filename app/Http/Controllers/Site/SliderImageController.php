@@ -1,10 +1,6 @@
 <?php
 
-
-
 namespace App\Http\Controllers\Site;
-
-
 
 use Session;
 use App\Slim;
@@ -20,10 +16,7 @@ use App\Http\Requests\SliderImageRequest;
 use App\Repositories\SliderRepositoryInterface;
 use App\Repositories\SliderImageRepositoryInterface;
 
-
-
 class SliderImageController extends Controller
-
 {
 
     /**
@@ -31,10 +24,8 @@ class SliderImageController extends Controller
      *
      * @return void
      */
-    public function __construct(SliderImageRepositoryInterface $sliderImage, SliderRepositoryInterface $slider)
+    public function __construct(private SliderImageRepositoryInterface $sliderImage,private SliderRepositoryInterface $slider)
     {
-        $this->sliderImage = $sliderImage;
-        $this->slider = $slider;
         $this->middleware('auth:');
     }
 

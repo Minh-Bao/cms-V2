@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Str;
-use App\Models\Site\Websitebloc;
 use App\Models\Site\Websitepage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Collection;
 use App\Repositories\SliderRepositoryInterface;
 use App\Http\Controllers\Site\WebsitepageController;
@@ -16,10 +16,6 @@ use App\Repositories\WebsitepageRepositoryInterface;
 
 class SiteController extends Controller
 {
-    private $bloc;
-    private $sliderImage;
-    private $slider;
-    private $page;
     private $exclude_pages = [];  //An array of all forbidden pages 
 
     /**
@@ -27,12 +23,12 @@ class SiteController extends Controller
      *
      * @return void
      */
-    public function __construct(WebsitepageRepositoryInterface $page, SliderRepositoryInterface $slider, SliderImageRepositoryInterface $sliderImage, WebsiteblocRepositoryInterface $bloc)
+    public function __construct(
+        private WebsitepageRepositoryInterface $page,
+        private SliderRepositoryInterface $slider,
+        private SliderImageRepositoryInterface $sliderImage,
+        private WebsiteblocRepositoryInterface $bloc)
     {
-        $this->bloc = $bloc;
-        $this->sliderImage = $sliderImage;
-        $this->slider = $slider;
-        $this->page = $page;
         $this->exclude_pages = ["contact", "mentions", "homepage", "article-index", "categorie"];
     }
 
@@ -213,31 +209,22 @@ class SiteController extends Controller
         //retrieve all active pages
         $pages = Websitepage::select('*')->whereStatus(1)->whereNotIn("slug", $exclude_pages)->orderBy('created_at', 'DESC')->get();
         
-        if($pages->count() > 1 ) {
-            for($i=0; $i<= $pages->count(); $i++){
-                if($pages[$i]->slug == $sitepage->slug){   
-                    if($i+1 == $pages->count()){  
-                        $prev = "noprev";
-                        $next = $pages[$i-1]->slug;
-                    }elseif($i == 0){
-                        $prev = $pages[$i+1]->slug;
-                        $next = "nonext";
-                    }elseif($i != 0){
-                        $prev = $pages[$i+1]->slug;
-                        $next = $pages[$i-1]->slug;
-                    }
+        for($i=0; $i<$pages->count(); $i++){
+            if($pages[$i]->slug == $sitepage->slug){
+                if($i+1 == $pages->count()){  
+                    $prev = "noprev";
+                    $next = $pages[$i-1]->slug;
+                }elseif($i == 0){
+                    $prev = $pages[$i+1]->slug;
+                    $next = "nonext";
+                }elseif($i != 0){
+                    $prev = $pages[$i+1]->slug;
+                    $next = $pages[$i-1]->slug;
                 }
             }
-
-            $paginate = [];
-            array_push($paginate, $next, $prev);
-    
-        }else{
-            $oneOnly = "oneOnly";
-            array_push($paginate, $oneOnly);
         }
-
-        
+        $paginate = [];
+        array_push($paginate, $next, $prev);
 
         return $paginate;
     }
@@ -251,6 +238,7 @@ class SiteController extends Controller
     public static function resizeAndSaveImg($collection){
         
         foreach($collection as $item){
+            abort_if(! Storage::exists($item->thumbnail) && ! Route::currentRouteName('admin.index') , '404', "Un fichier image manque");
             // open file a image resource then crop and save   
             Image::make(public_path($item->thumbnail))->crop(100, 100, 100, 100)->save("images/miniThumb/".$item->title_img.".jpg");
         }

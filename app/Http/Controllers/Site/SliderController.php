@@ -25,11 +25,9 @@ class SliderController extends Controller
      *
      * @return void
      */
-    public function __construct(SliderRepositoryInterface $slider, SliderImageRepositoryInterface $sliderImage)
+    public function __construct(private SliderRepositoryInterface $slider,private SliderImageRepositoryInterface $sliderImage)
     {
             $this->middleware('auth:');
-            $this->slider = $slider;
-            $this->sliderImage = $sliderImage;
     }
 
 
@@ -46,19 +44,19 @@ class SliderController extends Controller
 
         $sliders = $this->slider->all();
 
-        if(count($sliders) > 2){
+        if($sliders > 2){
             $slid1 = $this->sliderImage->getWhereAndOrder('sitesliders_id', 1, 'sort', null)->toArray();
             $slid2 = $this->sliderImage->getWhereAndOrder('sitesliders_id', 4, 'sort', null)->toArray();
 
 
             $slide = [$slid1, $slid2];
 
-            // dd($slide);
+            dd($slide);
 
             array_push($arrayView, 'slide');
 
-        }elseif(count($sliders)==1){
-            $slid1 = $this->sliderImage->get(1);
+        }elseif(count($sliders->toArray()) ==1){
+            $slide = $this->sliderImage->get(1);
             array_push($arrayView, 'slide');
         }
 

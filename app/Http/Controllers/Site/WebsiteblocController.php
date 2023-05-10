@@ -20,10 +20,8 @@ use App\Repositories\WebsitepageRepositoryInterface;
 class WebsiteblocController extends Controller
 {
 
-    public function __construct(WebsitepageRepositoryInterface $page, WebsiteblocRepositoryInterface $bloc)
+    public function __construct(private WebsitepageRepositoryInterface $page,private WebsiteblocRepositoryInterface $bloc)
     {
-        $this->bloc = $bloc;
-        $this->page = $page;
         $this->middleware('auth');
     }  
 

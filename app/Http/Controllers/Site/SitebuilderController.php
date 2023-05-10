@@ -28,12 +28,12 @@ class SitebuilderController extends Controller
      *
      * @return void
      */
-    public function __construct(WebsitepageRepositoryInterface $page, WebsiteblocRepositoryInterface $bloc, SliderImageRepositoryInterface $sliderImage, SliderRepositoryInterface $slider)
+    public function __construct(
+        public WebsitepageRepositoryInterface $page,
+        public WebsiteblocRepositoryInterface $bloc,
+        public SliderImageRepositoryInterface $sliderImage,
+        public SliderRepositoryInterface $slider)
     {
-        $this->page = $page;
-        $this->bloc = $bloc;
-        $this->sliderImage = $sliderImage;
-        $this->slider = $slider;
         $this->middleware('auth:');
     }
 
