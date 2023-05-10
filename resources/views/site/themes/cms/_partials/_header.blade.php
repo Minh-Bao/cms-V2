@@ -3,11 +3,12 @@
             @keydown.escape="isOpen = false" :class="{ 'shadow-lg ' : isOpen , 'bg-primary' : !isOpen}">
             <!--Logo etc-->
             <div class="flex items-center flex-shrink-0 text-white ml-6">
+                
                 <a href="{{ url('/') }}">
-                    <img class="hidden lg:block w-3/12" src="{{ url('/images/logo-black.png') }}" rel="" alt="logo-naturelcoquin">
+                    <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
                 </a>
                 <a href="{{url('/')}}">
-                    <img class="block lg:hidden h-8 w-auto" src="{{ url('/images/logo-black.png') }}" rel="" alt="logo-naturelcoquin">
+                    <img class="block lg:hidden h-8 w-auto" src="https://tailwindui.com/img/logos/workflow-logo-purple-500-mark-gray-700-text.svg" alt="Workflow">
                 </a>
             </div>
 
